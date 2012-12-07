@@ -1,0 +1,7 @@
+grammar Gobstones
+
+  rule num
+    '-'? [1-9] [0-9]* <IntegerLiteral>
+  end
+
+end
