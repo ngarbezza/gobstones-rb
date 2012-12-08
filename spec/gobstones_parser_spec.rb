@@ -8,14 +8,28 @@ describe Gobstones::Parser do
 
     describe "numbers" do
 
-      it "should parse a simple number" do
+      it "should parse a positive number" do
         node = @parser.parse '42'
-
         node.value.should == 42
+      end
+
+      it "should parse a negative number" do
+        node = @parser.parse '-42'
+        node.value.should == -42
       end
     end
 
     describe "booleans" do
+
+      it "should parse a true boolean" do
+        node = @parser.parse 'True'
+        node.value.should == true
+      end
+
+      it "should parse a false boolean" do
+        node = @parser.parse 'False'
+        node.value.should == false
+      end
 
     end
 

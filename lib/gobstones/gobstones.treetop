@@ -1,7 +1,15 @@
 grammar Gobstones
 
-  rule num
+  rule literal
+    number / boolean #/ color / direction
+  end
+
+  rule number
     '-'? [1-9] [0-9]* <IntegerLiteral>
+  end
+
+  rule boolean
+    ('True' / 'False') <BooleanLiteral>
   end
 
 end
