@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Gobstones::Parser do
 
   before(:each) do
