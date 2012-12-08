@@ -41,4 +41,40 @@ module Gobstones
       end
     end
   end
+
+  module MinBoolFuncNode
+    def value
+      false
+    end
+  end
+
+  module MaxBoolFuncNode
+    def value
+      true
+    end
+  end
+
+  module MinColorFuncNode
+    def value
+      Colors::Azul.new
+    end
+  end
+
+  module MaxColorFuncNode
+    def value
+      Colors::Verde.new
+    end
+  end
+
+  module MinDirFuncNode
+    def value
+      Directions::Norte.new
+    end
+  end
+
+  module MaxDirFuncNode
+    def value
+      Directions::Oeste.new
+    end
+  end
 end

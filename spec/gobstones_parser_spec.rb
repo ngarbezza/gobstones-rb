@@ -80,6 +80,37 @@ describe Gobstones::Parser do
 
   end
 
+  describe "primitive expressions" do
+
+    describe "type bounds functions" do
+
+      it "should parse the minBool() function" do
+        'minBool()'.should parse_and_eval_to false
+      end
+
+      it "should parse the maxBool() function" do
+        'maxBool()'.should parse_and_eval_to true
+      end
+
+      it "should parse the minColor() function" do
+        'minColor()'.should parse_and_eval_to Gobstones::Colors::Azul.new
+      end
+
+      it "should parse the maxColor() function" do
+        'maxColor()'.should parse_and_eval_to Gobstones::Colors::Verde.new
+      end
+
+      it "should parse the minDir() function" do
+        'minDir()'.should parse_and_eval_to Gobstones::Directions::Norte.new
+      end
+
+      it "should parse the maxDir() function" do
+        'maxDir()'.should parse_and_eval_to Gobstones::Directions::Oeste.new
+      end
+    end
+
+  end
+
   describe "arithmetic operators" do
     
     it "should parse a + operator" do

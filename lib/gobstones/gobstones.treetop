@@ -1,5 +1,9 @@
 grammar Gobstones
 
+  rule atom_expr
+    literal / type_bound_func
+  end
+
   rule literal
     number / boolean / color / direction
   end
@@ -18,6 +22,22 @@ grammar Gobstones
 
   rule direction
     ('Norte' / 'Este' / 'Sur' / 'Oeste') <DirectionLiteral>
+  end
+
+  rule type_bound_func
+    bool_type_bound_func / color_type_bound_func / direction_type_bound_func
+  end
+
+  rule bool_type_bound_func
+    'minBool()' <MinBoolFuncNode> / 'maxBool()' <MaxBoolFuncNode>
+  end
+
+  rule color_type_bound_func
+    'minColor()' <MinColorFuncNode> / 'maxColor()' <MaxColorFuncNode>
+  end
+
+  rule direction_type_bound_func
+    'minDir()' <MinDirFuncNode> / 'maxDir()' <MaxDirFuncNode>
   end
 
 end
