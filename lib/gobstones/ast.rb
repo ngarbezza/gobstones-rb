@@ -11,4 +11,19 @@ module Gobstones
       eval text_value.downcase
     end
   end
+
+  module ColorLiteral
+    def value
+      case text_value
+      when 'Azul'
+        Colors::Azul.new
+      when 'Negro'
+        Colors::Negro.new
+      when 'Rojo'
+        Colors::Rojo.new
+      when 'Verde'
+        Colors::Verde.new
+      end
+    end
+  end
 end
