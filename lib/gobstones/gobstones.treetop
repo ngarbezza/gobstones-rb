@@ -1,7 +1,7 @@
 grammar Gobstones
 
   rule literal
-    number / boolean / color #/ direction
+    number / boolean / color / direction
   end
 
   rule number
@@ -14,6 +14,10 @@ grammar Gobstones
 
   rule color
     ('Azul' / 'Negro' / 'Rojo' / 'Verde') <ColorLiteral>
+  end
+
+  rule direction
+    ('Norte' / 'Este' / 'Sur' / 'Oeste') <DirectionLiteral>
   end
 
 end

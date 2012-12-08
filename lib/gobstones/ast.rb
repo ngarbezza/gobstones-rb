@@ -26,4 +26,19 @@ module Gobstones
       end
     end
   end
+
+  module DirectionLiteral
+    def value
+      case text_value
+      when 'Norte'
+        Directions::Norte.new
+      when 'Este'
+        Directions::Este.new
+      when 'Sur'
+        Directions::Sur.new
+      when 'Oeste'
+        Directions::Oeste.new
+      end
+    end
+  end
 end

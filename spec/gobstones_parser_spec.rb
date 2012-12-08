@@ -60,7 +60,24 @@ describe Gobstones::Parser do
 
     describe "directions" do
 
+      it "should parse the 'Norte' direction" do
+        'Norte'.should parse_and_eval_to Gobstones::Directions::Norte.new
+      end
+
+      it "should parse the 'Este' direction" do
+        'Este'.should parse_and_eval_to Gobstones::Directions::Este.new
+      end
+
+      it "should parse the 'Sur' direction" do
+        'Sur'.should parse_and_eval_to Gobstones::Directions::Sur.new
+      end
+
+      it "should parse the 'Oeste' direction" do
+        'Oeste'.should parse_and_eval_to Gobstones::Directions::Oeste.new
+      end
+
     end
+
   end
 
   describe "arithmetic operators" do
