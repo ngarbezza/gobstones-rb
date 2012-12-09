@@ -172,10 +172,40 @@ describe Gobstones::Parser do
 
   end
 
-  describe "arithmetic operators" do
+  describe "arithmetic expressions" do
     
-    it "should parse a + operator" do
-      pending
+    it "should parse a + expression" do
+      arg1 = Gobstones::Expressions::VarName.new 'left'
+      arg2 = Gobstones::Expressions::VarName.new 'right'
+      sum = Gobstones::Expressions::Add.new arg1, arg2
+      'left+right'.should be_parsed_to sum
+      'left +  right'.should be_parsed_to sum
+    end
+
+    it "should parse a nested + expression" do
+      arg1 = Gobstones::Expressions::VarName.new 'first'
+      arg2 = Gobstones::Expressions::VarName.new 'second'
+      arg3 = Gobstones::Expressions::VarName.new 'third'
+      sum1plus2 = Gobstones::Expressions::Add.new arg1, arg2
+      total = Gobstones::Expressions::Add.new sum1plus2, arg3
+      'first + second + third'.should be_parsed_to total
+    end
+
+    it "should parse a - expression" do
+      arg1 = Gobstones::Expressions::VarName.new 'left'
+      arg2 = Gobstones::Expressions::VarName.new 'right'
+      sum = Gobstones::Expressions::Sub.new arg1, arg2
+      'left-right'.should be_parsed_to sum
+      'left -  right'.should be_parsed_to sum
+    end
+
+    it "should parse a nested expression with + and -" do
+      arg1 = Gobstones::Expressions::VarName.new 'first'
+      arg2 = Gobstones::Expressions::VarName.new 'second'
+      arg3 = Gobstones::Expressions::VarName.new 'third'
+      sum1plus2 = Gobstones::Expressions::Add.new arg1, arg2
+      total = Gobstones::Expressions::Sub.new sum1plus2, arg3
+      'first + second - third'.should be_parsed_to total
     end
 
   end

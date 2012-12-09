@@ -52,5 +52,20 @@ module Gobstones
   ast_node :OpuestoFuncNode, ->(text, tokens) {
     Functions::Opuesto.new tokens[2].value
   }
+  ast_node :NopExprNode, ->(text, tokens) {
+    if tokens[1].text_value.empty?
+      tokens[0].value
+    else
+      # it is a nested exp
+      tokens[1].elements.inject(tokens[0].value) do |memo, node|
+        case node.elements[1].text_value
+        when '+'
+          memo = Expressions::Add.new memo, node.elements[3].value
+        when '-'
+          memo = Expressions::Sub.new memo, node.elements[3].value
+        end
+      end
+    end
+  }
 
 end

@@ -1,5 +1,13 @@
 grammar Gobstones
 
+  rule nexp
+    atom_expr (space* nop space* atom_expr)* <NopExprNode>
+  end
+
+  rule nop
+    '+' / '-'
+  end
+
   rule atom_expr
     literal / type_bound_func / primitive_func / var_name
   end
