@@ -20,6 +20,14 @@ module Gobstones
 
     end
 
+    class HayBolitas < OneArgFunction
+
+    end
+
+    class PuedeMover < OneArgFunction
+
+    end
+
   end
 
 end

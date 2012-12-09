@@ -35,6 +35,12 @@ module Gobstones
   ast_node :MaxDirFuncNode, -> { Directions::Oeste.new }
   ast_node :VarNameNode, ->(text) { Expressions::VarName.new text }
   ast_node :NroBolitasFuncNode, ->(text, tokens) {
-    Functions::NroBolitas.new tokens[1].value
+    Functions::NroBolitas.new tokens[2].value
+  }
+  ast_node :HayBolitasFuncNode, ->(text, tokens) {
+    Functions::HayBolitas.new tokens[2].value
+  }
+  ast_node :PuedeMoverFuncNode, ->(text, tokens) {
+    Functions::PuedeMover.new tokens[2].value
   }
 end

@@ -57,11 +57,23 @@ grammar Gobstones
   end
 
   rule primitive_func
-    nro_bolitas_func# / hay_bolitas_func / puede_mover_func
+    nro_bolitas_func / hay_bolitas_func / puede_mover_func
   end
 
   rule nro_bolitas_func
-    'nroBolitas(' atom_expr ')' <NroBolitasFuncNode>
+    'nroBolitas(' space* atom_expr space* ')' <NroBolitasFuncNode>
+  end
+
+  rule hay_bolitas_func
+    'hayBolitas(' space* atom_expr space* ')' <HayBolitasFuncNode>
+  end
+
+  rule puede_mover_func
+    'puedeMover(' space* atom_expr space* ')' <PuedeMoverFuncNode>
+  end
+
+  rule space
+    [\s]
   end
 
 end

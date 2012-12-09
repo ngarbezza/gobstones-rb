@@ -127,6 +127,21 @@ describe Gobstones::Parser do
         arg = Gobstones::Expressions::VarName.new 'color'
         func = Gobstones::Functions::NroBolitas.new arg
         'nroBolitas(color)'.should parse_and_eval_to(func)
+        'nroBolitas( color    )'.should parse_and_eval_to(func)
+      end
+
+      it "should parse the hayBolitas(exp) function" do
+        arg = Gobstones::Expressions::VarName.new 'color'
+        func = Gobstones::Functions::HayBolitas.new arg
+        'hayBolitas(color)'.should parse_and_eval_to(func)
+        'hayBolitas(    color )'.should parse_and_eval_to(func)
+      end
+
+      it "should parse the puedeMover(exp) function" do
+        arg = Gobstones::Expressions::VarName.new 'dir'
+        func = Gobstones::Functions::PuedeMover.new arg
+        'puedeMover(color)'.should parse_and_eval_to(func)
+        'puedeMover(  color  )'.should parse_and_eval_to(func)
       end
     end
 
