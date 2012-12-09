@@ -43,4 +43,14 @@ module Gobstones
   ast_node :PuedeMoverFuncNode, ->(text, tokens) {
     Functions::PuedeMover.new tokens[2].value
   }
+  ast_node :SiguienteFuncNode, ->(text, tokens) {
+    Functions::Siguiente.new tokens[2].value
+  }
+  ast_node :PrevioFuncNode, ->(text, tokens) {
+    Functions::Previo.new tokens[2].value
+  }
+  ast_node :OpuestoFuncNode, ->(text, tokens) {
+    Functions::Opuesto.new tokens[2].value
+  }
+
 end

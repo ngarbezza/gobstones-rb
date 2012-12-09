@@ -28,6 +28,18 @@ module Gobstones
 
     end
 
+    class Siguiente < OneArgFunction
+
+    end
+
+    class Previo < OneArgFunction
+
+    end
+
+    class Opuesto < OneArgFunction
+
+    end
+
   end
 
 end

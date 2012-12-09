@@ -1,6 +1,6 @@
 require 'gobstones/parser'
 
-RSpec::Matchers.define :parse_and_eval_to do |expected|
+RSpec::Matchers.define :be_parsed_to do |expected|
 
   def parse(code)
     @parser = Gobstones::Parser.new
@@ -23,11 +23,11 @@ RSpec::Matchers.define :parse_and_eval_to do |expected|
   end
 
   failure_message_for_should do |actual|
-    "expected #{actual} to parse and eval to #{expected}, but got #{@node.value}"
+    "expected #{actual} to be parsed to #{expected}, but got #{@node.value}"
   end
 
   failure_message_for_should_not do |actual|
-    "expected #{actual} not to parse and eval to #{expected}, got #{@node.value}"
+    "expected #{actual} to not be parsed to #{expected}, got #{@node.value}"
   end
 
 end
