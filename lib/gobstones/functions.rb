@@ -1,7 +1,7 @@
 module Gobstones
 
   module Functions
-  
+
     class OneArgFunction
 
       attr_reader :arg

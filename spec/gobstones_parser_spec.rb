@@ -173,7 +173,7 @@ describe Gobstones::Parser do
   end
 
   describe "arithmetic expressions" do
-    
+
     it "should parse a + expression" do
       arg1 = Gobstones::Expressions::VarName.new 'left'
       arg2 = Gobstones::Expressions::VarName.new 'right'

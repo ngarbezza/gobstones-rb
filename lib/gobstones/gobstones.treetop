@@ -1,7 +1,7 @@
 grammar Gobstones
 
   rule nexp
-    atom_expr (space* nop space* atom_expr)* <NopExprNode>
+    left:atom_expr sub_exps:(space* op:nop space* right:atom_expr)* <NopExprNode>
   end
 
   rule nop
@@ -69,27 +69,27 @@ grammar Gobstones
   end
 
   rule nro_bolitas_func
-    'nroBolitas(' space* atom_expr space* ')' <NroBolitasFuncNode>
+    'nroBolitas(' space* arg:atom_expr space* ')' <NroBolitasFuncNode>
   end
 
   rule hay_bolitas_func
-    'hayBolitas(' space* atom_expr space* ')' <HayBolitasFuncNode>
+    'hayBolitas(' space* arg:atom_expr space* ')' <HayBolitasFuncNode>
   end
 
   rule puede_mover_func
-    'puedeMover(' space* atom_expr space* ')' <PuedeMoverFuncNode>
+    'puedeMover(' space* arg:atom_expr space* ')' <PuedeMoverFuncNode>
   end
 
   rule siguiente_func
-    'siguiente(' space* atom_expr space* ')' <SiguienteFuncNode>
+    'siguiente(' space* arg:atom_expr space* ')' <SiguienteFuncNode>
   end
 
   rule previo_func
-    'previo(' space* atom_expr space* ')' <PrevioFuncNode>
+    'previo(' space* arg:atom_expr space* ')' <PrevioFuncNode>
   end
 
   rule opuesto_func
-    'opuesto(' space* atom_expr space* ')' <OpuestoFuncNode>
+    'opuesto(' space* arg:atom_expr space* ')' <OpuestoFuncNode>
   end
 
   rule space
