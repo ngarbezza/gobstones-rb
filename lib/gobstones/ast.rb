@@ -7,93 +7,34 @@ module Gobstones
     minColor maxColor siguiente previo opuesto Verde Rojo Azul Negro
   )
 
-  module IntegerLiteral
-    def value
-      text_value.to_i
-    end
-  end
-
-  module BooleanLiteral
-    def value
-      eval text_value.downcase
-    end
-  end
-
-  module ColorLiteral
-    def value
-      case text_value
-      when 'Azul'
-        Colors::Azul.new
-      when 'Negro'
-        Colors::Negro.new
-      when 'Rojo'
-        Colors::Rojo.new
-      when 'Verde'
-        Colors::Verde.new
+  def self.ast_node(name, value_block)
+    mod = Module.new do
+      define_method :value do
+        case value_block.arity
+        when 0
+          value_block.call
+        when 1
+          value_block.call text_value
+        when 2
+          value_block.call text_value, elements
+        end
       end
     end
+    const_set name, mod
   end
 
-  module DirectionLiteral
-    def value
-      case text_value
-      when 'Norte'
-        Directions::Norte.new
-      when 'Este'
-        Directions::Este.new
-      when 'Sur'
-        Directions::Sur.new
-      when 'Oeste'
-        Directions::Oeste.new
-      end
-    end
-  end
-
-  module MinBoolFuncNode
-    def value
-      false
-    end
-  end
-
-  module MaxBoolFuncNode
-    def value
-      true
-    end
-  end
-
-  module MinColorFuncNode
-    def value
-      Colors::Azul.new
-    end
-  end
-
-  module MaxColorFuncNode
-    def value
-      Colors::Verde.new
-    end
-  end
-
-  module MinDirFuncNode
-    def value
-      Directions::Norte.new
-    end
-  end
-
-  module MaxDirFuncNode
-    def value
-      Directions::Oeste.new
-    end
-  end
-
-  module VarNameNode
-    def value
-      Expressions::VarName.new text_value
-    end
-  end
-
-  module NroBolitasFuncNode
-    def value
-      Functions::NroBolitas.new elements[1].value
-    end
-  end
+  ast_node :IntegerLiteral, ->(text) { text.to_i }
+  ast_node :BooleanLiteral, ->(text) { eval text.downcase }
+  ast_node :ColorLiteral, ->(text) { Colors::const_get(text).new }
+  ast_node :DirectionLiteral, ->(text) { Directions::const_get(text).new }
+  ast_node :MinBoolFuncNode, -> { false }
+  ast_node :MaxBoolFuncNode, -> { true }
+  ast_node :MinColorFuncNode, -> { Colors::Azul.new }
+  ast_node :MaxColorFuncNode, -> { Colors::Verde.new }
+  ast_node :MinDirFuncNode, -> { Directions::Norte.new }
+  ast_node :MaxDirFuncNode, -> { Directions::Oeste.new }
+  ast_node :VarNameNode, ->(text) { Expressions::VarName.new text }
+  ast_node :NroBolitasFuncNode, ->(text, tokens) {
+    Functions::NroBolitas.new tokens[1].value
+  }
 end
