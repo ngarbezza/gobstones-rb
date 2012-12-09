@@ -86,7 +86,9 @@ describe Gobstones::Parser do
       end
 
       it "should not parse reserved words as var names" do
-        'if'.should_not parse_and_eval_to Gobstones::Expressions::VarName.new('if')
+        Gobstones::RESERVED_IDS.each do |id|
+          id.should_not parse_and_eval_to Gobstones::Expressions::VarName.new(id)
+        end
       end
 
     end
@@ -122,8 +124,9 @@ describe Gobstones::Parser do
     describe "board primitive functions" do
 
       it "should parse the nroBolitas(exp) function" do
-        pending
-        'nroBolitas(color)'.should parse_and_eval_to Gobstones::Functions::NroBolitas.new()
+        arg = Gobstones::Expressions::VarName.new 'color'
+        func = Gobstones::Functions::NroBolitas.new arg
+        'nroBolitas(color)'.should parse_and_eval_to(func)
       end
     end
 

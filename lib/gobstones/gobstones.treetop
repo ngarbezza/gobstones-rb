@@ -1,7 +1,7 @@
 grammar Gobstones
 
   rule atom_expr
-    literal / type_bound_func / var_name
+    literal / type_bound_func / primitive_func / var_name
   end
 
   rule literal
@@ -47,13 +47,21 @@ grammar Gobstones
   rule lower_id
     [a-z] char* {
       def is_not_reserved
-        !['if'].include? text_value
+        !Gobstones::RESERVED_IDS.include? text_value
       end
     }
   end
 
   rule char
     [a-z] / [A-Z] / [0-9] / "'" / '_'
+  end
+
+  rule primitive_func
+    nro_bolitas_func# / hay_bolitas_func / puede_mover_func
+  end
+
+  rule nro_bolitas_func
+    'nroBolitas(' atom_expr ')' <NroBolitasFuncNode>
   end
 
 end

@@ -1,5 +1,12 @@
 module Gobstones
 
+  RESERVED_IDS = %w(
+    if else not True False case of while Skip repeatWith in procedure function
+    return Mover Sacar Poner BOOM IrAlOrigen VaciarTablero div mod hayBolitas
+    nroBolitas puedeMover Norte Sur Este Oeste minBool maxBool minDir maxDir
+    minColor maxColor siguiente previo opuesto Verde Rojo Azul Negro
+  )
+
   module IntegerLiteral
     def value
       text_value.to_i
@@ -81,6 +88,12 @@ module Gobstones
   module VarNameNode
     def value
       Expressions::VarName.new text_value
+    end
+  end
+
+  module NroBolitasFuncNode
+    def value
+      Functions::NroBolitas.new elements[1].value
     end
   end
 end
