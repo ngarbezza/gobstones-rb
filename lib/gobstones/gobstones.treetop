@@ -1,7 +1,7 @@
 grammar Gobstones
 
   rule atom_expr
-    literal / type_bound_func
+    literal / type_bound_func / var_name
   end
 
   rule literal
@@ -38,6 +38,22 @@ grammar Gobstones
 
   rule direction_type_bound_func
     'minDir()' <MinDirFuncNode> / 'maxDir()' <MaxDirFuncNode>
+  end
+
+  rule var_name
+    lower_id &{ |id| id[0].is_not_reserved } <VarNameNode>
+  end
+
+  rule lower_id
+    [a-z] char* {
+      def is_not_reserved
+        !['if'].include? text_value
+      end
+    }
+  end
+
+  rule char
+    [a-z] / [A-Z] / [0-9] / "'" / '_'
   end
 
 end

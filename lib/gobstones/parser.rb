@@ -12,8 +12,9 @@ module Gobstones
     end
 
     def parse(code)
-      node = @parser.parse(code)
-      return node
+      @parser.parse(code)
     end
+
   end
+
 end

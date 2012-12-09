@@ -77,4 +77,10 @@ module Gobstones
       Directions::Oeste.new
     end
   end
+
+  module VarNameNode
+    def value
+      Expressions::VarName.new text_value
+    end
+  end
 end

@@ -1,15 +1,3 @@
-RSpec::Matchers.define :parse_and_eval_to do |expected|
-  match do |actual|
-    parser = Gobstones::Parser.new
-    @node = parser.parse actual
-    @node.value.should == expected
-  end
-  failure_message_for_should do |actual|
-    value = @node ? @node.value : nil
-    "expected #{actual} to parse and eval to #{expected}, but got #{value}"
-  end
-end
-
 describe Gobstones::Parser do
 
   describe "basic data types" do
@@ -82,6 +70,27 @@ describe Gobstones::Parser do
 
   describe "primitive expressions" do
 
+    describe "variable identifiers" do
+
+      it "should parse valid var names" do
+        'v'.should parse_and_eval_to Gobstones::Expressions::VarName.new('v')
+        'var1'.should parse_and_eval_to Gobstones::Expressions::VarName.new('var1')
+        'a_var'.should parse_and_eval_to Gobstones::Expressions::VarName.new('a_var')
+        'vAR'.should parse_and_eval_to Gobstones::Expressions::VarName.new('vAR')
+      end
+
+      it "should not parse invalid var names" do
+        '1'.should_not parse_and_eval_to Gobstones::Expressions::VarName.new('1')
+        '_var'.should_not parse_and_eval_to Gobstones::Expressions::VarName.new('_var')
+        'Var'.should_not parse_and_eval_to Gobstones::Expressions::VarName.new('Var')
+      end
+
+      it "should not parse reserved words as var names" do
+        'if'.should_not parse_and_eval_to Gobstones::Expressions::VarName.new('if')
+      end
+
+    end
+
     describe "type bounds functions" do
 
       it "should parse the minBool() function" do
@@ -106,6 +115,15 @@ describe Gobstones::Parser do
 
       it "should parse the maxDir() function" do
         'maxDir()'.should parse_and_eval_to Gobstones::Directions::Oeste.new
+      end
+
+    end
+
+    describe "board primitive functions" do
+
+      it "should parse the nroBolitas(exp) function" do
+        pending
+        'nroBolitas(color)'.should parse_and_eval_to Gobstones::Functions::NroBolitas.new()
       end
     end
 
