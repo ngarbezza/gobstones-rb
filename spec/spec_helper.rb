@@ -5,3 +5,5 @@ require 'gobstones/colors'
 require 'gobstones/directions'
 require 'gobstones/expressions'
 require 'gobstones/functions'
+
+include Gobstones
