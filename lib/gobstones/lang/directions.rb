@@ -1,6 +1,6 @@
 module Gobstones
 
-  module Directions
+  module Lang
 
     class Direction
 

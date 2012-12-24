@@ -26,27 +26,27 @@ describe Gobstones::Parser, "primitive expressions" do
   describe "type bounds functions" do
 
     it "should parse the minBool() function" do
-      'minBool()'.should be_parsed_to false
+      'minBool()'.should be_parsed_to Lang::False.new
     end
 
     it "should parse the maxBool() function" do
-      'maxBool()'.should be_parsed_to true
+      'maxBool()'.should be_parsed_to Lang::True.new
     end
 
     it "should parse the minColor() function" do
-      'minColor()'.should be_parsed_to Colors::Azul.new
+      'minColor()'.should be_parsed_to Lang::Azul.new
     end
 
     it "should parse the maxColor() function" do
-      'maxColor()'.should be_parsed_to Colors::Verde.new
+      'maxColor()'.should be_parsed_to Lang::Verde.new
     end
 
     it "should parse the minDir() function" do
-      'minDir()'.should be_parsed_to Directions::Norte.new
+      'minDir()'.should be_parsed_to Lang::Norte.new
     end
 
     it "should parse the maxDir() function" do
-      'maxDir()'.should be_parsed_to Directions::Oeste.new
+      'maxDir()'.should be_parsed_to Lang::Oeste.new
     end
 
   end

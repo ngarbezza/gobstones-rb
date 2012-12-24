@@ -16,25 +16,25 @@ module Gobstones
     const_set name, mod
   end
 
-  ast_node(:IntegerLiteral) { text_value.to_i }
+  ast_node(:IntegerLiteral) { Lang::Number.new text_value.to_i }
 
-  ast_node(:BooleanLiteral) { eval text_value.downcase }
+  ast_node(:BooleanLiteral) { Lang::const_get(text_value).new }
 
-  ast_node(:ColorLiteral) { Colors::const_get(text_value).new }
+  ast_node(:ColorLiteral) { Lang::const_get(text_value).new }
 
-  ast_node(:DirectionLiteral) { Directions::const_get(text_value).new }
+  ast_node(:DirectionLiteral) { Lang::const_get(text_value).new }
 
-  ast_node(:MinBoolFuncNode) { false }
+  ast_node(:MinBoolFuncNode) { Lang::False.new }
 
-  ast_node(:MaxBoolFuncNode) { true }
+  ast_node(:MaxBoolFuncNode) { Lang::True.new }
 
-  ast_node(:MinColorFuncNode) { Colors::Azul.new }
+  ast_node(:MinColorFuncNode) { Lang::Azul.new }
 
-  ast_node(:MaxColorFuncNode) { Colors::Verde.new }
+  ast_node(:MaxColorFuncNode) { Lang::Verde.new }
 
-  ast_node(:MinDirFuncNode) { Directions::Norte.new }
+  ast_node(:MinDirFuncNode) { Lang::Norte.new }
 
-  ast_node(:MaxDirFuncNode) { Directions::Oeste.new }
+  ast_node(:MaxDirFuncNode) { Lang::Oeste.new }
 
   ast_node(:VarNameNode) { Expressions::VarName.new text_value }
 

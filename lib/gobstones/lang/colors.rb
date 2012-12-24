@@ -1,6 +1,6 @@
 module Gobstones
 
-  module Colors
+  module Lang 
     
     class Color
 
