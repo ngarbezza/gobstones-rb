@@ -1,14 +1,37 @@
 grammar Gobstones
 
+  rule gexp
+    # TODO bool and rel exps missing yet
+    nexp
+  end
+
   rule nexp
-    left:atom_expr sub_exps:(space* op:nop space* right:atom_expr)* <NopExprNode>
+    left:nterm
+    sub_exps:(space* op:nop space* right:nterm)*
+    <NopExprNode>
+  end
+
+  rule nterm
+    left:nfactH
+    sub_exps:(space* op:'*' space* right:nfactH)*
+    <MulExprNode>
+  end
+
+  rule nfactH
+    left:natom
+    sub_exps:(space+ op:mop space+ right:natom)*
+    <DivModExprNode>
   end
 
   rule nop
     '+' / '-'
   end
 
-  rule atom_expr
+  rule mop
+    'div' / 'mod'
+  end
+
+  rule natom
     literal / type_bound_func / primitive_func / var_name
   end
 
@@ -69,27 +92,27 @@ grammar Gobstones
   end
 
   rule nro_bolitas_func
-    'nroBolitas(' space* arg:atom_expr space* ')' <NroBolitasFuncNode>
+    'nroBolitas(' space* arg:gexp space* ')' <NroBolitasFuncNode>
   end
 
   rule hay_bolitas_func
-    'hayBolitas(' space* arg:atom_expr space* ')' <HayBolitasFuncNode>
+    'hayBolitas(' space* arg:gexp space* ')' <HayBolitasFuncNode>
   end
 
   rule puede_mover_func
-    'puedeMover(' space* arg:atom_expr space* ')' <PuedeMoverFuncNode>
+    'puedeMover(' space* arg:gexp space* ')' <PuedeMoverFuncNode>
   end
 
   rule siguiente_func
-    'siguiente(' space* arg:atom_expr space* ')' <SiguienteFuncNode>
+    'siguiente(' space* arg:gexp space* ')' <SiguienteFuncNode>
   end
 
   rule previo_func
-    'previo(' space* arg:atom_expr space* ')' <PrevioFuncNode>
+    'previo(' space* arg:gexp space* ')' <PrevioFuncNode>
   end
 
   rule opuesto_func
-    'opuesto(' space* arg:atom_expr space* ')' <OpuestoFuncNode>
+    'opuesto(' space* arg:gexp space* ')' <OpuestoFuncNode>
   end
 
   rule space

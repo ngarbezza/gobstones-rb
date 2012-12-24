@@ -66,4 +66,32 @@ module Gobstones
     end
   end
 
+  ast_node :MulExprNode do
+    if sub_exps.empty?
+      left.value
+    else
+      # it is a nested exp
+      sub_exps.elements.inject(left.value) do |memo, node|
+        memo = Expressions::Mul.new memo, node.right.value
+      end
+    end
+  end
+
+  ast_node :DivModExprNode do
+    if sub_exps.empty?
+      left.value
+    else
+      # it is a nested exp
+      sub_exps.elements.inject(left.value) do |memo, node|
+        case node.op.text_value
+        when 'div'
+          memo = Expressions::Div.new memo, node.right.value
+        when 'mod'
+          memo = Expressions::Mod.new memo, node.right.value
+        end
+      end
+    end
+
+  end
+
 end

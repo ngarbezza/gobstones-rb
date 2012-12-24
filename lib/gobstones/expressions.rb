@@ -45,6 +45,24 @@ module Gobstones
 
     end
 
+    class Mul
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    class Div
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    class Mod
+
+      include Expressions::TwoArgExpression
+
+    end
+
   end
 
 end
