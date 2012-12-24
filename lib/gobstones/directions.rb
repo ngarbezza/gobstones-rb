@@ -8,6 +8,10 @@ module Gobstones
         self.class == other.class
       end
 
+      def return_type
+        :Direction
+      end
+
     end
 
     class Norte < Direction

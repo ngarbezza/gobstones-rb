@@ -8,6 +8,10 @@ module Gobstones
         self.class == other.class
       end
 
+      def return_type
+        :Color
+      end
+
     end
 
     class Azul < Color

@@ -1,3 +1,5 @@
+require_relative 'type_check_result'
+
 module Gobstones
 
   module Functions
@@ -25,6 +27,14 @@ module Gobstones
     end
 
     class PuedeMover < OneArgFunction
+
+      def arg_type
+        :Direction
+      end
+
+      def type_check
+        Gobstones::TypeCheckResult.new arg_type, arg.return_type
+      end
 
     end
 
