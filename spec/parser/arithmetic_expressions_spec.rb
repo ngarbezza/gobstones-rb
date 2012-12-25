@@ -65,21 +65,20 @@ describe Gobstones::Parser, "arithmetic expressions" do
       'left   div right'.should be_parsed_to div
     end
 
-    it "should parse a nested div expression, associating left" do
-      arg1 = Expressions::VarName.new 'first'
-      arg2 = Expressions::VarName.new 'second'
-      arg3 = Expressions::VarName.new 'third'
-      div12 = Expressions::Div.new arg1, arg2
-      total = Expressions::Div.new div12, arg3
-      'first div second div third'.should be_parsed_to total
-    end
-
     it "should parse a mod expression" do
       arg1 = Expressions::VarName.new 'left'
       arg2 = Expressions::VarName.new 'right'
       mod = Expressions::Mod.new arg1, arg2
       'left mod right'.should be_parsed_to mod
       'left mod   right'.should be_parsed_to mod
+    end
+
+    it "should parse a power expression" do
+      arg1 = Expressions::VarName.new 'left'
+      arg2 = Expressions::VarName.new 'right'
+      pow = Expressions::Pow.new arg1, arg2
+      'left^right'.should be_parsed_to pow
+      'left ^  right'.should be_parsed_to pow
     end
 
   end

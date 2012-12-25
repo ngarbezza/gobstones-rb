@@ -11,6 +11,10 @@ grammar Gobstones
     <NopExprNode>
   end
 
+  rule nop
+    '+' / '-'
+  end
+
   rule nterm
     left:nfactH
     sub_exps:(space* op:'*' space* right:nfactH)*
@@ -18,17 +22,17 @@ grammar Gobstones
   end
 
   rule nfactH
-    left:natom
-    sub_exps:(space+ op:mop space+ right:natom)*
-    <DivModExprNode>
-  end
-
-  rule nop
-    '+' / '-'
+    left:nfactL space+ op:mop space+ right:nfactL <DivModExprNode> / nfactL
   end
 
   rule mop
     'div' / 'mod'
+  end
+
+  rule nfactL
+    left:natom
+    sub_exps:(space* op:'^' space* right:natom)*
+    <PowExprNode>
   end
 
   rule natom

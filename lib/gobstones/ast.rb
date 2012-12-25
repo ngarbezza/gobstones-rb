@@ -78,20 +78,23 @@ module Gobstones
   end
 
   ast_node :DivModExprNode do
+    case op.text_value
+    when 'div'
+      Expressions::Div.new left.value, right.value
+    when 'mod'
+      Expressions::Mod.new left.value, right.value
+    end
+  end
+
+  ast_node :PowExprNode do
     if sub_exps.empty?
       left.value
     else
       # it is a nested exp
       sub_exps.elements.inject(left.value) do |memo, node|
-        case node.op.text_value
-        when 'div'
-          memo = Expressions::Div.new memo, node.right.value
-        when 'mod'
-          memo = Expressions::Mod.new memo, node.right.value
-        end
+        memo = Expressions::Pow.new memo, node.right.value
       end
     end
-
   end
 
 end

@@ -63,6 +63,12 @@ module Gobstones
 
     end
 
+    class Pow
+
+      include Expressions::TwoArgExpression
+
+    end
+
   end
 
 end
