@@ -1,8 +1,16 @@
 grammar Gobstones
 
   rule gexp
-    # TODO bool and rel exps missing yet
-    nexp
+    # TODO boolean exps missing yet
+    batom
+  end
+
+  rule batom
+    left:nexp space* op:rop space* right:nexp <RopExprNode> / nexp
+  end
+
+  rule rop
+    '==' / '/=' / '<=' / '>=' / '<' / '>'
   end
 
   rule nexp

@@ -33,6 +33,8 @@ module Gobstones
 
     end
 
+    # arithmetic expressions
+
     class Add
 
       include Expressions::TwoArgExpression
@@ -64,6 +66,44 @@ module Gobstones
     end
 
     class Pow
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    # boolean expressions
+    
+    class Equal
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    class NotEqual
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    class LessThan
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    class LessEqual
+
+      include Expressions:: TwoArgExpression
+
+    end
+
+    class GreaterEqual
+
+      include Expressions::TwoArgExpression
+
+    end
+
+    class GreaterThan
 
       include Expressions::TwoArgExpression
 

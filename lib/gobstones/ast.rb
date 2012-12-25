@@ -97,4 +97,12 @@ module Gobstones
     end
   end
 
+  ast_node :RopExprNode do
+    classes = {
+      '==' => Expressions::Equal,     '/=' => Expressions::NotEqual,
+      '<'  => Expressions::LessThan,  '>'  => Expressions::GreaterThan,
+      '<=' => Expressions::LessEqual, '>=' => Expressions::GreaterEqual
+    }
+    classes[op.text_value].new left.value, right.value
+  end
 end
