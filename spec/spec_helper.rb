@@ -5,7 +5,10 @@ require 'gobstones/lang/colors'
 require 'gobstones/lang/directions'
 require 'gobstones/lang/booleans'
 require 'gobstones/lang/number'
-require 'gobstones/expressions'
-require 'gobstones/functions'
+require 'gobstones/lang/expressions/arithmetic_expressions'
+require 'gobstones/lang/expressions/comparison_expressions'
+require 'gobstones/lang/expressions/boolean_expressions'
+require 'gobstones/lang/expressions/primitive_functions'
+require 'gobstones/lang/expressions/var_name'
 
-include Gobstones
+include Gobstones::Lang

@@ -2,7 +2,11 @@ grammar Gobstones
 
   rule gexp
     # TODO boolean exps missing yet
-    batom
+    bfact
+  end
+
+  rule bfact
+    'not' space+ exp:batom <NotExprNode> / batom
   end
 
   rule batom
@@ -90,7 +94,7 @@ grammar Gobstones
   rule lower_id
     [a-z] char* {
       def is_not_reserved
-        !Gobstones::RESERVED_IDS.include? text_value
+        !Gobstones::Lang::RESERVED_IDS.include? text_value
       end
     }
   end

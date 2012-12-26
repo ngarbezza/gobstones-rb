@@ -1,5 +1,5 @@
 require 'treetop'
-require 'gobstones/ast'
+require 'gobstones/lang/ast'
 
 module Gobstones
 
