@@ -10,6 +10,18 @@ module Gobstones
 
     end
 
+    class And
+
+      include TwoArgExpression
+
+    end
+
+    class Or
+
+      include TwoArgExpression
+
+    end
+
   end
 
 end

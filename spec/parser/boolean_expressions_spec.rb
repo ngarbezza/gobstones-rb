@@ -60,6 +60,52 @@ describe Gobstones::Parser, "boolean expressions" do
       'not a == b'.should be_parsed_to not_exp
     end
 
+    it "should parse an And expression" do
+      exp = And.new a, b
+
+      'a&&b'.should be_parsed_to exp
+      'a &&  b'.should be_parsed_to exp
+    end
+
+    it "should parse an Or expression" do
+      exp = Or.new a, b
+
+      'a||b'.should be_parsed_to exp
+      'a   || b'.should be_parsed_to exp
+    end
+
+    describe "nested" do
+
+      it "should parse a nested || expression, associating right" do
+        inner_or = Or.new b, c
+        outer_or = Or.new a, inner_or
+
+        'a || b || c'.should be_parsed_to outer_or
+      end
+
+      it "should parse a nested && expression, associating right" do
+        inner_and = And.new b, c
+        outer_and = And.new a, inner_and
+
+        'a && b && c'.should be_parsed_to outer_and
+      end
+
+      it "|| should take precedence over &&, left" do
+        bc_and = And.new b, c
+        abc_or = Or.new a, bc_and
+
+        'a || b && c'.should be_parsed_to abc_or
+      end
+
+      it "|| should take precedence over &&, right" do
+        ab_and = And.new a, b
+        abc_or = Or.new ab_and, c
+
+        'a && b || c'.should be_parsed_to abc_or
+      end
+
+    end
+
   end
 
 end

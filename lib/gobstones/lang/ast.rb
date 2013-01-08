@@ -108,9 +108,9 @@ module Gobstones
       classes[op.text_value].new left.value, right.value
     end
 
-    ast_node :NotExprNode do
-      Not.new exp.value
-    end
+    ast_node(:NotExprNode) { Not.new exp.value }
+    ast_node(:AndExprNode) { And.new left.value, right.value }
+    ast_node(:OrExprNode) { Or.new left.value, right.value }
 
   end
 

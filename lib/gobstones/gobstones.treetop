@@ -1,8 +1,15 @@
 grammar Gobstones
 
   rule gexp
-    # TODO boolean exps missing yet
-    bfact
+    bexp
+  end
+
+  rule bexp
+    left:bterm space* '||' space* right:bexp <OrExprNode> / bterm
+  end
+
+  rule bterm
+    left:bfact space* '&&' space* right:bterm <AndExprNode> / bfact
   end
 
   rule bfact
@@ -29,7 +36,7 @@ grammar Gobstones
 
   rule nterm
     left:nfactH
-    sub_exps:(space* op:'*' space* right:nfactH)*
+    sub_exps:(space* '*' space* right:nfactH)*
     <MulExprNode>
   end
 
@@ -42,9 +49,7 @@ grammar Gobstones
   end
 
   rule nfactL
-    left:natom
-    sub_exps:(space* op:'^' space* right:natom)*
-    <PowExprNode>
+    left:natom sub_exps:(space* '^' space* right:natom)* <PowExprNode>
   end
 
   rule natom
@@ -104,7 +109,12 @@ grammar Gobstones
   end
 
   rule primitive_func
-    nro_bolitas_func / hay_bolitas_func / puede_mover_func / siguiente_func / previo_func / opuesto_func
+    nro_bolitas_func /
+    hay_bolitas_func /
+    puede_mover_func /
+    siguiente_func /
+    previo_func /
+    opuesto_func
   end
 
   rule nro_bolitas_func
