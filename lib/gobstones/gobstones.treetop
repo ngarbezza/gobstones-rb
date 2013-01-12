@@ -53,7 +53,8 @@ grammar Gobstones
   end
 
   rule natom
-    literal / type_bound_func / primitive_func / paren_expr / var_name
+    literal / type_bound_func / primitive_func /
+    paren_expr / func_call / var_name
   end
 
   rule literal
@@ -90,6 +91,10 @@ grammar Gobstones
 
   rule direction_type_bound_func
     'minDir()' <MinDirFuncNode> / 'maxDir()' <MaxDirFuncNode>
+  end
+
+  rule func_call
+    func_name:lower_id &{ |id| id[0].is_not_reserved } space* '()' <FuncCallNode>
   end
 
   rule var_name

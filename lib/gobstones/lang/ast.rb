@@ -114,6 +114,8 @@ module Gobstones
 
     ast_node(:ParenthesesExprNode) { ParenthesesExpr.new exp.value }
 
+    ast_node(:FuncCallNode) { FuncCall.new func_name.text_value }
+
   end
 
 end

@@ -11,5 +11,6 @@ require 'gobstones/lang/expressions/boolean_expressions'
 require 'gobstones/lang/expressions/primitive_functions'
 require 'gobstones/lang/expressions/var_name'
 require 'gobstones/lang/expressions/parentheses_expression'
+require 'gobstones/lang/expressions/function_call'
 
 include Gobstones::Lang
