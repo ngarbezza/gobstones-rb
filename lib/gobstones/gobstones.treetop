@@ -53,7 +53,7 @@ grammar Gobstones
   end
 
   rule natom
-    literal / type_bound_func / primitive_func / var_name
+    literal / type_bound_func / primitive_func / paren_expr / var_name
   end
 
   rule literal
@@ -139,6 +139,10 @@ grammar Gobstones
 
   rule opuesto_func
     'opuesto(' space* arg:gexp space* ')' <OpuestoFuncNode>
+  end
+
+  rule paren_expr
+    '(' space* exp:gexp space* ')' <ParenthesesExprNode>
   end
 
   rule space

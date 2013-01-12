@@ -112,6 +112,8 @@ module Gobstones
     ast_node(:AndExprNode) { And.new left.value, right.value }
     ast_node(:OrExprNode) { Or.new left.value, right.value }
 
+    ast_node(:ParenthesesExprNode) { ParenthesesExpr.new exp.value }
+
   end
 
 end
