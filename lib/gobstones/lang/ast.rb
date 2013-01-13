@@ -126,6 +126,8 @@ module Gobstones
       end
     end
 
+    ast_node(:SkipCmdNode) { Skip.new }
+
   end
 
 end

@@ -1,5 +1,17 @@
 grammar Gobstones
 
+  rule gobstones_elem
+    simple_cmd / gexp
+  end
+
+  rule simple_cmd
+    skip_cmd
+  end
+
+  rule skip_cmd
+    'Skip' <SkipCmdNode>
+  end
+
   rule gexp
     bexp
   end
