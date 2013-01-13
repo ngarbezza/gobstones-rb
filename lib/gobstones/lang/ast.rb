@@ -114,6 +114,8 @@ module Gobstones
     ast_node(:SkipCmdNode) { Skip.new }
     ast_node(:BoomCmdNode) { Boom.new string.text_value[1..-2] }
 
+    ast_node(:PonerCmdNode) { Poner.new gexp.value }
+
   end
 
 end
