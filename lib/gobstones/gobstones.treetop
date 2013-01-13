@@ -5,11 +5,15 @@ grammar Gobstones
   end
 
   rule simple_cmd
-    skip_cmd
+    skip_cmd / boom_cmd
   end
 
   rule skip_cmd
     'Skip' <SkipCmdNode>
+  end
+
+  rule boom_cmd
+    'BOOM' space* '(' string ')' <BoomCmdNode>
   end
 
   rule gexp
@@ -169,6 +173,10 @@ grammar Gobstones
 
   rule paren_expr
     '(' space* exp:gexp space* ')' <ParenthesesExprNode>
+  end
+
+  rule string
+    '"' ('\"' / !'"' .)* '"'
   end
 
   rule space
