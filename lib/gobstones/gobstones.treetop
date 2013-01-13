@@ -94,7 +94,16 @@ grammar Gobstones
   end
 
   rule func_call
-    func_name:lower_id &{ |id| id[0].is_not_reserved } space* '()' <FuncCallNode>
+    func_name:lower_id &{ |id| id[0].is_not_reserved }
+    space* args:gexp_tuple <FuncCallNode>
+  end
+
+  rule gexp_tuple
+    '(' space* exps:gexps? space* ')' <TupleExprNode>
+  end
+
+  rule gexps
+    ((exp:gexp space* ',' space* exps:gexps) / gexp) <GexpsNode>
   end
 
   rule var_name

@@ -114,7 +114,17 @@ module Gobstones
 
     ast_node(:ParenthesesExprNode) { ParenthesesExpr.new exp.value }
 
-    ast_node(:FuncCallNode) { FuncCall.new func_name.text_value }
+    ast_node(:FuncCallNode) { FuncCall.new func_name.text_value, args.value }
+
+    ast_node(:TupleExprNode) { exps.text_value.blank? ? [] : exps.value }
+
+    ast_node :GexpsNode do
+      if elements.length == 2
+        [elements[0].value]
+      else
+        [exp.value] + exps.value
+      end
+    end
 
   end
 
