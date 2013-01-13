@@ -59,4 +59,14 @@ describe Cell do
     expect { cell.number_of_balls(nil) }.to raise_error
   end
 
+  it "should empty its contents" do
+    cell = Cell.new
+    colors = [Azul, Negro, Rojo, Verde]
+    colors.each { |c| cell.put c }
+
+    cell.empty!
+
+    colors.each { |c| cell.are_there_balls?(c).should be_false }
+  end
+
 end

@@ -17,7 +17,7 @@ module Gobstones
 
       def take_out(color)
         check(color)
-        raise EmptyCellError if @values[color] == 0
+        raise EmptyCellError unless are_there_balls?(color)
         @values[color] -= 1
       end
 
@@ -29,6 +29,10 @@ module Gobstones
       def number_of_balls(color)
         check(color)
         @values[color]
+      end
+
+      def empty!
+        initialize
       end
 
       private

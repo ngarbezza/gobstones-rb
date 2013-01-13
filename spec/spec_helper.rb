@@ -15,6 +15,7 @@ require 'gobstones/lang/expressions/parentheses_expression'
 require 'gobstones/lang/expressions/function_call'
 
 require 'gobstones/runner/cell'
+require 'gobstones/runner/board'
 
 include Gobstones::Lang
 include Gobstones::Runner
