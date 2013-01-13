@@ -14,4 +14,7 @@ require 'gobstones/lang/expressions/var_name'
 require 'gobstones/lang/expressions/parentheses_expression'
 require 'gobstones/lang/expressions/function_call'
 
+require 'gobstones/runner/cell'
+
 include Gobstones::Lang
+include Gobstones::Runner
