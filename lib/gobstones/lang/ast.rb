@@ -19,38 +19,25 @@ module Gobstones
     end
 
     ast_node(:IntegerLiteral) { Number.new text_value.to_i }
-
     ast_node(:BooleanLiteral) { Kernel.const_get(text_value).new }
-
     ast_node(:ColorLiteral) { Kernel.const_get(text_value).new }
-
     ast_node(:DirectionLiteral) { Kernel.const_get(text_value).new }
 
     ast_node(:MinBoolFuncNode) { False.new }
-
     ast_node(:MaxBoolFuncNode) { True.new }
-
     ast_node(:MinColorFuncNode) { Azul.new }
-
     ast_node(:MaxColorFuncNode) { Verde.new }
-
     ast_node(:MinDirFuncNode) { Norte.new }
-
     ast_node(:MaxDirFuncNode) { Oeste.new }
 
     ast_node(:VarNameNode) { VarName.new text_value }
 
-    ast_node(:NroBolitasFuncNode) { NroBolitas.new arg.value }
-
-    ast_node(:HayBolitasFuncNode) { HayBolitas.new arg.value }
-
-    ast_node(:PuedeMoverFuncNode) { PuedeMover.new arg.value }
-
-    ast_node(:SiguienteFuncNode) { Siguiente.new arg.value }
-
-    ast_node(:PrevioFuncNode) { Previo.new arg.value }
-
-    ast_node(:OpuestoFuncNode) { Opuesto.new arg.value }
+    ast_node(:NroBolitasFuncNode) { NroBolitas.new gexp.value }
+    ast_node(:HayBolitasFuncNode) { HayBolitas.new gexp.value }
+    ast_node(:PuedeMoverFuncNode) { PuedeMover.new gexp.value }
+    ast_node(:SiguienteFuncNode) { Siguiente.new gexp.value }
+    ast_node(:PrevioFuncNode) { Previo.new gexp.value }
+    ast_node(:OpuestoFuncNode) { Opuesto.new gexp.value }
 
     ast_node :NopExprNode do
       if sub_exps.empty?
@@ -105,17 +92,15 @@ module Gobstones
         '<'  => LessThan,  '>'  => GreaterThan,
         '<=' => LessEqual, '>=' => GreaterEqual
       }
-      classes[op.text_value].new left.value, right.value
+      classes[rop.text_value].new left.value, right.value
     end
 
     ast_node(:NotExprNode) { Not.new exp.value }
     ast_node(:AndExprNode) { And.new left.value, right.value }
     ast_node(:OrExprNode) { Or.new left.value, right.value }
 
-    ast_node(:ParenthesesExprNode) { ParenthesesExpr.new exp.value }
-
-    ast_node(:FuncCallNode) { FuncCall.new func_name.text_value, args.value }
-
+    ast_node(:ParenthesesExprNode) { ParenthesesExpr.new gexp.value }
+    ast_node(:FuncCallNode) { FuncCall.new lower_id.text_value, gexp_tuple.value }
     ast_node(:TupleExprNode) { exps.text_value.blank? ? [] : exps.value }
 
     ast_node :GexpsNode do

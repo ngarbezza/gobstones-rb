@@ -13,7 +13,7 @@ grammar Gobstones
   end
 
   rule boom_cmd
-    'BOOM' space* '(' string ')' <BoomCmdNode>
+    'BOOM' space* '(' space* string space* ')' <BoomCmdNode>
   end
 
   rule gexp
@@ -33,7 +33,7 @@ grammar Gobstones
   end
 
   rule batom
-    left:nexp space* op:rop space* right:nexp <RopExprNode> / nexp
+    left:nexp space* rop space* right:nexp <RopExprNode> / nexp
   end
 
   rule rop
@@ -41,19 +41,11 @@ grammar Gobstones
   end
 
   rule nexp
-    left:nterm
-    sub_exps:(space* op:nop space* right:nterm)*
-    <NopExprNode>
-  end
-
-  rule nop
-    '+' / '-'
+    left:nterm sub_exps:(space* op:[+-] space* right:nterm)* <NopExprNode>
   end
 
   rule nterm
-    left:nfactH
-    sub_exps:(space* '*' space* right:nfactH)*
-    <MulExprNode>
+    left:nfactH sub_exps:(space* '*' space* right:nfactH)* <MulExprNode>
   end
 
   rule nfactH
@@ -110,8 +102,7 @@ grammar Gobstones
   end
 
   rule func_call
-    func_name:lower_id &{ |id| id[0].is_not_reserved }
-    space* args:gexp_tuple <FuncCallNode>
+    lower_id &{ |id| id[0].is_not_reserved } space* gexp_tuple <FuncCallNode>
   end
 
   rule gexp_tuple
@@ -135,7 +126,7 @@ grammar Gobstones
   end
 
   rule char
-    [a-z] / [A-Z] / [0-9] / "'" / '_'
+    [a-zA-Z0-9'_]
   end
 
   rule primitive_func
@@ -148,31 +139,31 @@ grammar Gobstones
   end
 
   rule nro_bolitas_func
-    'nroBolitas(' space* arg:gexp space* ')' <NroBolitasFuncNode>
+    'nroBolitas' space* '(' space* gexp space* ')' <NroBolitasFuncNode>
   end
 
   rule hay_bolitas_func
-    'hayBolitas(' space* arg:gexp space* ')' <HayBolitasFuncNode>
+    'hayBolitas' space* '(' space* gexp space* ')' <HayBolitasFuncNode>
   end
 
   rule puede_mover_func
-    'puedeMover(' space* arg:gexp space* ')' <PuedeMoverFuncNode>
+    'puedeMover' space* '(' space* gexp space* ')' <PuedeMoverFuncNode>
   end
 
   rule siguiente_func
-    'siguiente(' space* arg:gexp space* ')' <SiguienteFuncNode>
+    'siguiente' space* '(' space* gexp space* ')' <SiguienteFuncNode>
   end
 
   rule previo_func
-    'previo(' space* arg:gexp space* ')' <PrevioFuncNode>
+    'previo' space* '(' space* gexp space* ')' <PrevioFuncNode>
   end
 
   rule opuesto_func
-    'opuesto(' space* arg:gexp space* ')' <OpuestoFuncNode>
+    'opuesto' space* '(' space* gexp space* ')' <OpuestoFuncNode>
   end
 
   rule paren_expr
-    '(' space* exp:gexp space* ')' <ParenthesesExprNode>
+    '(' space* gexp space* ')' <ParenthesesExprNode>
   end
 
   rule string
