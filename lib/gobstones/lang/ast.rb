@@ -115,6 +115,8 @@ module Gobstones
     ast_node(:BoomCmdNode) { Boom.new string.text_value[1..-2] }
 
     ast_node(:PonerCmdNode) { Poner.new gexp.value }
+    ast_node(:SacarCmdNode) { Sacar.new gexp.value }
+    ast_node(:MoverCmdNode) { Mover.new gexp.value }
 
   end
 

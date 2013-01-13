@@ -5,11 +5,19 @@ grammar Gobstones
   end
 
   rule simple_cmd
-    skip_cmd / boom_cmd / poner_cmd
+    skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd
   end
 
   rule poner_cmd
     'Poner' space* '(' space* gexp space* ')' <PonerCmdNode>
+  end
+
+  rule sacar_cmd
+    'Sacar' space* '(' space* gexp space* ')' <SacarCmdNode>
+  end
+
+  rule mover_cmd
+    'Mover' space* '(' space* gexp space* ')' <MoverCmdNode>
   end
 
   rule skip_cmd
