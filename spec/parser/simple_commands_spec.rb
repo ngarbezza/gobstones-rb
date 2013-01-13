@@ -28,7 +28,7 @@ describe Gobstones::Parser, "simple commands" do
       end
 
       it "should be parsed ok with a simple expression as argument" do
-        poner_cmd = Poner.new Azul.new
+        poner_cmd = Poner.new MinColor.new
         'Poner(minColor())'.should be_parsed_to(poner_cmd)
       end
 

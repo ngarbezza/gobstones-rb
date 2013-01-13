@@ -23,12 +23,12 @@ module Gobstones
     ast_node(:ColorLiteral) { Kernel.const_get(text_value).new }
     ast_node(:DirectionLiteral) { Kernel.const_get(text_value).new }
 
-    ast_node(:MinBoolFuncNode) { False.new }
-    ast_node(:MaxBoolFuncNode) { True.new }
-    ast_node(:MinColorFuncNode) { Azul.new }
-    ast_node(:MaxColorFuncNode) { Verde.new }
-    ast_node(:MinDirFuncNode) { Norte.new }
-    ast_node(:MaxDirFuncNode) { Oeste.new }
+    ast_node(:MinBoolFuncNode) { MinBool.new }
+    ast_node(:MaxBoolFuncNode) { MaxBool.new }
+    ast_node(:MinColorFuncNode) { MinColor.new }
+    ast_node(:MaxColorFuncNode) { MaxColor.new }
+    ast_node(:MinDirFuncNode) { MinDir.new }
+    ast_node(:MaxDirFuncNode) { MaxDir.new }
 
     ast_node(:VarNameNode) { VarName.new text_value }
 
