@@ -3,6 +3,8 @@ require 'gobstones/lang/commands/boom_cmd'
 require 'gobstones/lang/commands/poner_cmd'
 require 'gobstones/lang/commands/sacar_cmd'
 require 'gobstones/lang/commands/mover_cmd'
+require 'gobstones/lang/commands/ir_al_origen_cmd'
+require 'gobstones/lang/commands/vaciar_tablero_cmd'
 
 describe Gobstones::Parser, "simple commands" do
 
@@ -44,6 +46,16 @@ describe Gobstones::Parser, "simple commands" do
 
       end
 
+    end
+
+    it "should parse a IrAlOrigen cmd" do
+      ir_al_origen_cmd = IrAlOrigen.new
+      'IrAlOrigen()'.should be_parsed_to(ir_al_origen_cmd)
+    end
+
+    it "should parse a VaciarTablero cmd" do
+      vaciar_tablero_cmd = VaciarTablero.new
+      'VaciarTablero()'.should be_parsed_to(vaciar_tablero_cmd)
     end
 
   end

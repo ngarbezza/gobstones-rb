@@ -118,6 +118,9 @@ module Gobstones
     ast_node(:SacarCmdNode) { Sacar.new gexp.value }
     ast_node(:MoverCmdNode) { Mover.new gexp.value }
 
+    ast_node(:IrAlOrigenCmdNode) { IrAlOrigen.new }
+    ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
+
   end
 
 end

@@ -5,7 +5,8 @@ grammar Gobstones
   end
 
   rule simple_cmd
-    skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd
+    skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd /
+    ir_al_origen_cmd / vaciar_tablero_cmd
   end
 
   rule poner_cmd
@@ -26,6 +27,14 @@ grammar Gobstones
 
   rule boom_cmd
     'BOOM' space* '(' space* string space* ')' <BoomCmdNode>
+  end
+
+  rule ir_al_origen_cmd
+    'IrAlOrigen' space* '(' space* ')' <IrAlOrigenCmdNode>
+  end
+
+  rule vaciar_tablero_cmd
+    'VaciarTablero' space* '(' space* ')' <VaciarTableroCmdNode>
   end
 
   rule gexp
