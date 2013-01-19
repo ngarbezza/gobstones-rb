@@ -43,7 +43,7 @@ module Gobstones
       end
 
       def lookup(color)
-        value = @values.keys.detect { |color| color == color.class }
+        value = @values.keys.detect { |col| col == color.class }
         if block_given?
           @values[value] = yield @values[value]
         else
