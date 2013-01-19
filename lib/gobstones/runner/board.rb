@@ -22,11 +22,7 @@ module Gobstones
       end
 
       def each_cell
-        @matrix.each do |row|
-          row.each do |cell|
-            yield cell
-          end
-        end
+        @matrix.each { |row| row.each { |cell| yield cell } }
       end
 
       def put(x, y, color)
