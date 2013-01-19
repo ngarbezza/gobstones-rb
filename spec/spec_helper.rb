@@ -17,6 +17,7 @@ require 'gobstones/lang/expressions/function_call'
 require 'gobstones/runner/cell'
 require 'gobstones/runner/board'
 require 'gobstones/runner/head'
+require 'gobstones/runner/execution_context'
 
 include Gobstones::Lang
 include Gobstones::Runner
