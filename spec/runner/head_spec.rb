@@ -93,26 +93,29 @@ describe Head do
 
   describe "board actions" do
 
-    let(:black) { Negro.new }
-    let(:blue)  { Azul.new  }
-    let(:green) { Verde.new }
-    let(:red)   { Rojo.new  }
-
     it "should put balls across the board" do
-      pending
       head = Head.new
+      black = Negro.new
       3.times { head.put black }
       head.are_there_balls?(black).should be_true
       head.number_of_balls(black).should == 3
-      head.move north
+      head.move Norte.new
       2.times { head.put black }
       head.number_of_balls(black).should == 2
-      head.move west
+      head.move Este.new
       5.times { head.put black }
       head.number_of_balls(black).should == 5
     end
 
-    it "should take out balls across the board"
+    it "should take out balls across the board" do
+      head = Head.new
+      black = Negro.new
+
+      4.times { head.put black }
+      4.times { head.take_out black }
+
+      head.are_there_balls?(black).should be_false
+    end
 
   end
 

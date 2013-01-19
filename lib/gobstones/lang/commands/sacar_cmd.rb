@@ -5,7 +5,7 @@ module Gobstones
   module Lang
 
     class Sacar
-  
+
       include OneArgExpression
 
     end

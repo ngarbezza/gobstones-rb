@@ -10,7 +10,8 @@ module Gobstones
 
       def initialize(r, c)
         @rows, @columns = r, c
-        @matrix = [[Cell.new] * c] * r
+        @matrix = []
+        r.times { @matrix << []; c.times { @matrix.last << Cell.new } }
       end
 
       def cell_at(x, y)

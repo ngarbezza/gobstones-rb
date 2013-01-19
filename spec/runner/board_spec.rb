@@ -2,6 +2,12 @@ require 'gobstones/runner/out_of_board_error'
 
 describe Board do
 
+  let(:black)  { Negro.new }
+  let(:blue)   { Azul.new }
+  let(:green)  { Verde.new }
+  let(:red)    { Rojo.new }
+  let(:colors) { [blue, black, red, green] }
+
   it "can be created with a number of rows and columns" do
     board = Board.new 8, 5
     board.rows.should == 8
@@ -36,34 +42,33 @@ describe Board do
   it "should put balls in a given position" do
     board = Board.new 5, 5
 
-    2.times { board.put 0, 0, Azul }
-    10.times { board.put 2, 3, Rojo }
+    2.times { board.put 0, 0, blue }
+    10.times { board.put 2, 3, red }
 
-    board.are_there_balls?(0, 0, Azul).should be_true
-    board.number_of_balls(0, 0, Azul).should == 2
-    board.are_there_balls?(2, 3, Azul).should be_true
-    board.number_of_balls(2, 3, Rojo).should == 10
+    board.are_there_balls?(0, 0, blue).should be_true
+    board.number_of_balls(0, 0, blue).should == 2
+    board.are_there_balls?(2, 3, red).should be_true
+    board.number_of_balls(2, 3, red).should == 10
   end
 
   it "should put and take out balls in a given position" do
     board = Board.new 2, 2
 
-    3.times { board.put 1, 1, Verde }
-    3.times { board.take_out 1, 1, Verde }
+    3.times { board.put 1, 1, green }
+    3.times { board.take_out 1, 1, green }
 
-    board.are_there_balls?(1, 1, Verde).should be_false
+    board.are_there_balls?(1, 1, green).should be_false
   end
 
   it "should empty the entire board" do
     board = Board.new 3, 4
-    colors = [Azul, Negro, Rojo, Verde]
     board.each_cell { |cell| cell.put colors.sample }
 
     board.empty!
 
     board.each_cell do |cell|
-      colors.each do |c|
-        cell.are_there_balls?(c).should be_false
+      colors.each do |color|
+        cell.are_there_balls?(color).should be_false
       end
     end
   end

@@ -23,5 +23,5 @@ module Gobstones
     end
 
   end
-  
+
 end

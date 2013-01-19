@@ -23,7 +23,7 @@ module Gobstones
       def move(head)
         head.move_north
       end
-      
+
     end
 
     class Este < Direction

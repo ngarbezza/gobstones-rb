@@ -70,8 +70,20 @@ module Gobstones
         @board.put x_pos, y_pos, color
       end
 
+      def take_out(color)
+        @board.take_out x_pos, y_pos, color
+      end
+
+      def number_of_balls(color)
+        @board.number_of_balls x_pos, y_pos, color
+      end
+
+      def are_there_balls?(color)
+        @board.are_there_balls? x_pos, y_pos, color
+      end
+
     end
 
   end
-  
+
 end

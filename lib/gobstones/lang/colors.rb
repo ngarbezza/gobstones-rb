@@ -1,7 +1,7 @@
 module Gobstones
 
-  module Lang 
-    
+  module Lang
+
     class Color
 
       def ==(other)

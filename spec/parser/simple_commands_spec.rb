@@ -23,7 +23,7 @@ describe Gobstones::Parser, "simple commands" do
     end
 
     ['Poner', 'Sacar', 'Mover'].each do |command|
-      
+
       describe "#{command}() cmd" do
 
         it "should be parsed ok with a primitive as argument" do

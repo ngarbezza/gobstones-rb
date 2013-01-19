@@ -5,7 +5,7 @@ module Gobstones
   module Lang
 
     class Mover
-  
+
       include OneArgExpression
 
     end

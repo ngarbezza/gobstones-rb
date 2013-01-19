@@ -11,24 +11,24 @@ module Gobstones
       end
 
       def put(color)
-        check(color)
-        @values[color] += 1
+        check color
+        lookup(color) { |value| value + 1 }
       end
 
       def take_out(color)
-        check(color)
+        check color
         raise EmptyCellError unless are_there_balls?(color)
-        @values[color] -= 1
+        lookup(color) { |value| value - 1 }
       end
 
       def are_there_balls?(color)
-        check(color)
-        @values[color] > 0
+        check color
+        number_of_balls(color) > 0
       end
 
       def number_of_balls(color)
-        check(color)
-        @values[color]
+        check color
+        lookup color
       end
 
       def empty!
@@ -39,7 +39,16 @@ module Gobstones
 
       def check(color)
         raise "'#{color}' is not a color" \
-        unless [Azul, Negro, Rojo, Verde].include? color
+        unless [Azul, Negro, Rojo, Verde].include? color.class
+      end
+
+      def lookup(color)
+        value = @values.keys.detect { |c| c == color.class }
+        if block_given?
+          @values[value] = yield @values[value]
+        else
+          @values[value]
+        end
       end
 
     end
