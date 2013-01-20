@@ -121,6 +121,8 @@ module Gobstones
     ast_node(:IrAlOrigenCmdNode) { IrAlOrigen.new }
     ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
 
+    ast_node(:ProcCallNode) { ProcCall.new upper_id.text_value, gexp_tuple.value }
+
   end
 
 end

@@ -13,6 +13,7 @@ require 'gobstones/lang/expressions/type_bound_functions'
 require 'gobstones/lang/expressions/var_name'
 require 'gobstones/lang/expressions/parentheses_expression'
 require 'gobstones/lang/expressions/function_call'
+require 'gobstones/lang/commands/procedure_call'
 
 require 'gobstones/runner/cell'
 require 'gobstones/runner/board'

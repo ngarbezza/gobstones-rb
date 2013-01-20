@@ -6,7 +6,7 @@ grammar Gobstones
 
   rule simple_cmd
     skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd /
-    ir_al_origen_cmd / vaciar_tablero_cmd
+    ir_al_origen_cmd / vaciar_tablero_cmd / proc_call
   end
 
   rule poner_cmd
@@ -35,6 +35,10 @@ grammar Gobstones
 
   rule vaciar_tablero_cmd
     'VaciarTablero' space* '(' space* ')' <VaciarTableroCmdNode>
+  end
+
+  rule proc_call
+    upper_id &{ |id| id[0].is_not_reserved } space* gexp_tuple <ProcCallNode>
   end
 
   rule gexp
@@ -140,6 +144,14 @@ grammar Gobstones
 
   rule lower_id
     [a-z] char* {
+      def is_not_reserved
+        !Gobstones::Lang::RESERVED_IDS.include? text_value
+      end
+    }
+  end
+
+  rule upper_id
+    [A-Z] char* {
       def is_not_reserved
         !Gobstones::Lang::RESERVED_IDS.include? text_value
       end
