@@ -1,6 +1,7 @@
 require 'gobstones/lang/commands/poner_cmd'
 require 'gobstones/lang/commands/sacar_cmd'
 require 'gobstones/runner/gbs_type_error'
+require 'gobstones/runner/empty_cell_error'
 
 describe Sacar do
 
@@ -28,6 +29,12 @@ describe Sacar do
     cmd = Sacar.new red
     opp = Poner.new red
     cmd.opposite.should == opp
+  end
+
+  it "should fail if there are no balls in the board" do
+    cmd = Sacar.new red
+
+    expect { cmd.evaluate context }.to raise_error(EmptyCellError)
   end
 
   it "should fail if types don't match" do
