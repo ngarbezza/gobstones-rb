@@ -87,6 +87,17 @@ describe Head do
         expect { head.move west }.to raise_error(OutOfBoardError)
       end
 
+      it "should fail if the argument is not a direction" do
+        expect { head.move Azul.new }.
+          to raise_error(GbsTypeError, /is not a direction/)
+        expect { head.move "not a direction" }.
+          to raise_error(GbsTypeError, /is not a direction/)
+        expect { head.move True.new }.
+          to raise_error(GbsTypeError, /is not a direction/)
+        expect { head.move 42 }.
+          to raise_error(GbsTypeError, /is not a direction/)
+      end
+
     end
 
   end

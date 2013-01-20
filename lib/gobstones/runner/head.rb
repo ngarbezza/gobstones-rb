@@ -1,4 +1,6 @@
 require 'gobstones/runner/board'
+require 'gobstones/runner/gbs_type_error'
+require 'gobstones/lang/directions'
 
 module Gobstones
 
@@ -26,6 +28,7 @@ module Gobstones
       end
 
       def can_move?(dir)
+        check dir
         dir.can_move? self
       end
 
@@ -80,6 +83,13 @@ module Gobstones
 
       def are_there_balls?(color)
         @board.are_there_balls? x_pos, y_pos, color
+      end
+
+      private
+
+      def check(dir)
+        raise GbsTypeError, "#{dir} is not a direction" \
+          unless [Norte, Sur, Este, Oeste].include? dir.class
       end
 
     end

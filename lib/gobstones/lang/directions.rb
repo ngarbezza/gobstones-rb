@@ -24,6 +24,10 @@ module Gobstones
         head.move_north
       end
 
+      def opposite
+        Sur.new
+      end
+
     end
 
     class Este < Direction
@@ -34,6 +38,10 @@ module Gobstones
 
       def move(head)
         head.move_east
+      end
+
+      def opposite
+        Oeste.new
       end
 
     end
@@ -48,6 +56,10 @@ module Gobstones
         head.move_south
       end
 
+      def opposite
+        Norte.new
+      end
+
     end
 
     class Oeste < Direction
@@ -58,6 +70,10 @@ module Gobstones
 
       def move(head)
         head.move_west
+      end
+
+      def opposite
+        Este.new
       end
 
     end

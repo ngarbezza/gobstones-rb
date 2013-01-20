@@ -8,6 +8,18 @@ module Gobstones
 
       include OneArgExpression
 
+      def evaluate(context)
+        context.head.move arg
+      end
+
+      def undo(context)
+        opposite.evaluate context
+      end
+
+      def opposite
+        Mover.new arg.opposite
+      end
+
     end
 
   end
