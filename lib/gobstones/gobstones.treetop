@@ -6,7 +6,8 @@ grammar Gobstones
 
   rule simple_cmd
     skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd /
-    ir_al_origen_cmd / vaciar_tablero_cmd / proc_call
+    ir_al_origen_cmd / vaciar_tablero_cmd / proc_call /
+    simple_assignment
   end
 
   rule poner_cmd
@@ -39,6 +40,10 @@ grammar Gobstones
 
   rule proc_call
     upper_id &{ |id| id[0].is_not_reserved } space* gexp_tuple <ProcCallNode>
+  end
+
+  rule simple_assignment
+    var_name space* ':=' space* gexp <SimpleAssignmentNode>
   end
 
   rule gexp
