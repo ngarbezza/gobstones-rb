@@ -128,6 +128,11 @@ module Gobstones
     ast_node(:SimpleAssignmentNode) do
       SimpleAssignment.new var_name.value, gexp.value
     end
+
+    ast_node(:CmdBlockNode) do
+      CmdBlock.new(cmds.elements.map { |node| node.simple_cmd.value })
+    end
+
   end
 
 end

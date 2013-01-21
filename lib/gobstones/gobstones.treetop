@@ -1,7 +1,16 @@
 grammar Gobstones
 
   rule gobstones_elem
-    simple_cmd / gexp
+    # TODO this is not the definitive rule.
+    cmd_block / simple_cmd / gexp
+  end
+
+  rule cmd_block
+    '{' space* cmds space* '}' <CmdBlockNode>
+  end
+
+  rule cmds
+    (simple_cmd space* ';'? space*)*
   end
 
   rule simple_cmd
