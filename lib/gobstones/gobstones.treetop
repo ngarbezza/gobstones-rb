@@ -2,7 +2,11 @@ grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    cmd_block / simple_cmd / gexp
+    cmd_block / command / gexp
+  end
+
+  rule command
+    simple_cmd / complex_cmd
   end
 
   rule cmd_block
@@ -10,7 +14,16 @@ grammar Gobstones
   end
 
   rule cmds
-    (simple_cmd space* ';'? space*)*
+    (command space* ';'? space*)*
+  end
+
+  rule complex_cmd
+    if_cmd
+  end
+
+  rule if_cmd
+    'if' space* '(' space* gexp space* ')'
+    space* cmd_block <IfCmdNode>
   end
 
   rule simple_cmd

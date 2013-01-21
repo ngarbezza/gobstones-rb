@@ -1,9 +1,3 @@
-require 'gobstones/lang/commands/command_block'
-require 'gobstones/lang/commands/skip_cmd'
-require 'gobstones/lang/commands/poner_cmd'
-require 'gobstones/lang/commands/boom_cmd'
-require 'gobstones/lang/commands/mover_cmd'
-
 describe Gobstones::Parser, "command blocks" do
 
   it "should parse an empty block" do
@@ -43,7 +37,14 @@ describe Gobstones::Parser, "command blocks" do
   end
 
   it "should parse a block with simple and complex cmds" do
-    pending
+    first = ProcCall.new 'Proc', []
+    second = IfCmd.new True.new, CmdBlock.new([])
+    cmd_block = CmdBlock.new [first, second]
+
+    '{
+      Proc()
+      if (True) {}
+     }'.should be_parsed_to cmd_block
   end
 
 end

@@ -121,16 +121,20 @@ module Gobstones
     ast_node(:IrAlOrigenCmdNode) { IrAlOrigen.new }
     ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
 
-    ast_node(:ProcCallNode) do
+    ast_node :ProcCallNode do
       ProcCall.new upper_id.text_value, gexp_tuple.value
     end
 
-    ast_node(:SimpleAssignmentNode) do
+    ast_node :SimpleAssignmentNode do
       SimpleAssignment.new var_name.value, gexp.value
     end
 
-    ast_node(:CmdBlockNode) do
-      CmdBlock.new(cmds.elements.map { |node| node.simple_cmd.value })
+    ast_node :CmdBlockNode do
+      CmdBlock.new(cmds.elements.map { |node| node.command.value })
+    end
+
+    ast_node :IfCmdNode do
+      IfCmd.new gexp.value, cmd_block.value
     end
 
   end
