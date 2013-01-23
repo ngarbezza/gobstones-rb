@@ -9,7 +9,7 @@ module Gobstones
 
       def initialize
         base_path = File.expand_path(File.dirname(__FILE__))
-        Treetop.load(File.join(base_path, 'gobstones'))
+        Treetop.load(File.join(base_path, 'grammar/gobstones'))
         @parser = GobstonesParser.new
       end
 
