@@ -1,5 +1,8 @@
+require 'gobstones/lang/number'
+
 module Gobstones
 
+  # TODO change module to Parser (but only Lang seems to work with Treetop)
   module Lang
 
     RESERVED_IDS = %w(
