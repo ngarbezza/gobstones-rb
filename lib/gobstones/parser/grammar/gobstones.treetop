@@ -18,7 +18,7 @@ grammar Gobstones
   end
 
   rule complex_cmd
-    if_cmd
+    if_cmd / while_cmd
   end
 
   rule if_cmd
@@ -26,6 +26,10 @@ grammar Gobstones
     space* then_block:cmd_block
     else_clause:(space* 'else' space* else_block:cmd_block)?
     <IfCmdNode>
+  end
+
+  rule while_cmd
+    'while' space* '(' space* gexp space* ')' space* cmd_block <WhileCmdNode>
   end
 
   rule simple_cmd

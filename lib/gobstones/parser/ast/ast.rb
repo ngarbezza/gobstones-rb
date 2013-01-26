@@ -144,6 +144,8 @@ module Gobstones
       end
     end
 
+    ast_node(:WhileCmdNode) { WhileCmd.new gexp.value, cmd_block.value }
+
   end
 
 end
