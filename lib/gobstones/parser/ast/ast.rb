@@ -104,7 +104,7 @@ module Gobstones
 
     ast_node(:ParenthesesExprNode) { ParenthesesExpr.new gexp.value }
     ast_node(:FuncCallNode) { FuncCall.new lower_id.text_value, gexp_tuple.value }
-    ast_node(:TupleExprNode) { exps.text_value.blank? ? [] : exps.value }
+    ast_node(:TupleExprNode) { exps.empty? ? [] : exps.value }
 
     ast_node :GexpsNode do
       if elements.length == 2
@@ -137,7 +137,11 @@ module Gobstones
     end
 
     ast_node :IfCmdNode do
-      IfCmd.new gexp.value, cmd_block.value
+      if else_clause.empty?
+        IfCmd.new gexp.value, then_block.value
+      else
+        IfElseCmd.new gexp.value, then_block.value, else_clause.else_block.value
+      end
     end
 
   end

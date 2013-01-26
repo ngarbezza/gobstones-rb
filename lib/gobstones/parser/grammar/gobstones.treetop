@@ -23,7 +23,9 @@ grammar Gobstones
 
   rule if_cmd
     'if' space* '(' space* gexp space* ')'
-    space* cmd_block <IfCmdNode>
+    space* then_block:cmd_block
+    else_clause:(space* 'else' space* else_block:cmd_block)?
+    <IfCmdNode>
   end
 
   rule simple_cmd

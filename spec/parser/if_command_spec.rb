@@ -31,6 +31,13 @@ describe Gobstones::Parser, "if statements" do
 
   describe "if-else" do
 
+    it "should parse a statement with an else block" do
+      else_block = CmdBlock.new [Mover.new(Norte.new)]
+      if_else_cmd = IfElseCmd.new False.new, CmdBlock.new([]), else_block
+
+      'if (False) { } else { Mover(Norte) }'.should be_parsed_to if_else_cmd
+    end
+
   end
 
 end
