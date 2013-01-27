@@ -18,7 +18,7 @@ grammar Gobstones
   end
 
   rule complex_cmd
-    if_cmd / while_cmd
+    if_cmd / while_cmd / repeat_with_cmd
   end
 
   rule if_cmd
@@ -30,6 +30,12 @@ grammar Gobstones
 
   rule while_cmd
     'while' space* '(' space* gexp space* ')' space* cmd_block <WhileCmdNode>
+  end
+
+  rule repeat_with_cmd
+    'repeatWith' space+ var_name space+ 'in' space+
+    range_min:gexp space* '..' space* range_max:gexp space*
+    cmd_block <RepeatWithCmdNode>
   end
 
   rule simple_cmd

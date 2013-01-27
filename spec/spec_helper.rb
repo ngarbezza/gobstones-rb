@@ -21,6 +21,7 @@ require 'gobstones/lang/commands/mover_cmd'
 require 'gobstones/lang/commands/sacar_cmd'
 require 'gobstones/lang/commands/if_cmd'
 require 'gobstones/lang/commands/while_cmd'
+require 'gobstones/lang/commands/repeat_with_cmd'
 
 require 'gobstones/runner/cell'
 require 'gobstones/runner/board'

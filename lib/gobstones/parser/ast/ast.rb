@@ -146,6 +146,11 @@ module Gobstones
 
     ast_node(:WhileCmdNode) { WhileCmd.new gexp.value, cmd_block.value }
 
+    ast_node :RepeatWithCmdNode do
+      RepeatWithCmd.new var_name.value, range_min.value,
+        range_max.value, cmd_block.value
+    end
+
   end
 
 end
