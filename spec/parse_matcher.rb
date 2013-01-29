@@ -1,10 +1,11 @@
 require 'gobstones/parser/treetop_parser'
 
+PARSER = Gobstones::Parser::TreetopParser.new
+
 RSpec::Matchers.define :be_parsed_to do |expected|
 
   def parse(code)
-    @parser = Gobstones::Parser::TreetopParser.new
-    @node = @parser.parse code
+    @node = PARSER.parse code
   end
 
   match_for_should do |actual|
