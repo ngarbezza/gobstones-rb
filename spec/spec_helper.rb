@@ -1,9 +1,9 @@
 require 'parse_matcher'
 
-require 'gobstones/lang/colors'
-require 'gobstones/lang/directions'
-require 'gobstones/lang/booleans'
-require 'gobstones/lang/number'
+require 'gobstones/lang/literals/colors'
+require 'gobstones/lang/literals/directions'
+require 'gobstones/lang/literals/booleans'
+require 'gobstones/lang/literals/number'
 require 'gobstones/lang/expressions/arithmetic_expressions'
 require 'gobstones/lang/expressions/comparison_expressions'
 require 'gobstones/lang/expressions/boolean_expressions'

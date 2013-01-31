@@ -1,4 +1,5 @@
 require 'gobstones/runner/empty_cell_error'
+require 'gobstones/lang/literals/colors'
 
 module Gobstones
 

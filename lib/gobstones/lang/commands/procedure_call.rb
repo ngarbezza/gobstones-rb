@@ -1,4 +1,4 @@
-require 'gobstones/lang/definition_call'
+require 'gobstones/lang/definitions/definition_call'
 
 module Gobstones
 
