@@ -1,8 +1,21 @@
+# TODO reorganize (commands, expressions, definitions, aux definitions)
+# TODO modularize when possible
 grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    cmd_block / command / gexp / var_tuple
+    procedure_def / cmd_block / command / gexp / var_tuple
+  end
+
+  rule procedure_def
+    'procedure' space*
+    proc_name space*
+    var_tuple space*
+    cmd_block <ProcedureNode>
+  end
+
+  rule proc_name
+    upper_id &{ |id| id[0].is_not_reserved }
   end
 
   rule var_tuple
@@ -81,7 +94,7 @@ grammar Gobstones
   end
 
   rule proc_call
-    upper_id &{ |id| id[0].is_not_reserved } space* gexp_tuple <ProcCallNode>
+    proc_name space* gexp_tuple <ProcCallNode>
   end
 
   rule simple_assignment

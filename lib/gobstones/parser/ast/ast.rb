@@ -1,6 +1,7 @@
 module Gobstones
 
   # TODO change module to Parser (but only Lang seems to work with Treetop)
+  # TODO divide into smaller modules
   module Lang
 
     RESERVED_IDS = %w(
@@ -11,6 +12,7 @@ module Gobstones
     )
 
     def self.ast_node(name, &value_block)
+      # TODO check if it is better to have classes
       mod = Module.new do
         define_method :value do
           instance_eval(&value_block)
@@ -123,7 +125,7 @@ module Gobstones
     ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
 
     ast_node :ProcCallNode do
-      ProcCall.new upper_id.text_value, gexp_tuple.value
+      ProcCall.new proc_name.text_value, gexp_tuple.value
     end
 
     ast_node :SimpleAssignmentNode do
@@ -163,6 +165,10 @@ module Gobstones
     ast_node(:VarTupleNode) do
       variables = vns.empty? ? [] : vns.value
       VarTuple.new variables
+    end
+
+    ast_node(:ProcedureNode) do
+      Procedure.new proc_name.text_value, var_tuple.value, cmd_block.value
     end
 
   end

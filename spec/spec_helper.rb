@@ -1,5 +1,6 @@
 require 'parse_matcher'
 
+# TODO find best way to require all those files
 require 'gobstones/lang/literals/colors'
 require 'gobstones/lang/literals/directions'
 require 'gobstones/lang/literals/booleans'
@@ -23,6 +24,7 @@ require 'gobstones/lang/commands/if_cmd'
 require 'gobstones/lang/commands/while_cmd'
 require 'gobstones/lang/commands/repeat_with_cmd'
 require 'gobstones/lang/definitions/var_tuple'
+require 'gobstones/lang/definitions/procedure'
 
 require 'gobstones/runner/cell'
 require 'gobstones/runner/board'
