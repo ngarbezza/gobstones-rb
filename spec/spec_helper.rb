@@ -22,6 +22,7 @@ require 'gobstones/lang/commands/sacar_cmd'
 require 'gobstones/lang/commands/if_cmd'
 require 'gobstones/lang/commands/while_cmd'
 require 'gobstones/lang/commands/repeat_with_cmd'
+require 'gobstones/lang/definitions/var_tuple'
 
 require 'gobstones/runner/cell'
 require 'gobstones/runner/board'

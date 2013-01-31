@@ -2,7 +2,15 @@ grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    cmd_block / command / gexp
+    cmd_block / command / gexp / var_tuple
+  end
+
+  rule var_tuple
+    '(' space* vns:var_names? space* ')' <VarTupleNode>
+  end
+
+  rule var_names
+    ((vn:var_name space* ',' space* vns:var_names) / var_name) <VarNamesNode>
   end
 
   rule command

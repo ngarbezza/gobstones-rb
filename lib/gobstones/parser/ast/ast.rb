@@ -149,6 +149,22 @@ module Gobstones
         range_max.value, cmd_block.value
     end
 
+    # TODO abstract duplication, very similar to GexpsNode
+    ast_node(:VarNamesNode) do
+      if elements.length == 2
+        # TODO check why it is needed to create a VarName
+        # instead of having already a VarName in elements[0]
+        [VarName.new(elements[0].text_value)]
+      else
+        [vn.value] + vns.value
+      end
+    end
+
+    ast_node(:VarTupleNode) do
+      variables = vns.empty? ? [] : vns.value
+      VarTuple.new variables
+    end
+
   end
 
 end
