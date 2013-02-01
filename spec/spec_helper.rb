@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'parse_matcher'
 
 # TODO find best way to require all those files

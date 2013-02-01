@@ -1,3 +1,4 @@
 .rvmrc
 *.swp
 .rake_t_cache
+coverage/

@@ -3,9 +3,9 @@ GEM
   specs:
     autotest-standalone (4.5.11)
     diff-lcs (1.1.3)
+    multi_json (1.5.0)
     polyglot (0.3.3)
     rake (10.0.3)
-    require_all (1.2.1)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -13,7 +13,11 @@ GEM
     rspec-core (2.12.2)
     rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
-    rspec-mocks (2.12.1)
+    rspec-mocks (2.12.2)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -22,8 +26,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autotest-standalone
-  rake
-  require_all
-  rspec
-  treetop
+  autotest-standalone (~> 4.5)
+  rake (~> 10.0)
+  rspec (~> 2.12)
+  simplecov (~> 0.7)
+  treetop (~> 1.4)
