@@ -4,14 +4,29 @@ grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    procedure_def / cmd_block / command / gexp / var_tuple
+    definition / cmd_block / command / gexp / var_tuple
+  end
+
+  rule definition
+    procedure_def / function_def
   end
 
   rule procedure_def
-    'procedure' space*
+    'procedure' space+
     proc_name space*
     var_tuple space*
     cmd_block <ProcedureNode>
+  end
+
+  rule function_def
+    'function' space+
+    func_name space*
+    var_tuple space*
+    '{' space* cmds func_return space* '}' <FunctionNode>
+  end
+
+  rule func_return
+    'return' space* gexp_tuple_1 <FuncReturnNode>
   end
 
   rule proc_name
@@ -39,8 +54,12 @@ grammar Gobstones
   end
 
   rule complex_cmd
-    if_cmd / while_cmd / repeat_with_cmd
+    if_cmd / while_cmd / repeat_with_cmd # / case_cmd
   end
+
+  # TODO implement
+  # rule case_cmd
+  # end
 
   rule if_cmd
     'if' space* '(' space* gexp space* ')'
@@ -187,11 +206,19 @@ grammar Gobstones
   end
 
   rule func_call
-    lower_id &{ |id| id[0].is_not_reserved } space* gexp_tuple <FuncCallNode>
+    func_name space* gexp_tuple <FuncCallNode>
+  end
+
+  rule func_name
+    lower_id &{ |id| id[0].is_not_reserved }
   end
 
   rule gexp_tuple
     '(' space* exps:gexps? space* ')' <TupleExprNode>
+  end
+
+  rule gexp_tuple_1
+    '(' space* exps:gexps space* ')' <TupleExprNode>
   end
 
   rule gexps

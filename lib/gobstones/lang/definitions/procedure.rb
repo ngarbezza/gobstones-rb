@@ -1,20 +1,14 @@
+require 'gobstones/lang/definitions/definition'
+require 'gobstones/lang/definitions/no_return'
+
 module Gobstones
 
   module Lang
 
-    class Procedure
-
-      attr_reader :name, :args, :body
+    class Procedure < Definition
 
       def initialize(name, args, body)
-        @name, @args, @body = name, args, body
-      end
-
-      def ==(other)
-        self.class == other.class &&
-        self.name == other.name &&
-        self.args == other.args &&
-        self.body == other.body
+        super(name, args, body, NoReturn.new)
       end
 
     end

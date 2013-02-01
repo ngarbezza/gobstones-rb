@@ -103,7 +103,9 @@ module Gobstones
     ast_node(:OrExprNode) { Or.new left.value, right.value }
 
     ast_node(:ParenthesesExprNode) { ParenthesesExpr.new gexp.value }
-    ast_node(:FuncCallNode) { FuncCall.new lower_id.text_value, gexp_tuple.value }
+    ast_node(:FuncCallNode) do
+      FuncCall.new func_name.text_value, gexp_tuple.value
+    end
     ast_node(:TupleExprNode) { exps.empty? ? [] : exps.value }
 
     ast_node :GexpsNode do
@@ -169,6 +171,15 @@ module Gobstones
 
     ast_node(:ProcedureNode) do
       Procedure.new proc_name.text_value, var_tuple.value, cmd_block.value
+    end
+
+    ast_node(:FunctionNode) do
+      cmd_block = CmdBlock.new(cmds.elements.map { |node| node.command.value })
+      Function.new func_name.text_value, var_tuple.value, cmd_block, func_return.value
+    end
+
+    ast_node(:FuncReturnNode) do
+      ReturnFromFunction.new gexp_tuple_1.value
     end
 
   end
