@@ -42,11 +42,14 @@ GBS
   end
 
   it "should not parse a program without a Main definition" do
-    pending
+    'procedure Procedure1(){}
+    procedure Procedure2() {}'.should fail_to_parse
   end
 
   it "should not parse a program if Main is not the last definition" do
-    pending
+    'procedure Procedure1() {}
+    procedure Main() {}
+    procedure Procedure2() {}'.should fail_to_parse
   end
 
 end

@@ -52,3 +52,14 @@ RSpec::Matchers.define :be_parsed_as_main_def_to do |expected|
   end
 
 end
+
+RSpec::Matchers.define :fail_to_parse do
+
+  include ParserMatchersHelper
+
+  match do |actual|
+    parse actual
+    @node.nil?
+  end
+
+end

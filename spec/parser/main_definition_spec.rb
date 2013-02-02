@@ -34,11 +34,11 @@ describe Gobstones::Parser, "main definition" do
   end
 
   it "should not parse a main procedure with a return of expressions" do
-    pending "create matcher fail_to_parse or something like that"
+    'procedure Main() { return (3+4) }'.should fail_to_parse
   end
 
   it "should not parse a main procedure with args" do
-    pending "create matcher fail_to_parse or something like that"
+    'procedure Main(arg1, arg2) {}'.should fail_to_parse
   end
 
 end
