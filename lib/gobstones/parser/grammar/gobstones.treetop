@@ -4,11 +4,16 @@ grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    definition / cmd_block / command / gexp / var_tuple
+    definition / main_def / cmd_block / command / gexp / var_tuple
   end
 
   rule definition
     procedure_def / function_def
+  end
+
+  rule main_def
+    'procedure' space+ 'Main' space* '()' space*
+    '{' space* cmds ret:main_return? space* '}' <MainDefNode>
   end
 
   rule procedure_def
@@ -26,7 +31,11 @@ grammar Gobstones
   end
 
   rule func_return
-    'return' space* gexp_tuple_1 <FuncReturnNode>
+    'return' space* gexp_tuple_1 space* ';'? <FuncReturnNode>
+  end
+
+  rule main_return
+    'return' space* var_tuple space* ';'? <MainReturnNode>
   end
 
   rule proc_name

@@ -12,7 +12,7 @@ module Gobstones
 
       def ==(other)
         self.class == other.class &&
-          self.cmds == other.cmds
+        self.cmds == other.cmds
       end
 
     end

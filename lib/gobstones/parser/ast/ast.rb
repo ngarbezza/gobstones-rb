@@ -8,7 +8,7 @@ module Gobstones
       if else not True False case of while Skip repeatWith in procedure function
       return Mover Sacar Poner BOOM IrAlOrigen VaciarTablero div mod hayBolitas
       nroBolitas puedeMover Norte Sur Este Oeste minBool maxBool minDir maxDir
-      minColor maxColor siguiente previo opuesto Verde Rojo Azul Negro
+      minColor maxColor siguiente previo opuesto Verde Rojo Azul Negro Main
     )
 
     def self.ast_node(name, &value_block)
@@ -180,6 +180,16 @@ module Gobstones
 
     ast_node(:FuncReturnNode) do
       ReturnFromFunction.new gexp_tuple_1.value
+    end
+
+    ast_node(:MainReturnNode) do
+      ReturnFromMain.new var_tuple.value
+    end
+
+    ast_node(:MainDefNode) do
+      cmd_block = CmdBlock.new(cmds.elements.map { |node| node.command.value })
+      return_st = ret.empty? ? NoReturn.new : ret.value
+      Main.new cmd_block, return_st
     end
 
   end
