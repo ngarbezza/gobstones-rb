@@ -1,11 +1,10 @@
 describe Gobstones::Parser, "main definition" do
 
   it "should parse a valid Main definition without return nor commands" do
-    proc_def = Procedure.new 'Main', VarTuple.new([]), CmdBlock.new([])
     main = Main.new CmdBlock.new([]), NoReturn.new
 
-    'procedure Main() {}'.should_not be_parsed_to proc_def
-    'procedure Main() {}'.should be_parsed_as_main_def_to main
+    'procedure Main() {}'.should be_parsed_as(:definition).and_fail
+    'procedure Main() {}'.should be_parsed_as(:main).and_return(main)
   end
 
   it "should parse a valid main procedure with a return of var names" do
@@ -24,21 +23,19 @@ describe Gobstones::Parser, "main definition" do
        Mover(Oeste)
        Skip
        return (x, y)
-    }'.should be_parsed_as_main_def_to main
+    }'.should be_parsed_as(:main).and_return(main)
   end
 
   it "should not parse a main procedure with an invalid identifier" do
-    main = Main.new CmdBlock.new([]), NoReturn.new
-
-    'procedure NotMain() {}'.should_not be_parsed_to main
+    'procedure NotMain() {}'.should be_parsed_as(:main).and_fail
   end
 
   it "should not parse a main procedure with a return of expressions" do
-    'procedure Main() { return (3+4) }'.should fail_to_parse
+    'procedure Main() { return (3+4) }'.should be_parsed_as(:main).and_fail
   end
 
   it "should not parse a main procedure with args" do
-    'procedure Main(arg1, arg2) {}'.should fail_to_parse
+    'procedure Main(arg1, arg2) {}'.should be_parsed_as(:main).and_fail
   end
 
 end

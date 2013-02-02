@@ -6,7 +6,8 @@ describe Gobstones::Parser, "function definitions" do
 
     func_def = Function.new 'just42', args, CmdBlock.new([]), func_return
 
-    'function just42() { return (42) }'.should be_parsed_to func_def
+    'function just42() { return (42) }'.
+      should be_parsed_as(:definition).and_return(func_def)
   end
 
   it "should parse a function with some args" do
@@ -20,7 +21,7 @@ describe Gobstones::Parser, "function definitions" do
 
     'function myCoolFunction (firstArg, secondArg, thirdArg) {
   return (Verde, puedeMover(Norte))
-}'.should be_parsed_to func_def
+}'.should be_parsed_as(:definition).and_return(func_def)
   end
 
   it "should parse a function with some statements" do
@@ -33,25 +34,17 @@ describe Gobstones::Parser, "function definitions" do
 {
   Poner(Verde)
   return (True)
-}'.should be_parsed_to func_def
+}'.should be_parsed_as(:definition).and_return(func_def)
   end
 
   it "should not parse a function without a valid identifier" do
-    args = VarTuple.new []
-    body = CmdBlock.new []
-    return_st = ReturnFromFunction.new [True.new]
-    func_def = Function.new 'MyWrongFunc', args, body, return_st
-
-    'function MyWrongFunc() { return(True) }'.should_not be_parsed_to func_def
+    'function MyWrongFunc() { return(True) }'.
+      should be_parsed_as(:definition).and_fail
   end
 
   it "should not parse a function without a return statement" do
-    args = VarTuple.new []
-    body = CmdBlock.new []
-    return_st = ReturnFromFunction.new []
-    func_def = Function.new 'myFuncWithoutReturn', args, body, return_st
-
-    'function myFuncWithoutReturn() { }'.should_not be_parsed_to func_def
+    'function myFuncWithoutReturn() { }'.
+      should be_parsed_as(:definition).and_fail
   end
 
 end
