@@ -117,12 +117,20 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def definition_code_to_program(code)
-    "#{code}
-    procedure Main() {}"
+    "#{code}\nprocedure Main() {}"
   end
 
   def definition_node_to_program(node)
     Program.new [node], Main.new(CmdBlock.new([]), NoReturn.new)
+  end
+
+  def expression_code_to_program(code)
+    "procedure Main() { x := #{code} }"
+  end
+
+  def expression_node_to_program(node)
+    assign = SimpleAssignment.new VarName.new('x'), node
+    main_node_to_program Main.new(CmdBlock.new([assign]), NoReturn.new)
   end
 
   def var_tuple_code_to_program(code)

@@ -8,7 +8,6 @@ describe Gobstones::Parser, "var tuples" do
   end
 
   it "should parse a var tuple with one arg" do
-    pending "until complete entire grammar"
     var = VarName.new 'myVar'
     var_tuple = VarTuple.new [var]
 

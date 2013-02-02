@@ -4,7 +4,7 @@ grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    program / cmd_block / command / gexp
+    program / cmd_block / command
   end
 
   rule program

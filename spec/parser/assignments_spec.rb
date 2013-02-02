@@ -1,6 +1,3 @@
-require 'gobstones/lang/commands/assignments'
-require 'gobstones/lang/commands/skip_cmd'
-
 describe Gobstones::Parser, "assignments" do
 
   describe "simple" do
