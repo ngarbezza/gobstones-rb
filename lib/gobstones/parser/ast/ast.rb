@@ -192,6 +192,11 @@ module Gobstones
       Main.new cmd_block, return_st
     end
 
+    ast_node(:ProgramNode) do
+      defs = definitions.elements.map { |node| node.definition.value }
+      Program.new defs, main_def.value
+    end
+
   end
 
 end

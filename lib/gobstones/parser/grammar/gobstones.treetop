@@ -4,7 +4,15 @@ grammar Gobstones
 
   rule gobstones_elem
     # TODO this is not the definitive rule.
-    definition / main_def / cmd_block / command / gexp / var_tuple
+    program / definition / cmd_block / command / gexp / var_tuple
+  end
+
+  rule program
+    definitions main_def space* <ProgramNode>
+  end
+
+  rule definitions
+    (space* definition space*)*
   end
 
   rule definition

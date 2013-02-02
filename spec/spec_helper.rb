@@ -29,6 +29,7 @@ require 'gobstones/lang/definitions/var_tuple'
 require 'gobstones/lang/definitions/procedure'
 require 'gobstones/lang/definitions/function'
 require 'gobstones/lang/definitions/main'
+require 'gobstones/lang/program'
 
 require 'gobstones/runner/cell'
 require 'gobstones/runner/board'

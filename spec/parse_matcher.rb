@@ -1,12 +1,19 @@
 require 'gobstones/parser/treetop_parser'
+require 'gobstones/lang/program'
 
 PARSER = Gobstones::Parser::TreetopParser.new
 
-RSpec::Matchers.define :be_parsed_to do |expected|
+module ParserMatchersHelper
 
   def parse(code)
     @node = PARSER.parse code
   end
+
+end
+
+RSpec::Matchers.define :be_parsed_to do |expected|
+
+  include ParserMatchersHelper
 
   match_for_should do |actual|
     parse actual
@@ -29,6 +36,19 @@ RSpec::Matchers.define :be_parsed_to do |expected|
 
   failure_message_for_should_not do |actual|
     "expected #{actual} to not be parsed to #{expected}, got #{@node.value}"
+  end
+
+end
+
+RSpec::Matchers.define :be_parsed_as_main_def_to do |expected|
+
+  include ParserMatchersHelper
+
+  match_for_should do |actual|
+    parse actual
+    fail('the parser gave no results') if @node.nil?
+    expected_program = Gobstones::Lang::Program.new [], expected
+    @node.value == expected_program
   end
 
 end

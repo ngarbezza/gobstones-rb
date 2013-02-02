@@ -5,14 +5,14 @@ describe Gobstones::Parser, "main definition" do
     main = Main.new CmdBlock.new([]), NoReturn.new
 
     'procedure Main() {}'.should_not be_parsed_to proc_def
-    'procedure Main() {}'.should be_parsed_to main
+    'procedure Main() {}'.should be_parsed_as_main_def_to main
   end
 
   it "should parse a valid main procedure with a return of var names" do
     return_tuple = VarTuple.new [VarName.new('x'), VarName.new('y')]
     main = Main.new CmdBlock.new([]), ReturnFromMain.new(return_tuple)
 
-    'procedure Main() { return (x, y); }'.should be_parsed_to main
+    'procedure Main() { return (x, y); }'.should be_parsed_as_main_def_to main
   end
 
   it "should parse a valid main procedure with commands and return" do
@@ -24,7 +24,7 @@ describe Gobstones::Parser, "main definition" do
        Mover(Oeste)
        Skip
        return (x, y)
-    }'.should be_parsed_to main
+    }'.should be_parsed_as_main_def_to main
   end
 
   it "should not parse a main procedure with an invalid identifier" do
