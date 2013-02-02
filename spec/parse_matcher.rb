@@ -75,7 +75,8 @@ end
 
 RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
-  @valid_nodes = [:program, :definition, :main, :expression, :command ]
+  @valid_nodes = [:program, :definition, :main,
+    :expression, :command, :var_tuple ]
 
   chain :and_fail do
     @expect_parser_results = false
@@ -107,6 +108,14 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
     node
   end
 
+  def main_code_to_program(code)
+    code
+  end
+
+  def main_node_to_program(node)
+    Program.new [], node
+  end
+
   def definition_code_to_program(code)
     "#{code}
     procedure Main() {}"
@@ -116,12 +125,12 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
     Program.new [node], Main.new(CmdBlock.new([]), NoReturn.new)
   end
 
-  def main_code_to_program(code)
-    code
+  def var_tuple_code_to_program(code)
+    "procedure Main() { return #{code} }"
   end
 
-  def main_node_to_program(node)
-    Program.new [], node
+  def var_tuple_node_to_program(node)
+    Program.new [], Main.new(CmdBlock.new([]), ReturnFromMain.new(node))
   end
 
   def parse(code)
