@@ -135,7 +135,7 @@ module Gobstones
     end
 
     ast_node :CmdBlockNode do
-      CmdBlock.new(cmds.elements.map { |node| node.command.value })
+      CmdBlock.new create_commands(commands)
     end
 
     ast_node :IfCmdNode do
@@ -174,8 +174,9 @@ module Gobstones
     end
 
     ast_node(:FunctionNode) do
-      cmd_block = CmdBlock.new(cmds.elements.map { |node| node.command.value })
-      Function.new func_name.text_value, var_tuple.value, cmd_block, func_return.value
+      cmd_block = CmdBlock.new create_commands(commands)
+      Function.new func_name.text_value, var_tuple.value,
+        cmd_block, func_return.value
     end
 
     ast_node(:FuncReturnNode) do
@@ -187,7 +188,7 @@ module Gobstones
     end
 
     ast_node(:MainDefNode) do
-      cmd_block = CmdBlock.new(cmds.elements.map { |node| node.command.value })
+      cmd_block = CmdBlock.new create_commands(commands)
       return_st = ret.empty? ? NoReturn.new : ret.value
       Main.new cmd_block, return_st
     end
@@ -195,6 +196,10 @@ module Gobstones
     ast_node(:ProgramNode) do
       defs = definitions.elements.map { |node| node.definition.value }
       Program.new defs, main_def.value
+    end
+
+    def create_commands(cmds)
+      cmds.elements.map { |node| node.command.value }
     end
 
   end

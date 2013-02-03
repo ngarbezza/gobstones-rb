@@ -1,10 +1,13 @@
-# TODO reorganize (commands, expressions, definitions, aux definitions)
 # TODO modularize when possible
 grammar Gobstones
+
+  # TOP RULE: program
 
   rule program
     definitions main_def space* <ProgramNode>
   end
+
+  # DEFINITIONS: main, procedures, functions
 
   rule definitions
     (space* definition space*)*
@@ -15,63 +18,91 @@ grammar Gobstones
   end
 
   rule main_def
-    'procedure' space+ 'Main' space* '()' space*
-    '{' space* cmds ret:main_return? space* '}' <MainDefNode>
-  end
-
-  rule procedure_def
-    'procedure' space+
-    proc_name space*
-    var_tuple space*
-    cmd_block <ProcedureNode>
-  end
-
-  rule function_def
-    'function' space+
-    func_name space*
-    var_tuple space*
-    '{' space* cmds func_return space* '}' <FunctionNode>
-  end
-
-  rule func_return
-    'return' space* gexp_tuple_1 space* ';'? <FuncReturnNode>
+    'procedure' space+ 'Main' space* '(' space* ')' space*
+    '{' space* commands ret:main_return? space* '}' <MainDefNode>
   end
 
   rule main_return
     'return' space* var_tuple space* ';'? <MainReturnNode>
   end
 
-  rule proc_name
-    upper_id &{ |id| id[0].is_not_reserved }
+  rule procedure_def
+    'procedure' space+ proc_name space*
+    var_tuple space* cmd_block <ProcedureNode>
   end
 
-  rule var_tuple
-    '(' space* vns:var_names? space* ')' <VarTupleNode>
+  rule function_def
+    'function' space+ func_name space* var_tuple space*
+    '{' space* commands func_return space* '}' <FunctionNode>
   end
 
-  rule var_names
-    ((vn:var_name space* ',' space* vns:var_names) / var_name) <VarNamesNode>
+  rule func_return
+    'return' space* gexp_tuple_1 space* ';'? <FuncReturnNode>
+  end
+
+  # COMMANDS
+
+  rule commands
+    (command space* ';'? space*)*
   end
 
   rule command
     simple_cmd / complex_cmd
   end
 
-  rule cmd_block
-    '{' space* cmds space* '}' <CmdBlockNode>
+  rule simple_cmd
+    skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd /
+    ir_al_origen_cmd / vaciar_tablero_cmd / proc_call /
+    cmd_block / single_assignment # / multiple_assignment
   end
 
-  rule cmds
-    (command space* ';'? space*)*
+  rule skip_cmd
+    'Skip' <SkipCmdNode>
   end
+
+  rule boom_cmd
+    'BOOM' space* '(' space* string space* ')' <BoomCmdNode>
+  end
+
+  rule poner_cmd
+    'Poner' space* '(' space* gexp space* ')' <PonerCmdNode>
+  end
+
+  rule sacar_cmd
+    'Sacar' space* '(' space* gexp space* ')' <SacarCmdNode>
+  end
+
+  rule mover_cmd
+    'Mover' space* '(' space* gexp space* ')' <MoverCmdNode>
+  end
+
+  rule ir_al_origen_cmd
+    'IrAlOrigen' space* '(' space* ')' <IrAlOrigenCmdNode>
+  end
+
+  rule vaciar_tablero_cmd
+    'VaciarTablero' space* '(' space* ')' <VaciarTableroCmdNode>
+  end
+
+  rule proc_call
+    proc_name space* gexp_tuple <ProcCallNode>
+  end
+
+  rule cmd_block
+    '{' space* commands space* '}' <CmdBlockNode>
+  end
+
+  rule single_assignment
+    var_name space* ':=' space* gexp <SingleAssignmentNode>
+  end
+
+  # TODO implement
+  # rule multiple_assignment
+  # end
 
   rule complex_cmd
     if_cmd / while_cmd / repeat_with_cmd # / case_cmd
   end
-
-  # TODO implement
-  # rule case_cmd
-  # end
 
   rule if_cmd
     'if' space* '(' space* gexp space* ')'
@@ -90,51 +121,11 @@ grammar Gobstones
     cmd_block <RepeatWithCmdNode>
   end
 
-  rule simple_cmd
-    skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd /
-    ir_al_origen_cmd / vaciar_tablero_cmd / proc_call /
-    cmd_block / single_assignment # / multiple_assignment
-  end
-
   # TODO implement
-  # rule multiple_assignment
+  # rule case_cmd
   # end
 
-  rule poner_cmd
-    'Poner' space* '(' space* gexp space* ')' <PonerCmdNode>
-  end
-
-  rule sacar_cmd
-    'Sacar' space* '(' space* gexp space* ')' <SacarCmdNode>
-  end
-
-  rule mover_cmd
-    'Mover' space* '(' space* gexp space* ')' <MoverCmdNode>
-  end
-
-  rule skip_cmd
-    'Skip' <SkipCmdNode>
-  end
-
-  rule boom_cmd
-    'BOOM' space* '(' space* string space* ')' <BoomCmdNode>
-  end
-
-  rule ir_al_origen_cmd
-    'IrAlOrigen' space* '(' space* ')' <IrAlOrigenCmdNode>
-  end
-
-  rule vaciar_tablero_cmd
-    'VaciarTablero' space* '(' space* ')' <VaciarTableroCmdNode>
-  end
-
-  rule proc_call
-    proc_name space* gexp_tuple <ProcCallNode>
-  end
-
-  rule single_assignment
-    var_name space* ':=' space* gexp <SingleAssignmentNode>
-  end
+  # EXPRESSIONS
 
   rule gexp
     bexp
@@ -185,26 +176,6 @@ grammar Gobstones
     paren_expr / func_call / var_name
   end
 
-  rule literal
-    number / boolean / color / direction
-  end
-
-  rule number
-    '-'? [1-9] [0-9]* <IntegerLiteral>
-  end
-
-  rule boolean
-    ('True' / 'False') <BooleanLiteral>
-  end
-
-  rule color
-    ('Azul' / 'Negro' / 'Rojo' / 'Verde') <ColorLiteral>
-  end
-
-  rule direction
-    ('Norte' / 'Este' / 'Sur' / 'Oeste') <DirectionLiteral>
-  end
-
   rule type_bound_func
     bool_type_bound_func / color_type_bound_func / direction_type_bound_func
   end
@@ -221,57 +192,9 @@ grammar Gobstones
     'minDir()' <MinDirFuncNode> / 'maxDir()' <MaxDirFuncNode>
   end
 
-  rule func_call
-    func_name space* gexp_tuple <FuncCallNode>
-  end
-
-  rule func_name
-    lower_id &{ |id| id[0].is_not_reserved }
-  end
-
-  rule gexp_tuple
-    '(' space* exps:gexps? space* ')' <TupleExprNode>
-  end
-
-  rule gexp_tuple_1
-    '(' space* exps:gexps space* ')' <TupleExprNode>
-  end
-
-  rule gexps
-    ((exp:gexp space* ',' space* exps:gexps) / gexp) <GexpsNode>
-  end
-
-  rule var_name
-    lower_id &{ |id| id[0].is_not_reserved } <VarNameNode>
-  end
-
-  rule lower_id
-    [a-z] char* {
-      def is_not_reserved
-        !Gobstones::Lang::RESERVED_IDS.include? text_value
-      end
-    }
-  end
-
-  rule upper_id
-    [A-Z] char* {
-      def is_not_reserved
-        !Gobstones::Lang::RESERVED_IDS.include? text_value
-      end
-    }
-  end
-
-  rule char
-    [a-zA-Z0-9'_]
-  end
-
   rule primitive_func
-    nro_bolitas_func /
-    hay_bolitas_func /
-    puede_mover_func /
-    siguiente_func /
-    previo_func /
-    opuesto_func
+    nro_bolitas_func / hay_bolitas_func / puede_mover_func /
+    siguiente_func / previo_func / opuesto_func
   end
 
   rule nro_bolitas_func
@@ -300,6 +223,86 @@ grammar Gobstones
 
   rule paren_expr
     '(' space* gexp space* ')' <ParenthesesExprNode>
+  end
+
+  rule func_call
+    func_name space* gexp_tuple <FuncCallNode>
+  end
+
+  rule var_name
+    lower_id &{ |id| id[0].is_not_reserved } <VarNameNode>
+  end
+
+  # LITERALS
+
+  rule literal
+    number / boolean / color / direction
+  end
+
+  rule number
+    '-'? [1-9] [0-9]* <IntegerLiteral>
+  end
+
+  rule boolean
+    ('True' / 'False') <BooleanLiteral>
+  end
+
+  rule color
+    ('Azul' / 'Negro' / 'Rojo' / 'Verde') <ColorLiteral>
+  end
+
+  rule direction
+    ('Norte' / 'Este' / 'Sur' / 'Oeste') <DirectionLiteral>
+  end
+
+  # AUX DEFINITIONS: identifiers, tuples
+
+  rule proc_name
+    upper_id &{ |id| id[0].is_not_reserved }
+  end
+
+  rule func_name
+    lower_id &{ |id| id[0].is_not_reserved }
+  end
+
+  rule var_tuple
+    '(' space* vns:var_names? space* ')' <VarTupleNode>
+  end
+
+  rule var_names
+    ((vn:var_name space* ',' space* vns:var_names) / var_name) <VarNamesNode>
+  end
+
+  rule gexp_tuple
+    '(' space* exps:gexps? space* ')' <TupleExprNode>
+  end
+
+  rule gexp_tuple_1
+    '(' space* exps:gexps space* ')' <TupleExprNode>
+  end
+
+  rule gexps
+    ((exp:gexp space* ',' space* exps:gexps) / gexp) <GexpsNode>
+  end
+
+  rule lower_id
+    [a-z] char* {
+      def is_not_reserved
+        !Gobstones::Lang::RESERVED_IDS.include? text_value
+      end
+    }
+  end
+
+  rule upper_id
+    [A-Z] char* {
+      def is_not_reserved
+        !Gobstones::Lang::RESERVED_IDS.include? text_value
+      end
+    }
+  end
+
+  rule char
+    [a-zA-Z0-9'_]
   end
 
   rule string
