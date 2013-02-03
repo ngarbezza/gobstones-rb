@@ -130,8 +130,8 @@ module Gobstones
       ProcCall.new proc_name.text_value, gexp_tuple.value
     end
 
-    ast_node :SimpleAssignmentNode do
-      SimpleAssignment.new var_name.value, gexp.value
+    ast_node :SingleAssignmentNode do
+      SingleAssignment.new var_name.value, gexp.value
     end
 
     ast_node :CmdBlockNode do

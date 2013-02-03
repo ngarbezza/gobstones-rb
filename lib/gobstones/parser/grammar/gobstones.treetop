@@ -2,11 +2,6 @@
 # TODO modularize when possible
 grammar Gobstones
 
-  rule gobstones_elem
-    # TODO this is not the definitive rule.
-    program / cmd_block / command
-  end
-
   rule program
     definitions main_def space* <ProgramNode>
   end
@@ -98,8 +93,12 @@ grammar Gobstones
   rule simple_cmd
     skip_cmd / boom_cmd / poner_cmd / sacar_cmd / mover_cmd /
     ir_al_origen_cmd / vaciar_tablero_cmd / proc_call /
-    simple_assignment
+    cmd_block / single_assignment # / multiple_assignment
   end
+
+  # TODO implement
+  # rule multiple_assignment
+  # end
 
   rule poner_cmd
     'Poner' space* '(' space* gexp space* ')' <PonerCmdNode>
@@ -133,8 +132,8 @@ grammar Gobstones
     proc_name space* gexp_tuple <ProcCallNode>
   end
 
-  rule simple_assignment
-    var_name space* ':=' space* gexp <SimpleAssignmentNode>
+  rule single_assignment
+    var_name space* ':=' space* gexp <SingleAssignmentNode>
   end
 
   rule gexp

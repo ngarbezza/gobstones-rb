@@ -1,38 +1,38 @@
 describe Gobstones::Parser, "assignments" do
 
-  describe "simple" do
+  describe "single" do
 
     it "should parse a valid assignment with a simple expression" do
-      assignment = SimpleAssignment.new VarName.new('myDir'), Norte.new
+      assignment = SingleAssignment.new VarName.new('myDir'), Norte.new
 
-      'myDir:=Norte'.should be_parsed_to(assignment)
-      'myDir  :=   Norte'.should be_parsed_to(assignment)
+      'myDir:=Norte'.
+        should be_parsed_as(:command).and_return(assignment)
+      'myDir  :=   Norte'.
+        should be_parsed_as(:command).and_return(assignment)
     end
 
     it "should parse a valid assignment with a complex expression" do
       a, b = VarName.new('a'), VarName.new('b')
       exp = Or.new False.new, ParenthesesExpr.new(And.new(a, b))
-      assignment = SimpleAssignment.new VarName.new('myVar'), exp
+      assignment = SingleAssignment.new VarName.new('myVar'), exp
 
-      'myVar := False || (a && b)'.should be_parsed_to(assignment)
+      'myVar := False || (a && b)'.
+        should be_parsed_as(:command).and_return(assignment)
     end
 
     it "should not parse with an invalid var name" do
-      a = VarName.new 'a'
-      assignment = SimpleAssignment.new VarName.new('MyWrongVar'), a
-
-      'MyWrongVar := a'.should_not be_parsed_to(assignment)
+      'MyWrongVar := a'.should be_parsed_as(:command).and_fail
     end
 
     it "should not parse with a command on the right side" do
-      assignment = SimpleAssignment.new VarName.new('myVar'), Skip.new
-
-      'myVar := Skip'.should_not be_parsed_to(assignment)
+      'myVar := Skip'.should be_parsed_as(:command).and_fail
     end
 
   end
 
   describe "multiple" do
+
+    # TODO implement
 
   end
 

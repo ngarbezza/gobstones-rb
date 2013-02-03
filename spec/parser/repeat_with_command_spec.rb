@@ -6,7 +6,7 @@ describe Gobstones::Parser, "repeatWith statements" do
     cmd_block = CmdBlock.new []
     rw_cmd = RepeatWithCmd.new var_name, min_range, max_range, cmd_block
 
-    'repeatWith i in 1..10 {}'.should be_parsed_to rw_cmd
+    'repeatWith i in 1..10 {}'.should be_parsed_as(:command).and_return(rw_cmd)
   end
 
   it "should parse an statement with any expressions in the range" do
@@ -17,7 +17,7 @@ describe Gobstones::Parser, "repeatWith statements" do
 
     'repeatWith myDir in minDir() .. siguiente(Rojo) {
       Poner(Verde)
-    }'.should be_parsed_to rw_cmd
+    }'.should be_parsed_as(:command).and_return(rw_cmd)
   end
 
 end

@@ -11,7 +11,8 @@ describe Gobstones::Parser, "main definition" do
     return_tuple = VarTuple.new [VarName.new('x'), VarName.new('y')]
     main = Main.new CmdBlock.new([]), ReturnFromMain.new(return_tuple)
 
-    'procedure Main() { return (x, y); }'.should be_parsed_as_main_def_to main
+    'procedure Main() { return (x, y); }'.
+      should be_parsed_as(:main).and_return(main)
   end
 
   it "should parse a valid main procedure with commands and return" do

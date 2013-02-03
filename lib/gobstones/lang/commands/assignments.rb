@@ -2,7 +2,7 @@ module Gobstones
 
   module Lang
 
-    class SimpleAssignment
+    class SingleAssignment
 
       attr_reader :var_name, :exp
 

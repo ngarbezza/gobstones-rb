@@ -3,76 +3,6 @@ require 'gobstones/lang/program'
 
 PARSER = Gobstones::Parser::TreetopParser.new
 
-module ParserMatchersHelper
-
-  def parse(code)
-    @node = PARSER.parse code
-  end
-
-end
-
-RSpec::Matchers.define :be_parsed_to do |expected|
-
-  puts '!!!!!!! DEPRECATED !!!!!!!
-  use be_parsed_as(elem).(and_fail | and_return(expected))'
-
-  include ParserMatchersHelper
-
-  match_for_should do |actual|
-    parse actual
-    fail('no results from parsed code') if @node.nil?
-    @node.value == expected
-  end
-
-  match_for_should_not do |actual|
-    parse actual
-    if @node
-      @node.value != expected
-    else
-      true
-    end
-  end
-
-  failure_message_for_should do |actual|
-    "expected #{actual} to be parsed to #{expected}, but got #{@node.value}"
-  end
-
-  failure_message_for_should_not do |actual|
-    "expected #{actual} to not be parsed to #{expected}, got #{@node.value}"
-  end
-
-end
-
-RSpec::Matchers.define :be_parsed_as_main_def_to do |expected|
-
-  puts '!!!!!!! DEPRECATED !!!!!!!
-  use be_parsed_as(elem).(and_fail | and_return(expected))'
-
-  include ParserMatchersHelper
-
-  match_for_should do |actual|
-    parse actual
-    fail('the parser gave no results') if @node.nil?
-    expected_program = Gobstones::Lang::Program.new [], expected
-    @node.value == expected_program
-  end
-
-end
-
-RSpec::Matchers.define :fail_to_parse do
-
-  puts '!!!!!!! DEPRECATED !!!!!!!
-  use be_parsed_as(elem).(and_fail | and_return(expected))'
-
-  include ParserMatchersHelper
-
-  match do |actual|
-    parse actual
-    @node.nil?
-  end
-
-end
-
 RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
   @valid_nodes = [:program, :definition, :main,
@@ -129,8 +59,16 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def expression_node_to_program(node)
-    assign = SimpleAssignment.new VarName.new('x'), node
+    assign = SingleAssignment.new VarName.new('x'), node
     main_node_to_program Main.new(CmdBlock.new([assign]), NoReturn.new)
+  end
+
+  def command_code_to_program(code)
+    "procedure Main() { #{code} }"
+  end
+
+  def command_node_to_program(node)
+    main_node_to_program Main.new(CmdBlock.new([node]), NoReturn.new)
   end
 
   def var_tuple_code_to_program(code)
