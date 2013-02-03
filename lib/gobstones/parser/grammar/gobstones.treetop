@@ -288,7 +288,7 @@ grammar Gobstones
   rule lower_id
     [a-z] char* {
       def is_not_reserved
-        !Gobstones::Lang::RESERVED_IDS.include? text_value
+        !Gobstones::Parser::RESERVED_IDS.include? text_value
       end
     }
   end
@@ -296,7 +296,7 @@ grammar Gobstones
   rule upper_id
     [A-Z] char* {
       def is_not_reserved
-        !Gobstones::Lang::RESERVED_IDS.include? text_value
+        !Gobstones::Parser::RESERVED_IDS.include? text_value
       end
     }
   end

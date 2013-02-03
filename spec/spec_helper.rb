@@ -37,5 +37,8 @@ require 'gobstones/runner/board'
 require 'gobstones/runner/head'
 require 'gobstones/runner/execution_context'
 
+require 'gobstones/parser/treetop_parser'
+
 include Gobstones::Lang
 include Gobstones::Runner
+include Gobstones::Parser

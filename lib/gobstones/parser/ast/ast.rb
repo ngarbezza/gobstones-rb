@@ -1,8 +1,7 @@
 module Gobstones
 
-  # TODO change module to Parser (but only Lang seems to work with Treetop)
   # TODO divide into smaller modules
-  module Lang
+  module Parser
 
     RESERVED_IDS = %w(
       if else not True False case of while Skip repeatWith in procedure function
