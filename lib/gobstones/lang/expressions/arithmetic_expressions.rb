@@ -1,4 +1,5 @@
 require 'gobstones/lang/expressions/two_arg_expression'
+require 'gobstones/lang/literals/number'
 
 module Gobstones
 
@@ -7,6 +8,10 @@ module Gobstones
     class Add
 
       include TwoArgExpression
+
+      def evaluate
+        left_expr.evaluate + right_expr.evaluate
+      end
 
     end
 

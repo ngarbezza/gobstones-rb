@@ -19,6 +19,14 @@ module Gobstones
         :Number
       end
 
+      def evaluate
+        self
+      end
+
+      def + other
+        Number.new(self.value + other.value)
+      end
+
     end
 
   end
