@@ -1,0 +1,3 @@
+class GbsRuntimeError < StandardError
+
+end

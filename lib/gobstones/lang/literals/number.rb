@@ -11,8 +11,7 @@ module Gobstones
       end
 
       def == other
-        self.class == other.class &&
-          self.value == other.value
+        self.class == other.class && self.value == other.value
       end
 
       def return_type
@@ -24,7 +23,19 @@ module Gobstones
       end
 
       def + other
-        Number.new(self.value + other.value)
+        self.class.new self.value + other.value
+      end
+
+      def - other
+        self.class.new self.value - other.value
+      end
+
+      def * other
+        self.class.new self.value * other.value
+      end
+
+      def / other
+        self.class.new self.value / other.value
       end
 
     end
