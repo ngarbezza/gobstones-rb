@@ -13,7 +13,11 @@ module Gobstones
       end
 
       def == other
-        self.class == other.class && self.value == other.value
+        super(other) && self.value == other.value
+      end
+
+      def <(other)
+        self.value < other.value
       end
 
       def return_type

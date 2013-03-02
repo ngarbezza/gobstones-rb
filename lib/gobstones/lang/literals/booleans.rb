@@ -6,10 +6,6 @@ module Gobstones
 
     class Boolean < Literal
 
-      def ==(other)
-        self.class == other.class
-      end
-
       def return_type
         :Boolean
       end
@@ -17,6 +13,10 @@ module Gobstones
     end
 
     class True < Boolean
+
+      def <(other)
+        false
+      end
 
       def and(other)
         other
@@ -33,6 +33,10 @@ module Gobstones
     end
 
     class False < Boolean
+
+      def <(other)
+        self != other
+      end
 
       def and(other)
         self

@@ -6,8 +6,12 @@ module Gobstones
 
     class Direction < Literal
 
-      def ==(other)
-        self.class == other.class
+      def self.order
+        [Norte, Este, Sur, Oeste]
+      end
+
+      def <(other)
+        self.class.order.index(self.class) < self.class.order.index(other.class)
       end
 
       def return_type

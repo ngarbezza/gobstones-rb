@@ -6,8 +6,12 @@ module Gobstones
 
     class Color < Literal
 
-      def ==(other)
-        self.class == other.class
+      def self.order
+        [Azul, Negro, Rojo, Verde]
+      end
+
+      def <(other)
+        self.class.order.index(self.class) < self.class.order.index(other.class)
       end
 
       def return_type
