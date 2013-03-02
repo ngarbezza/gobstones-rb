@@ -82,7 +82,16 @@ describe "arithmetic expressions" do
   end
 
   describe Pow do
-    # TODO
+
+    it "should give 1 as a result if the power is 0" do
+      Pow.new(1.as_gbs_num, 0.as_gbs_num).evaluate.should == 1.as_gbs_num
+      Pow.new(42.as_gbs_num, 0.as_gbs_num).evaluate.should == 1.as_gbs_num
+    end
+
+    it "should calculate 2 raised to 4" do
+      Pow.new(2.as_gbs_num, 4.as_gbs_num).evaluate.should == 16.as_gbs_num
+    end
+
   end
 
 end

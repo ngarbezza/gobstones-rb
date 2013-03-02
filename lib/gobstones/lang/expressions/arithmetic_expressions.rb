@@ -64,6 +64,10 @@ module Gobstones
 
       include TwoArgExpression
 
+      def evaluate
+        left_expr.evaluate ** right_expr.evaluate
+      end
+
     end
 
   end

@@ -22,7 +22,7 @@ module Gobstones
         self
       end
 
-      [:+, :-, :*, :/, :%].each do |selector|
+      [:+, :-, :*, :/, :%, :**].each do |selector|
         define_method selector do |other|
           self.class.new self.value.send(selector, other.value)
         end
