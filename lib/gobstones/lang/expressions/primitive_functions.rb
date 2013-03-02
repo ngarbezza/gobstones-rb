@@ -7,9 +7,17 @@ module Gobstones
 
     class NroBolitas < OneArgExpression
 
+      def evaluate(context)
+        context.head.number_of_balls(arg.evaluate(context)).to_gbs_num
+      end
+
     end
 
     class HayBolitas < OneArgExpression
+
+      def evaluate(context)
+        context.head.are_there_balls?(arg.evaluate(context)).to_gbs_bool
+      end
 
     end
 

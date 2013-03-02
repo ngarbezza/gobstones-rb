@@ -2,7 +2,7 @@ describe Gobstones::Parser, "function definitions" do
 
   it "should parse a function without args and a single return" do
     args = VarTuple.new []
-    func_return = ReturnFromFunction.new [42.as_gbs_num]
+    func_return = ReturnFromFunction.new [42.to_gbs_num]
 
     func_def = Function.new 'just42', args, CmdBlock.new([]), func_return
 

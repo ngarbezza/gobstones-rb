@@ -2,7 +2,7 @@ describe Gobstones::Parser, "nested expressions" do
 
   it "should parse literals between ()" do
     '(  42 )'.should be_parsed_as(:expression).
-      and_return(ParenthesesExpr.new(42.as_gbs_num))
+      and_return(ParenthesesExpr.new(42.to_gbs_num))
     '(True )'.should be_parsed_as(:expression).
       and_return(ParenthesesExpr.new(True.new))
     '(Rojo )'.should be_parsed_as(:expression).
@@ -18,8 +18,8 @@ describe Gobstones::Parser, "nested expressions" do
   end
 
   it "should parse nested arithmetic expressions between ()" do
-    paren_expr = ParenthesesExpr.new Add.new(3.as_gbs_num, 5.as_gbs_num)
-    expected = Mul.new paren_expr, 6.as_gbs_num
+    paren_expr = ParenthesesExpr.new Add.new(3.to_gbs_num, 5.to_gbs_num)
+    expected = Mul.new paren_expr, 6.to_gbs_num
     '(3 + 5) * 6'.should be_parsed_as(:expression).and_return(expected)
   end
 

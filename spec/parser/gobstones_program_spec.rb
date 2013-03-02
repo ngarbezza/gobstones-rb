@@ -26,7 +26,7 @@ GBS
   it "should parse a program with Main, procedures and functions" do
     main_def = Main.new CmdBlock.new([]), NoReturn.new
     proc_1 = Procedure.new 'Procedure1', VarTuple.new([]), CmdBlock.new([])
-    func_1 = Function.new 'function1', VarTuple.new([]), CmdBlock.new([]), ReturnFromFunction.new([42.as_gbs_num])
+    func_1 = Function.new 'function1', VarTuple.new([]), CmdBlock.new([]), ReturnFromFunction.new([42.to_gbs_num])
     proc_2 = Procedure.new 'Procedure2', VarTuple.new([]), CmdBlock.new([])
     program = Program.new [proc_1, func_1, proc_2], main_def
     gbs_code = <<GBS

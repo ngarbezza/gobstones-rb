@@ -6,7 +6,7 @@ module Gobstones
 
       include Comparable
 
-      def evaluate
+      def evaluate(context=nil)
         self
       end
 

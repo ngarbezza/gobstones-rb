@@ -37,8 +37,8 @@ describe "comparison expressions" do
     end
 
     it "should evaluate same numbers as equal" do
-      Equal.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == true_value
-      Equal.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == false_value
+      Equal.new(42.to_gbs_num, 42.to_gbs_num).evaluate.should == true_value
+      Equal.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == false_value
     end
 
   end
@@ -77,8 +77,8 @@ describe "comparison expressions" do
     end
 
     it "should evaluate same numbers as equal" do
-      NotEqual.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == false_value
-      NotEqual.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == true_value
+      NotEqual.new(42.to_gbs_num, 42.to_gbs_num).evaluate.should == false_value
+      NotEqual.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == true_value
     end
 
   end
@@ -93,9 +93,9 @@ describe "comparison expressions" do
     end
 
     it "should evaluate for numbers" do
-      LessThan.new(15.as_gbs_num, 42.as_gbs_num).evaluate.should == true_value
-      LessThan.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == false_value
-      LessThan.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == false_value
+      LessThan.new(15.to_gbs_num, 42.to_gbs_num).evaluate.should == true_value
+      LessThan.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == false_value
+      LessThan.new(42.to_gbs_num, 42.to_gbs_num).evaluate.should == false_value
     end
 
     it "should evaluate for colors" do
@@ -145,9 +145,9 @@ describe "comparison expressions" do
     end
 
     it "should evaluate for numbers" do
-      LessEqual.new(15.as_gbs_num, 42.as_gbs_num).evaluate.should == true_value
-      LessEqual.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == false_value
-      LessEqual.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == true_value
+      LessEqual.new(15.to_gbs_num, 42.to_gbs_num).evaluate.should == true_value
+      LessEqual.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == false_value
+      LessEqual.new(42.to_gbs_num, 42.to_gbs_num).evaluate.should == true_value
     end
 
     it "should evaluate for colors" do
@@ -194,9 +194,9 @@ describe "comparison expressions" do
     end
 
     it "should evaluate for numbers" do
-      GreaterThan.new(15.as_gbs_num, 42.as_gbs_num).evaluate.should == false_value
-      GreaterThan.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == true_value
-      GreaterThan.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == false_value
+      GreaterThan.new(15.to_gbs_num, 42.to_gbs_num).evaluate.should == false_value
+      GreaterThan.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == true_value
+      GreaterThan.new(42.to_gbs_num, 42.to_gbs_num).evaluate.should == false_value
     end
 
     it "should evaluate for colors" do
@@ -243,9 +243,9 @@ describe "comparison expressions" do
     end
 
     it "should evaluate for numbers" do
-      GreaterEqual.new(15.as_gbs_num, 42.as_gbs_num).evaluate.should == false_value
-      GreaterEqual.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == true_value
-      GreaterEqual.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == true_value
+      GreaterEqual.new(15.to_gbs_num, 42.to_gbs_num).evaluate.should == false_value
+      GreaterEqual.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == true_value
+      GreaterEqual.new(42.to_gbs_num, 42.to_gbs_num).evaluate.should == true_value
     end
 
     it "should evaluate for colors" do

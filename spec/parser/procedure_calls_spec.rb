@@ -14,7 +14,7 @@ describe Gobstones::Parser, "procedure calls" do
   end
 
   it "should parse a procedure with many args" do
-    first_arg = 42.as_gbs_num
+    first_arg = 42.to_gbs_num
     second_arg = NroBolitas.new Verde.new
     third_arg = Norte.new
     expected = ProcCall.new 'Proc1', [first_arg, second_arg, third_arg]
@@ -25,8 +25,8 @@ describe Gobstones::Parser, "procedure calls" do
 
   it "should parse a complex procedure call" do
     or_expr = Or.new VarName.new('a'), VarName.new('b')
-    paren_expr = ParenthesesExpr.new Div.new(10.as_gbs_num, VarName.new('c'))
-    num_expr = Mul.new 5.as_gbs_num, paren_expr
+    paren_expr = ParenthesesExpr.new Div.new(10.to_gbs_num, VarName.new('c'))
+    num_expr = Mul.new 5.to_gbs_num, paren_expr
     func_call = FuncCall.new 'func', [Verde.new, Opuesto.new(Norte.new)]
     proc_call = ProcCall.new 'Proc1', [or_expr, num_expr, func_call]
     'Proc1(a || b, 5*(10 div c), func(Verde, opuesto(Norte)))'.
