@@ -4,9 +4,7 @@ module Gobstones
 
   module Lang
 
-    class Number
-
-      include Literal
+    class Number < Literal
 
       attr_reader :value
 

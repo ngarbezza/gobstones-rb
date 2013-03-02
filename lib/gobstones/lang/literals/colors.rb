@@ -4,9 +4,7 @@ module Gobstones
 
   module Lang
 
-    class Color
-
-      include Literal
+    class Color < Literal
 
       def ==(other)
         self.class == other.class

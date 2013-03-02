@@ -4,9 +4,7 @@ module Gobstones
 
   module Lang
 
-    class Direction
-
-      include Literal
+    class Direction < Literal
 
       def ==(other)
         self.class == other.class

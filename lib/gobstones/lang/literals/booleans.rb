@@ -4,9 +4,7 @@ module Gobstones
 
   module Lang
 
-    class Boolean
-
-      include Literal
+    class Boolean < Literal
 
       def ==(other)
         self.class == other.class
