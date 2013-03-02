@@ -23,6 +23,10 @@ module Gobstones
 
     class PuedeMover < OneArgExpression
 
+      def evaluate(context)
+        context.head.can_move?(arg.evaluate(context)).to_gbs_bool
+      end
+
       def arg_type
         :Direction
       end
@@ -35,13 +39,25 @@ module Gobstones
 
     class Siguiente < OneArgExpression
 
+      def evaluate(context=nil)
+        arg.evaluate(context).next
+      end
+
     end
 
     class Previo < OneArgExpression
 
+      def evaluate(context=nil)
+        arg.evaluate(context).previous
+      end
+
     end
 
     class Opuesto < OneArgExpression
+
+      def evaluate(context=nil)
+        arg.evaluate(context).opposite
+      end
 
     end
 

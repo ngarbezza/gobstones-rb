@@ -34,6 +34,14 @@ module Gobstones
         Sur.new
       end
 
+      def previous
+        Oeste.new
+      end
+
+      def next
+        Este.new
+      end
+
     end
 
     class Este < Direction
@@ -48,6 +56,14 @@ module Gobstones
 
       def opposite
         Oeste.new
+      end
+
+      def previous
+        Norte.new
+      end
+
+      def next
+        Sur.new
       end
 
     end
@@ -66,6 +82,14 @@ module Gobstones
         Norte.new
       end
 
+      def previous
+        Este.new
+      end
+
+      def next
+        Oeste.new
+      end
+
     end
 
     class Oeste < Direction
@@ -80,6 +104,14 @@ module Gobstones
 
       def opposite
         Este.new
+      end
+
+      def previous
+        Sur.new
+      end
+
+      def next
+        Norte.new
       end
 
     end

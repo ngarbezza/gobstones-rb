@@ -10,6 +10,22 @@ module Gobstones
         :Boolean
       end
 
+      def opposite
+        self.not
+      end
+
+      def previous
+        self.not
+      end
+
+      def next
+        self.not
+      end
+
+      def not
+        raise 'subclass responsibility'
+      end
+
     end
 
     class True < Boolean

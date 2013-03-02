@@ -13,11 +13,11 @@ module Gobstones
       end
 
       def == other
-        super(other) && self.value == other.value
+        super(other) && value == other.value
       end
 
       def <(other)
-        self.value < other.value
+        value < other.value
       end
 
       def return_type
@@ -26,8 +26,20 @@ module Gobstones
 
       [:+, :-, :*, :/, :%, :**].each do |selector|
         define_method selector do |other|
-          self.class.new self.value.send(selector, other.value)
+          self.class.new value.send(selector, other.value)
         end
+      end
+
+      def opposite
+        self.class.new(-value)
+      end
+
+      def previous
+        self.class.new(value - 1)
+      end
+
+      def next
+        self.class.new(value + 1)
       end
 
     end

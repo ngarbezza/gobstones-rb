@@ -1,4 +1,5 @@
 require 'gobstones/lang/literals/literal'
+require 'gobstones/runner/gbs_type_error'
 
 module Gobstones
 
@@ -14,6 +15,10 @@ module Gobstones
         self.class.order.index(self.class) < self.class.order.index(other.class)
       end
 
+      def opposite
+        raise GbsTypeError, "colors don't have opposite"
+      end
+
       def return_type
         :Color
       end
@@ -22,17 +27,49 @@ module Gobstones
 
     class Azul < Color
 
+      def previous
+        Verde.new
+      end
+
+      def next
+        Negro.new
+      end
+
     end
 
     class Negro < Color
+
+      def previous
+        Azul.new
+      end
+
+      def next
+        Rojo.new
+      end
 
     end
 
     class Rojo < Color
 
+      def previous
+        Negro.new
+      end
+
+      def next
+        Verde.new
+      end
+
     end
 
     class Verde < Color
+
+      def previous
+        Rojo.new
+      end
+
+      def next
+        Azul.new
+      end
 
     end
 
