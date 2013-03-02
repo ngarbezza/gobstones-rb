@@ -1,8 +1,12 @@
+require 'gobstones/lang/literals/literal'
+
 module Gobstones
 
   module Lang
 
     class Number
+
+      include Literal
 
       attr_reader :value
 
@@ -16,10 +20,6 @@ module Gobstones
 
       def return_type
         :Number
-      end
-
-      def evaluate
-        self
       end
 
       [:+, :-, :*, :/, :%, :**].each do |selector|

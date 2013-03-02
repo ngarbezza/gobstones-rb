@@ -1,8 +1,12 @@
+require 'gobstones/lang/literals/literal'
+
 module Gobstones
 
   module Lang
 
     class Color
+
+      include Literal
 
       def ==(other)
         self.class == other.class

@@ -1,5 +1,11 @@
 describe "directions" do
 
+  it "should evaluate any direction to self" do
+    [Norte.new, Sur.new, Este.new, Oeste.new].each do |dir|
+      dir.evaluate.should == dir
+    end
+  end
+
   describe Norte do
 
     it "should return Sur as opposite direction" do
