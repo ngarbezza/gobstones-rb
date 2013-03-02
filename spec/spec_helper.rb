@@ -1,7 +1,8 @@
 require 'simplecov'
 
 require 'matchers/parse_matcher'
-require 'extensions/fixnum'
+require 'gobstones/extensions/fixnum'
+require 'gobstones/extensions/boolean'
 
 # TODO find best way to require all those files
 require 'gobstones/lang/literals/colors'
