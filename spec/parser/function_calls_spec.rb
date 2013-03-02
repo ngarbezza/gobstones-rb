@@ -15,7 +15,7 @@ describe Gobstones::Parser, "function calls" do
   end
 
   it "should parse a function with many args" do
-    first_arg = Number.new 42
+    first_arg = 42.as_gbs_num
     second_arg = NroBolitas.new Verde.new
     third_arg = Norte.new
     expected = FuncCall.new 'func1', [first_arg, second_arg, third_arg]
@@ -26,8 +26,8 @@ describe Gobstones::Parser, "function calls" do
 
   it "should parse a complex function call" do
     or_expr = Or.new VarName.new('a'), VarName.new('b')
-    paren_expr = ParenthesesExpr.new Div.new(Number.new(10), VarName.new('c'))
-    num_expr = Mul.new Number.new(5), paren_expr
+    paren_expr = ParenthesesExpr.new Div.new(10.as_gbs_num, VarName.new('c'))
+    num_expr = Mul.new 5.as_gbs_num, paren_expr
     func2_call = FuncCall.new 'func2', [Verde.new, Opuesto.new(Norte.new)]
     func1_call = FuncCall.new 'func1', [or_expr, num_expr, func2_call]
     'func1(a || b, 5*(10 div c), func2(Verde, opuesto(Norte)))'.

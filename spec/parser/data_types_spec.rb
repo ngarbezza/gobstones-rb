@@ -3,11 +3,11 @@ describe Gobstones::Parser, "data types" do
   describe "numbers" do
 
     it "should parse a positive number" do
-      '42'.should be_parsed_as(:expression).and_return(Number.new(42))
+      '42'.should be_parsed_as(:expression).and_return(42.as_gbs_num)
     end
 
     it "should parse a negative number" do
-      '-42'.should be_parsed_as(:expression).and_return(Number.new(-42))
+      '-42'.should be_parsed_as(:expression).and_return(-42.as_gbs_num)
     end
 
   end
