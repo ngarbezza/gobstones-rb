@@ -8,11 +8,19 @@ module Gobstones
 
       include TwoArgExpression
 
+      def evaluate
+        left_expr.evaluate.equal right_expr.evaluate
+      end
+
     end
 
     class NotEqual
 
       include TwoArgExpression
+
+      def evaluate
+        left_expr.evaluate.not_equal right_expr.evaluate
+      end
 
     end
 

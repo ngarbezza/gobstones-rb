@@ -10,10 +10,6 @@ module Gobstones
         self
       end
 
-      def equal(other)
-        (self == other).to_gbs_bool
-      end
-
       def <=>(other)
         self == other ? 0 : (self < other ? -1 : 1)
       end
@@ -24,6 +20,14 @@ module Gobstones
 
       def <(other)
         raise 'subclass responsibility'
+      end
+
+      def equal(other)
+        (self == other).to_gbs_bool
+      end
+
+      def not_equal(other)
+        (self != other).to_gbs_bool
       end
 
     end
