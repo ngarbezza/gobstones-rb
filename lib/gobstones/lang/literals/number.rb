@@ -22,24 +22,10 @@ module Gobstones
         self
       end
 
-      def + other
-        self.class.new self.value + other.value
-      end
-
-      def - other
-        self.class.new self.value - other.value
-      end
-
-      def * other
-        self.class.new self.value * other.value
-      end
-
-      def / other
-        self.class.new self.value / other.value
-      end
-
-      def % other
-        self.class.new self.value % other.value
+      [:+, :-, :*, :/, :%].each do |selector|
+        define_method selector do |other|
+          self.class.new self.value.send(selector, other.value)
+        end
       end
 
     end
