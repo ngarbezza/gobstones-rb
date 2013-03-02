@@ -4,9 +4,7 @@ module Gobstones
 
   module Lang
 
-    class Mover
-
-      include OneArgExpression
+    class Mover < OneArgExpression
 
       def evaluate(context)
         context.head.move arg

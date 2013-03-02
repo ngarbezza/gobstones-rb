@@ -6,9 +6,7 @@ module Gobstones
 
   module Lang
 
-    class Sacar
-
-      include OneArgExpression
+    class Sacar < OneArgExpression
 
       def evaluate(context)
         begin

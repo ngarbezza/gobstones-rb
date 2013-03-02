@@ -2,7 +2,7 @@ module Gobstones
 
   module Lang
 
-    module OneArgExpression
+    class OneArgExpression
 
       attr_reader :arg
 

@@ -4,9 +4,7 @@ module Gobstones
 
   module Lang
 
-    class Not
-
-      include OneArgExpression
+    class Not < OneArgExpression
 
       def evaluate
         arg.evaluate.not

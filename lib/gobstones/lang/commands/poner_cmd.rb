@@ -6,9 +6,7 @@ module Gobstones
 
   module Lang
 
-    class Poner
-
-      include OneArgExpression
+    class Poner < OneArgExpression
 
       def evaluate(context)
         begin

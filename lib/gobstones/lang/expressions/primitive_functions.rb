@@ -5,21 +5,15 @@ module Gobstones
 
   module Lang
 
-    class NroBolitas
-
-      include OneArgExpression
+    class NroBolitas < OneArgExpression
 
     end
 
-    class HayBolitas
-
-      include OneArgExpression
+    class HayBolitas < OneArgExpression
 
     end
 
-    class PuedeMover
-
-      include OneArgExpression
+    class PuedeMover < OneArgExpression
 
       def arg_type
         :Direction
@@ -31,21 +25,15 @@ module Gobstones
 
     end
 
-    class Siguiente
-
-      include OneArgExpression
+    class Siguiente < OneArgExpression
 
     end
 
-    class Previo
-
-      include OneArgExpression
+    class Previo < OneArgExpression
 
     end
 
-    class Opuesto
-
-      include OneArgExpression
+    class Opuesto < OneArgExpression
 
     end
 
