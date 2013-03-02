@@ -24,13 +24,19 @@ module Gobstones
 
     class LessEqual < TwoArgExpression
 
+      evaluates_with :less_equal
+
     end
 
     class GreaterEqual < TwoArgExpression
 
+      evaluates_with :greater_equal
+
     end
 
     class GreaterThan < TwoArgExpression
+
+      evaluates_with :greater_than
 
     end
 

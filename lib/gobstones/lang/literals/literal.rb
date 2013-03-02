@@ -22,16 +22,14 @@ module Gobstones
         raise 'subclass responsibility'
       end
 
-      def equal(other)
-        (self == other).to_gbs_bool
-      end
+      OPERATORS_MAPPING = { :equal => :==, :not_equal => '!='.to_sym,
+        :less_than => :<, :less_equal => :<=,
+        :greater_than => :>, :greater_equal => :>= }
 
-      def not_equal(other)
-        (self != other).to_gbs_bool
-      end
-
-      def less_than(other)
-        (self < other).to_gbs_bool
+      OPERATORS_MAPPING.each do |gbs_op, ruby_op|
+        define_method gbs_op do |other|
+          self.send(ruby_op, other).to_gbs_bool
+        end
       end
 
     end
