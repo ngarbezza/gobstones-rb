@@ -4,47 +4,33 @@ module Gobstones
 
   module Lang
 
-    class Equal
+    class Equal < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate.equal right_expr.evaluate
-      end
+      evaluates_with :equal
 
     end
 
-    class NotEqual
+    class NotEqual < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate.not_equal right_expr.evaluate
-      end
+      evaluates_with :not_equal
 
     end
 
-    class LessThan
+    class LessThan < TwoArgExpression
 
-      include TwoArgExpression
-
-    end
-
-    class LessEqual
-
-      include TwoArgExpression
+      evaluates_with :less_than
 
     end
 
-    class GreaterEqual
-
-      include TwoArgExpression
+    class LessEqual < TwoArgExpression
 
     end
 
-    class GreaterThan
+    class GreaterEqual < TwoArgExpression
 
-      include TwoArgExpression
+    end
+
+    class GreaterThan < TwoArgExpression
 
     end
 

@@ -30,6 +30,10 @@ module Gobstones
         (self != other).to_gbs_bool
       end
 
+      def less_than(other)
+        (self < other).to_gbs_bool
+      end
+
     end
 
   end

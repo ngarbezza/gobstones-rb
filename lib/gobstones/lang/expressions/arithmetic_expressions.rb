@@ -6,39 +6,25 @@ module Gobstones
 
   module Lang
 
-    class Add
+    class Add < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate + right_expr.evaluate
-      end
+      evaluates_with :+
 
     end
 
-    class Sub
+    class Sub < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate - right_expr.evaluate
-      end
+      evaluates_with :-
 
     end
 
-    class Mul
+    class Mul < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate * right_expr.evaluate
-      end
+      evaluates_with :*
 
     end
 
-    class Div
-
-      include TwoArgExpression
+    class Div < TwoArgExpression
 
       def evaluate
         begin
@@ -50,23 +36,15 @@ module Gobstones
 
     end
 
-    class Mod
+    class Mod < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate % right_expr.evaluate
-      end
+      evaluates_with :%
 
     end
 
-    class Pow
+    class Pow < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate ** right_expr.evaluate
-      end
+      evaluates_with :**
 
     end
 

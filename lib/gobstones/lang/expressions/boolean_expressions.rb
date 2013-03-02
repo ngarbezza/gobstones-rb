@@ -14,23 +14,15 @@ module Gobstones
 
     end
 
-    class And
+    class And < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate.and right_expr.evaluate
-      end
+      evaluates_with :and
 
     end
 
-    class Or
+    class Or < TwoArgExpression
 
-      include TwoArgExpression
-
-      def evaluate
-        left_expr.evaluate.or right_expr.evaluate
-      end
+      evaluates_with :or
 
     end
 

@@ -83,4 +83,56 @@ describe "comparison expressions" do
 
   end
 
+  describe LessThan do
+
+    it "should evaluate for booleans" do
+      LessThan.new(false_value, false_value).evaluate.should == false_value
+      LessThan.new(false_value, true_value).evaluate.should == true_value
+      LessThan.new(true_value, false_value).evaluate.should == false_value
+      LessThan.new(true_value, true_value).evaluate.should == false_value
+    end
+
+    it "should evaluate for numbers" do
+      LessThan.new(15.as_gbs_num, 42.as_gbs_num).evaluate.should == true_value
+      LessThan.new(42.as_gbs_num, 15.as_gbs_num).evaluate.should == false_value
+      LessThan.new(42.as_gbs_num, 42.as_gbs_num).evaluate.should == false_value
+    end
+
+    it "should evaluate for colors" do
+      color_classes = Color.order
+      color_classes.each_with_index do |color_class, index|
+        # should not be less than itself
+        LessThan.new(color_class.new, color_class.new).
+          evaluate.should == false_value
+        color_classes.take(index).each do |previous_color_class|
+          # should not be less than any previous value
+          LessThan.new(color_class.new, previous_color_class.new).
+            evaluate.should == false_value
+        end
+        color_classes.drop(index+1).each do |next_color_class|
+          # should be less than any next value
+          LessThan.new(color_class.new, next_color_class.new).
+            evaluate.should == true_value
+        end
+      end
+    end
+
+    it "should evaluate for directions" do
+      dir_classes = Direction.order
+      dir_classes.each_with_index do |dir_class, index|
+        LessThan.new(dir_class.new, dir_class.new).
+          evaluate.should == false_value
+        dir_classes.take(index).each do |previous_dir_class|
+          LessThan.new(dir_class.new, previous_dir_class.new).
+            evaluate.should == false_value
+        end
+        dir_classes.drop(index+1).each do |next_dir_class|
+          LessThan.new(dir_class.new, next_dir_class.new).
+            evaluate.should == true_value
+        end
+      end
+    end
+
+  end
+
 end

@@ -2,9 +2,17 @@ module Gobstones
 
   module Lang
 
-    module TwoArgExpression
+    class TwoArgExpression
 
       attr_reader :left_expr, :right_expr
+
+      def self.evaluates_with(selector)
+        instance_eval do
+          define_method :evaluate do
+            left_expr.evaluate.send(selector, right_expr.evaluate)
+          end
+        end
+      end
 
       def initialize(left, right)
         @left_expr = left
