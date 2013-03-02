@@ -38,6 +38,10 @@ module Gobstones
         self.class.new self.value / other.value
       end
 
+      def % other
+        self.class.new self.value % other.value
+      end
+
     end
 
   end
