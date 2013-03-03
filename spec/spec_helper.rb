@@ -39,6 +39,7 @@ require 'gobstones/runner/board'
 require 'gobstones/runner/head'
 require 'gobstones/runner/execution_context'
 require 'gobstones/runner/gbs_runtime_error'
+require 'gobstones/runner/boom_error'
 
 require 'gobstones/parser/treetop_parser'
 

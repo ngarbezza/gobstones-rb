@@ -1,3 +1,5 @@
+require 'gobstones/runner/boom_error'
+
 module Gobstones
 
   module Lang
@@ -13,6 +15,10 @@ module Gobstones
       def ==(other)
         self.class == other.class &&
         self.message == other.message
+      end
+
+      def evaluate(context=nil)
+        raise BoomError, message
       end
 
     end
