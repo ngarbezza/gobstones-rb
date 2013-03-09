@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     autotest-standalone (4.5.11)
     diff-lcs (1.2.1)

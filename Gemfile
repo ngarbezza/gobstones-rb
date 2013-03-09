@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'treetop', '~> 1.4'
 gem 'rake', '~> 10.0'
