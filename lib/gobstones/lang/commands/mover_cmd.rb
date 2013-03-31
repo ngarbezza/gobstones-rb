@@ -7,7 +7,7 @@ module Gobstones
     class Mover < OneArgExpression
 
       def evaluate(context)
-        context.head.move arg
+        context.head.move arg.evaluate(context)
       end
 
       def undo(context)

@@ -13,6 +13,12 @@ module Gobstones
         super('Main', VarTuple.new([]), body, return_statement)
       end
 
+      def evaluate(context)
+        # evaluate body
+        body.evaluate context
+        # evaluate return
+      end
+
     end
 
   end

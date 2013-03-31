@@ -10,14 +10,14 @@ module Gobstones
 
       def evaluate(context)
         begin
-          context.head.take_out arg
+          context.head.take_out arg.evaluate(context)
         rescue RuntimeError => e
           raise GbsTypeError, e.message
         end
       end
 
       def undo(context)
-        context.head.put arg
+        context.head.put arg.evaluate(context)
       end
 
       def opposite

@@ -1,7 +1,16 @@
+require 'gobstones/lang/program'
+require 'gobstones/lang/commands/command_block'
+require 'gobstones/lang/commands/poner_cmd'
+require 'gobstones/lang/commands/mover_cmd'
+require 'gobstones/lang/definitions/no_return'
+require 'gobstones/lang/definitions/main'
+
 module Gobstones
 
   # TODO divide into smaller modules
   module Parser
+
+    include Gobstones::Lang
 
     RESERVED_IDS = %w(
       if else not True False case of while Skip repeatWith in procedure function

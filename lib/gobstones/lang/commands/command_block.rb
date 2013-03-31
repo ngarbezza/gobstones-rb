@@ -15,6 +15,10 @@ module Gobstones
         self.cmds == other.cmds
       end
 
+      def evaluate(context)
+        cmds.each { |cmd| cmd.evaluate context }
+      end
+
     end
 
   end

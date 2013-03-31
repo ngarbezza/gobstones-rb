@@ -17,6 +17,12 @@ module Gobstones
         self.main_definition == other.main_definition
       end
 
+      def evaluate(context)
+        # evaluate each definition
+        # evaluate main definition
+        main_definition.evaluate context
+      end
+
     end
 
   end
