@@ -26,6 +26,14 @@ module Gobstones
         raise 'subclass responsibility'
       end
 
+      def if_true(block, context)
+        raise 'subclass responsibility'
+      end
+
+      def if_false(block, context)
+        raise 'subclass responsibility'
+      end
+
     end
 
     class True < Boolean
@@ -46,6 +54,14 @@ module Gobstones
         False.new
       end
 
+      def if_true(block, context)
+        block.evaluate context
+      end
+
+      def if_false(block, context)
+        # nothing to do, I'm true :)
+      end
+
     end
 
     class False < Boolean
@@ -64,6 +80,14 @@ module Gobstones
 
       def not
         True.new
+      end
+
+      def if_true(block, context)
+        # nothing to do, I'm false :)
+      end
+
+      def if_false(block, context)
+        block.evaluate context
       end
 
     end

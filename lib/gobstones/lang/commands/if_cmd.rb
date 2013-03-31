@@ -6,6 +6,10 @@ module Gobstones
 
     class IfCmd < ConditionalCmd
 
+      def evaluate(context)
+        evaluate_condition(context).if_true(then_block, context)
+      end
+
     end
 
     class IfElseCmd < IfCmd
@@ -19,6 +23,12 @@ module Gobstones
 
       def ==(other)
         super(other) && self.else_block == other.else_block
+      end
+
+      def evaluate(context)
+        cond = evaluate_condition context
+        cond.if_true then_block, context
+        cond.if_false else_block, context
       end
 
     end

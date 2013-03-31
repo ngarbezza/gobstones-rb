@@ -22,6 +22,14 @@ module Gobstones
         raise 'subclass responsibility'
       end
 
+      def if_true(block, context)
+        raise GbsTypeError, "#{self} is not a boolean"
+      end
+
+      def if_false(block, context)
+        raise GbsTypeError, "#{self} is not a boolean"
+      end
+
       OPERATORS_MAPPING = { :equal => :==, :not_equal => '!='.to_sym,
         :less_than => :<, :less_equal => :<=,
         :greater_than => :>, :greater_equal => :>= }
