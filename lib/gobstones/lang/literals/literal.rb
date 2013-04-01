@@ -34,6 +34,14 @@ module Gobstones
         raise GbsTypeError, "#{self} is not a boolean"
       end
 
+      def same_type_as(other)
+        self.return_type == other.return_type
+      end
+
+      def return_type
+        raise 'subclass responsibility'
+      end
+
       OPERATORS_MAPPING = { :equal => :==, :not_equal => '!='.to_sym,
         :less_than => :<, :less_equal => :<=,
         :greater_than => :>, :greater_equal => :>= }
