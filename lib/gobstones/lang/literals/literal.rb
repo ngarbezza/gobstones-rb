@@ -30,6 +30,10 @@ module Gobstones
         raise GbsTypeError, "#{self} is not a boolean"
       end
 
+      def is_true?
+        raise GbsTypeError, "#{self} is not a boolean"
+      end
+
       OPERATORS_MAPPING = { :equal => :==, :not_equal => '!='.to_sym,
         :less_than => :<, :less_equal => :<=,
         :greater_than => :>, :greater_equal => :>= }
