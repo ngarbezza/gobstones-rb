@@ -28,5 +28,10 @@ describe WhileCmd do
       .to raise_error(GbsTypeError, /is not a boolean/)
   end
 
+  it "should fail by stack overflow if the condition is always true" do
+    while_cmd = WhileCmd.new True.new, while_block
+    expect { while_cmd.evaluate context }
+      .to raise_error(GbsRuntimeError, /stack overflow/)
+  end
 
 end
