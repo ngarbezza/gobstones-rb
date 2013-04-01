@@ -22,6 +22,10 @@ module Gobstones
         @values[var_name] || (raise UndefinedVariableError)
       end
 
+      def has_variable_named?(name)
+        @values.keys.any? { |var| var.name == name }
+      end
+
     end
 
   end

@@ -8,8 +8,9 @@ module Gobstones
 
       def self.evaluates_with(selector)
         instance_eval do
-          define_method :evaluate do
-            left_expr.evaluate.send(selector, right_expr.evaluate)
+          define_method :evaluate do |*args|
+            left_expr.evaluate(args)
+              .send(selector, right_expr.evaluate(args))
           end
         end
       end
