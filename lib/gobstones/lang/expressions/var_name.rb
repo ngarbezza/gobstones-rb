@@ -14,6 +14,10 @@ module Gobstones
         self.class == var.class && self.name == var.name
       end
 
+      def evaluate(context)
+        context.get self
+      end
+
     end
 
   end
