@@ -14,6 +14,12 @@ module Gobstones
         self.class == var.class && self.name == var.name
       end
 
+      alias eql? ==
+
+      def hash
+        @name.hash
+      end
+
       def evaluate(context)
         context.get self
       end

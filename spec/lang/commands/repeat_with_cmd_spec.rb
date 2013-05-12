@@ -28,4 +28,14 @@ describe RepeatWithCmd do
     context.has_variable_named?('var').should be_false
   end
 
+  it "should allow to use the index variable inside the command block" do
+    cmd_block = CmdBlock.new [Poner.new(VarName.new('var'))]
+    repeat_with = RepeatWithCmd.new var_name, Azul.new, Verde.new, cmd_block
+    repeat_with.evaluate context
+    context.head.are_there_balls?(Azul.new).should be_true
+    context.head.are_there_balls?(Negro.new).should be_true
+    context.head.are_there_balls?(Rojo.new).should be_true
+    context.head.are_there_balls?(Verde.new).should be_true
+  end
+
 end
