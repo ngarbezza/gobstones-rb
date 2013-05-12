@@ -137,11 +137,11 @@ STR
 
     class Runner
 
-      # def self.run(file_name)
-        # # parse file contents
-        # runner = new code
-        # runner.run
-      # end
+      def self.run(file_name)
+        code = File.read(file_name)
+        runner = new code
+        runner.run
+      end
 
       def initialize(code)
         @code = code
@@ -160,14 +160,3 @@ STR
   end
 
 end
-
-gobstones_program = 'procedure Main() {
-  Mover(Este)
-  Poner(Rojo)
-  Poner(Rojo)
-  Poner(Azul)
-  Poner(Verde); Poner(Verde); Poner(Verde); Poner(Verde); Poner(Verde)
-  Poner(Verde); Poner(Verde); Poner(Verde); Poner(Verde); Poner(Verde)
-}'
-
-Gobstones::CLI::Runner.new(gobstones_program).run
