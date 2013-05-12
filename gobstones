@@ -3,6 +3,9 @@
 $:.unshift File.dirname(__FILE__) + '/lib'
 
 require 'gobstones/cli/cli'
+require 'gobstones/lang/all'
+require 'gobstones/extensions/all'
+require 'gobstones/runner/all'
 
 gbs_file = ARGV[0]
 if gbs_file

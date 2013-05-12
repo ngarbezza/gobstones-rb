@@ -1,5 +1,4 @@
 require 'gobstones/parser/treetop_parser'
-require 'gobstones/runner/execution_context'
 
 include Gobstones::Parser
 

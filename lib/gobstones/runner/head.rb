@@ -1,7 +1,3 @@
-require 'gobstones/runner/board'
-require 'gobstones/runner/gbs_type_error'
-require 'gobstones/lang/literals/directions'
-
 module Gobstones
 
   module Runner

@@ -1,6 +1,3 @@
-require 'gobstones/runner/head'
-require 'gobstones/runner/undefined_variable_error'
-
 module Gobstones
 
   module Runner

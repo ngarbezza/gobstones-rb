@@ -1,6 +1,3 @@
-require 'gobstones/runner/out_of_board_error'
-require 'gobstones/runner/cell'
-
 module Gobstones
 
   module Runner
