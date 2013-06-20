@@ -8,3 +8,5 @@ group :test do
   gem 'rspec', '~> 2'
   gem 'simplecov', '~> 0.7', :require => false
 end
+
+gem 'coveralls', :require => false
