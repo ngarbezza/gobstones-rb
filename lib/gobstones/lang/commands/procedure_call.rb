@@ -8,6 +8,12 @@ module Gobstones
 
       include DefinitionCall
 
+      def evaluate(context)
+        context.definition_named(name, ->(definition) {
+          definition.evaluate context
+        }, -> { nil } )
+      end
+
     end
 
   end

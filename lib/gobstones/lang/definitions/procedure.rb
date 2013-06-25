@@ -11,6 +11,10 @@ module Gobstones
         super(name, args, body, NoReturn.new)
       end
 
+      def evaluate(context)
+        body.evaluate context
+      end
+
     end
 
   end

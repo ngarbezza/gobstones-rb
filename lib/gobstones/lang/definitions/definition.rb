@@ -21,6 +21,10 @@ module Gobstones
         self.return_statement == other.return_statement
       end
 
+      def named?(a_name)
+        name == a_name
+      end
+
     end
 
   end

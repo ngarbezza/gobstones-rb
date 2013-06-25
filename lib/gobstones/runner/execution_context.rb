@@ -9,6 +9,7 @@ module Gobstones
       def initialize
         @head = Head.new
         @values = {}
+        @definitions = []
       end
 
       def set(var_name, value)
@@ -25,6 +26,19 @@ module Gobstones
 
       def has_variable_named?(name)
         @values.keys.any? { |var| var.name == name }
+      end
+
+      def add_definition(definition)
+        @definitions << definition
+      end
+
+      def definition_named(name, found_block, not_found_block)
+        found_definition = @definitions.find { |definition| definition.named? name }
+        if found_definition
+          found_block.call found_definition
+        else
+          not_found_block.call
+        end
       end
 
     end
