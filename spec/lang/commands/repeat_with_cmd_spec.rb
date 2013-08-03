@@ -1,6 +1,6 @@
 describe RepeatWithCmd do
 
-  let(:context) { ExecutionContext.new }
+  let(:context) { ExecutionContext.for double('GobstonesProgram') }
   let(:var_name) { VarName.new 'var' }
 
   it "should iterate over numbers" do

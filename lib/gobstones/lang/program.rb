@@ -1,3 +1,5 @@
+require 'gobstones/runner/execution_context'
+
 module Gobstones
 
   module Lang
@@ -17,9 +19,8 @@ module Gobstones
         self.main_definition == other.main_definition
       end
 
-      def evaluate(context)
-        # evaluate each definition
-        # evaluate main definition
+      def evaluate
+        context = Gobstones::Runner::ExecutionContext.for self
         main_definition.evaluate context
       end
 

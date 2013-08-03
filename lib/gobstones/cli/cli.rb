@@ -149,8 +149,7 @@ STR
       def run
         parser = Gobstones::Parser::TreetopParser.new
         program = parser.parse(@code).value
-        context = Gobstones::Runner::ExecutionContext.new
-        program.evaluate context
+        program.evaluate
         Gobstones::CLI::Printer.new(context).print
       end
 

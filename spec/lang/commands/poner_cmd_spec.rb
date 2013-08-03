@@ -1,6 +1,6 @@
 describe Poner do
 
-  let(:context) { ExecutionContext.new }
+  let(:context) { ExecutionContext.for double('GobstonesProgram') }
   let(:green) { Verde.new }
 
   it "should execute" do

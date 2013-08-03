@@ -1,7 +1,7 @@
 describe "procedure calls" do
 
   it "should execute an existing procedure when calling it" do
-    context = ExecutionContext.new
+    context = ExecutionContext.for double('GobstonesProgram')
     poner_cmd = Poner.new Verde.new
     args = VarTuple.new []
     body = CmdBlock.new [poner_cmd]

@@ -1,6 +1,6 @@
 describe "if command" do
 
-  let(:context) { ExecutionContext.new }
+  let(:context) { ExecutionContext.for double('GobstonesProgram') }
   let(:then_block) { CmdBlock.new [Poner.new(Verde.new)] }
   let(:else_block) { CmdBlock.new [Poner.new(Rojo.new)] }
 

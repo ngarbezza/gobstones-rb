@@ -6,9 +6,14 @@ module Gobstones
 
       attr_reader :head
 
-      def initialize
+      def self.for(program)
+        self.new program
+      end
+
+      def initialize(program)
         @head = Head.new
         @values = {}
+        @program = program
         @definitions = []
       end
 
