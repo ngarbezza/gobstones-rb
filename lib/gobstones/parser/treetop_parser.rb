@@ -8,13 +8,26 @@ module Gobstones
     class TreetopParser
 
       def initialize
-        base_path = File.expand_path(File.dirname(__FILE__))
-        Treetop.load(File.join(base_path, 'grammar/gobstones'))
+        Treetop.load grammar_file
         @parser = GobstonesParser.new
       end
 
       def parse(code)
-        @parser.parse(code)
+        @parser.parse remove_comments_from(code)
+      end
+
+      def remove_comments_from(code)
+        code.gsub(/\/\/(.*)$/, '').gsub(/--(.*)$/, '')
+      end
+
+      private
+
+      def grammar_file
+        File.join base_path, 'grammar/gobstones'
+      end
+
+      def base_path
+        File.expand_path File.dirname(__FILE__)
       end
 
     end
