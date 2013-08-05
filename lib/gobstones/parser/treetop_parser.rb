@@ -17,7 +17,11 @@ module Gobstones
       end
 
       def remove_comments_from(code)
-        code.gsub(/\/\/(.*)$/, '').gsub(/--(.*)$/, '')
+        code
+          .gsub(single_line_c_style_comments_regex, '')
+          .gsub(single_line_haskell_style_comments_regex, '')
+          .gsub(multi_line_c_style_comments_regex, '')
+          .gsub(multi_line_haskell_style_comments_regex, '')
       end
 
       private
@@ -28,6 +32,22 @@ module Gobstones
 
       def base_path
         File.expand_path File.dirname(__FILE__)
+      end
+
+      def single_line_c_style_comments_regex
+        /\/\/.*$/
+      end
+
+      def single_line_haskell_style_comments_regex
+        /--.*$/
+      end
+
+      def multi_line_c_style_comments_regex
+        /\/\*.*?\*\//m
+      end
+
+      def multi_line_haskell_style_comments_regex
+        /{-.*?\-}/m
       end
 
     end
