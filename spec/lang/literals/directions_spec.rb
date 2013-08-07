@@ -1,9 +1,13 @@
 describe "directions" do
 
+  let(:all) { [Norte.new, Sur.new, Este.new, Oeste.new] }
+
   it "should evaluate any direction to self" do
-    [Norte.new, Sur.new, Este.new, Oeste.new].each do |dir|
-      dir.evaluate.should == dir
-    end
+    all.each { |dir| dir.evaluate.should == dir }
+  end
+
+  it "should return the string representation" do
+    all.map(&:to_s).should == ['Norte', 'Sur', 'Este', 'Oeste']
   end
 
   describe Norte do

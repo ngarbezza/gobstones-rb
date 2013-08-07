@@ -35,6 +35,10 @@ module Gobstones
         Negro.new
       end
 
+      def to_s
+        'Azul'
+      end
+
     end
 
     class Negro < Color
@@ -45,6 +49,10 @@ module Gobstones
 
       def next
         Rojo.new
+      end
+
+      def to_s
+        'Negro'
       end
 
     end
@@ -59,6 +67,10 @@ module Gobstones
         Verde.new
       end
 
+      def to_s
+        'Rojo'
+      end
+
     end
 
     class Verde < Color
@@ -69,6 +81,10 @@ module Gobstones
 
       def next
         Azul.new
+      end
+
+      def to_s
+        'Verde'
       end
 
     end

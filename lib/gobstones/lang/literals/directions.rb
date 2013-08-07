@@ -42,6 +42,10 @@ module Gobstones
         Este.new
       end
 
+      def to_s
+        'Norte'
+      end
+
     end
 
     class Este < Direction
@@ -64,6 +68,10 @@ module Gobstones
 
       def next
         Sur.new
+      end
+
+      def to_s
+        'Este'
       end
 
     end
@@ -90,6 +98,10 @@ module Gobstones
         Oeste.new
       end
 
+      def to_s
+        'Sur'
+      end
+
     end
 
     class Oeste < Direction
@@ -112,6 +124,10 @@ module Gobstones
 
       def next
         Norte.new
+      end
+
+      def to_s
+        'Oeste'
       end
 
     end
