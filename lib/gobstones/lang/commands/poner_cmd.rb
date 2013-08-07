@@ -9,17 +9,15 @@ module Gobstones
     class Poner < OneArgExpression
 
       def evaluate(context)
-        begin
-          context.head.put(arg.evaluate(context))
-        rescue RuntimeError => e
-          raise GbsTypeError, e.message
-        end
+        context.head.put arg.evaluate(context)
+      rescue RuntimeError => e
+        raise Gobstones::Runner::GbsTypeError, e.message
       end
 
       def undo(context)
         # TODO maybe the command should use the original context
         # instead of this one (when it was executed)
-        context.head.take_out(arg.evaluate(context))
+        context.head.take_out arg.evaluate(context)
       end
 
       def opposite

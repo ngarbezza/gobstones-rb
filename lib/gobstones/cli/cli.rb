@@ -147,10 +147,14 @@ STR
       end
 
       def run
-        parser = Gobstones::Parser::TreetopParser.new
-        program = parser.parse(@code).value
-        program.evaluate
-        Gobstones::CLI::Printer.new(context).print
+        begin
+          parser = Gobstones::Parser::TreetopParser.new
+          program = parser.parse(@code).value
+          context = program.evaluate
+          Gobstones::CLI::Printer.new(context).print
+        rescue Exception => e
+          puts e.message
+        end
       end
 
     end
