@@ -20,7 +20,7 @@ module Gobstones
       end
 
       def evaluate
-        context = Gobstones::Runner::ExecutionContext.for self
+        context = Gobstones::Runner::ProgramExecutionContext.for self
         main_definition.evaluate context
         context
       end

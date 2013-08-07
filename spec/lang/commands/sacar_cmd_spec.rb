@@ -1,6 +1,6 @@
 describe Sacar do
 
-  let(:context) { ExecutionContext.for double('GobstonesProgram') }
+  let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
   let(:red) { Rojo.new }
 
   it "should execute" do

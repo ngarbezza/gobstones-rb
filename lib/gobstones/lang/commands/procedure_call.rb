@@ -9,8 +9,9 @@ module Gobstones
       include DefinitionCall
 
       def evaluate(context)
+        evaluated_args = args.map { |arg| arg.evaluate context }
         context.definition_named(name, ->(definition) {
-          definition.evaluate context
+          definition.evaluate context, evaluated_args
         }, -> { nil } )
       end
 

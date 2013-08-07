@@ -1,6 +1,6 @@
 describe VarName do
 
-  let(:context) { ExecutionContext.for double('GobstonesProgram') }
+  let(:context) { ExecutionContext.new }
 
   it "should return the associated value if it was defined in the context" do
     var_name = VarName.new 'var'

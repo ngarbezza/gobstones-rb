@@ -1,6 +1,6 @@
 describe WhileCmd do
 
-  let(:context) { ExecutionContext.for double('GobstonesProgram') }
+  let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
   let(:while_block) { CmdBlock.new [Poner.new(Verde.new)] }
 
   def condition(times)

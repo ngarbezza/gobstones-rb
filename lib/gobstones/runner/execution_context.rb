@@ -4,16 +4,8 @@ module Gobstones
 
     class ExecutionContext
 
-      attr_reader :head
-
-      def self.for(program)
-        self.new program
-      end
-
-      def initialize(program)
-        @head = Head.new
+      def initialize
         @values = {}
-        @program = program
       end
 
       def set(var_name, value)
@@ -30,6 +22,22 @@ module Gobstones
 
       def has_variable_named?(name)
         @values.keys.any? { |var| var.name == name }
+      end
+
+    end
+
+    class ProgramExecutionContext < ExecutionContext
+
+      attr_reader :head
+
+      def self.for(program)
+        self.new program
+      end
+
+      def initialize(program)
+        super()
+        @head = Head.new
+        @program = program
       end
 
       def definition_named(name, found_block, not_found_block)

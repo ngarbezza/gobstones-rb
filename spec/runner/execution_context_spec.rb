@@ -1,10 +1,6 @@
 describe ExecutionContext do
 
-  let(:context) { ExecutionContext.for double('GobstonesProgram') }
-
-  it "should have a head" do
-    context.head.should be_a Head
-  end
+  let(:context) { ExecutionContext.new }
 
   describe "variables context" do
 

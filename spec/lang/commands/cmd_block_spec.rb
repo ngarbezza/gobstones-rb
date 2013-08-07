@@ -1,7 +1,8 @@
 describe CmdBlock do
 
   it "should evaluate all inner commands" do
-    context = ExecutionContext.for double('GobstonesProgram')
+    program = Program.new [], nil
+    context = ProgramExecutionContext.for program
     cmd_block = CmdBlock.new [
       Poner.new(Rojo.new), Poner.new(Verde.new),
       Poner.new(Negro.new), Poner.new(Azul.new)]

@@ -1,6 +1,6 @@
 describe SingleAssignment do
 
-  let(:context) { ExecutionContext.for double('GobstonesProgram') }
+  let(:context) { ExecutionContext.new }
 
   it "should associate the var name with the evaluated expression" do
     var_name = VarName.new 'a'

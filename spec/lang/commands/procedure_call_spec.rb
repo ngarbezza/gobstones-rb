@@ -6,7 +6,7 @@ describe "procedure calls" do
     body = CmdBlock.new [poner_cmd]
     my_procedure = Procedure.new 'MyProcedure', args, body
     program = Program.new [my_procedure], nil
-    context = ExecutionContext.for program
+    context = ProgramExecutionContext.for program
 
     proc_call = ProcCall.new 'MyProcedure', []
     proc_call.evaluate context
