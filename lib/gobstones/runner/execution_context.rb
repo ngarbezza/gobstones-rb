@@ -53,6 +53,23 @@ module Gobstones
 
     end
 
+    class ProcedureExecutionContext < ExecutionContext
+
+      def self.based_on(outer_context)
+        self.new outer_context
+      end
+
+      def initialize(outer_context)
+        super()
+        @outer_context = outer_context
+      end
+
+      def head
+        @outer_context.head
+      end
+
+    end
+
   end
 
 end
