@@ -51,6 +51,10 @@ module Gobstones
         end
       end
 
+      def program_context
+        self
+      end
+
     end
 
     class ProcedureExecutionContext < ExecutionContext
@@ -66,6 +70,10 @@ module Gobstones
 
       def head
         @outer_context.head
+      end
+
+      def program_context
+        @outer_context.program_context
       end
 
     end

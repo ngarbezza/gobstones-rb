@@ -10,7 +10,7 @@ module Gobstones
 
       def evaluate(context)
         evaluated_args = args.map { |arg| arg.evaluate context }
-        context.definition_named(name, ->(definition) {
+        context.program_context.definition_named(name, ->(definition) {
           definition.evaluate context, evaluated_args
         }, -> { nil } )
       end

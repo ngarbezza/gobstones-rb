@@ -30,5 +30,28 @@ describe ExecutionContext do
 
   end
 
+  describe ProgramExecutionContext do
+
+    it "should return self as program_context" do
+      program = Program.new [], nil
+      program_context = ProgramExecutionContext.for program
+
+      program_context.program_context.should == program_context
+    end
+
+  end
+
+  describe ProcedureExecutionContext do
+
+    it "should return the program_context in which it is based" do
+      program = Program.new [], nil
+      program_context = ProgramExecutionContext.for program
+      procedure_context = ProcedureExecutionContext.based_on program_context
+
+      procedure_context.program_context.should == program_context
+    end
+
+  end
+
 end
 

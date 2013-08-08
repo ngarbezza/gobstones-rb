@@ -1,10 +1,12 @@
 describe "procedure calls" do
 
+  let(:empty_args) { VarTuple.new [] }
+  let(:empty_body) { CmdBlock.new [] }
+
   it "should execute an existing procedure when calling it" do
     poner_cmd = Poner.new Verde.new
-    args = VarTuple.new []
     body = CmdBlock.new [poner_cmd]
-    my_procedure = Procedure.new 'MyProcedure', args, body
+    my_procedure = Procedure.new 'MyProcedure', empty_args, body
     program = Program.new [my_procedure], nil
     context = ProgramExecutionContext.for program
 
@@ -12,6 +14,22 @@ describe "procedure calls" do
     proc_call.evaluate context
 
     context.head.are_there_balls?(Verde.new).should be_true
+  end
+
+  it "should allow to call a procedure from another procedure" do
+    poner_cmd = Poner.new Azul.new
+    inner_procedure_body = CmdBlock.new [poner_cmd]
+    inner_procedure = Procedure.new 'Inner', empty_args, inner_procedure_body
+    call_to_inner_procedure = ProcCall.new 'Inner', []
+    outer_procedure_body = CmdBlock.new [call_to_inner_procedure]
+    outer_procedure = Procedure.new 'Outer', empty_args, outer_procedure_body
+    program = Program.new [outer_procedure, inner_procedure], nil
+    program_context = ProgramExecutionContext.for program
+
+    call_to_outer_procedure = ProcCall.new 'Outer', []
+    call_to_outer_procedure.evaluate program_context
+
+    program_context.head.are_there_balls?(Azul.new).should be_true
   end
 
   it "should fail to execute an undefined procedure" do
