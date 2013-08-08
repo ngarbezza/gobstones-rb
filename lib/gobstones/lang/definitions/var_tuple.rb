@@ -15,6 +15,10 @@ module Gobstones
         self.variables == other.variables
       end
 
+      def length
+        variables.length
+      end
+
     end
 
   end
