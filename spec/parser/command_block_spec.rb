@@ -37,7 +37,7 @@ describe Gobstones::Parser, "command blocks" do
   end
 
   it "should parse a block with simple and complex cmds" do
-    first = ProcCall.new 'Proc', []
+    first = ProcedureCall.new 'Proc', []
     second = IfCmd.new True.new, CmdBlock.new([])
     cmd_block = CmdBlock.new [first, second]
 

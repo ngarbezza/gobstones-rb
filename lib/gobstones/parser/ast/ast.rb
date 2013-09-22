@@ -130,7 +130,7 @@ module Gobstones
     ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
 
     ast_node :ProcCallNode do
-      ProcCall.new proc_name.text_value, gexp_tuple.value
+      ProcedureCall.new proc_name.text_value, gexp_tuple.value
     end
 
     ast_node :SingleAssignmentNode do

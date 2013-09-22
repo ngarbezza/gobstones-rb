@@ -5,7 +5,7 @@ module Gobstones
 
   module Lang
 
-    class ProcCall
+    class ProcedureCall
 
       include DefinitionCall
 

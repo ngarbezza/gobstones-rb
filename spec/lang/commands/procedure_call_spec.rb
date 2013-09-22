@@ -10,7 +10,7 @@ describe "procedure calls" do
     program = Program.new [my_procedure], nil
     context = ProgramExecutionContext.for program
 
-    proc_call = ProcCall.new 'MyProcedure', []
+    proc_call = ProcedureCall.new 'MyProcedure', []
     proc_call.evaluate context
 
     context.head.are_there_balls?(Verde.new).should be_true
@@ -20,13 +20,13 @@ describe "procedure calls" do
     poner_cmd = Poner.new Azul.new
     inner_procedure_body = CmdBlock.new [poner_cmd]
     inner_procedure = Procedure.new 'Inner', empty_args, inner_procedure_body
-    call_to_inner_procedure = ProcCall.new 'Inner', []
+    call_to_inner_procedure = ProcedureCall.new 'Inner', []
     outer_procedure_body = CmdBlock.new [call_to_inner_procedure]
     outer_procedure = Procedure.new 'Outer', empty_args, outer_procedure_body
     program = Program.new [outer_procedure, inner_procedure], nil
     program_context = ProgramExecutionContext.for program
 
-    call_to_outer_procedure = ProcCall.new 'Outer', []
+    call_to_outer_procedure = ProcedureCall.new 'Outer', []
     call_to_outer_procedure.evaluate program_context
 
     program_context.head.are_there_balls?(Azul.new).should be_true
@@ -35,7 +35,7 @@ describe "procedure calls" do
   it "should fail to execute an undefined procedure" do
     program = Program.new [], nil
     context = ProgramExecutionContext.for program
-    proc_call = ProcCall.new 'UndefinedProcedure', []
+    proc_call = ProcedureCall.new 'UndefinedProcedure', []
 
     expect { proc_call.evaluate context }
       .to raise_error(DefinitionNotFound, DefinitionNotFound.message_for('UndefinedProcedure'))
