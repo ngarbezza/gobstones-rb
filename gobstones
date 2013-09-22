@@ -2,7 +2,7 @@
 
 $:.unshift File.dirname(__FILE__) + '/lib'
 
-require 'gobstones/cli/cli'
+require 'gobstones/cli/runner'
 require 'gobstones/lang/all'
 require 'gobstones/extensions/all'
 require 'gobstones/runner/all'

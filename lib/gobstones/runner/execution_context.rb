@@ -55,6 +55,10 @@ module Gobstones
         self
       end
 
+      def board
+        head.board
+      end
+
     end
 
     class ProcedureExecutionContext < ExecutionContext

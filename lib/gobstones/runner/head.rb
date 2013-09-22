@@ -7,7 +7,7 @@ module Gobstones
       MAX_ROWS = 9
       MAX_COLS = 9
 
-      attr_reader :x_pos, :y_pos
+      attr_reader :board, :x_pos, :y_pos
 
       def self.at_random
         new.at_random

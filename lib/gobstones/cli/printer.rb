@@ -30,12 +30,14 @@ module Gobstones
       end
 
       def put_ball_values
-        x = @context.head.x_pos
-        y = @context.head.y_pos
-        put_ball_value @context.head.number_of_balls(Negro.new), 'N', x, y, 2, 1
-        put_ball_value @context.head.number_of_balls(Azul.new) , 'A', x, y, 6, 1
-        put_ball_value @context.head.number_of_balls(Verde.new), 'V', x, y, 2, 3
-        put_ball_value @context.head.number_of_balls(Rojo.new) , 'R', x, y, 6, 3
+        total_rows.times do |x|
+          total_columns.times do |y|
+            put_ball_value @context.board.number_of_balls(x, y, Negro.new), 'N', x, y, 2, 1
+            put_ball_value @context.board.number_of_balls(x, y, Azul.new) , 'A', x, y, 6, 1
+            put_ball_value @context.board.number_of_balls(x, y, Verde.new), 'V', x, y, 2, 3
+            put_ball_value @context.board.number_of_balls(x, y, Rojo.new) , 'R', x, y, 6, 3
+          end
+        end
       end
 
       def put_ball_value(number, char, x, y, x_offset, y_offset)
@@ -82,10 +84,17 @@ module Gobstones
       def cell_top_left_corner(x, y)
         head_lines = 1
         head_chars = 4
-        total_columns = 8
-        y_to_go = (total_columns - y) * cell_height + head_lines
+        y_to_go = (total_columns - 1 - y) * cell_height + head_lines
         x_to_go = x * cell_width + head_chars
         (y_to_go * line_length) + x_to_go
+      end
+
+      def total_columns
+        9
+      end
+
+      def total_rows
+        9
       end
 
     end
