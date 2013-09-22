@@ -1,6 +1,6 @@
 require 'gobstones/lang/expressions/two_arg_expression'
 require 'gobstones/lang/literals/number'
-require 'gobstones/runner/gbs_runtime_error'
+require 'gobstones/runner/errors/gbs_runtime_error'
 
 module Gobstones
 
@@ -30,7 +30,7 @@ module Gobstones
         begin
           left_expr.evaluate / right_expr.evaluate
         rescue ZeroDivisionError
-          raise GbsRuntimeError, "zero division"
+          raise GbsRuntimeError, 'zero division'
         end
       end
 

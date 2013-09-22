@@ -1,4 +1,4 @@
-require 'gobstones/runner/boom_error'
+require 'gobstones/runner/errors/boom_error'
 
 module Gobstones
 

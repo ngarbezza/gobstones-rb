@@ -1,5 +1,3 @@
-require 'gobstones/runner/empty_cell_error'
-
 describe Cell do
 
   let(:black)  { Negro.new }

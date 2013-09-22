@@ -1,5 +1,5 @@
 require 'gobstones/lang/literals/literal'
-require 'gobstones/runner/gbs_type_error'
+require 'gobstones/runner/errors/gbs_type_error'
 
 module Gobstones
 

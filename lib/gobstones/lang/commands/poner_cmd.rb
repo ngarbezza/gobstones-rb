@@ -1,6 +1,6 @@
 require 'gobstones/lang/expressions/one_arg_expression'
 require 'gobstones/lang/commands/sacar_cmd'
-require 'gobstones/runner/gbs_type_error'
+require 'gobstones/runner/errors/gbs_type_error'
 
 module Gobstones
 

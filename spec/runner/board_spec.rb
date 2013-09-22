@@ -1,5 +1,3 @@
-require 'gobstones/runner/out_of_board_error'
-
 describe Board do
 
   let(:black)  { Negro.new }
