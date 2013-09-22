@@ -43,11 +43,11 @@ describe "boolean expressions" do
 
   describe "nested" do
 
-    it "should evaluate and and ors" do
+    it "should evaluate and's and or's" do
       And.new(Or.new(false_value, true_value), true_value).evaluate.should == true_value
     end
 
-    it "should evaluate and, ors, and nots" do
+    it "should evaluate and's, or's, and not's" do
       Not.new(Or.new(false_value, And.new(true_value, true_value))).evaluate.should == false_value
     end
 

@@ -4,27 +4,26 @@ describe ExecutionContext do
 
   describe "variables context" do
 
-    it "should allow to set & get a variable" do
-      color = Negro.new
-      context.set "myColor", color
+    let(:negro) { Negro.new }
+    let(:norte) { Norte.new }
 
-      context.get("myColor").should == color
+    it "should allow to set & get a variable" do
+      context.set 'myColor', negro
+
+      context.get('myColor').should == negro
     end
 
     it "should allow to set/get more than one variable" do
-      dir = Norte.new
-      bool = True.new
+      context.set 'dir', norte
+      context.set 'bool', true.to_gbs_bool
 
-      context.set "dir", dir
-      context.set "bool", bool
-
-      context.get("dir").should == dir
-      context.get("bool").should == bool
+      context.get('dir').should == norte
+      context.get('bool').should == true.to_gbs_bool
     end
 
     it "should raise an error when getting an undefined variable" do
       expect {
-        context.get("undefined")
+        context.get('undefined')
       }.to raise_error(UndefinedVariableError)
     end
 
@@ -32,11 +31,19 @@ describe ExecutionContext do
 
   describe ProgramExecutionContext do
 
-    it "should return self as program_context" do
-      program = Program.new [], nil
-      program_context = ProgramExecutionContext.for program
+    let(:context) { ProgramExecutionContext.for program }
+    let(:program) { Program.new [], nil }
 
-      program_context.program_context.should == program_context
+    it "should return self as program_context" do
+      context.program_context.should == context
+    end
+
+    it "should have a head" do
+      context.head.should be_a Head
+    end
+
+    it "should have a board" do
+      context.board.should be_a Board
     end
 
   end

@@ -1,0 +1,64 @@
+--*************************************************************************
+--****************** PINTAR TABLERO (y sus procedures necesarios)
+--*************************************************************************
+
+procedure PintarTablero(color)
+{-
+   * PROPOSITO: Pintar todo el tablero, tomando como parámetro un color
+   * PRECONDICION: Ninguna
+   * OBSERVACIONES: Estructurado como recorrido, finaliza en el origen
+-}
+{
+   IrAlExtremo(Este)                             --IniciarRecorrido()
+   PintarColumna(color)                          --ProcesarElemento()
+   while (puedeMover(Oeste))                     --not(finRecorrido())
+   {
+     Mover(Oeste)                                --PasarAlSiguienteElemento()
+     PintarColumna(color)                        --ProcesarElemento()
+   }
+}
+
+--*************************************************************************
+--****************** PINTAR COLUMNA
+--*************************************************************************
+
+procedure PintarColumna(color)
+{- 
+   * PROPOSITO: Pintar toda la columna actual, tomando como parámetro un color
+   * PRECONDICION: Ninguna
+   * OBSERVACIONES: Estructurado como recorrido, finaliza en el origen de la columna.
+-}
+{
+   IrAlExtremo(Norte)                             --IniciarRecorrido()
+   Poner(color)                                   --ProcesarElemento()
+   while (puedeMover(Sur))                        --not(finRecorrido())
+   {
+     Mover(Sur)                                   --PasarAlSiguienteElemento()
+     Poner(color)                                 --ProcesarElemento()
+   }
+}
+
+--*************************************************************************
+
+procedure IrAlExtremo(dir)
+{- 
+   * PROPOSITO: Ubicar el cabezal en el extremo del tablero tomado por el parámero dir
+   * PRECONDICION: Ninguna, es una operación total
+   * OBSERVACIONES:   
+-}
+{
+  while (puedeMover(dir)) {
+    Mover(dir)
+  }
+}
+
+--*************************************************************************
+
+procedure Main()
+{
+  --Mover(Norte)
+  --Poner(Verde)
+  --IrAlExtremo(Norte)
+  PintarTablero(Azul)
+  PintarTablero(Rojo)
+}

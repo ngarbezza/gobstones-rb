@@ -12,7 +12,7 @@ describe "if command" do
       context.head.are_there_balls?(Verde.new).should be_true
     end
 
-    it "shoud not evaluate the block if the condition is false" do
+    it "should not evaluate the block if the condition is false" do
       if_cmd = IfCmd.new False.new, then_block
       if_cmd.evaluate context
       context.head.are_there_balls?(Verde.new).should be_false

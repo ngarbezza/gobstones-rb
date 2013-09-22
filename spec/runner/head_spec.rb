@@ -104,9 +104,10 @@ describe Head do
 
   describe "board actions" do
 
+    let(:head) { Head.new }
+    let(:black) { Negro.new }
+
     it "should put balls across the board" do
-      head = Head.new
-      black = Negro.new
       3.times { head.put black }
       head.are_there_balls?(black).should be_true
       head.number_of_balls(black).should == 3
@@ -119,9 +120,6 @@ describe Head do
     end
 
     it "should take out balls across the board" do
-      head = Head.new
-      black = Negro.new
-
       4.times { head.put black }
       4.times { head.take_out black }
 

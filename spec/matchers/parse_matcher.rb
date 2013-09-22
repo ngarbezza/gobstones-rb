@@ -5,8 +5,7 @@ PARSER = Gobstones::Parser::TreetopParser.new
 
 RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
-  @valid_nodes = [:program, :definition, :main,
-    :expression, :command, :var_tuple ]
+  @valid_nodes = [:program, :definition, :main, :expression, :command, :var_tuple ]
 
   chain :and_fail do
     @expect_parser_results = false

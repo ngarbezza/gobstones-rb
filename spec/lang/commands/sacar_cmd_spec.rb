@@ -32,4 +32,3 @@ describe Sacar do
   end
 
 end
-

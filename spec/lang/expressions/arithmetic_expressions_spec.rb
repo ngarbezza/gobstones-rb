@@ -1,10 +1,10 @@
-
 describe "arithmetic expressions" do
 
   describe Add do
 
     it "should evaluate with two numbers" do
-      Add.new(42.to_gbs_num, 23.to_gbs_num).evaluate.should == 65.to_gbs_num
+      add = Add.new(42.to_gbs_num, 23.to_gbs_num)
+      add.evaluate.should == 65.to_gbs_num
     end
 
     it "should evaluate nested add expressions" do
@@ -22,11 +22,13 @@ describe "arithmetic expressions" do
   describe Sub do
 
     it "should evaluate with two numbers" do
-      Sub.new(42.to_gbs_num, 15.to_gbs_num).evaluate.should == 27.to_gbs_num
+      sub = Sub.new(42.to_gbs_num, 15.to_gbs_num)
+      sub.evaluate.should == 27.to_gbs_num
     end
 
     it "should evaluate and return a negative result" do
-      Sub.new(15.to_gbs_num, 42.to_gbs_num).evaluate.should == -27.to_gbs_num
+      sub = Sub.new(15.to_gbs_num, 42.to_gbs_num)
+      sub.evaluate.should == -27.to_gbs_num
     end
 
     it "should evaluate nested sub expressions" do
@@ -41,7 +43,8 @@ describe "arithmetic expressions" do
   describe Mul do
 
     it "should evaluate a simple mul" do
-      Mul.new(4.to_gbs_num, 8.to_gbs_num).evaluate.should == 32.to_gbs_num
+      mul = Mul.new(4.to_gbs_num, 8.to_gbs_num)
+      mul.evaluate.should == 32.to_gbs_num
     end
 
     it "should evaluate a nested mul expression" do
@@ -54,17 +57,19 @@ describe "arithmetic expressions" do
   describe Div do
 
     it "should evaluate a simple div" do
-      Div.new(12.to_gbs_num, 3.to_gbs_num).evaluate.should == 4.to_gbs_num
+      div = Div.new(12.to_gbs_num, 3.to_gbs_num)
+      div.evaluate.should == 4.to_gbs_num
     end
 
     it "should evaluate to an integer division" do
-      Div.new(10.to_gbs_num, 3.to_gbs_num).evaluate.should == 3.to_gbs_num
+      div = Div.new(10.to_gbs_num, 3.to_gbs_num)
+      div.evaluate.should == 3.to_gbs_num
     end
 
     it "should raise an error when dividing by zero" do
       expect {
         Div.new(42.to_gbs_num, 0.to_gbs_num).evaluate
-      }.to raise_error(GbsRuntimeError, "zero division")
+      }.to raise_error(GbsRuntimeError, 'zero division')
     end
 
   end
@@ -72,11 +77,13 @@ describe "arithmetic expressions" do
   describe Mod do
 
     it "should evaluate a mod with result 0" do
-      Mod.new(4.to_gbs_num, 4.to_gbs_num).evaluate.should == 0.to_gbs_num
+      mod = Mod.new(4.to_gbs_num, 4.to_gbs_num)
+      mod.evaluate.should == 0.to_gbs_num
     end
 
     it "should evaluate a mod with result > 0" do
-      Mod.new(10.to_gbs_num, 3.to_gbs_num).evaluate.should == 1.to_gbs_num
+      mod = Mod.new(10.to_gbs_num, 3.to_gbs_num)
+      mod.evaluate.should == 1.to_gbs_num
     end
 
   end
@@ -84,12 +91,16 @@ describe "arithmetic expressions" do
   describe Pow do
 
     it "should give 1 as a result if the power is 0" do
-      Pow.new(1.to_gbs_num, 0.to_gbs_num).evaluate.should == 1.to_gbs_num
-      Pow.new(42.to_gbs_num, 0.to_gbs_num).evaluate.should == 1.to_gbs_num
+      pow_1 = Pow.new(1.to_gbs_num, 0.to_gbs_num)
+      pow_42 = Pow.new(42.to_gbs_num, 0.to_gbs_num)
+
+      pow_1.evaluate.should == 1.to_gbs_num
+      pow_42.evaluate.should == 1.to_gbs_num
     end
 
     it "should calculate 2 raised to 4" do
-      Pow.new(2.to_gbs_num, 4.to_gbs_num).evaluate.should == 16.to_gbs_num
+      pow = Pow.new(2.to_gbs_num, 4.to_gbs_num)
+      pow.evaluate.should == 16.to_gbs_num
     end
 
   end

@@ -27,4 +27,3 @@ describe Poner do
   end
 
 end
-
