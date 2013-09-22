@@ -107,7 +107,7 @@ module Gobstones
 
     ast_node(:ParenthesesExprNode) { ParenthesesExpr.new gexp.value }
     ast_node(:FuncCallNode) do
-      FuncCall.new func_name.text_value, gexp_tuple.value
+      FunctionCall.new func_name.text_value, gexp_tuple.value
     end
     ast_node(:TupleExprNode) { exps.empty? ? [] : exps.value }
 

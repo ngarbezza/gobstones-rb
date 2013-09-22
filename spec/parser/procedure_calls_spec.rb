@@ -27,7 +27,7 @@ describe Gobstones::Parser, "procedure calls" do
     or_expr = Or.new VarName.new('a'), VarName.new('b')
     paren_expr = ParenthesesExpr.new Div.new(10.to_gbs_num, VarName.new('c'))
     num_expr = Mul.new 5.to_gbs_num, paren_expr
-    func_call = FuncCall.new 'func', [Verde.new, Opuesto.new(Norte.new)]
+    func_call = FunctionCall.new 'func', [Verde.new, Opuesto.new(Norte.new)]
     proc_call = ProcedureCall.new 'Proc1', [or_expr, num_expr, func_call]
     'Proc1(a || b, 5*(10 div c), func(Verde, opuesto(Norte)))'.
       should be_parsed_as(:command).and_return(proc_call)
