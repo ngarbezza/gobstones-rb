@@ -1,4 +1,5 @@
 require 'gobstones/parser/treetop_parser'
+require 'gobstones/parser/parse_error'
 require 'gobstones/cli/printer'
 
 include Gobstones::Parser
@@ -15,12 +16,16 @@ module Gobstones
 
       def initialize(code)
         @code = code
+        @parser = Gobstones::Parser::TreetopParser.new
       end
 
       def run
         print_program_result parse_program.evaluate
+      rescue Gobstones::Parser::ParseError => parse_error
+        handle_parse_error parse_error
       rescue Exception => e
-        puts e.backtrace
+        # TODO handle more gobstones exceptions
+        raise e
       end
 
       private
@@ -30,11 +35,14 @@ module Gobstones
       end
 
       def parse_program
-        create_parser.parse(@code).value
+        @parser.parse(@code)
       end
 
-      def create_parser
-        Gobstones::Parser::TreetopParser.new
+      def handle_parse_error(parse_error)
+        parse_error.parser.failure_reason =~ /^(Expected .+) after/m
+        puts "#{$1.gsub("\n", '$NEWLINE')}:"
+        puts parse_error.code.lines.to_a[parse_error.parser.failure_line - 1]
+        puts "#{'~' * (parse_error.parser.failure_column - 1)}^"
       end
 
     end

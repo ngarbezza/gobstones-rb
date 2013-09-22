@@ -20,12 +20,11 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
     fail 'wrong expectation' if @expect_parser_results.nil?
     fail 'grammar elem not supported' if !@valid_nodes.include?(grammar_elem)
 
-    parse send("#{grammar_elem}_code_to_program", actual)
-
-    if @expect_parser_results
-      @node.value == send("#{grammar_elem}_node_to_program", @expected)
-    else
-      @node.nil?
+    begin
+      parse send("#{grammar_elem}_code_to_program", actual)
+      @value == send("#{grammar_elem}_node_to_program", @expected)
+    rescue Gobstones::Parser::ParseError => e
+      !@expect_parser_results
     end
   end
 
@@ -79,7 +78,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def parse(code)
-    @node = PARSER.parse code
+    @value = PARSER.parse code
   end
 
 end

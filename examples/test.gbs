@@ -54,18 +54,17 @@ procedure IrAlExtremo(dir)
 
 --*************************************************************************
 
-procedure Main()
-{
+procedure Main() {
   --Mover(Norte)
   --Poner(Verde)
   --IrAlExtremo(Norte)
   //IrAlOrigen()
   //VaciarTablero()
-  --a := 1 div 2
+  a := 1 div 2
   //PintarTablero((True || False))
   PintarTablero(minColor())
-  //i := Norte
-  //repeatWith i in 1..4
+  repeatWith i in a..4 {
+    poner(Verde)
+  }
   //while(True)
-  //{ Poner(Verde) }
 }

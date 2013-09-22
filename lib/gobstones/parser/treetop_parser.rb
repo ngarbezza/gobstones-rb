@@ -1,5 +1,6 @@
 require 'treetop'
 require 'gobstones/parser/ast/ast'
+require 'gobstones/parser/parse_error'
 
 module Gobstones
 
@@ -13,7 +14,22 @@ module Gobstones
       end
 
       def parse(code)
-        @parser.parse remove_comments_from(code)
+        code_without_comments = remove_comments_from(code)
+        result = @parser.parse code_without_comments
+        raise ParseError.new(self, code_without_comments) if result.nil?
+        result.value
+      end
+
+      def failure_reason
+        @parser.failure_reason
+      end
+
+      def failure_line
+        @parser.failure_line
+      end
+
+      def failure_column
+        @parser.failure_column
       end
 
       def remove_comments_from(code)
