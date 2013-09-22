@@ -137,9 +137,7 @@ STR
     class Runner
 
       def self.run(file_name)
-        code = File.read(file_name)
-        runner = new code
-        runner.run
+        new(File.read(file_name)).run
       end
 
       def initialize(code)
@@ -147,14 +145,23 @@ STR
       end
 
       def run
-        begin
-          parser = Gobstones::Parser::TreetopParser.new
-          program = parser.parse(@code).value
-          context = program.evaluate
-          Gobstones::CLI::Printer.new(context).print
-        rescue Exception => e
-          puts e.message
-        end
+        print_program_result parse_program.evaluate
+      rescue Exception => e
+        puts e.message
+      end
+
+      private
+
+      def print_program_result(context)
+        Gobstones::CLI::Printer.new(context).print
+      end
+
+      def parse_program
+        create_parser.parse(@code).value
+      end
+
+      def create_parser
+        Gobstones::Parser::TreetopParser.new
       end
 
     end

@@ -11,5 +11,5 @@ gbs_file = ARGV[0]
 if gbs_file
   Gobstones::CLI::Runner.run(gbs_file)
 else
-  puts "No Gobstones program specified"
+  puts 'No Gobstones program specified'
 end
