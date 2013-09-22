@@ -25,9 +25,9 @@ module Gobstones
 
     class Div < TwoArgExpression
 
-      def evaluate
+      def evaluate(context=nil)
         begin
-          left_expr.evaluate / right_expr.evaluate
+          left_expr.evaluate(context) / right_expr.evaluate(context)
         rescue ZeroDivisionError
           raise Gobstones::Runner::GobstonesRuntimeError, 'zero division'
         end
