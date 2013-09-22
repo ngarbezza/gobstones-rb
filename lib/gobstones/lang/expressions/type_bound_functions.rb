@@ -1,6 +1,7 @@
 require 'gobstones/lang/literals/booleans'
 require 'gobstones/lang/literals/colors'
 require 'gobstones/lang/literals/directions'
+require 'gobstones/modules/equal_by_class'
 
 module Gobstones
 
@@ -8,9 +9,7 @@ module Gobstones
 
     class TypeBoundFunc
 
-      def ==(other)
-        self.class == other.class
-      end
+      include Gobstones::EqualByClass
 
     end
 

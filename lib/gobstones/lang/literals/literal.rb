@@ -1,3 +1,5 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
@@ -5,6 +7,7 @@ module Gobstones
     class Literal
 
       include Comparable
+      include Gobstones::EqualByClass
 
       def evaluate(context=nil)
         self
@@ -12,10 +15,6 @@ module Gobstones
 
       def <=>(other)
         self == other ? 0 : (self < other ? -1 : 1)
-      end
-
-      def ==(other)
-        self.class == other.class # default behavior
       end
 
       def <(other)

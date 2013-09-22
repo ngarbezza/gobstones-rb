@@ -1,12 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class Skip
 
-      def ==(other)
-        self.class == other.class
-      end
+      include Gobstones::EqualByClass
 
     end
 

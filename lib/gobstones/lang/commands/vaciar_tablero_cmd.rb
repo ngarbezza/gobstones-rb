@@ -1,4 +1,4 @@
-require 'gobstones/lang/commands/base'
+require 'gobstones/modules/equal_by_class'
 
 module Gobstones
 
@@ -6,7 +6,7 @@ module Gobstones
 
     class VaciarTablero
 
-      include Base
+      include Gobstones::EqualByClass
 
     end
 
