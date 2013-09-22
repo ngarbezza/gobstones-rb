@@ -1,6 +1,6 @@
 require 'gobstones/lang/expressions/one_arg_expression'
 require 'gobstones/lang/commands/sacar_cmd'
-require 'gobstones/runner/errors/gbs_type_error'
+require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
 
@@ -11,7 +11,7 @@ module Gobstones
       def evaluate(context)
         context.head.put arg.evaluate(context)
       rescue RuntimeError => e
-        raise Gobstones::Runner::GbsTypeError, e.message
+        raise Gobstones::Runner::GobstonesTypeError, e.message
       end
 
       def undo(context)

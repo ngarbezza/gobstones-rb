@@ -22,7 +22,7 @@ describe "if command" do
       [Number.new(42), Norte.new, Verde.new].each do |value|
         if_cmd = IfCmd.new value, then_block
         expect { if_cmd.evaluate context }
-          .to raise_error(GbsTypeError, /is not a boolean/)
+          .to raise_error(GobstonesTypeError, /is not a boolean/)
       end
     end
 

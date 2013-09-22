@@ -3,8 +3,8 @@ require 'gobstones/lang/commands/command_block'
 require 'gobstones/lang/commands/while_cmd'
 require 'gobstones/lang/expressions/comparison_expressions'
 require 'gobstones/lang/expressions/primitive_functions'
-require 'gobstones/runner/errors/gbs_runtime_error'
-require 'gobstones/runner/errors/gbs_type_error'
+require 'gobstones/runner/errors/gobstones_runtime_error'
+require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
 
@@ -43,12 +43,12 @@ module Gobstones
       end
 
       def validate_range_values(context)
-        raise Gobstones::Runner::GbsTypeError, "types don't match in range values" \
+        raise Gobstones::Runner::GobstonesTypeError, "types don't match in range values" \
           unless range_min.evaluate(context).same_type_as(range_max.evaluate(context))
       end
 
       def validate_index_variable_not_defined(context)
-        raise Gobstones::Runner::GbsRuntimeError, "index variable can't be used because it's already defined" \
+        raise Gobstones::Runner::GobstonesRuntimeError, "index variable can't be used because it's already defined" \
           if context.has_variable_named?(var_name.name)
       end
 

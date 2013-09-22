@@ -86,7 +86,7 @@ module Gobstones
       private
 
       def check(dir)
-        raise GbsTypeError, "#{dir} is not a direction" \
+        raise GobstonesTypeError, "#{dir} is not a direction" \
           unless [Norte, Sur, Este, Oeste].include? dir.class
       end
 

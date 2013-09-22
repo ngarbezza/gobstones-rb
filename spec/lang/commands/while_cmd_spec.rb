@@ -25,13 +25,13 @@ describe WhileCmd do
   it "should raise a type error if the condition is not boolean" do
     while_cmd = WhileCmd.new Sur.new, while_block
     expect { while_cmd.evaluate context }
-      .to raise_error(GbsTypeError, /is not a boolean/)
+      .to raise_error(GobstonesTypeError, /is not a boolean/)
   end
 
   it "should fail by stack overflow if the condition is always true" do
     while_cmd = WhileCmd.new True.new, while_block
     expect { while_cmd.evaluate context }
-      .to raise_error(GbsRuntimeError, /stack overflow/)
+      .to raise_error(GobstonesRuntimeError, /stack overflow/)
   end
 
 end

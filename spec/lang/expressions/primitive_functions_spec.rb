@@ -118,7 +118,7 @@ describe "primitive functions" do
 
     it "should fail when evaluating for colors" do
       expect { Opuesto.new(Verde.new).evaluate }.
-        to raise_error(GbsTypeError, "colors don't have opposite")
+        to raise_error(GobstonesTypeError, "colors don't have opposite")
     end
 
   end

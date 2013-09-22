@@ -27,7 +27,7 @@ describe Mover do
 
   it "should fail if types don't match" do
     expect { Mover.new(Verde.new).evaluate(context) }.
-      to raise_error(GbsTypeError, /is not a direction/)
+      to raise_error(GobstonesTypeError, /is not a direction/)
   end
 
   it "should fail when out of board" do

@@ -12,14 +12,14 @@ describe RepeatWithCmd do
   it "should throw an error if the range values have not the same type" do
     repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, Este.new, CmdBlock.new([])
     expect { repeat_with.evaluate context }
-      .to raise_error(GbsTypeError, /types don't match in range values/)
+      .to raise_error(GobstonesTypeError, /types don't match in range values/)
   end
 
   it "should throw an error if the index variable is previously defined" do
     repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, 5.to_gbs_num, CmdBlock.new([])
     context.set var_name, 42.to_gbs_num
     expect { repeat_with.evaluate context }
-      .to raise_error(GbsRuntimeError, /index variable can't be used because it's already defined/)
+      .to raise_error(GobstonesRuntimeError, /index variable can't be used because it's already defined/)
   end
 
   it "should remove the index variable assignment after execution" do

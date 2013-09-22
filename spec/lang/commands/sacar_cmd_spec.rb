@@ -28,7 +28,7 @@ describe Sacar do
 
   it "should fail if types don't match" do
     expect { Sacar.new(True.new).evaluate(context) }.
-      to raise_error(GbsTypeError, /is not a color/)
+      to raise_error(GobstonesTypeError, /is not a color/)
   end
 
 end

@@ -1,5 +1,5 @@
 require 'gobstones/lang/commands/conditional_cmd'
-require 'gobstones/runner/errors/gbs_runtime_error'
+require 'gobstones/runner/errors/gobstones_runtime_error'
 
 module Gobstones
 
@@ -12,7 +12,7 @@ module Gobstones
       def evaluate(context)
         stack_acc = 0
         while evaluate_condition(context).is_true?
-          raise Gobstones::Runner::GbsRuntimeError, 'stack overflow' if stack_acc == STACK_LIMIT
+          raise Gobstones::Runner::GobstonesRuntimeError, 'stack overflow' if stack_acc == STACK_LIMIT
           then_block.evaluate context
           stack_acc += 1
         end

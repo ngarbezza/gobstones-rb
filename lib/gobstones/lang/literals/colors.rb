@@ -1,5 +1,5 @@
 require 'gobstones/lang/literals/literal'
-require 'gobstones/runner/errors/gbs_type_error'
+require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
 
@@ -16,7 +16,7 @@ module Gobstones
       end
 
       def opposite
-        raise Gobstones::Runner::GbsTypeError, "colors don't have opposite"
+        raise Gobstones::Runner::GobstonesTypeError, "colors don't have opposite"
       end
 
       def return_type

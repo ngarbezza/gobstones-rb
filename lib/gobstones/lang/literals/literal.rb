@@ -23,15 +23,15 @@ module Gobstones
       end
 
       def if_true(block, context)
-        raise GbsTypeError, "#{self} is not a boolean"
+        raise GobstonesTypeError, "#{self} is not a boolean"
       end
 
       def if_false(block, context)
-        raise GbsTypeError, "#{self} is not a boolean"
+        raise GobstonesTypeError, "#{self} is not a boolean"
       end
 
       def is_true?
-        raise GbsTypeError, "#{self} is not a boolean"
+        raise GobstonesTypeError, "#{self} is not a boolean"
       end
 
       def same_type_as(other)

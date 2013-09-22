@@ -1,6 +1,6 @@
 require 'gobstones/lang/expressions/one_arg_expression'
 require 'gobstones/lang/commands/poner_cmd'
-require 'gobstones/runner/errors/gbs_type_error'
+require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
 
@@ -12,7 +12,7 @@ module Gobstones
         begin
           context.head.take_out arg.evaluate(context)
         rescue RuntimeError => e
-          raise Gobstones::Runner::GbsTypeError, e.message
+          raise Gobstones::Runner::GobstonesTypeError, e.message
         end
       end
 

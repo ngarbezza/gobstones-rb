@@ -69,7 +69,7 @@ describe "arithmetic expressions" do
     it "should raise an error when dividing by zero" do
       expect {
         Div.new(42.to_gbs_num, 0.to_gbs_num).evaluate
-      }.to raise_error(GbsRuntimeError, 'zero division')
+      }.to raise_error(GobstonesRuntimeError, 'zero division')
     end
 
   end

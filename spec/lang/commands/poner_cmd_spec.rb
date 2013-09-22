@@ -23,7 +23,7 @@ describe Poner do
 
   it "should fail if types don't match" do
     expect { Poner.new(Norte.new).evaluate(context) }.
-      to raise_error(GbsTypeError, /is not a color/)
+      to raise_error(GobstonesTypeError, /is not a color/)
   end
 
 end

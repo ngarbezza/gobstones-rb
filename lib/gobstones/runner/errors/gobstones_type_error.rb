@@ -2,7 +2,7 @@ module Gobstones
 
   module Runner
 
-    class GbsTypeError < StandardError
+    class GobstonesTypeError < StandardError
 
     end
 
