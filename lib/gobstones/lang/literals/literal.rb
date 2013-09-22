@@ -1,4 +1,5 @@
 require 'gobstones/modules/equal_by_class'
+require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
 
@@ -22,15 +23,15 @@ module Gobstones
       end
 
       def if_true(block, context)
-        raise GobstonesTypeError, "#{self} is not a boolean"
+        raise Gobstones::Runner::GobstonesTypeError, "#{self} is not a boolean"
       end
 
       def if_false(block, context)
-        raise GobstonesTypeError, "#{self} is not a boolean"
+        raise Gobstones::Runner::GobstonesTypeError, "#{self} is not a boolean"
       end
 
       def is_true?
-        raise GobstonesTypeError, "#{self} is not a boolean"
+        raise Gobstones::Runner::GobstonesTypeError, "#{self} is not a boolean"
       end
 
       def same_type_as(other)
