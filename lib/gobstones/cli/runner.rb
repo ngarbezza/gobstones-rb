@@ -20,13 +20,13 @@ module Gobstones
       def run
         print_program_result parse_program.evaluate
       rescue Exception => e
-        puts e.message
+        puts e.backtrace
       end
 
       private
 
       def print_program_result(context)
-        Gobstones::CLI::Printer.new(context).print
+        Printer.new(context).print
       end
 
       def parse_program

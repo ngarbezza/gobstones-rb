@@ -59,6 +59,13 @@ procedure Main()
   --Mover(Norte)
   --Poner(Verde)
   --IrAlExtremo(Norte)
-  PintarTablero(Azul)
-  PintarTablero(Rojo)
+  //IrAlOrigen()
+  //VaciarTablero()
+  --a := 1 div 2
+  //PintarTablero((True || False))
+  PintarTablero(minColor())
+  //i := Norte
+  //repeatWith i in 1..4
+  //while(True)
+  //{ Poner(Verde) }
 }

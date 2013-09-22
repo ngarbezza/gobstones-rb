@@ -1,3 +1,5 @@
+require 'gobstones/runner/board'
+
 module Gobstones
 
   module Runner

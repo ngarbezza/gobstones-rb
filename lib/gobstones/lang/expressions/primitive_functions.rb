@@ -1,4 +1,6 @@
 require 'gobstones/lang/expressions/one_arg_expression'
+require 'gobstones/extensions/boolean'
+require 'gobstones/extensions/fixnum'
 require 'gobstones/type_check_result'
 
 module Gobstones

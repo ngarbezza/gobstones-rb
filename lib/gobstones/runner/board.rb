@@ -1,3 +1,5 @@
+require 'gobstones/runner/cell'
+
 module Gobstones
 
   module Runner

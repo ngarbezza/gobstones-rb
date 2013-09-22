@@ -1,3 +1,5 @@
+require 'gobstones/runner/head'
+
 module Gobstones
 
   module Runner

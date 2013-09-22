@@ -3,7 +3,7 @@ require 'gobstones/lang/literals/booleans'
 class TrueClass
 
   def to_gbs_bool
-    True.new
+    Gobstones::Lang::True.new
   end
 
 end
@@ -11,7 +11,7 @@ end
 class FalseClass
 
   def to_gbs_bool
-    False.new
+    Gobstones::Lang::False.new
   end
 
 end

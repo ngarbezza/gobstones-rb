@@ -1,3 +1,5 @@
+require 'gobstones/lang/literals/colors'
+
 module Gobstones
 
   module CLI
@@ -32,10 +34,10 @@ module Gobstones
       def put_ball_values
         total_rows.times do |x|
           total_columns.times do |y|
-            put_ball_value @context.board.number_of_balls(x, y, Negro.new), 'N', x, y, 2, 1
-            put_ball_value @context.board.number_of_balls(x, y, Azul.new) , 'A', x, y, 6, 1
-            put_ball_value @context.board.number_of_balls(x, y, Verde.new), 'V', x, y, 2, 3
-            put_ball_value @context.board.number_of_balls(x, y, Rojo.new) , 'R', x, y, 6, 3
+            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Negro.new), 'N', x, y, 2, 1
+            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Azul.new) , 'A', x, y, 6, 1
+            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Verde.new), 'V', x, y, 2, 3
+            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Rojo.new) , 'R', x, y, 6, 3
           end
         end
       end

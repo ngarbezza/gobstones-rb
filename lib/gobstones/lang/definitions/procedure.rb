@@ -1,6 +1,7 @@
 require 'gobstones/lang/definitions/definition'
 require 'gobstones/lang/definitions/no_return'
 require 'gobstones/runner/execution_context'
+require 'gobstones/runner/errors/wrong_arguments_error'
 
 module Gobstones
 
@@ -26,7 +27,7 @@ module Gobstones
       def check_number_of_arguments(arguments)
         if args.length != arguments.length
           message = "Wrong number of arguments in procedure '#{name}': expected #{args.length}, got #{arguments.length}"
-          raise WrongArgumentsError, message
+          raise Gobstones::Runner::WrongArgumentsError, message
         end
       end
 
