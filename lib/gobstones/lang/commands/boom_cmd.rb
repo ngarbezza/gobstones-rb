@@ -18,7 +18,7 @@ module Gobstones
       end
 
       def evaluate(context=nil)
-        raise BoomError, message
+        raise Gobstones::Runner::BoomError, message
       end
 
     end
