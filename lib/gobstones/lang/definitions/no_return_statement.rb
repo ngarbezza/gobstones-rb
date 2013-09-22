@@ -2,7 +2,7 @@ module Gobstones
 
   module Lang
 
-    class NoReturn
+    class NoReturnStatement
 
       def ==(other)
         self.class == other.class

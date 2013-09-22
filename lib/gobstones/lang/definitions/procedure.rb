@@ -1,5 +1,5 @@
 require 'gobstones/lang/definitions/definition'
-require 'gobstones/lang/definitions/no_return'
+require 'gobstones/lang/definitions/no_return_statement'
 require 'gobstones/runner/execution_context'
 require 'gobstones/runner/errors/wrong_arguments_error'
 
@@ -12,7 +12,7 @@ module Gobstones
       # TODO rename args to a better name, args_tuple?
 
       def initialize(name, args, body)
-        super(name, args, body, NoReturn.new)
+        super(name, args, body, NoReturnStatement.new)
       end
 
       def evaluate(context, arguments=[])

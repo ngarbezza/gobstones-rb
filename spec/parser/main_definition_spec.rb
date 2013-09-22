@@ -1,7 +1,7 @@
 describe Gobstones::Parser, "main definition" do
 
   it "should parse a valid Main definition without return nor commands" do
-    main = Main.new CmdBlock.new([]), NoReturn.new
+    main = Main.new CmdBlock.new([]), NoReturnStatement.new
 
     'procedure Main() {}'.should be_parsed_as(:definition).and_fail
     'procedure Main() {}'.should be_parsed_as(:main).and_return(main)

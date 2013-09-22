@@ -192,7 +192,7 @@ module Gobstones
 
     ast_node(:MainDefNode) do
       cmd_block = CmdBlock.new create_commands(commands)
-      return_st = ret.empty? ? NoReturn.new : ret.value
+      return_st = ret.empty? ? NoReturnStatement.new : ret.value
       Main.new cmd_block, return_st
     end
 
