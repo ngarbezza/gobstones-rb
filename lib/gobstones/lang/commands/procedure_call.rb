@@ -1,4 +1,5 @@
 require 'gobstones/lang/definitions/definition_call'
+require 'gobstones/runner/definition_not_found_error'
 
 module Gobstones
 
@@ -12,7 +13,7 @@ module Gobstones
         evaluated_args = args.map { |arg| arg.evaluate context }
         context.program_context.definition_named(name, ->(definition) {
           definition.evaluate context, evaluated_args
-        }, -> { nil } )
+        }, -> { raise DefinitionNotFound.new name } )
       end
 
     end

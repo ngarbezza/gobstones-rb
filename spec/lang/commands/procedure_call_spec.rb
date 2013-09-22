@@ -33,7 +33,12 @@ describe "procedure calls" do
   end
 
   it "should fail to execute an undefined procedure" do
-    pending
+    program = Program.new [], nil
+    context = ProgramExecutionContext.for program
+    proc_call = ProcCall.new 'UndefinedProcedure', []
+
+    expect { proc_call.evaluate context }
+      .to raise_error(DefinitionNotFound, DefinitionNotFound.message_for('UndefinedProcedure'))
   end
 
 end
