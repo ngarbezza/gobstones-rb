@@ -3,3 +3,4 @@
 .rake_t_cache
 coverage/
 tags
+.idea/
