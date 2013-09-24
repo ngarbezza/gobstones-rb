@@ -58,13 +58,13 @@ procedure Main() {
   --Mover(Norte)
   --Poner(Verde)
   --IrAlExtremo(Norte)
-  //IrAlOrigen()
+  IrAlOrigen()
   //VaciarTablero()
   a := 1 div 2
   //PintarTablero((True || False))
   PintarTablero(minColor())
-  repeatWith i in a..4 {
-    poner(Verde)
-  }
+  --repeatWith i in a..4 {
+  --  poner(Verde)
+  --}
   //while(True)
 }

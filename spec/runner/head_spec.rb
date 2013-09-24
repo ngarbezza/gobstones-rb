@@ -59,6 +59,14 @@ describe Head do
         head.y_pos.should == 0
       end
 
+      it "should go to the origin" do
+        head.move east
+        head.move north
+        head.go_to_origin
+        head.x_pos.should == 0
+        head.y_pos.should == 0
+      end
+
     end
 
     context "non valid" do

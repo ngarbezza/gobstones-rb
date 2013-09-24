@@ -16,7 +16,7 @@ module Gobstones
       end
 
       def initialize
-        @x_pos, @y_pos = 0, 0
+        go_to_origin
         @board = Board.new MAX_ROWS, MAX_COLS
       end
 
@@ -65,6 +65,10 @@ module Gobstones
 
       def move_west
         @x_pos -= 1
+      end
+
+      def go_to_origin
+        @x_pos, @y_pos = 0, 0
       end
 
       def put(color)
