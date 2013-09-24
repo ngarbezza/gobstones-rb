@@ -71,4 +71,15 @@ describe Board do
     end
   end
 
+  it "should be empty if there are no balls" do
+    board = Board.new 3, 4
+    board.empty?.should be_true
+  end
+
+  it "should not be empty if there are balls" do
+    board = Board.new 3, 4
+    board.put 0, 0, black
+    board.empty?.should be_false
+  end
+
 end

@@ -8,6 +8,10 @@ module Gobstones
 
       include Gobstones::EqualByClass
 
+      def evaluate(context)
+        context.board.empty!
+      end
+
     end
 
   end

@@ -59,7 +59,6 @@ procedure Main() {
   --Poner(Verde)
   --IrAlExtremo(Norte)
   IrAlOrigen()
-  //VaciarTablero()
   a := 1 div 2
   //PintarTablero((True || False))
   PintarTablero(minColor())
@@ -67,4 +66,5 @@ procedure Main() {
   --  poner(Verde)
   --}
   //while(True)
+  VaciarTablero()
 }

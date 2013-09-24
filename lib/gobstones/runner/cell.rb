@@ -33,6 +33,10 @@ module Gobstones
         initialize
       end
 
+      def empty?
+        @values.values.all? { |value| value.zero? }
+      end
+
       private
 
       def check(color)

@@ -5,10 +5,9 @@ describe Cell do
   let(:green)  { Verde.new }
   let(:red)    { Rojo.new }
   let(:colors) { [blue, black, red, green] }
+  let(:cell)   { Cell.new }
 
   it "should answer that there are no balls of a given color" do
-    cell = Cell.new
-
     cell.are_there_balls?(blue).should be_false
     cell.are_there_balls?(black).should be_false
     cell.are_there_balls?(red).should be_false
@@ -16,8 +15,6 @@ describe Cell do
   end
 
   it "should answer that there are balls of a given color when adding some" do
-    cell = Cell.new
-
     cell.put blue
     cell.put red
 
@@ -28,8 +25,6 @@ describe Cell do
   end
 
   it "should answer the number of balls of a given color" do
-    cell = Cell.new
-
     5.times { cell.put green }
 
     cell.number_of_balls(blue).should == 0
@@ -39,8 +34,6 @@ describe Cell do
   end
 
   it "should allow to take out some balls" do
-    cell = Cell.new
-
     5.times { cell.put blue }
     3.times { cell.take_out blue }
 
@@ -49,14 +42,10 @@ describe Cell do
   end
 
   it "should raise an error if it's not possible to take out balls" do
-    cell = Cell.new
-
     expect { cell.take_out red }.to raise_error(EmptyCellError)
   end
 
   it "should fail passing something that is not a color" do
-    cell = Cell.new
-
     expect { cell.put("not a color") }.to raise_error
     expect { cell.take_out(42) }.to raise_error
     expect { cell.are_there_balls?(Norte) }.to raise_error
@@ -64,12 +53,20 @@ describe Cell do
   end
 
   it "should empty its contents" do
-    cell = Cell.new
     colors.each { |color| cell.put color }
 
     cell.empty!
 
     colors.each { |color| cell.are_there_balls?(color).should be_false }
+  end
+
+  it "should be empty if it doesn't have any balls" do
+    cell.empty?.should be_true
+  end
+
+  it "should not be empty it it has some balls" do
+    colors.each { |color| cell.put color }
+    cell.empty?.should be_false
   end
 
 end

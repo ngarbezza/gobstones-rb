@@ -45,6 +45,11 @@ module Gobstones
         each_cell { |cell| cell.empty! }
       end
 
+      def empty?
+        each_cell { |cell| return false unless cell.empty? }
+        true
+      end
+
     end
 
   end
