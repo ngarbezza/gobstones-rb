@@ -1,8 +1,9 @@
 describe Gobstones::Parser, "procedure definitions" do
 
+  let(:body) { CmdBlock.empty }
+
   it "should parse an empty procedure def without args" do
     args = VarTuple.new []
-    body = CmdBlock.new []
     proc_def = Procedure.new 'MyProc', args, body
 
     'procedure MyProc() {}'.
@@ -14,7 +15,6 @@ describe Gobstones::Parser, "procedure definitions" do
     second_arg = VarName.new 'secondArg'
     third_arg = VarName.new 'thirdArg'
     args = VarTuple.new [first_arg, second_arg, third_arg]
-    body = CmdBlock.new []
     proc_def = Procedure.new 'MyProc', args, body
 
     'procedure MyProc (firstArg, secondArg, thirdArg) {}'.

@@ -3,7 +3,7 @@ describe Gobstones::Parser, "repeatWith statements" do
   it "should parse an empty statement" do
     var_name = VarName.new 'i'
     min_range, max_range = 1.to_gbs_num, 10.to_gbs_num
-    cmd_block = CmdBlock.new []
+    cmd_block = CmdBlock.empty
     rw_cmd = RepeatWithCmd.new var_name, min_range, max_range, cmd_block
 
     'repeatWith i in 1..10 {}'.should be_parsed_as(:command).and_return(rw_cmd)

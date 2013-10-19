@@ -2,7 +2,7 @@ describe Procedure do
 
   let(:program_context) { ProgramExecutionContext.for Program.new([], nil) }
   let(:empty_args) { VarTuple.new [] }
-  let(:empty_body) { CmdBlock.new [] }
+  let(:empty_body) { CmdBlock.empty }
 
   it "should execute its body and leave state in the program context" do
     poner_cmd = Poner.new Rojo.new

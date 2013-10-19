@@ -1,7 +1,7 @@
 describe Gobstones::Parser, "command blocks" do
 
   it "should parse an empty block" do
-    cmd_block = CmdBlock.new []
+    cmd_block = CmdBlock.empty
 
     '{}'.should be_parsed_as(:command).and_return(cmd_block)
     '{     }'.should be_parsed_as(:command).and_return(cmd_block)
@@ -38,7 +38,7 @@ describe Gobstones::Parser, "command blocks" do
 
   it "should parse a block with simple and complex cmds" do
     first = ProcedureCall.new 'Proc', []
-    second = IfCmd.new True.new, CmdBlock.new([])
+    second = IfCmd.new True.new, CmdBlock.empty
     cmd_block = CmdBlock.new [first, second]
 
     '{

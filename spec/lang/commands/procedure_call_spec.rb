@@ -1,7 +1,7 @@
 describe "procedure calls" do
 
   let(:empty_args) { VarTuple.new [] }
-  let(:empty_body) { CmdBlock.new [] }
+  let(:empty_body) { CmdBlock.empty }
 
   it "should execute an existing procedure when calling it" do
     poner_cmd = Poner.new Verde.new

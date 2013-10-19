@@ -13,4 +13,9 @@ describe CmdBlock do
     context.head.are_there_balls?(Verde.new).should be_true
   end
 
+  it "builds an empty command block" do
+    expect(CmdBlock.new []).to be_empty
+    expect(CmdBlock.empty).to be_empty
+  end
+
 end
