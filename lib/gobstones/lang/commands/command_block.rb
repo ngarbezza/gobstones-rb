@@ -1,8 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class CmdBlock
+
+      include Gobstones::EqualByClass
 
       attr_reader :cmds
 
@@ -15,8 +19,7 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class &&
-        self.cmds == other.cmds
+        super(other) && self.cmds == other.cmds
       end
 
       def empty?
