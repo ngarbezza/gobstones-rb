@@ -240,7 +240,7 @@ grammar Gobstones
   end
 
   rule number
-    '-'? [1-9] [0-9]* <IntegerLiteral>
+    '-'? [0-9] [0-9]* <IntegerLiteral>
   end
 
   rule boolean
