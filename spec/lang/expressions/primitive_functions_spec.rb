@@ -7,12 +7,12 @@ describe "primitive functions" do
   describe "nroBolitas() function" do
 
     it "should evaluates correctly in a clean context" do
-      NroBolitas.new(black).evaluate(context).should == 0.to_gbs_num
+      expect(NroBolitas.new(black).evaluate(context)).to eq(0.to_gbs_num)
     end
 
     it "should evaluate correctly in a context with some data" do
       5.times { context.head.put black }
-      NroBolitas.new(black).evaluate(context).should == 5.to_gbs_num
+      expect(NroBolitas.new(black).evaluate(context)).to eq(5.to_gbs_num)
     end
 
   end
@@ -20,12 +20,12 @@ describe "primitive functions" do
   describe "hayBolitas() function" do
 
     it "should evaluate correctly in a clean context" do
-      HayBolitas.new(black).evaluate(context).should == false.to_gbs_bool
+      expect(HayBolitas.new(black).evaluate(context)).to eq(false.to_gbs_bool)
     end
 
     it "should evaluate correctly in a context with some data" do
       context.head.put black
-      HayBolitas.new(black).evaluate(context).should == true.to_gbs_bool
+      expect(HayBolitas.new(black).evaluate(context)).to eq(true.to_gbs_bool)
     end
 
   end
@@ -33,12 +33,12 @@ describe "primitive functions" do
   describe "puedeMover() function" do
 
     it "should evaluate correctly in a clean context" do
-      PuedeMover.new(west).evaluate(context).should == false.to_gbs_bool
+      expect(PuedeMover.new(west).evaluate(context)).to eq(false.to_gbs_bool)
     end
 
     it "should evaluate correctly in a modified context" do
       context.head.move(Este.new)
-      PuedeMover.new(west).evaluate(context).should == true.to_gbs_bool
+      expect(PuedeMover.new(west).evaluate(context)).to eq(true.to_gbs_bool)
     end
 
   end
@@ -46,26 +46,26 @@ describe "primitive functions" do
   describe "siguiente() function" do
 
     it "should evaluate correctly for numbers" do
-      Siguiente.new(15.to_gbs_num).evaluate.should == 16.to_gbs_num
+      expect(Siguiente.new(15.to_gbs_num).evaluate).to eq(16.to_gbs_num)
     end
 
     it "should evaluate correctly for colors" do
-      Siguiente.new(Azul.new).evaluate.should == Negro.new
-      Siguiente.new(Negro.new).evaluate.should == Rojo.new
-      Siguiente.new(Rojo.new).evaluate.should == Verde.new
-      Siguiente.new(Verde.new).evaluate.should == Azul.new
+      expect(Siguiente.new(Azul.new).evaluate).to eq(Negro.new)
+      expect(Siguiente.new(Negro.new).evaluate).to eq(Rojo.new)
+      expect(Siguiente.new(Rojo.new).evaluate).to eq(Verde.new)
+      expect(Siguiente.new(Verde.new).evaluate).to eq(Azul.new)
     end
 
     it "should evaluate correctly for directions" do
-      Siguiente.new(Norte.new).evaluate.should == Este.new
-      Siguiente.new(Este.new).evaluate.should == Sur.new
-      Siguiente.new(Sur.new).evaluate.should == Oeste.new
-      Siguiente.new(Oeste.new).evaluate.should == Norte.new
+      expect(Siguiente.new(Norte.new).evaluate).to eq(Este.new)
+      expect(Siguiente.new(Este.new).evaluate).to eq(Sur.new)
+      expect(Siguiente.new(Sur.new).evaluate).to eq(Oeste.new)
+      expect(Siguiente.new(Oeste.new).evaluate).to eq(Norte.new)
     end
 
     it "should evaluate correctly for booleans" do
-      Siguiente.new(True.new).evaluate.should == False.new
-      Siguiente.new(False.new).evaluate.should == True.new
+      expect(Siguiente.new(True.new).evaluate).to eq(False.new)
+      expect(Siguiente.new(False.new).evaluate).to eq(True.new)
     end
 
   end
@@ -73,26 +73,26 @@ describe "primitive functions" do
   describe "previo() function" do
 
     it "should evaluate correctly for numbers" do
-      Previo.new(43.to_gbs_num).evaluate.should == 42.to_gbs_num
+      expect(Previo.new(43.to_gbs_num).evaluate).to eq(42.to_gbs_num)
     end
 
     it "should evaluate correctly for colors" do
-      Previo.new(Azul.new).evaluate.should == Verde.new
-      Previo.new(Negro.new).evaluate.should == Azul.new
-      Previo.new(Rojo.new).evaluate.should == Negro.new
-      Previo.new(Verde.new).evaluate.should == Rojo.new
+      expect(Previo.new(Azul.new).evaluate).to eq(Verde.new)
+      expect(Previo.new(Negro.new).evaluate).to eq(Azul.new)
+      expect(Previo.new(Rojo.new).evaluate).to eq(Negro.new)
+      expect(Previo.new(Verde.new).evaluate).to eq(Rojo.new)
     end
 
     it "should evaluate correctly for directions" do
-      Previo.new(Norte.new).evaluate.should == Oeste.new
-      Previo.new(Este.new).evaluate.should == Norte.new
-      Previo.new(Sur.new).evaluate.should == Este.new
-      Previo.new(Oeste.new).evaluate.should == Sur.new
+      expect(Previo.new(Norte.new).evaluate).to eq(Oeste.new)
+      expect(Previo.new(Este.new).evaluate).to eq(Norte.new)
+      expect(Previo.new(Sur.new).evaluate).to eq(Este.new)
+      expect(Previo.new(Oeste.new).evaluate).to eq(Sur.new)
     end
 
     it "should evaluate correctly for booleans" do
-      Previo.new(True.new).evaluate.should == False.new
-      Previo.new(False.new).evaluate.should == True.new
+      expect(Previo.new(True.new).evaluate).to eq(False.new)
+      expect(Previo.new(False.new).evaluate).to eq(True.new)
     end
 
   end
@@ -100,20 +100,20 @@ describe "primitive functions" do
   describe "opuesto() function" do
 
     it "should evaluate correctly for numbers" do
-      Opuesto.new(23.to_gbs_num).evaluate.should == -23.to_gbs_num
-      Opuesto.new(-42.to_gbs_num).evaluate.should == 42.to_gbs_num
+      expect(Opuesto.new(23.to_gbs_num).evaluate).to eq(-23.to_gbs_num)
+      expect(Opuesto.new(-42.to_gbs_num).evaluate).to eq(42.to_gbs_num)
     end
 
     it "should evaluate correctly for directions" do
-      Opuesto.new(Norte.new).evaluate.should == Sur.new
-      Opuesto.new(Este.new).evaluate.should == Oeste.new
-      Opuesto.new(Sur.new).evaluate.should == Norte.new
-      Opuesto.new(Oeste.new).evaluate.should == Este.new
+      expect(Opuesto.new(Norte.new).evaluate).to eq(Sur.new)
+      expect(Opuesto.new(Este.new).evaluate).to eq(Oeste.new)
+      expect(Opuesto.new(Sur.new).evaluate).to eq(Norte.new)
+      expect(Opuesto.new(Oeste.new).evaluate).to eq(Este.new)
     end
 
     it "should evaluate correctly for booleans" do
-      Opuesto.new(True.new).evaluate.should == False.new
-      Opuesto.new(False.new).evaluate.should == True.new
+      expect(Opuesto.new(True.new).evaluate).to eq(False.new)
+      expect(Opuesto.new(False.new).evaluate).to eq(True.new)
     end
 
     it "should fail when evaluating for colors" do

@@ -4,7 +4,7 @@ describe Gobstones::Parser, "program definitions" do
     main_def = Main.new CmdBlock.new([]), NoReturnStatement.new
     program = Program.new [], main_def
 
-    'procedure Main(){}'.should be_parsed_as(:program).and_return(program)
+    expect('procedure Main(){}').to be_parsed_as(:program).and_return(program)
   end
 
   it "should parse a program with Main and procedures" do
@@ -20,7 +20,7 @@ procedure Procedure2 () {}
 
 procedure Main() {}
 GBS
-    gbs_code.should be_parsed_as(:program).and_return(program)
+    expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
 
   it "should parse a program with Main, procedures and functions" do
@@ -38,18 +38,18 @@ procedure Procedure2 () {}
 
 procedure Main() {}
 GBS
-    gbs_code.should be_parsed_as(:program).and_return(program)
+    expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
 
   it "should not parse a program without a Main definition" do
-    'procedure Procedure1(){}
-    procedure Procedure2() {}'.should be_parsed_as(:program).and_fail
+    expect('procedure Procedure1(){}
+    procedure Procedure2() {}').to be_parsed_as(:program).and_fail
   end
 
   it "should not parse a program if Main is not the last definition" do
-    'procedure Procedure1() {}
+    expect('procedure Procedure1() {}
     procedure Main() {}
-    procedure Procedure2() {}'.should be_parsed_as(:program).and_fail
+    procedure Procedure2() {}').to be_parsed_as(:program).and_fail
   end
 
 end

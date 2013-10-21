@@ -9,13 +9,13 @@ describe "if command" do
     it "should evaluate the block if the condition is true" do
       if_cmd = IfCmd.new True.new, then_block
       if_cmd.evaluate context
-      context.head.are_there_balls?(Verde.new).should be_true
+      expect(context.head.are_there_balls?(Verde.new)).to be_true
     end
 
     it "should not evaluate the block if the condition is false" do
       if_cmd = IfCmd.new False.new, then_block
       if_cmd.evaluate context
-      context.head.are_there_balls?(Verde.new).should be_false
+      expect(context.head.are_there_balls?(Verde.new)).to be_false
     end
 
     it "should raise a type error if the condition is not boolean" do
@@ -33,15 +33,15 @@ describe "if command" do
     it "should evaluate the 'then' block and not evaluate the 'else' block" do
       if_cmd = IfElseCmd.new True.new, then_block, else_block
       if_cmd.evaluate context
-      context.head.are_there_balls?(Verde.new).should be_true
-      context.head.are_there_balls?(Rojo.new).should be_false
+      expect(context.head.are_there_balls?(Verde.new)).to be_true
+      expect(context.head.are_there_balls?(Rojo.new)).to be_false
     end
 
     it "should not evaluate the 'then' block and evaluate the 'else' block" do
       if_cmd = IfElseCmd.new False.new, then_block, else_block
       if_cmd.evaluate context
-      context.head.are_there_balls?(Verde.new).should be_false
-      context.head.are_there_balls?(Rojo.new).should be_true
+      expect(context.head.are_there_balls?(Verde.new)).to be_false
+      expect(context.head.are_there_balls?(Rojo.new)).to be_true
     end
 
   end

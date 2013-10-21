@@ -5,10 +5,10 @@ describe Gobstones::Parser, "assignments" do
     it "should parse a valid assignment with a simple expression" do
       assignment = SingleAssignment.new VarName.new('myDir'), Norte.new
 
-      'myDir:=Norte'.
-        should be_parsed_as(:command).and_return(assignment)
-      'myDir  :=   Norte'.
-        should be_parsed_as(:command).and_return(assignment)
+      expect('myDir:=Norte').
+        to be_parsed_as(:command).and_return(assignment)
+      expect('myDir  :=   Norte').
+        to be_parsed_as(:command).and_return(assignment)
     end
 
     it "should parse a valid assignment with a complex expression" do
@@ -16,16 +16,16 @@ describe Gobstones::Parser, "assignments" do
       exp = Or.new False.new, ParenthesesExpr.new(And.new(a, b))
       assignment = SingleAssignment.new VarName.new('myVar'), exp
 
-      'myVar := False || (a && b)'.
-        should be_parsed_as(:command).and_return(assignment)
+      expect('myVar := False || (a && b)').
+        to be_parsed_as(:command).and_return(assignment)
     end
 
     it "should not parse with an invalid var name" do
-      'MyWrongVar := a'.should be_parsed_as(:command).and_fail
+      expect('MyWrongVar := a').to be_parsed_as(:command).and_fail
     end
 
     it "should not parse with a command on the right side" do
-      'myVar := Skip'.should be_parsed_as(:command).and_fail
+      expect('myVar := Skip').to be_parsed_as(:command).and_fail
     end
 
   end

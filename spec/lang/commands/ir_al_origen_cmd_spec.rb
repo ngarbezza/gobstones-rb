@@ -9,8 +9,8 @@ describe IrAlOrigen do
 
     ir_al_origen.evaluate context
 
-    context.head.x_pos.should == 0
-    context.head.y_pos.should == 0
+    expect(context.head.x_pos).to eq(0)
+    expect(context.head.y_pos).to eq(0)
   end
 
 end

@@ -10,15 +10,15 @@ describe ExecutionContext do
     it "should allow to set & get a variable" do
       context.set 'myColor', negro
 
-      context.get('myColor').should == negro
+      expect(context.get('myColor')).to eq(negro)
     end
 
     it "should allow to set/get more than one variable" do
       context.set 'dir', norte
       context.set 'bool', true.to_gbs_bool
 
-      context.get('dir').should == norte
-      context.get('bool').should == true.to_gbs_bool
+      expect(context.get('dir')).to eq(norte)
+      expect(context.get('bool')).to eq(true.to_gbs_bool)
     end
 
     it "should raise an error when getting an undefined variable" do
@@ -35,15 +35,15 @@ describe ExecutionContext do
     let(:program) { Program.new [], nil }
 
     it "should return self as program_context" do
-      context.program_context.should == context
+      expect(context.program_context).to eq(context)
     end
 
     it "should have a head" do
-      context.head.should be_a Head
+      expect(context.head).to be_a Head
     end
 
     it "should have a board" do
-      context.board.should be_a Board
+      expect(context.board).to be_a Board
     end
 
   end
@@ -55,7 +55,7 @@ describe ExecutionContext do
       program_context = ProgramExecutionContext.for program
       procedure_context = ProcedureExecutionContext.based_on program_context
 
-      procedure_context.program_context.should == program_context
+      expect(procedure_context.program_context).to eq(program_context)
     end
 
   end

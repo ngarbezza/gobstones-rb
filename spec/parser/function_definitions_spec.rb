@@ -6,8 +6,8 @@ describe Gobstones::Parser, "function definitions" do
 
     func_def = Function.new 'just42', args, CmdBlock.new([]), func_return
 
-    'function just42() { return (42) }'.
-      should be_parsed_as(:definition).and_return(func_def)
+    expect('function just42() { return (42) }').
+      to be_parsed_as(:definition).and_return(func_def)
   end
 
   it "should parse a function with some args" do
@@ -19,9 +19,9 @@ describe Gobstones::Parser, "function definitions" do
     return_st = ReturnFromFunction.new [Verde.new, PuedeMover.new(Norte.new)]
     func_def = Function.new 'myCoolFunction', args, CmdBlock.new([]), return_st
 
-    'function myCoolFunction (firstArg, secondArg, thirdArg) {
+    expect('function myCoolFunction (firstArg, secondArg, thirdArg) {
   return (Verde, puedeMover(Norte))
-}'.should be_parsed_as(:definition).and_return(func_def)
+}').to be_parsed_as(:definition).and_return(func_def)
   end
 
   it "should parse a function with some statements" do
@@ -30,21 +30,21 @@ describe Gobstones::Parser, "function definitions" do
     return_st = ReturnFromFunction.new [True.new]
     func_def = Function.new 'myFunc', args, body, return_st
 
-    'function myFunc(arg)
+    expect('function myFunc(arg)
 {
   Poner(Verde)
   return (True)
-}'.should be_parsed_as(:definition).and_return(func_def)
+}').to be_parsed_as(:definition).and_return(func_def)
   end
 
   it "should not parse a function without a valid identifier" do
-    'function MyWrongFunc() { return(True) }'.
-      should be_parsed_as(:definition).and_fail
+    expect('function MyWrongFunc() { return(True) }').
+      to be_parsed_as(:definition).and_fail
   end
 
   it "should not parse a function without a return statement" do
-    'function myFuncWithoutReturn() { }'.
-      should be_parsed_as(:definition).and_fail
+    expect('function myFuncWithoutReturn() { }').
+      to be_parsed_as(:definition).and_fail
   end
 
 end

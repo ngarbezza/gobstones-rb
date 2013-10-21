@@ -6,8 +6,8 @@ describe Gobstones::Parser, "procedure definitions" do
     args = VarTuple.new []
     proc_def = Procedure.new 'MyProc', args, body
 
-    'procedure MyProc() {}'.
-      should be_parsed_as(:definition).and_return(proc_def)
+    expect('procedure MyProc() {}').
+      to be_parsed_as(:definition).and_return(proc_def)
   end
 
   it "should parse an empty procedure with some args" do
@@ -17,8 +17,8 @@ describe Gobstones::Parser, "procedure definitions" do
     args = VarTuple.new [first_arg, second_arg, third_arg]
     proc_def = Procedure.new 'MyProc', args, body
 
-    'procedure MyProc (firstArg, secondArg, thirdArg) {}'.
-      should be_parsed_as(:definition).and_return(proc_def)
+    expect('procedure MyProc (firstArg, secondArg, thirdArg) {}').
+      to be_parsed_as(:definition).and_return(proc_def)
   end
 
   it "should parse a procedure with some statements" do
@@ -26,14 +26,14 @@ describe Gobstones::Parser, "procedure definitions" do
     body = CmdBlock.new [Poner.new(Verde.new)]
     proc_def = Procedure.new 'MyProc', args, body
 
-    'procedure MyProc(arg)
+    expect('procedure MyProc(arg)
 {
   Poner(Verde)
-}'.should be_parsed_as(:definition).and_return(proc_def)
+}').to be_parsed_as(:definition).and_return(proc_def)
   end
 
   it "should not parse a procedure without a valid identifier" do
-    'procedure myWrongProc() {}'.should be_parsed_as(:definition).and_fail
+    expect('procedure myWrongProc() {}').to be_parsed_as(:definition).and_fail
   end
 
 end

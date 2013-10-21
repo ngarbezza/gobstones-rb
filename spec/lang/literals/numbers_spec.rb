@@ -2,7 +2,7 @@ describe Number do
 
   it "should evaluate to self" do
     num = 42.to_gbs_num
-    num.evaluate.should == num
+    expect(num.evaluate).to eq(num)
   end
 
 end

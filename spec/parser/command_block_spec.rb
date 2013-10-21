@@ -3,13 +3,13 @@ describe Gobstones::Parser, "command blocks" do
   it "should parse an empty block" do
     cmd_block = CmdBlock.empty
 
-    '{}'.should be_parsed_as(:command).and_return(cmd_block)
-    '{     }'.should be_parsed_as(:command).and_return(cmd_block)
+    expect('{}').to be_parsed_as(:command).and_return(cmd_block)
+    expect('{     }').to be_parsed_as(:command).and_return(cmd_block)
   end
 
   it "should parse a block with one simple cmd" do
     cmd_block = CmdBlock.new [Skip.new]
-    '{ Skip }'.should be_parsed_as(:command).and_return(cmd_block)
+    expect('{ Skip }').to be_parsed_as(:command).and_return(cmd_block)
   end
 
   it "should parse a block with many simple commands" do
@@ -18,11 +18,11 @@ describe Gobstones::Parser, "command blocks" do
     third = Mover.new Oeste.new
     cmd_block = CmdBlock.new [first, second, third]
 
-    '{
+    expect('{
       Poner(Verde)
       BOOM("error")
       Mover(Oeste)
-     }'.should be_parsed_as(:command).and_return(cmd_block)
+     }').to be_parsed_as(:command).and_return(cmd_block)
   end
 
   it "should allow ; between commands" do
@@ -31,9 +31,9 @@ describe Gobstones::Parser, "command blocks" do
     third = Mover.new Oeste.new
     cmd_block = CmdBlock.new [first, second, third]
 
-    '{Poner(Verde); BOOM("error");
+    expect('{Poner(Verde); BOOM("error");
       Mover(Oeste);
-     }'.should be_parsed_as(:command).and_return(cmd_block)
+     }').to be_parsed_as(:command).and_return(cmd_block)
   end
 
   it "should parse a block with simple and complex commands" do
@@ -41,10 +41,10 @@ describe Gobstones::Parser, "command blocks" do
     second = IfCmd.new True.new, CmdBlock.empty
     cmd_block = CmdBlock.new [first, second]
 
-    '{
+    expect('{
       Proc()
       if (True) {}
-     }'.should be_parsed_as(:command).and_return(cmd_block)
+     }').to be_parsed_as(:command).and_return(cmd_block)
   end
 
 end

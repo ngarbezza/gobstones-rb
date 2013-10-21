@@ -8,14 +8,14 @@ describe Board do
 
   it "can be created with a number of rows and columns" do
     board = Board.new 8, 5
-    board.rows.should == 8
-    board.columns.should == 5
+    expect(board.rows).to eq(8)
+    expect(board.columns).to eq(5)
   end
 
   it "should have cells in every position" do
     board = Board.new 3, 3
 
-    board.each_cell { |cell| cell.should be_a(Cell) }
+    board.each_cell { |cell| expect(cell).to be_a(Cell) }
   end
 
   it "should access cells in a x&y dimension" do
@@ -23,7 +23,7 @@ describe Board do
 
     3.times do |x|
       5.times do |y|
-        board.cell_at(x, y).should be
+        expect(board.cell_at(x, y)).to be
       end
     end
   end
@@ -43,10 +43,10 @@ describe Board do
     2.times { board.put 0, 0, blue }
     10.times { board.put 2, 3, red }
 
-    board.are_there_balls?(0, 0, blue).should be_true
-    board.number_of_balls(0, 0, blue).should == 2
-    board.are_there_balls?(2, 3, red).should be_true
-    board.number_of_balls(2, 3, red).should == 10
+    expect(board.are_there_balls?(0, 0, blue)).to be_true
+    expect(board.number_of_balls(0, 0, blue)).to eq(2)
+    expect(board.are_there_balls?(2, 3, red)).to be_true
+    expect(board.number_of_balls(2, 3, red)).to eq(10)
   end
 
   it "should put and take out balls in a given position" do
@@ -55,7 +55,7 @@ describe Board do
     3.times { board.put 1, 1, green }
     3.times { board.take_out 1, 1, green }
 
-    board.are_there_balls?(1, 1, green).should be_false
+    expect(board.are_there_balls?(1, 1, green)).to be_false
   end
 
   it "should empty the entire board" do
@@ -66,20 +66,20 @@ describe Board do
 
     board.each_cell do |cell|
       colors.each do |color|
-        cell.are_there_balls?(color).should be_false
+        expect(cell.are_there_balls?(color)).to be_false
       end
     end
   end
 
   it "should be empty if there are no balls" do
     board = Board.new 3, 4
-    board.empty?.should be_true
+    expect(board.empty?).to be_true
   end
 
   it "should not be empty if there are balls" do
     board = Board.new 3, 4
     board.put 0, 0, black
-    board.empty?.should be_false
+    expect(board.empty?).to be_false
   end
 
 end

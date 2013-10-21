@@ -7,8 +7,8 @@ describe Mover do
   it "should run" do
     Mover.new(north).evaluate(context)
 
-    context.head.x_pos.should == 0
-    context.head.y_pos.should == 1
+    expect(context.head.x_pos).to eq(0)
+    expect(context.head.y_pos).to eq(1)
   end
 
   it "should undo" do
@@ -17,12 +17,12 @@ describe Mover do
     cmd.evaluate context
     cmd.undo context
 
-    context.head.x_pos.should == 0
-    context.head.y_pos.should == 0
+    expect(context.head.x_pos).to eq(0)
+    expect(context.head.y_pos).to eq(0)
   end
 
   it "should return opposite cmd" do
-    Mover.new(north).opposite.should == Mover.new(south)
+    expect(Mover.new(north).opposite).to eq(Mover.new(south))
   end
 
   it "should fail if types don't match" do

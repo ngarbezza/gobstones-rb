@@ -8,37 +8,37 @@ describe Cell do
   let(:cell)   { Cell.new }
 
   it "should answer that there are no balls of a given color" do
-    cell.are_there_balls?(blue).should be_false
-    cell.are_there_balls?(black).should be_false
-    cell.are_there_balls?(red).should be_false
-    cell.are_there_balls?(green).should be_false
+    expect(cell.are_there_balls?(blue)).to be_false
+    expect(cell.are_there_balls?(black)).to be_false
+    expect(cell.are_there_balls?(red)).to be_false
+    expect(cell.are_there_balls?(green)).to be_false
   end
 
   it "should answer that there are balls of a given color when adding some" do
     cell.put blue
     cell.put red
 
-    cell.are_there_balls?(blue).should be_true
-    cell.are_there_balls?(black).should be_false
-    cell.are_there_balls?(red).should be_true
-    cell.are_there_balls?(green).should be_false
+    expect(cell.are_there_balls?(blue)).to be_true
+    expect(cell.are_there_balls?(black)).to be_false
+    expect(cell.are_there_balls?(red)).to be_true
+    expect(cell.are_there_balls?(green)).to be_false
   end
 
   it "should answer the number of balls of a given color" do
     5.times { cell.put green }
 
-    cell.number_of_balls(blue).should == 0
-    cell.number_of_balls(black).should == 0
-    cell.number_of_balls(red).should == 0
-    cell.number_of_balls(green).should == 5
+    expect(cell.number_of_balls(blue)).to eq(0)
+    expect(cell.number_of_balls(black)).to eq(0)
+    expect(cell.number_of_balls(red)).to eq(0)
+    expect(cell.number_of_balls(green)).to eq(5)
   end
 
   it "should allow to take out some balls" do
     5.times { cell.put blue }
     3.times { cell.take_out blue }
 
-    cell.are_there_balls?(blue).should be_true
-    cell.number_of_balls(blue).should == 2
+    expect(cell.are_there_balls?(blue)).to be_true
+    expect(cell.number_of_balls(blue)).to eq(2)
   end
 
   it "should raise an error if it's not possible to take out balls" do
@@ -57,16 +57,16 @@ describe Cell do
 
     cell.empty!
 
-    colors.each { |color| cell.are_there_balls?(color).should be_false }
+    colors.each { |color| expect(cell.are_there_balls?(color)).to be_false }
   end
 
   it "should be empty if it doesn't have any balls" do
-    cell.empty?.should be_true
+    expect(cell.empty?).to be_true
   end
 
   it "should not be empty it it has some balls" do
     colors.each { |color| cell.put color }
-    cell.empty?.should be_false
+    expect(cell.empty?).to be_false
   end
 
 end

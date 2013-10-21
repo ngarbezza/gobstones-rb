@@ -13,7 +13,7 @@ describe "procedure calls" do
     proc_call = ProcedureCall.new 'MyProcedure', []
     proc_call.evaluate context
 
-    context.head.are_there_balls?(Verde.new).should be_true
+    expect(context.head.are_there_balls?(Verde.new)).to be_true
   end
 
   it "should allow to call a procedure from another procedure" do
@@ -29,7 +29,7 @@ describe "procedure calls" do
     call_to_outer_procedure = ProcedureCall.new 'Outer', []
     call_to_outer_procedure.evaluate program_context
 
-    program_context.head.are_there_balls?(Azul.new).should be_true
+    expect(program_context.head.are_there_balls?(Azul.new)).to be_true
   end
 
   it "should fail to execute an undefined procedure" do

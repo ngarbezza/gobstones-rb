@@ -6,7 +6,7 @@ describe Poner do
   it "should execute" do
     Poner.new(green).evaluate(context)
 
-    context.head.number_of_balls(green).should == 1
+    expect(context.head.number_of_balls(green)).to eq(1)
   end
 
   it "should undo" do
@@ -14,11 +14,11 @@ describe Poner do
 
     Poner.new(green).undo context
 
-    context.head.number_of_balls(green).should == 0
+    expect(context.head.number_of_balls(green)).to eq(0)
   end
 
   it "should return the opposite cmd" do
-    Poner.new(green).opposite.should == Sacar.new(green)
+    expect(Poner.new(green).opposite).to eq(Sacar.new(green))
   end
 
   it "should fail if types don't match" do

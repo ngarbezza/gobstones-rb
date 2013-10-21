@@ -8,17 +8,17 @@ describe Sacar do
 
     Sacar.new(red).evaluate context
 
-    context.head.number_of_balls(red).should == 2
+    expect(context.head.number_of_balls(red)).to eq(2)
   end
 
   it "should undo" do
     Sacar.new(red).undo context
 
-    context.head.number_of_balls(red).should == 1
+    expect(context.head.number_of_balls(red)).to eq(1)
   end
 
   it "should return the opposite cmd" do
-    Sacar.new(red).opposite.should == Poner.new(red)
+    expect(Sacar.new(red).opposite).to eq(Poner.new(red))
   end
 
   it "should fail if there are no balls in the board" do

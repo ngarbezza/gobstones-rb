@@ -9,7 +9,7 @@ describe Procedure do
     body = CmdBlock.new [poner_cmd]
     procedure = Procedure.new 'MyProcedure', empty_args, body
     procedure.evaluate program_context
-    program_context.head.are_there_balls?(Rojo.new).should be_true
+    expect(program_context.head.are_there_balls?(Rojo.new)).to be_true
   end
 
   it "should execute in a new clean context, without having variables defined in another contexts" do
@@ -34,8 +34,8 @@ describe Procedure do
 
     procedure.evaluate program_context, [Negro.new, Norte.new]
 
-    program_context.head.are_there_balls?(Negro.new).should be_true
-    program_context.head.y_pos.should == 1
+    expect(program_context.head.are_there_balls?(Negro.new)).to be_true
+    expect(program_context.head.y_pos).to eq(1)
   end
 
   it "should not set arguments as var names in outer context" do
@@ -45,7 +45,7 @@ describe Procedure do
 
     procedure.evaluate program_context, [Oeste.new]
 
-    program_context.has_variable_named?('a_direction').should be_false
+    expect(program_context.has_variable_named?('a_direction')).to be_false
   end
 
   it "should fail if it is executed with more arguments than expected" do

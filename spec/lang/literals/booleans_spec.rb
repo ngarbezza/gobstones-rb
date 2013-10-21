@@ -2,12 +2,12 @@ describe Boolean do
 
   it "should evaluate true to self" do
     bool = True.new
-    bool.evaluate.should == bool
+    expect(bool.evaluate).to eq(bool)
   end
 
   it "should evaluate false to self" do
     bool = False.new
-    bool.evaluate.should == bool
+    expect(bool.evaluate).to eq(bool)
   end
 
 end
