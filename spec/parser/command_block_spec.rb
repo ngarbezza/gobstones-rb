@@ -12,7 +12,7 @@ describe Gobstones::Parser, "command blocks" do
     '{ Skip }'.should be_parsed_as(:command).and_return(cmd_block)
   end
 
-  it "should parse a block with many simple cmds" do
+  it "should parse a block with many simple commands" do
     first = Poner.new Verde.new
     second = Boom.new "error"
     third = Mover.new Oeste.new
@@ -25,7 +25,7 @@ describe Gobstones::Parser, "command blocks" do
      }'.should be_parsed_as(:command).and_return(cmd_block)
   end
 
-  it "should allow ; between cmds" do
+  it "should allow ; between commands" do
     first = Poner.new Verde.new
     second = Boom.new "error"
     third = Mover.new Oeste.new
@@ -36,7 +36,7 @@ describe Gobstones::Parser, "command blocks" do
      }'.should be_parsed_as(:command).and_return(cmd_block)
   end
 
-  it "should parse a block with simple and complex cmds" do
+  it "should parse a block with simple and complex commands" do
     first = ProcedureCall.new 'Proc', []
     second = IfCmd.new True.new, CmdBlock.empty
     cmd_block = CmdBlock.new [first, second]

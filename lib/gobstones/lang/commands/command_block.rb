@@ -8,26 +8,26 @@ module Gobstones
 
       include Gobstones::EqualByClass
 
-      attr_reader :cmds
+      attr_reader :commands
 
       def self.empty
         self.new []
       end
 
-      def initialize(cmds)
-        @cmds = cmds
+      def initialize(commands)
+        @commands = commands
       end
 
       def ==(other)
-        super(other) && self.cmds == other.cmds
+        super(other) && self.commands == other.commands
       end
 
       def empty?
-        cmds.empty?
+        commands.empty?
       end
 
       def evaluate(context)
-        cmds.each { |cmd| cmd.evaluate context }
+        commands.each { |command| command.evaluate context }
       end
 
     end

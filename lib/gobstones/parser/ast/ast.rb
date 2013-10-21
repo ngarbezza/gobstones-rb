@@ -201,8 +201,8 @@ module Gobstones
       Program.new defs, main_def.value
     end
 
-    def create_commands(cmds)
-      cmds.elements.map { |node| node.command.value }
+    def create_commands(commands)
+      commands.elements.map { |node| node.command.value }
     end
 
   end
