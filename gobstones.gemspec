@@ -3,7 +3,7 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name = 'gobstones'
-  spec.version = '0.0.1'
+  spec.version = '0.0.1.1'
   spec.licenses = ['GPLv3']
   spec.authors = ['Nahuel Garbezza']
   spec.email = ['n.garbezza@gmail.com']
@@ -20,5 +20,5 @@ Gem::Specification.new do |spec|
   spec.test_files = spec.files.grep %r{^spec/}
 
   spec.executables = %w(gobstones)
-  spec.require_paths = %w('lib')
+  spec.require_paths = %w(lib)
 end
