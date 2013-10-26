@@ -1,9 +1,0 @@
-procedure PutOneOfEachColor() {
-  repeatWith color in minColor()..maxColor() {
-    Poner(color)
-  } 
-}
-
-procedure Main() {
-  PutOneOfEachColor()
-}
