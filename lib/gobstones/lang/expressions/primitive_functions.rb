@@ -10,7 +10,9 @@ module Gobstones
     class NroBolitas < OneArgExpression
 
       def evaluate(context)
-        context.head.number_of_balls(arg.evaluate(context)).to_gbs_num
+        with_evaluated_argument_in(context) do |result|
+          context.head.number_of_balls(result).to_gbs_num
+        end
       end
 
     end
@@ -18,7 +20,9 @@ module Gobstones
     class HayBolitas < OneArgExpression
 
       def evaluate(context)
-        context.head.are_there_balls?(arg.evaluate(context)).to_gbs_bool
+        with_evaluated_argument_in(context) do |result|
+          context.head.are_there_balls?(result).to_gbs_bool
+        end
       end
 
     end
@@ -26,39 +30,41 @@ module Gobstones
     class PuedeMover < OneArgExpression
 
       def evaluate(context)
-        context.head.can_move?(arg.evaluate(context)).to_gbs_bool
+        with_evaluated_argument_in(context) do |result|
+          context.head.can_move?(result).to_gbs_bool
+        end
       end
 
-      def arg_type
+      def argument_type
         :Direction
       end
 
       def type_check
-        Gobstones::TypeCheckResult.new arg_type, arg.return_type
+        Gobstones::TypeCheckResult.new argument_type, argument.return_type
       end
 
     end
 
     class Siguiente < OneArgExpression
 
-      def evaluate(context=nil)
-        arg.evaluate(context).next
+      def evaluate(context)
+        with_evaluated_argument_in(context) { |result| result.next }
       end
 
     end
 
     class Previo < OneArgExpression
 
-      def evaluate(context=nil)
-        arg.evaluate(context).previous
+      def evaluate(context)
+        with_evaluated_argument_in(context) { |result| result.previous }
       end
 
     end
 
     class Opuesto < OneArgExpression
 
-      def evaluate(context=nil)
-        arg.evaluate(context).opposite
+      def evaluate(context)
+        with_evaluated_argument_in(context) { |result| result.opposite }
       end
 
     end

@@ -9,7 +9,9 @@ module Gobstones
     class Poner < OneArgExpression
 
       def evaluate(context)
-        context.head.put arg.evaluate(context)
+        with_evaluated_argument_in(context) do |result|
+          context.head.put result
+        end
       rescue RuntimeError => e
         raise Gobstones::Runner::GobstonesTypeError, e.message
       end
@@ -17,11 +19,13 @@ module Gobstones
       def undo(context)
         # TODO maybe the command should use the original context
         # instead of this one (when it was executed)
-        context.head.take_out arg.evaluate(context)
+        with_evaluated_argument_in(context) do |result|
+          context.head.take_out result
+        end
       end
 
       def opposite
-        Sacar.new arg
+        Sacar.new argument
       end
 
     end

@@ -9,19 +9,21 @@ module Gobstones
     class Sacar < OneArgExpression
 
       def evaluate(context)
-        begin
-          context.head.take_out arg.evaluate(context)
-        rescue RuntimeError => e
-          raise Gobstones::Runner::GobstonesTypeError, e.message
+        with_evaluated_argument_in(context) do |result|
+          context.head.take_out result
         end
+      rescue RuntimeError => e
+        raise Gobstones::Runner::GobstonesTypeError, e.message
       end
 
       def undo(context)
-        context.head.put arg.evaluate(context)
+        with_evaluated_argument_in(context) do |result|
+          context.head.put result
+        end
       end
 
       def opposite
-        Poner.new arg
+        Poner.new argument
       end
 
     end

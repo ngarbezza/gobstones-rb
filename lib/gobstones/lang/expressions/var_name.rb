@@ -24,6 +24,10 @@ module Gobstones
         context.get self
       end
 
+      def named?(a_name)
+        name == a_name
+      end
+
     end
 
   end

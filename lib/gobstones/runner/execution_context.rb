@@ -10,20 +10,30 @@ module Gobstones
         @values = {}
       end
 
-      def set(var_name, value)
-        @values[var_name] = value
+      def set(variable_name, value)
+        @values[variable_name] = value
       end
 
-      def get(var_name)
-        @values[var_name] || (raise UndefinedVariableError)
+      def get(variable_name)
+        @values[variable_name] || undefined_variable_error
       end
 
-      def clear(var_name)
-        @values.delete(var_name)
+      def clear(variable_name)
+        @values.delete(variable_name)
       end
 
       def has_variable_named?(name)
-        @values.keys.any? { |var| var.name == name }
+        @values.keys.any? { |variable| variable.named? name }
+      end
+
+      def program_context
+        raise 'subclass responsibility'
+      end
+
+      protected
+
+      def undefined_variable_error
+        raise UndefinedVariableError
       end
 
     end
@@ -43,14 +53,10 @@ module Gobstones
       end
 
       def definition_named(name, found_block, not_found_block)
-        found_definition = @program.definitions.find { |definition|
-          definition.named? name
-        }
-        if found_definition
-          found_block.call found_definition
-        else
-          not_found_block.call
-        end
+        if_none = proc { return not_found_block.call }
+        found_definition = @program.definitions.detect(if_none) \
+          { |definition| definition.named? name }
+        found_block.call found_definition
       end
 
       def program_context
@@ -66,7 +72,7 @@ module Gobstones
     class ProcedureExecutionContext < ExecutionContext
 
       def self.based_on(outer_context)
-        self.new outer_context
+        new outer_context
       end
 
       def initialize(outer_context)
@@ -80,6 +86,30 @@ module Gobstones
 
       def program_context
         @outer_context.program_context
+      end
+
+    end
+
+    class NullExecutionContext < ExecutionContext
+
+      def set(variable_name, value)
+
+      end
+
+      def get(variable_name)
+        undefined_variable_error
+      end
+
+      def clear(variable_name)
+
+      end
+
+      def has_variable_named?(variable_name)
+        false
+      end
+
+      def program_context
+        raise 'a null execution does not know its program context'
       end
 
     end

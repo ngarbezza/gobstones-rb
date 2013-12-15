@@ -46,26 +46,26 @@ describe "primitive functions" do
   describe "siguiente() function" do
 
     it "should evaluate correctly for numbers" do
-      expect(Siguiente.new(15.to_gbs_num).evaluate).to eq(16.to_gbs_num)
+      expect(Siguiente.new(15.to_gbs_num).evaluate(context)).to eq(16.to_gbs_num)
     end
 
     it "should evaluate correctly for colors" do
-      expect(Siguiente.new(Azul.new).evaluate).to eq(Negro.new)
-      expect(Siguiente.new(Negro.new).evaluate).to eq(Rojo.new)
-      expect(Siguiente.new(Rojo.new).evaluate).to eq(Verde.new)
-      expect(Siguiente.new(Verde.new).evaluate).to eq(Azul.new)
+      expect(Siguiente.new(Azul.new).evaluate(context)).to eq(Negro.new)
+      expect(Siguiente.new(Negro.new).evaluate(context)).to eq(Rojo.new)
+      expect(Siguiente.new(Rojo.new).evaluate(context)).to eq(Verde.new)
+      expect(Siguiente.new(Verde.new).evaluate(context)).to eq(Azul.new)
     end
 
     it "should evaluate correctly for directions" do
-      expect(Siguiente.new(Norte.new).evaluate).to eq(Este.new)
-      expect(Siguiente.new(Este.new).evaluate).to eq(Sur.new)
-      expect(Siguiente.new(Sur.new).evaluate).to eq(Oeste.new)
-      expect(Siguiente.new(Oeste.new).evaluate).to eq(Norte.new)
+      expect(Siguiente.new(Norte.new).evaluate(context)).to eq(Este.new)
+      expect(Siguiente.new(Este.new).evaluate(context)).to eq(Sur.new)
+      expect(Siguiente.new(Sur.new).evaluate(context)).to eq(Oeste.new)
+      expect(Siguiente.new(Oeste.new).evaluate(context)).to eq(Norte.new)
     end
 
     it "should evaluate correctly for booleans" do
-      expect(Siguiente.new(True.new).evaluate).to eq(False.new)
-      expect(Siguiente.new(False.new).evaluate).to eq(True.new)
+      expect(Siguiente.new(True.new).evaluate(context)).to eq(False.new)
+      expect(Siguiente.new(False.new).evaluate(context)).to eq(True.new)
     end
 
   end
@@ -73,26 +73,26 @@ describe "primitive functions" do
   describe "previo() function" do
 
     it "should evaluate correctly for numbers" do
-      expect(Previo.new(43.to_gbs_num).evaluate).to eq(42.to_gbs_num)
+      expect(Previo.new(43.to_gbs_num).evaluate(context)).to eq(42.to_gbs_num)
     end
 
     it "should evaluate correctly for colors" do
-      expect(Previo.new(Azul.new).evaluate).to eq(Verde.new)
-      expect(Previo.new(Negro.new).evaluate).to eq(Azul.new)
-      expect(Previo.new(Rojo.new).evaluate).to eq(Negro.new)
-      expect(Previo.new(Verde.new).evaluate).to eq(Rojo.new)
+      expect(Previo.new(Azul.new).evaluate(context)).to eq(Verde.new)
+      expect(Previo.new(Negro.new).evaluate(context)).to eq(Azul.new)
+      expect(Previo.new(Rojo.new).evaluate(context)).to eq(Negro.new)
+      expect(Previo.new(Verde.new).evaluate(context)).to eq(Rojo.new)
     end
 
     it "should evaluate correctly for directions" do
-      expect(Previo.new(Norte.new).evaluate).to eq(Oeste.new)
-      expect(Previo.new(Este.new).evaluate).to eq(Norte.new)
-      expect(Previo.new(Sur.new).evaluate).to eq(Este.new)
-      expect(Previo.new(Oeste.new).evaluate).to eq(Sur.new)
+      expect(Previo.new(Norte.new).evaluate(context)).to eq(Oeste.new)
+      expect(Previo.new(Este.new).evaluate(context)).to eq(Norte.new)
+      expect(Previo.new(Sur.new).evaluate(context)).to eq(Este.new)
+      expect(Previo.new(Oeste.new).evaluate(context)).to eq(Sur.new)
     end
 
     it "should evaluate correctly for booleans" do
-      expect(Previo.new(True.new).evaluate).to eq(False.new)
-      expect(Previo.new(False.new).evaluate).to eq(True.new)
+      expect(Previo.new(True.new).evaluate(context)).to eq(False.new)
+      expect(Previo.new(False.new).evaluate(context)).to eq(True.new)
     end
 
   end
@@ -100,24 +100,24 @@ describe "primitive functions" do
   describe "opuesto() function" do
 
     it "should evaluate correctly for numbers" do
-      expect(Opuesto.new(23.to_gbs_num).evaluate).to eq(-23.to_gbs_num)
-      expect(Opuesto.new(-42.to_gbs_num).evaluate).to eq(42.to_gbs_num)
+      expect(Opuesto.new(23.to_gbs_num).evaluate(context)).to eq(-23.to_gbs_num)
+      expect(Opuesto.new(-42.to_gbs_num).evaluate(context)).to eq(42.to_gbs_num)
     end
 
     it "should evaluate correctly for directions" do
-      expect(Opuesto.new(Norte.new).evaluate).to eq(Sur.new)
-      expect(Opuesto.new(Este.new).evaluate).to eq(Oeste.new)
-      expect(Opuesto.new(Sur.new).evaluate).to eq(Norte.new)
-      expect(Opuesto.new(Oeste.new).evaluate).to eq(Este.new)
+      expect(Opuesto.new(Norte.new).evaluate(context)).to eq(Sur.new)
+      expect(Opuesto.new(Este.new).evaluate(context)).to eq(Oeste.new)
+      expect(Opuesto.new(Sur.new).evaluate(context)).to eq(Norte.new)
+      expect(Opuesto.new(Oeste.new).evaluate(context)).to eq(Este.new)
     end
 
     it "should evaluate correctly for booleans" do
-      expect(Opuesto.new(True.new).evaluate).to eq(False.new)
-      expect(Opuesto.new(False.new).evaluate).to eq(True.new)
+      expect(Opuesto.new(True.new).evaluate(context)).to eq(False.new)
+      expect(Opuesto.new(False.new).evaluate(context)).to eq(True.new)
     end
 
     it "should fail when evaluating for colors" do
-      expect { Opuesto.new(Verde.new).evaluate }.
+      expect { Opuesto.new(Verde.new).evaluate(context) }.
         to raise_error(GobstonesTypeError, "colors don't have opposite")
     end
 

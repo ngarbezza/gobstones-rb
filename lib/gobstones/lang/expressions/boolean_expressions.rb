@@ -1,4 +1,5 @@
 require 'gobstones/lang/expressions/one_arg_expression'
+require 'gobstones/lang/expressions/two_arg_expression'
 
 module Gobstones
 
@@ -6,8 +7,8 @@ module Gobstones
 
     class Not < OneArgExpression
 
-      def evaluate
-        arg.evaluate.not
+      def evaluate(context)
+        with_evaluated_argument_in(context) { |result| result.not }
       end
 
     end

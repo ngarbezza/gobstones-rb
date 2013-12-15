@@ -7,7 +7,9 @@ module Gobstones
     class Mover < OneArgExpression
 
       def evaluate(context)
-        context.head.move arg.evaluate(context)
+        with_evaluated_argument_in(context) do |result|
+          context.head.move result
+        end
       end
 
       def undo(context)
@@ -15,7 +17,7 @@ module Gobstones
       end
 
       def opposite
-        Mover.new arg.opposite
+        Mover.new argument.opposite
       end
 
     end
