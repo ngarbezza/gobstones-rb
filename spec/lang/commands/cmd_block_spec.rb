@@ -1,6 +1,6 @@
 describe CmdBlock do
 
-  it "should evaluate all inner commands" do
+  it "evaluates all inner commands" do
     program = Program.new [], nil
     context = ProgramExecutionContext.for program
     cmd_block = CmdBlock.new [

@@ -3,13 +3,13 @@ describe Poner do
   let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
   let(:green) { Verde.new }
 
-  it "should execute" do
+  it "puts a ball of the given color in the current cell when evaluating" do
     Poner.new(green).evaluate(context)
 
     expect(context.head.number_of_balls(green)).to eq(1)
   end
 
-  it "should undo" do
+  it "undoes the command" do
     context.head.put green
 
     Poner.new(green).undo context
@@ -17,11 +17,11 @@ describe Poner do
     expect(context.head.number_of_balls(green)).to eq(0)
   end
 
-  it "should return the opposite cmd" do
+  it "returns the opposite command" do
     expect(Poner.new(green).opposite).to eq(Sacar.new(green))
   end
 
-  it "should fail if types don't match" do
+  it "fails if the argument is not a color" do
     expect { Poner.new(Norte.new).evaluate(context) }.
       to raise_error(GobstonesTypeError, /is not a color/)
   end

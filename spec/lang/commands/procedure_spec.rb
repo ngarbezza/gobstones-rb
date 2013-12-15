@@ -4,7 +4,7 @@ describe Procedure do
   let(:empty_args) { VarTuple.new [] }
   let(:empty_body) { CmdBlock.empty }
 
-  it "should execute its body and leave state in the program context" do
+  it "executes its body and leaves state in the program context" do
     poner_cmd = Poner.new Rojo.new
     body = CmdBlock.new [poner_cmd]
     procedure = Procedure.new 'MyProcedure', empty_args, body
@@ -12,7 +12,7 @@ describe Procedure do
     expect(program_context.head.are_there_balls?(Rojo.new)).to be_true
   end
 
-  it "should execute in a new clean context, without having variables defined in another contexts" do
+  it "fails getting a variable which is in the outer context" do
     var_name = VarName.new 'var'
     program_context.set var_name, Verde.new
 
@@ -23,7 +23,7 @@ describe Procedure do
       .to raise_error(UndefinedVariableError)
   end
 
-  it "should set arguments in the new context and they can be used" do
+  it "sets arguments in the new context so they can be used" do
     a_color = VarName.new 'a_color'
     a_direction = VarName.new 'a_direction'
     args = VarTuple.new [a_color, a_direction]
@@ -38,7 +38,7 @@ describe Procedure do
     expect(program_context.head.y_pos).to eq(1)
   end
 
-  it "should not set arguments as var names in outer context" do
+  it "does not set arguments as var names in outer context" do
     a_direction = VarName.new 'a_direction'
     args = VarTuple.new [a_direction]
     procedure = Procedure.new 'MyProc', args, empty_body
@@ -48,14 +48,14 @@ describe Procedure do
     expect(program_context.has_variable_named?('a_direction')).to be_false
   end
 
-  it "should fail if it is executed with more arguments than expected" do
+  it "fails if it is executed with more arguments than expected" do
     procedure = Procedure.new 'MyProcedure', empty_args, empty_body
     error_message = "Wrong number of arguments in procedure 'MyProcedure': expected 0, got 1"
     expect { procedure.evaluate program_context, [Norte.new] }
       .to raise_error(WrongArgumentsError, error_message)
   end
 
-  it "should fail if it is executed with less arguments than expected" do
+  it "fails if it is executed with less arguments than expected" do
     arg1, arg2 = VarName.new('arg1'), VarName.new('arg2')
     args = VarTuple.new [arg1, arg2]
     procedure = Procedure.new 'MyProcedure2', args, empty_body

@@ -6,38 +6,39 @@ describe "if command" do
 
   describe "if-then" do
 
-    it "should evaluate the block if the condition is true" do
+    it "evaluates the 'then' command block if the condition is true" do
       if_cmd = IfCmd.new True.new, then_block
       if_cmd.evaluate context
       expect(context.head.are_there_balls?(Verde.new)).to be_true
     end
 
-    it "should not evaluate the block if the condition is false" do
+    it "does not evaluate the 'then' command block if the condition is false" do
       if_cmd = IfCmd.new False.new, then_block
       if_cmd.evaluate context
       expect(context.head.are_there_balls?(Verde.new)).to be_false
     end
 
-    it "should raise a type error if the condition is not boolean" do
+    it "raises a type error if the condition is not boolean" do
       [Number.new(42), Norte.new, Verde.new].each do |value|
         if_cmd = IfCmd.new value, then_block
         expect { if_cmd.evaluate context }
           .to raise_error(GobstonesTypeError, /is not a boolean/)
       end
+
     end
 
   end
 
   describe "if-then-else" do
 
-    it "should evaluate the 'then' block and not evaluate the 'else' block" do
+    it "evaluates the 'then' block and it does not evaluate the 'else' block" do
       if_cmd = IfElseCmd.new True.new, then_block, else_block
       if_cmd.evaluate context
       expect(context.head.are_there_balls?(Verde.new)).to be_true
       expect(context.head.are_there_balls?(Rojo.new)).to be_false
     end
 
-    it "should not evaluate the 'then' block and evaluate the 'else' block" do
+    it "does not evaluate the 'then' block and it evaluates the 'else' block" do
       if_cmd = IfElseCmd.new False.new, then_block, else_block
       if_cmd.evaluate context
       expect(context.head.are_there_balls?(Verde.new)).to be_false

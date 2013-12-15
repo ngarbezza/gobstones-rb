@@ -2,7 +2,7 @@ describe IrAlOrigen do
 
   let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
 
-  it "should evaluate and put the head in 0, 0" do
+  it "puts the head in 0, 0 when evaluating" do
     context.head.move_north
     context.head.move_east
     ir_al_origen = IrAlOrigen.new
