@@ -13,7 +13,7 @@ describe Gobstones::Parser, "assignments" do
 
     it "should parse a valid assignment with a complex expression" do
       a, b = VarName.new('a'), VarName.new('b')
-      exp = Or.new False.new, ParenthesesExpr.new(And.new(a, b))
+      exp = Or.new False.new, EnclosedByParensExpression.new(And.new(a, b))
       assignment = SingleAssignment.new VarName.new('myVar'), exp
 
       expect('myVar := False || (a && b)').

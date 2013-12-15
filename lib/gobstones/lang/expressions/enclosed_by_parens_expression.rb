@@ -4,7 +4,7 @@ module Gobstones
 
   module Lang
 
-    class ParenthesesExpr < OneArgExpression
+    class EnclosedByParensExpression < OneArgExpression
 
     end
 

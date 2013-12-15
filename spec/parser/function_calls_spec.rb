@@ -26,7 +26,8 @@ describe Gobstones::Parser, "function calls" do
 
   it "should parse a complex function call" do
     or_expr = Or.new VarName.new('a'), VarName.new('b')
-    paren_expr = ParenthesesExpr.new Div.new(10.to_gbs_num, VarName.new('c'))
+    div = Div.new 10.to_gbs_num, VarName.new('c')
+    paren_expr = EnclosedByParensExpression.new div
     num_expr = Mul.new 5.to_gbs_num, paren_expr
     func2_call = FunctionCall.new 'func2', [Verde.new, Opuesto.new(Norte.new)]
     func1_call = FunctionCall.new 'func1', [or_expr, num_expr, func2_call]

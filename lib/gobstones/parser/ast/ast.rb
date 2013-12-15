@@ -105,7 +105,7 @@ module Gobstones
     ast_node(:AndExprNode) { And.new left.value, right.value }
     ast_node(:OrExprNode) { Or.new left.value, right.value }
 
-    ast_node(:ParenthesesExprNode) { ParenthesesExpr.new gexp.value }
+    ast_node(:ParenthesesExprNode) { EnclosedByParensExpression.new gexp.value }
     ast_node(:FuncCallNode) do
       FunctionCall.new func_name.text_value, gexp_tuple.value
     end

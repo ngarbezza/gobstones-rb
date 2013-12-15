@@ -22,7 +22,8 @@ describe Gobstones::Parser, "if statements" do
 
     it "should parse a statement with a complex boolean expression" do
       and_expr = And.new VarName.new('a'), False.new
-      exp = Or.new PuedeMover.new(Norte.new), ParenthesesExpr.new(and_expr)
+      inner_and = EnclosedByParensExpression.new and_expr
+      exp = Or.new PuedeMover.new(Norte.new), inner_and
       if_cmd = IfCmd.new exp, CmdBlock.empty
 
       expect('if (puedeMover(Norte) || (a && False)) {}').
