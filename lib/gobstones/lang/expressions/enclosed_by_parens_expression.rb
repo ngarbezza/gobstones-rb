@@ -6,6 +6,10 @@ module Gobstones
 
     class EnclosedByParensExpression < OneArgExpression
 
+      def evaluate(context)
+        with_evaluated_argument_in(context) { |result| result }
+      end
+
     end
 
   end
