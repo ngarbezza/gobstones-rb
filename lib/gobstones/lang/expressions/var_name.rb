@@ -1,8 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class VarName
+
+      include Gobstones::EqualByClass
 
       attr_reader :name
 
@@ -11,10 +15,8 @@ module Gobstones
       end
 
       def ==(var)
-        self.class == var.class && self.name == var.name
+        super(var) && self.name == var.name
       end
-
-      alias eql? ==
 
       def hash
         @name.hash

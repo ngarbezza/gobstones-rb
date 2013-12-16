@@ -1,8 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class OneArgExpression
+
+      include Gobstones::EqualByClass
 
       attr_reader :argument
 
@@ -11,7 +15,7 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class && argument == other.argument
+        super(other) && argument == other.argument
       end
 
       def evaluate(context)

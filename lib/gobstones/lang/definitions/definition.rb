@@ -1,8 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class Definition
+
+      include Gobstones::EqualByClass
 
       attr_reader :name, :args, :body, :return_statement
 
@@ -14,7 +18,7 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class &&
+        super(other) &&
         self.name == other.name &&
         self.args == other.args &&
         self.body == other.body &&

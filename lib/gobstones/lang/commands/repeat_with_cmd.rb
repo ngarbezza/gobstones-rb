@@ -5,12 +5,15 @@ require 'gobstones/lang/expressions/comparison_expressions'
 require 'gobstones/lang/expressions/primitive_functions'
 require 'gobstones/runner/errors/gobstones_runtime_error'
 require 'gobstones/runner/errors/gobstones_type_error'
+require 'gobstones/modules/equal_by_class'
 
 module Gobstones
 
   module Lang
 
     class RepeatWithCmd
+
+      include Gobstones::EqualByClass
 
       attr_reader :var_name, :range_min, :range_max, :cmd_block
 
@@ -22,7 +25,7 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class &&
+        super(other) &&
         self.var_name == other.var_name &&
         self.range_min == other.range_min &&
         self.range_max == other.range_max &&

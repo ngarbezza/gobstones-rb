@@ -1,8 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class VarTuple
+
+      include Gobstones::EqualByClass
 
       attr_reader :variables
 
@@ -11,7 +15,7 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class &&
+        super(other) &&
         self.variables == other.variables
       end
 

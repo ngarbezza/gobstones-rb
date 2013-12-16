@@ -1,10 +1,13 @@
 require 'gobstones/runner/errors/boom_error'
+require 'gobstones/modules/equal_by_class'
 
 module Gobstones
 
   module Lang
 
     class Boom
+
+      include Gobstones::EqualByClass
 
       attr_reader :message
 
@@ -13,11 +16,11 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class &&
+        super(other) &&
         self.message == other.message
       end
 
-      def evaluate(context=nil)
+      def evaluate(context)
         raise Gobstones::Runner::BoomError, message
       end
 

@@ -1,8 +1,12 @@
+require 'gobstones/modules/equal_by_class'
+
 module Gobstones
 
   module Lang
 
     class TwoArgExpression
+
+      include Gobstones::EqualByClass
 
       attr_reader :left_expr, :right_expr
 
@@ -22,9 +26,9 @@ module Gobstones
       end
 
       def ==(other)
-        self.class == other.class &&
-          self.left_expr == other.left_expr &&
-          self.right_expr == other.right_expr
+        super(other) &&
+        self.left_expr == other.left_expr &&
+        self.right_expr == other.right_expr
       end
 
     end
