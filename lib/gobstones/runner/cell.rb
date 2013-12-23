@@ -37,6 +37,16 @@ module Gobstones
         @values.values.all? { |value| value.zero? }
       end
 
+      def clone
+        self.class.new.tap do |copy|
+          [Azul.new, Negro.new, Rojo.new, Verde.new].each do |color|
+            number_of_balls(color).times do
+              copy.put color
+            end
+          end
+        end
+      end
+
       private
 
       def check(color)

@@ -8,10 +8,14 @@ module Gobstones
 
       attr_reader :rows, :columns
 
-      def initialize(r, c)
+      def initialize(r, c, matrix=[])
         @rows, @columns = r, c
-        @matrix = []
-        r.times { @matrix << []; c.times { @matrix.last << Cell.new } }
+        if matrix.empty?
+          @matrix = []
+          r.times { @matrix << []; c.times { @matrix.last << Cell.new } }
+        else
+          @matrix = matrix
+        end
       end
 
       def cell_at(x, y)
@@ -48,6 +52,11 @@ module Gobstones
       def empty?
         each_cell { |cell| return false unless cell.empty? }
         true
+      end
+
+      def clone
+        new_matrix = @matrix.map { |row| row.map { |cell| cell.clone } }
+        self.class.new @rows, @columns, new_matrix
       end
 
     end

@@ -15,13 +15,23 @@ module Gobstones
         new.at_random
       end
 
+      def self.with_position_and_board(x_pos, y_pos, board)
+        new.with_position_and_board x_pos, y_pos, board
+      end
+
       def initialize
-        go_to_origin
-        @board = Board.new MAX_ROWS, MAX_COLS
+        with_position_and_board 0, 0, Board.new(MAX_ROWS, MAX_COLS)
       end
 
       def at_random
         @x_pos, @y_pos = rand(MAX_ROWS), rand(MAX_COLS)
+        self
+      end
+
+      def with_position_and_board(x_pos, y_pos, board)
+        @x_pos = x_pos
+        @y_pos = y_pos
+        @board = board
         self
       end
 
@@ -85,6 +95,10 @@ module Gobstones
 
       def are_there_balls?(color)
         @board.are_there_balls? x_pos, y_pos, color
+      end
+
+      def clone
+        self.class.with_position_and_board x_pos, y_pos, board.clone
       end
 
       private

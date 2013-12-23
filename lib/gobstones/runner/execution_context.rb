@@ -90,6 +90,28 @@ module Gobstones
 
     end
 
+    class FunctionExecutionContext < ExecutionContext
+
+      def self.based_on(outer_context)
+        new outer_context
+      end
+
+      def initialize(outer_context)
+        super()
+        @outer_context = outer_context
+        @head = outer_context.head.clone
+      end
+
+      def head
+        @head
+      end
+
+      def program_context
+        @outer_context.program_context
+      end
+
+    end
+
     class NullExecutionContext < ExecutionContext
 
       def set(variable_name, value)
