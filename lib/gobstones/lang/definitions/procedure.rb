@@ -1,7 +1,6 @@
 require 'gobstones/lang/definitions/definition'
 require 'gobstones/lang/definitions/no_return_statement'
 require 'gobstones/runner/execution_context'
-require 'gobstones/runner/errors/wrong_arguments_error'
 
 module Gobstones
 
@@ -15,26 +14,12 @@ module Gobstones
         super(name, args, body, NoReturnStatement.new)
       end
 
-      def evaluate(context, arguments=[])
-        check_number_of_arguments arguments
-        procedure_context = Gobstones::Runner::ProcedureExecutionContext.based_on context
-        set_arguments arguments, procedure_context
-        body.evaluate procedure_context
+      def definition_type
+        'procedure'
       end
 
-      private
-
-      def check_number_of_arguments(arguments)
-        if args.length != arguments.length
-          message = "Wrong number of arguments in procedure '#{name}': expected #{args.length}, got #{arguments.length}"
-          raise Gobstones::Runner::WrongArgumentsError, message
-        end
-      end
-
-      def set_arguments(arguments, procedure_context)
-        args.length.times do |index|
-          procedure_context.set args.variables[index], arguments[index]
-        end
+      def create_context_based_on(outer_context)
+        Gobstones::Runner::ProcedureExecutionContext.based_on outer_context
       end
 
     end

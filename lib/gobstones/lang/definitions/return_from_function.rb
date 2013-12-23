@@ -15,8 +15,12 @@ module Gobstones
       end
 
       def ==(other)
-        super(other) &&
-        self.expressions == other.expressions
+        super(other) && self.expressions == other.expressions
+      end
+
+      def evaluate(context)
+        # TODO return a Tuple of expressions if there is more than one
+        expressions.first.evaluate context
       end
 
     end

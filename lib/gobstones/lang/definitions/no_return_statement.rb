@@ -8,6 +8,10 @@ module Gobstones
 
       include Gobstones::EqualByClass
 
+      def evaluate(context)
+        # nothing to do
+      end
+
     end
 
   end
