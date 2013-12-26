@@ -37,7 +37,7 @@ describe RepeatWithCmd do
   end
 
   it "allows to use the index variable inside the command block" do
-    cmd_block = CmdBlock.new [Poner.new(VarName.new('var'))]
+    cmd_block = CmdBlock.new [Poner.new(var_name)]
     repeat_with = RepeatWithCmd.new var_name, Azul.new, Verde.new, cmd_block
 
     repeat_with.evaluate context
@@ -46,6 +46,15 @@ describe RepeatWithCmd do
     expect(context.head.are_there_balls?(Negro.new)).to be_true
     expect(context.head.are_there_balls?(Rojo.new)).to be_true
     expect(context.head.are_there_balls?(Verde.new)).to be_true
+  end
+
+  it "does no iterations if the from is higher than the to" do
+    cmd_block = CmdBlock.new [Poner.new(Verde.new)]
+    repeat_with = RepeatWithCmd.new var_name, 8.to_gbs_num, 4.to_gbs_num, cmd_block
+
+    repeat_with.evaluate context
+
+    expect(context.head.are_there_balls?(Verde.new)).to be_false
   end
 
 end

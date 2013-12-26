@@ -13,7 +13,7 @@ module Gobstones
 
     class RepeatWithCmd
 
-      include Gobstones::EqualByClass
+      include EqualByClass
 
       attr_reader :var_name, :range_min, :range_max, :cmd_block
 
@@ -59,14 +59,15 @@ module Gobstones
         #
         # repeatWith var in min..max block
         #        is equivalent to
-        # { var := min; while (var < max) { block; var := siguiente(var) }; block }
+        # if (min < max) { var := min; while (var < max) { block; var := siguiente(var) }; block }
         #
         assign_cmd = SingleAssignment.new var_name, range_min
         while_cond = LessThan.new var_name, range_max
         increment = SingleAssignment.new var_name, Siguiente.new(var_name)
         while_block = CmdBlock.new [cmd_block, increment]
         while_cmd = WhileCmd.new while_cond, while_block
-        CmdBlock.new [assign_cmd, while_cmd, cmd_block]
+        if_cond = LessThan.new range_min, range_max
+        IfCmd.new if_cond, CmdBlock.new([assign_cmd, while_cmd, cmd_block])
       end
 
     end
