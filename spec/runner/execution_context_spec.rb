@@ -4,8 +4,6 @@ describe ExecutionContext do
 
   describe "variables context" do
 
-    let(:norte) { Norte.new }
-
     it "allows to set/get a variable" do
       context.set 'myColor', negro
 
@@ -14,10 +12,10 @@ describe ExecutionContext do
 
     it "allows to set/get more than one variable" do
       context.set 'dir', norte
-      context.set 'bool', true.to_gbs_bool
+      context.set 'bool', true_value
 
       expect(context.get('dir')).to eq(norte)
-      expect(context.get('bool')).to eq(true.to_gbs_bool)
+      expect(context.get('bool')).to eq(true_value)
     end
 
     it "raises an error when trying to get an undefined variable" do

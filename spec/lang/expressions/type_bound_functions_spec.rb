@@ -27,11 +27,11 @@ describe "type bound functions" do
   describe "directions" do
 
     it "should evaluate minDir() to Norte" do
-      expect(MinDir.new.evaluate).to eq(Norte.new)
+      expect(MinDir.new.evaluate).to eq(norte)
     end
 
     it "should evaluate maxDir() to Oeste" do
-      expect(MaxDir.new.evaluate).to eq(Oeste.new)
+      expect(MaxDir.new.evaluate).to eq(oeste)
     end
 
   end

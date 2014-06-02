@@ -16,7 +16,7 @@ describe Gobstones::Parser, "procedure calls" do
   it "should parse a procedure with many args" do
     first_arg = 42.to_gbs_num
     second_arg = NroBolitas.new verde
-    third_arg = Norte.new
+    third_arg = norte
     expected = ProcedureCall.new 'Proc1', [first_arg, second_arg, third_arg]
 
     expect('Proc1(42, nroBolitas(Verde), Norte)').
@@ -27,7 +27,7 @@ describe Gobstones::Parser, "procedure calls" do
     or_expr = Or.new VarName.new('a'), VarName.new('b')
     paren_expr = EnclosedByParensExpression.new Div.new(10.to_gbs_num, VarName.new('c'))
     num_expr = Mul.new 5.to_gbs_num, paren_expr
-    func_call = FunctionCall.new 'func', [verde, Opuesto.new(Norte.new)]
+    func_call = FunctionCall.new 'func', [verde, Opuesto.new(norte)]
     proc_call = ProcedureCall.new 'Proc1', [or_expr, num_expr, func_call]
     expect('Proc1(a || b, 5*(10 div c), func(Verde, opuesto(Norte)))').
       to be_parsed_as(:command).and_return(proc_call)

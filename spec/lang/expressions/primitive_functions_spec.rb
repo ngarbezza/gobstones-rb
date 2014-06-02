@@ -1,18 +1,16 @@
 describe "primitive functions" do
 
   let(:context) { clean_context }
-  let(:black) { Negro.new }
-  let(:west) { Oeste.new }
 
   describe "nroBolitas() function" do
 
     it "should evaluates correctly in a clean context" do
-      expect(NroBolitas.new(black).evaluate(context)).to eq(0.to_gbs_num)
+      expect(NroBolitas.new(negro).evaluate(context)).to eq(0.to_gbs_num)
     end
 
     it "should evaluate correctly in a context with some data" do
-      5.times { context.head.put black }
-      expect(NroBolitas.new(black).evaluate(context)).to eq(5.to_gbs_num)
+      5.times { context.head.put negro }
+      expect(NroBolitas.new(negro).evaluate(context)).to eq(5.to_gbs_num)
     end
 
   end
@@ -20,12 +18,12 @@ describe "primitive functions" do
   describe "hayBolitas() function" do
 
     it "should evaluate correctly in a clean context" do
-      expect(HayBolitas.new(black).evaluate(context)).to eq(false_value)
+      expect(HayBolitas.new(negro).evaluate(context)).to eq(false_value)
     end
 
     it "should evaluate correctly in a context with some data" do
-      context.head.put black
-      expect(HayBolitas.new(black).evaluate(context)).to eq(true_value)
+      context.head.put negro
+      expect(HayBolitas.new(negro).evaluate(context)).to eq(true_value)
     end
 
   end
@@ -33,12 +31,12 @@ describe "primitive functions" do
   describe "puedeMover() function" do
 
     it "should evaluate correctly in a clean context" do
-      expect(PuedeMover.new(west).evaluate(context)).to eq(false_value)
+      expect(PuedeMover.new(oeste).evaluate(context)).to eq(false_value)
     end
 
     it "should evaluate correctly in a modified context" do
-      context.head.move(Este.new)
-      expect(PuedeMover.new(west).evaluate(context)).to eq(true_value)
+      context.head.move(este)
+      expect(PuedeMover.new(oeste).evaluate(context)).to eq(true_value)
     end
 
   end
@@ -57,10 +55,10 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for directions" do
-      expect(Siguiente.new(Norte.new).evaluate(context)).to eq(Este.new)
-      expect(Siguiente.new(Este.new).evaluate(context)).to eq(Sur.new)
-      expect(Siguiente.new(Sur.new).evaluate(context)).to eq(Oeste.new)
-      expect(Siguiente.new(Oeste.new).evaluate(context)).to eq(Norte.new)
+      expect(Siguiente.new(norte).evaluate(context)).to eq(este)
+      expect(Siguiente.new(este).evaluate(context)).to eq(sur)
+      expect(Siguiente.new(sur).evaluate(context)).to eq(oeste)
+      expect(Siguiente.new(oeste).evaluate(context)).to eq(norte)
     end
 
     it "should evaluate correctly for booleans" do
@@ -84,10 +82,10 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for directions" do
-      expect(Previo.new(Norte.new).evaluate(context)).to eq(Oeste.new)
-      expect(Previo.new(Este.new).evaluate(context)).to eq(Norte.new)
-      expect(Previo.new(Sur.new).evaluate(context)).to eq(Este.new)
-      expect(Previo.new(Oeste.new).evaluate(context)).to eq(Sur.new)
+      expect(Previo.new(norte).evaluate(context)).to eq(oeste)
+      expect(Previo.new(este).evaluate(context)).to eq(norte)
+      expect(Previo.new(sur).evaluate(context)).to eq(este)
+      expect(Previo.new(oeste).evaluate(context)).to eq(sur)
     end
 
     it "should evaluate correctly for booleans" do
@@ -105,10 +103,10 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for directions" do
-      expect(Opuesto.new(Norte.new).evaluate(context)).to eq(Sur.new)
-      expect(Opuesto.new(Este.new).evaluate(context)).to eq(Oeste.new)
-      expect(Opuesto.new(Sur.new).evaluate(context)).to eq(Norte.new)
-      expect(Opuesto.new(Oeste.new).evaluate(context)).to eq(Este.new)
+      expect(Opuesto.new(norte).evaluate(context)).to eq(sur)
+      expect(Opuesto.new(este).evaluate(context)).to eq(oeste)
+      expect(Opuesto.new(sur).evaluate(context)).to eq(norte)
+      expect(Opuesto.new(oeste).evaluate(context)).to eq(este)
     end
 
     it "should evaluate correctly for booleans" do

@@ -27,7 +27,7 @@ describe WhileCmd do
   end
 
   it "fails by type error if the condition is not boolean" do
-    while_cmd = WhileCmd.new Sur.new, while_block
+    while_cmd = WhileCmd.new sur, while_block
 
     expect { while_cmd.evaluate context }
       .to raise_error(GobstonesTypeError, /is not a boolean/)

@@ -15,7 +15,7 @@ describe Gobstones::Parser, "command blocks" do
   it "should parse a block with many simple commands" do
     first = Poner.new verde
     second = Boom.new "error"
-    third = Mover.new Oeste.new
+    third = Mover.new oeste
     cmd_block = CmdBlock.new [first, second, third]
 
     expect('{
@@ -28,7 +28,7 @@ describe Gobstones::Parser, "command blocks" do
   it "should allow ; between commands" do
     first = Poner.new verde
     second = Boom.new "error"
-    third = Mover.new Oeste.new
+    third = Mover.new oeste
     cmd_block = CmdBlock.new [first, second, third]
 
     expect('{Poner(Verde); BOOM("error");

@@ -47,19 +47,19 @@ describe Gobstones::Parser, "data types" do
   describe "directions" do
 
     it "should parse the 'Norte' direction" do
-      expect('Norte').to be_parsed_as(:expression).and_return(Norte.new)
+      expect('Norte').to be_parsed_as(:expression).and_return(norte)
     end
 
     it "should parse the 'Este' direction" do
-      expect('Este').to be_parsed_as(:expression).and_return(Este.new)
+      expect('Este').to be_parsed_as(:expression).and_return(este)
     end
 
     it "should parse the 'Sur' direction" do
-      expect('Sur').to be_parsed_as(:expression).and_return(Sur.new)
+      expect('Sur').to be_parsed_as(:expression).and_return(sur)
     end
 
     it "should parse the 'Oeste' direction" do
-      expect('Oeste').to be_parsed_as(:expression).and_return(Oeste.new)
+      expect('Oeste').to be_parsed_as(:expression).and_return(oeste)
     end
 
   end

@@ -4,7 +4,7 @@ describe Procedure do
   let(:empty_body) { CmdBlock.empty }
 
   it "executes its body and leaves state in the program context" do
-    poner_cmd = Poner.new Rojo.new
+    poner_cmd = Poner.new rojo
     body = CmdBlock.new [poner_cmd]
     procedure = Procedure.new 'MyProcedure', no_arguments, body
     procedure.evaluate context
@@ -30,7 +30,7 @@ describe Procedure do
     body = CmdBlock.new [mover_cmd, poner_cmd]
     procedure = Procedure.new 'MyProc', args, body
 
-    procedure.evaluate context, [negro, Norte.new]
+    procedure.evaluate context, [negro, norte]
 
     expect(context.head.are_there_balls?(negro)).to be true
     expect(context.head.y_pos).to eq(1)
@@ -41,7 +41,7 @@ describe Procedure do
     args = VarTuple.new [a_direction]
     procedure = Procedure.new 'MyProc', args, empty_body
 
-    procedure.evaluate context, [Oeste.new]
+    procedure.evaluate context, [oeste]
 
     expect(context.has_variable_named?('a_direction')).to be false
   end
@@ -49,7 +49,7 @@ describe Procedure do
   it "fails if it is executed with more arguments than expected" do
     procedure = Procedure.new 'MyProcedure', no_arguments, empty_body
     error_message = "Wrong number of arguments in procedure 'MyProcedure': expected 0, got 1"
-    expect { procedure.evaluate context, [Norte.new] }
+    expect { procedure.evaluate context, [norte] }
       .to raise_error(WrongArgumentsError, error_message)
   end
 

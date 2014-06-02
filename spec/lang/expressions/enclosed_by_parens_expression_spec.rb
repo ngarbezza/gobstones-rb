@@ -1,12 +1,11 @@
 describe EnclosedByParensExpression do
 
   let(:context) { clean_context }
-  let(:red) { Rojo.new }
 
   it "evaluates the inner expression" do
-    expression = EnclosedByParensExpression.new red
+    expression = EnclosedByParensExpression.new rojo
 
-    expect(expression.evaluate(context)).to eq(red)
+    expect(expression.evaluate(context)).to eq(rojo)
   end
 
 end

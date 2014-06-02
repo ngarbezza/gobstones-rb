@@ -5,7 +5,7 @@ describe Gobstones, "type checker" do
     describe "puedeMover()" do
 
       it "should allow a direction as argument" do
-        [Norte.new, Sur.new, Este.new, Oeste.new].each do |dir|
+        [norte, sur, este, oeste].each do |dir|
             puede_mover_dir = PuedeMover.new dir
             result = puede_mover_dir.type_check
             expect(result.ok?).to be true

@@ -35,7 +35,7 @@ describe Gobstones::Parser, "simple commands" do
         end
 
         it "should be parsed ok with a complex expression as argument" do
-          func_call = FunctionCall.new 'funcCall', [Norte.new, 42.to_gbs_num]
+          func_call = FunctionCall.new 'funcCall', [norte, 42.to_gbs_num]
           cmd = Kernel.const_get(command).new Opuesto.new(func_call)
           expect("#{command}(opuesto(funcCall(Norte, 42)))").
             to be_parsed_as(:command).and_return(cmd)

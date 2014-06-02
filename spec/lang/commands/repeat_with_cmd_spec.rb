@@ -4,16 +4,16 @@ describe RepeatWithCmd do
   let(:var_name) { VarName.new 'var' }
 
   it "iterates over numbers when evaluating" do
-    command_block = CmdBlock.new [Poner.new(Rojo.new)]
+    command_block = CmdBlock.new [Poner.new(rojo)]
     repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, 10.to_gbs_num, command_block
 
     repeat_with.evaluate context
 
-    expect(context.head.number_of_balls(Rojo.new)).to eq(10)
+    expect(context.head.number_of_balls(rojo)).to eq(10)
   end
 
   it "raises an error if the range values have not the same type" do
-    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, Este.new, CmdBlock.empty
+    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, este, CmdBlock.empty
 
     expect { repeat_with.evaluate context }
       .to raise_error(GobstonesTypeError, /types don't match in range values/)

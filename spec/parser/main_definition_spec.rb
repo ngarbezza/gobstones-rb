@@ -17,7 +17,7 @@ describe Gobstones::Parser, "main definition" do
 
   it "should parse a valid main procedure with commands and return" do
     return_tuple = VarTuple.new [VarName.new('x'), VarName.new('y')]
-    cmd_block = CmdBlock.new [Mover.new(Oeste.new), Skip.new]
+    cmd_block = CmdBlock.new [Mover.new(oeste), Skip.new]
     main = Main.new cmd_block, ReturnFromMain.new(return_tuple)
 
     expect('procedure Main() {

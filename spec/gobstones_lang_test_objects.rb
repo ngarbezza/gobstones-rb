@@ -52,4 +52,20 @@ module GobstonesLangTestObjects
     Rojo.new
   end
 
+  def norte
+    Norte.new
+  end
+
+  def sur
+    Sur.new
+  end
+
+  def este
+    Este.new
+  end
+
+  def oeste
+    Oeste.new
+  end
+
 end

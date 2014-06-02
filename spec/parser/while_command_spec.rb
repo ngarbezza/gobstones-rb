@@ -19,8 +19,8 @@ describe Gobstones::Parser, "while statements" do
   end
 
   it "should parse a statement with a complex boolean expression" do
-    and_expr = And.new VarName.new('a'), False.new
-    exp = Or.new PuedeMover.new(Norte.new), EnclosedByParensExpression.new(and_expr)
+    and_expr = And.new VarName.new('a'), false_value
+    exp = Or.new PuedeMover.new(norte), EnclosedByParensExpression.new(and_expr)
     while_cmd = WhileCmd.new exp, CmdBlock.empty
 
     expect('while (puedeMover(Norte) || (a && False)) {}').

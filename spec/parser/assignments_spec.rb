@@ -3,7 +3,7 @@ describe Gobstones::Parser, "assignments" do
   describe "single" do
 
     it "should parse a valid assignment with a simple expression" do
-      assignment = SingleAssignment.new VarName.new('myDir'), Norte.new
+      assignment = SingleAssignment.new VarName.new('myDir'), norte
 
       expect('myDir:=Norte').
         to be_parsed_as(:command).and_return(assignment)
@@ -13,7 +13,7 @@ describe Gobstones::Parser, "assignments" do
 
     it "should parse a valid assignment with a complex expression" do
       a, b = VarName.new('a'), VarName.new('b')
-      exp = Or.new False.new, EnclosedByParensExpression.new(And.new(a, b))
+      exp = Or.new false_value, EnclosedByParensExpression.new(And.new(a, b))
       assignment = SingleAssignment.new VarName.new('myVar'), exp
 
       expect('myVar := False || (a && b)').

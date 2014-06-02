@@ -12,7 +12,7 @@ describe Gobstones::Parser, "nested expressions" do
   end
 
   it "should parse primitive functions between ()" do
-    puede_mover = EnclosedByParensExpression.new(PuedeMover.new(Norte.new))
+    puede_mover = EnclosedByParensExpression.new(PuedeMover.new(norte))
     expect('(puedeMover(Norte))').
       to be_parsed_as(:expression).and_return(puede_mover)
   end

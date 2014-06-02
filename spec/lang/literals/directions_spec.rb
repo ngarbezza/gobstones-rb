@@ -1,6 +1,6 @@
 describe "directions" do
 
-  let(:all) { [Norte.new, Sur.new, Este.new, Oeste.new] }
+  let(:all) { [norte, sur, este, oeste] }
 
   it "should evaluate any direction to self" do
     all.each { |dir| expect(dir.evaluate).to eq(dir) }
@@ -13,7 +13,7 @@ describe "directions" do
   describe Norte do
 
     it "should return Sur as opposite direction" do
-      expect(Norte.new.opposite).to eq(Sur.new)
+      expect(norte.opposite).to eq(sur)
     end
 
   end
@@ -21,7 +21,7 @@ describe "directions" do
   describe Este do
 
     it "should return Oeste as opposite direction" do
-      expect(Este.new.opposite).to eq(Oeste.new)
+      expect(este.opposite).to eq(oeste)
     end
 
   end
@@ -29,7 +29,7 @@ describe "directions" do
   describe Sur do
 
     it "should return Norte as opposite direction" do
-      expect(Sur.new.opposite).to eq(Norte.new)
+      expect(sur.opposite).to eq(norte)
     end
 
   end
@@ -37,7 +37,7 @@ describe "directions" do
   describe Oeste do
 
     it "should return Este as opposite direction" do
-      expect(Oeste.new.opposite).to eq(Este.new)
+      expect(oeste.opposite).to eq(este)
     end
 
   end

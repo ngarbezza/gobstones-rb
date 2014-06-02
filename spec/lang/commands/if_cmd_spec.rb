@@ -19,7 +19,7 @@ describe "if command" do
     end
 
     it "raises a type error if the condition is not boolean" do
-      [42.to_gbs_num, Norte.new, verde].each do |value|
+      [42.to_gbs_num, norte, verde].each do |value|
         if_cmd = IfCmd.new value, then_block
         expect { if_cmd.evaluate context }
           .to raise_error(GobstonesTypeError, /is not a boolean/)

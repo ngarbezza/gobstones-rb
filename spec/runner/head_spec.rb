@@ -1,8 +1,8 @@
 describe Head do
 
-  it "should have a position, default 0;0" do
-    head = Head.new
+  let(:head)  { Head.new }
 
+  it "should have a position, default 0;0" do
     expect(head.x_pos).to eq(0)
     expect(head.y_pos).to eq(0)
   end
@@ -21,47 +21,41 @@ describe Head do
 
   describe "movements" do
 
-    let(:head)  { Head.new }
-    let(:north) { Norte.new }
-    let(:south) { Sur.new }
-    let(:east)  { Este.new }
-    let(:west)  { Oeste.new }
-
     context "valid" do
 
       it "should move north" do
-        expect(head.can_move?(north)).to be true
-        expect { head.move(north) }.to_not raise_error
+        expect(head.can_move?(norte)).to be true
+        expect { head.move(norte) }.to_not raise_error
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(1)
       end
 
       it "should move south" do
-        head.move north
-        expect(head.can_move?(south)).to be true
-        expect { head.move(south) }.to_not raise_error
+        head.move norte
+        expect(head.can_move?(sur)).to be true
+        expect { head.move(sur) }.to_not raise_error
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(0)
       end
 
       it "should move east" do
-        expect(head.can_move?(east)).to be true
-        expect { head.move(east) }.to_not raise_error
+        expect(head.can_move?(este)).to be true
+        expect { head.move(este) }.to_not raise_error
         expect(head.x_pos).to eq(1)
         expect(head.y_pos).to eq(0)
       end
 
       it "should move west" do
-        head.move east
-        expect(head.can_move?(west)).to be true
-        expect { head.move(west) }.to_not raise_error
+        head.move este
+        expect(head.can_move?(oeste)).to be true
+        expect { head.move(oeste) }.to_not raise_error
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(0)
       end
 
       it "should go to the origin" do
-        head.move east
-        head.move north
+        head.move este
+        head.move norte
         head.go_to_origin
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(0)
@@ -72,35 +66,35 @@ describe Head do
     context "non valid" do
 
       it "should fail moving north" do
-        (Head::MAX_COLS-1).times { head.move north }
+        (Head::MAX_COLS-1).times { head.move norte }
 
-        expect(head.can_move?(north)).to be false
-        expect { head.move north }.to raise_error(OutOfBoardError)
+        expect(head.can_move?(norte)).to be false
+        expect { head.move norte }.to raise_error(OutOfBoardError)
       end
 
       it "should fail moving south" do
-        expect(head.can_move?(south)).to be false
-        expect { head.move south }.to raise_error(OutOfBoardError)
+        expect(head.can_move?(sur)).to be false
+        expect { head.move sur }.to raise_error(OutOfBoardError)
       end
 
       it "should fail moving east" do
-        (Head::MAX_ROWS-1).times { head.move east }
+        (Head::MAX_ROWS-1).times { head.move este }
 
-        expect(head.can_move?(east)).to be false
-        expect { head.move east }.to raise_error(OutOfBoardError)
+        expect(head.can_move?(este)).to be false
+        expect { head.move este }.to raise_error(OutOfBoardError)
       end
 
       it "should fail moving west" do
-        expect(head.can_move?(west)).to be false
-        expect { head.move west }.to raise_error(OutOfBoardError)
+        expect(head.can_move?(oeste)).to be false
+        expect { head.move oeste }.to raise_error(OutOfBoardError)
       end
 
       it "should fail if the argument is not a direction" do
-        expect { head.move Azul.new }.
+        expect { head.move azul }.
           to raise_error(GobstonesTypeError, /is not a direction/)
         expect { head.move "not a direction" }.
           to raise_error(GobstonesTypeError, /is not a direction/)
-        expect { head.move True.new }.
+        expect { head.move true_value }.
           to raise_error(GobstonesTypeError, /is not a direction/)
         expect { head.move 42 }.
           to raise_error(GobstonesTypeError, /is not a direction/)
@@ -112,26 +106,23 @@ describe Head do
 
   describe "board actions" do
 
-    let(:head) { Head.new }
-    let(:black) { Negro.new }
-
     it "should put balls across the board" do
-      3.times { head.put black }
-      expect(head.are_there_balls?(black)).to be true
-      expect(head.number_of_balls(black)).to eq(3)
-      head.move Norte.new
-      2.times { head.put black }
-      expect(head.number_of_balls(black)).to eq(2)
-      head.move Este.new
-      5.times { head.put black }
-      expect(head.number_of_balls(black)).to eq(5)
+      3.times { head.put negro }
+      expect(head.are_there_balls?(negro)).to be true
+      expect(head.number_of_balls(negro)).to eq(3)
+      head.move norte
+      2.times { head.put negro }
+      expect(head.number_of_balls(negro)).to eq(2)
+      head.move este
+      5.times { head.put negro }
+      expect(head.number_of_balls(negro)).to eq(5)
     end
 
     it "should take out balls across the board" do
-      4.times { head.put black }
-      4.times { head.take_out black }
+      4.times { head.put negro }
+      4.times { head.take_out negro }
 
-      expect(head.are_there_balls?(black)).to be false
+      expect(head.are_there_balls?(negro)).to be false
     end
 
   end
