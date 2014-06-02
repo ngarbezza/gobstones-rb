@@ -13,7 +13,7 @@ describe Gobstones, "type checker" do
       end
 
       it "should not allow a number as argument" do
-        puede_mover_number = PuedeMover.new Number.new(42)
+        puede_mover_number = PuedeMover.new 42.to_gbs_num
         result = puede_mover_number.type_check
         expect(result.ok?).to be false
       end

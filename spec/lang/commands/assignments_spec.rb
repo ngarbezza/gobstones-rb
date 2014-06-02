@@ -1,6 +1,6 @@
 describe SingleAssignment do
 
-  let(:context) { ExecutionContext.new }
+  let(:context) { clean_context }
   let(:a) { VarName.new 'a' }
 
   it "evaluates the associated expression to the var name" do

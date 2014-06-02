@@ -1,6 +1,6 @@
 describe Boom do
 
-  let(:context) { NullExecutionContext.new }
+  let(:context) { clean_context }
 
   it "raises an error when evaluating, with the message specified" do
     msg = 'This is a program error'

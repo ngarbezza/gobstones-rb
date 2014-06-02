@@ -13,7 +13,7 @@ module Gobstones
 
     class RepeatWithCmd
 
-      include EqualByClass
+      include Gobstones::EqualByClass
 
       attr_reader :var_name, :range_min, :range_max, :cmd_block
 

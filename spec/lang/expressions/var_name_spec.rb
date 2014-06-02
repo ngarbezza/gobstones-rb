@@ -1,6 +1,6 @@
 describe VarName do
 
-  let(:context) { ExecutionContext.new }
+  let(:context) { clean_context }
   let(:variable_name) { VarName.new 'var' }
 
   it "should return the associated value if it was defined in the context" do

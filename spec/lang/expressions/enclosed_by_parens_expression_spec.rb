@@ -1,6 +1,6 @@
 describe EnclosedByParensExpression do
 
-  let(:context) { NullExecutionContext.new }
+  let(:context) { clean_context }
   let(:red) { Rojo.new }
 
   it "evaluates the inner expression" do

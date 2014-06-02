@@ -8,7 +8,7 @@ module Gobstones
 
       include Gobstones::EqualByClass
 
-      def evaluate(context=nil)
+      def evaluate(context)
         # do nothing, that's my job :-)
       end
 

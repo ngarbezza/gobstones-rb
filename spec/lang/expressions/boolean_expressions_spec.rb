@@ -2,7 +2,7 @@ describe "boolean expressions" do
 
   let(:false_value) { False.new }
   let(:true_value) { True.new }
-  let(:context) { NullExecutionContext.new }
+  let(:context) { clean_context }
 
   # TODO test/implement short-circuit?
 
