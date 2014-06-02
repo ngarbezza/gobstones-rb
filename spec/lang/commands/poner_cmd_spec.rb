@@ -1,7 +1,6 @@
 describe Poner do
 
-  let(:program) { Program.new [], nil }
-  let(:context) { ProgramExecutionContext.for program }
+  let(:context) { clean_context }
   let(:green) { Verde.new }
 
   it "puts a ball of the given color in the current cell when evaluating" do

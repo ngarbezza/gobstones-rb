@@ -1,7 +1,6 @@
 describe NoReturnStatement do
 
-  let(:program) { Program.new [], nil }
-  let(:context) { ProgramExecutionContext.new program }
+  let(:context) { clean_context }
   let(:no_return_statement) { NoReturnStatement.new }
 
   it "does nothing when evaluating on a context" do

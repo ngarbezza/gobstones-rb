@@ -1,7 +1,6 @@
 describe "if command" do
 
-  let(:program) { Program.new [], nil }
-  let(:context) { ProgramExecutionContext.for program }
+  let(:context) { clean_context }
   let(:then_block) { CmdBlock.new [Poner.new(Verde.new)] }
   let(:else_block) { CmdBlock.new [Poner.new(Rojo.new)] }
 

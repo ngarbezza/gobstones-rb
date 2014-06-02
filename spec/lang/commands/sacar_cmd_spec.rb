@@ -1,7 +1,6 @@
 describe Sacar do
 
-  let(:program) { Program.new [], nil }
-  let(:context) { ProgramExecutionContext.for program }
+  let(:context) { clean_context }
   let(:red) { Rojo.new }
 
   it "take off balls from the board when evaluating" do

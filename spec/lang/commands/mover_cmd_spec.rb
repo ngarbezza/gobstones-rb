@@ -1,7 +1,6 @@
 describe Mover do
 
-  let(:program) { Program.new [], nil }
-  let(:context) { ProgramExecutionContext.for program }
+  let(:context) { clean_context }
   let(:north) { Norte.new }
   let(:south) { Sur.new }
 

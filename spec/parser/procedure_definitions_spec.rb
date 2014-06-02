@@ -3,7 +3,7 @@ describe Gobstones::Parser, "procedure definitions" do
   let(:body) { CmdBlock.empty }
 
   it "should parse an empty procedure def without args" do
-    args = VarTuple.new []
+    args = VarTuple.empty
     proc_def = Procedure.new 'MyProc', args, body
 
     expect('procedure MyProc() {}').

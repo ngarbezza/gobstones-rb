@@ -13,3 +13,6 @@ require 'gobstones/parser/treetop_parser'
 include Gobstones::Lang
 include Gobstones::Runner
 include Gobstones::Parser
+
+require 'gobstones_lang_test_objects'
+include GobstonesLangTestObjects

@@ -1,7 +1,6 @@
 describe RepeatWithCmd do
 
-  let(:program) { Program.new [], nil }
-  let(:context) { ProgramExecutionContext.for program }
+  let(:context) { clean_context }
   let(:var_name) { VarName.new 'var' }
 
   it "iterates over numbers when evaluating" do

@@ -10,6 +10,10 @@ module Gobstones
 
       attr_reader :variables
 
+      def self.empty
+        self.new []
+      end
+
       def initialize(variables)
         @variables = variables
       end

@@ -1,6 +1,6 @@
 describe Skip do
 
-  let(:context) { ProgramExecutionContext.for Program.new([], nil) }
+  let(:context) { clean_context }
 
   it "evaluates and does nothing" do
     Skip.new.evaluate context

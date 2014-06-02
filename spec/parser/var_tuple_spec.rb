@@ -1,7 +1,7 @@
 describe Gobstones::Parser, "var tuples" do
 
   it "should parse an empty var tuple" do
-    var_tuple = VarTuple.new []
+    var_tuple = VarTuple.empty
 
     expect('()').to be_parsed_as(:var_tuple).and_return(var_tuple)
     expect('(   )').to be_parsed_as(:var_tuple).and_return(var_tuple)

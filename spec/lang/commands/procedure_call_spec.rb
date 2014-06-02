@@ -1,14 +1,14 @@
 describe "procedure calls" do
 
-  let(:empty_args) { VarTuple.new [] }
+  let(:empty_args) { VarTuple.empty }
   let(:empty_body) { CmdBlock.empty }
 
   it "evaluates an existing procedure when calling it" do
     poner_cmd = Poner.new Verde.new
     body = CmdBlock.new [poner_cmd]
     my_procedure = Procedure.new 'MyProcedure', empty_args, body
-    program = Program.new [my_procedure], nil
-    context = ProgramExecutionContext.for program
+    program = Program.new [my_procedure], no_return_statement
+    context = program_context_for program
 
     proc_call = ProcedureCall.new 'MyProcedure', []
     proc_call.evaluate context
@@ -23,8 +23,8 @@ describe "procedure calls" do
     call_to_inner_procedure = ProcedureCall.new 'Inner', []
     outer_procedure_body = CmdBlock.new [call_to_inner_procedure]
     outer_procedure = Procedure.new 'Outer', empty_args, outer_procedure_body
-    program = Program.new [outer_procedure, inner_procedure], nil
-    program_context = ProgramExecutionContext.for program
+    program = Program.new [outer_procedure, inner_procedure], no_return_statement
+    program_context = program_context_for program
 
     call_to_outer_procedure = ProcedureCall.new 'Outer', []
     call_to_outer_procedure.evaluate program_context
@@ -33,8 +33,7 @@ describe "procedure calls" do
   end
 
   it "fails to execute an undefined procedure" do
-    program = Program.new [], nil
-    context = ProgramExecutionContext.for program
+    context = clean_context
     proc_call = ProcedureCall.new 'UndefinedProcedure', []
 
     expect { proc_call.evaluate context }

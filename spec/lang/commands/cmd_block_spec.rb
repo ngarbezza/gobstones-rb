@@ -1,8 +1,8 @@
 describe CmdBlock do
 
+  let(:context) { clean_context }
+
   it "evaluates all inner commands" do
-    program = Program.new [], nil
-    context = ProgramExecutionContext.for program
     cmd_block = CmdBlock.new [
       Poner.new(Rojo.new), Poner.new(Verde.new),
       Poner.new(Negro.new), Poner.new(Azul.new)]

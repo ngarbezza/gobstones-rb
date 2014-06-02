@@ -10,7 +10,7 @@ module Gobstones
     class Main < Definition
 
       def initialize(body, return_statement)
-        super('Main', VarTuple.new([]), body, return_statement)
+        super('Main', VarTuple.empty, body, return_statement)
       end
 
       def evaluate(context)
