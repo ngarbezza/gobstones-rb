@@ -15,11 +15,11 @@ describe Gobstones::Parser, "data types" do
   describe "booleans" do
 
     it "should parse a true boolean" do
-      expect('True').to be_parsed_as(:expression).and_return(True.new)
+      expect('True').to be_parsed_as(:expression).and_return(true_value)
     end
 
     it "should parse a false boolean" do
-      expect('False').to be_parsed_as(:expression).and_return(False.new)
+      expect('False').to be_parsed_as(:expression).and_return(false_value)
     end
 
   end

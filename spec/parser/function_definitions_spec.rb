@@ -25,7 +25,7 @@ describe Gobstones::Parser, "function definitions" do
   it "should parse a function with some statements" do
     args = VarTuple.new [VarName.new('arg')]
     body = CmdBlock.new [Poner.new(Verde.new)]
-    return_st = ReturnFromFunction.new [True.new]
+    return_st = ReturnFromFunction.new [true_value]
     func_def = Function.new 'myFunc', args, body, return_st
 
     expect('function myFunc(arg)

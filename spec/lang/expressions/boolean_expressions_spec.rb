@@ -1,10 +1,7 @@
+# TODO test/implement short-circuit?
 describe "boolean expressions" do
 
-  let(:false_value) { False.new }
-  let(:true_value) { True.new }
   let(:context) { clean_context }
-
-  # TODO test/implement short-circuit?
 
   describe And do
 

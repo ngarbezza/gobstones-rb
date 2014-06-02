@@ -5,7 +5,7 @@ describe WhileCmd do
 
   def condition(times)
     double('while condition').tap do |condition|
-      expected_values = [True.new] * times + [False.new]
+      expected_values = [true_value] * times + [false_value]
       allow(condition).to receive(:evaluate).and_return(*expected_values)
     end
   end
@@ -34,7 +34,7 @@ describe WhileCmd do
   end
 
   it "fails by stack overflow if the condition is always true" do
-    while_cmd = WhileCmd.new True.new, while_block
+    while_cmd = WhileCmd.new true_value, while_block
 
     expect { while_cmd.evaluate context }
       .to raise_error(GobstonesRuntimeError, /stack overflow/)

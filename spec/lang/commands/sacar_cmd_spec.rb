@@ -29,7 +29,7 @@ describe Sacar do
   end
 
   it "fails if the argument is not a color" do
-    expect { Sacar.new(True.new).evaluate(context) }.
+    expect { Sacar.new(true_value).evaluate(context) }.
       to raise_error(GobstonesTypeError, /is not a color/)
   end
 

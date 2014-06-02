@@ -3,11 +3,11 @@ describe "type bound functions" do
   describe "boolean" do
 
     it "should evaluate minBool() to False" do
-      expect(MinBool.new.evaluate).to eq(False.new)
+      expect(MinBool.new.evaluate).to eq(false_value)
     end
 
     it "should evaluate maxBool() to True" do
-      expect(MaxBool.new.evaluate).to eq(True.new)
+      expect(MaxBool.new.evaluate).to eq(true_value)
     end
 
   end

@@ -1,8 +1,5 @@
 describe "comparison expressions" do
 
-  let(:false_value) { False.new }
-  let(:true_value) { True.new }
-
   describe Equal do
 
     it "should evaluate same booleans as equal" do

@@ -3,7 +3,7 @@ describe Gobstones::Parser, "if statements" do
   describe "if" do
 
     it "should parse a statement with a simple boolean and an empty block" do
-      if_cmd = IfCmd.new True.new, CmdBlock.empty
+      if_cmd = IfCmd.new true_value, CmdBlock.empty
 
       expect('if (True) {}').to be_parsed_as(:command).and_return(if_cmd)
       expect('if (True) {

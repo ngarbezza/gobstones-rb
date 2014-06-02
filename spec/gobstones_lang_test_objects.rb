@@ -1,5 +1,7 @@
 module GobstonesLangTestObjects
 
+  # Programs, contexts and definitions
+
   def clean_context
     program_context_for empty_program
   end
@@ -22,6 +24,16 @@ module GobstonesLangTestObjects
 
   def no_return_statement
     NoReturnStatement.new
+  end
+
+  # Literals
+
+  def true_value
+    True.new
+  end
+
+  def false_value
+    False.new
   end
 
 end

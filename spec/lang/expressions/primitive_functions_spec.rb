@@ -64,8 +64,8 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for booleans" do
-      expect(Siguiente.new(True.new).evaluate(context)).to eq(False.new)
-      expect(Siguiente.new(False.new).evaluate(context)).to eq(True.new)
+      expect(Siguiente.new(true_value).evaluate(context)).to eq(false_value)
+      expect(Siguiente.new(false_value).evaluate(context)).to eq(true_value)
     end
 
   end
@@ -91,8 +91,8 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for booleans" do
-      expect(Previo.new(True.new).evaluate(context)).to eq(False.new)
-      expect(Previo.new(False.new).evaluate(context)).to eq(True.new)
+      expect(Previo.new(true_value).evaluate(context)).to eq(false_value)
+      expect(Previo.new(false_value).evaluate(context)).to eq(true_value)
     end
 
   end
@@ -112,8 +112,8 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for booleans" do
-      expect(Opuesto.new(True.new).evaluate(context)).to eq(False.new)
-      expect(Opuesto.new(False.new).evaluate(context)).to eq(True.new)
+      expect(Opuesto.new(true_value).evaluate(context)).to eq(false_value)
+      expect(Opuesto.new(false_value).evaluate(context)).to eq(true_value)
     end
 
     it "should fail when evaluating for colors" do

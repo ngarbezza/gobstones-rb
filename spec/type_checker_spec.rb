@@ -25,7 +25,7 @@ describe Gobstones, "type checker" do
       end
 
       it "should not allow a boolean as argument" do
-        puede_mover_bool = PuedeMover.new True.new
+        puede_mover_bool = PuedeMover.new true_value
         result = puede_mover_bool.type_check
         expect(result.ok?).to be false
       end

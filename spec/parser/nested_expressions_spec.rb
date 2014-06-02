@@ -4,7 +4,7 @@ describe Gobstones::Parser, "nested expressions" do
     expect('(  42 )').to be_parsed_as(:expression).
       and_return(EnclosedByParensExpression.new(42.to_gbs_num))
     expect('(True )').to be_parsed_as(:expression).
-      and_return(EnclosedByParensExpression.new(True.new))
+      and_return(EnclosedByParensExpression.new(true_value))
     expect('(Rojo )').to be_parsed_as(:expression).
       and_return(EnclosedByParensExpression.new(Rojo.new))
     expect('(Verde)').to be_parsed_as(:expression).
