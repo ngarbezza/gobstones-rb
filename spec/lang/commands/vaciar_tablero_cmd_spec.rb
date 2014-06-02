@@ -9,7 +9,7 @@ describe VaciarTablero do
 
     vaciar_tablero.evaluate context
 
-    expect(context.board.empty?).to be_true
+    expect(context.board.empty?).to be true
   end
 
 end

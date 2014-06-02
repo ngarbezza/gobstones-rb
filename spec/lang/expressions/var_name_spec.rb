@@ -16,11 +16,11 @@ describe VarName do
   describe "#named?" do
 
     it "is named 'var'" do
-      expect(variable_name.named? 'var').to be_true
+      expect(variable_name.named? 'var').to be true
     end
 
     it "is not named 'blah'" do
-      expect(variable_name.named? 'blah').to be_false
+      expect(variable_name.named? 'blah').to be false
     end
 
   end

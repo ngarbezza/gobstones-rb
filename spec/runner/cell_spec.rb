@@ -8,20 +8,20 @@ describe Cell do
   let(:cell)   { Cell.new }
 
   it "should answer that there are no balls of a given color" do
-    expect(cell.are_there_balls?(blue)).to be_false
-    expect(cell.are_there_balls?(black)).to be_false
-    expect(cell.are_there_balls?(red)).to be_false
-    expect(cell.are_there_balls?(green)).to be_false
+    expect(cell.are_there_balls?(blue)).to be false
+    expect(cell.are_there_balls?(black)).to be false
+    expect(cell.are_there_balls?(red)).to be false
+    expect(cell.are_there_balls?(green)).to be false
   end
 
   it "should answer that there are balls of a given color when adding some" do
     cell.put blue
     cell.put red
 
-    expect(cell.are_there_balls?(blue)).to be_true
-    expect(cell.are_there_balls?(black)).to be_false
-    expect(cell.are_there_balls?(red)).to be_true
-    expect(cell.are_there_balls?(green)).to be_false
+    expect(cell.are_there_balls?(blue)).to be true
+    expect(cell.are_there_balls?(black)).to be false
+    expect(cell.are_there_balls?(red)).to be true
+    expect(cell.are_there_balls?(green)).to be false
   end
 
   it "should answer the number of balls of a given color" do
@@ -37,7 +37,7 @@ describe Cell do
     5.times { cell.put blue }
     3.times { cell.take_out blue }
 
-    expect(cell.are_there_balls?(blue)).to be_true
+    expect(cell.are_there_balls?(blue)).to be true
     expect(cell.number_of_balls(blue)).to eq(2)
   end
 
@@ -57,16 +57,16 @@ describe Cell do
 
     cell.empty!
 
-    colors.each { |color| expect(cell.are_there_balls?(color)).to be_false }
+    colors.each { |color| expect(cell.are_there_balls?(color)).to be false }
   end
 
   it "should be empty if it doesn't have any balls" do
-    expect(cell.empty?).to be_true
+    expect(cell.empty?).to be true
   end
 
   it "should not be empty it it has some balls" do
     colors.each { |color| cell.put color }
-    expect(cell.empty?).to be_false
+    expect(cell.empty?).to be false
   end
 
 end

@@ -33,7 +33,7 @@ describe RepeatWithCmd do
 
     repeat_with.evaluate context
 
-    expect(context.has_variable_named?('var')).to be_false
+    expect(context.has_variable_named?('var')).to be false
   end
 
   it "allows to use the index variable inside the command block" do
@@ -42,10 +42,10 @@ describe RepeatWithCmd do
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(Azul.new)).to be_true
-    expect(context.head.are_there_balls?(Negro.new)).to be_true
-    expect(context.head.are_there_balls?(Rojo.new)).to be_true
-    expect(context.head.are_there_balls?(Verde.new)).to be_true
+    expect(context.head.are_there_balls?(Azul.new)).to be true
+    expect(context.head.are_there_balls?(Negro.new)).to be true
+    expect(context.head.are_there_balls?(Rojo.new)).to be true
+    expect(context.head.are_there_balls?(Verde.new)).to be true
   end
 
   it "does no iterations if the from is higher than the to" do
@@ -54,7 +54,7 @@ describe RepeatWithCmd do
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(Verde.new)).to be_false
+    expect(context.head.are_there_balls?(Verde.new)).to be false
   end
 
 end

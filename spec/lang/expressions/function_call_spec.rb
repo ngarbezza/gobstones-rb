@@ -16,7 +16,7 @@ describe FunctionCall do
   end
 
   it "evaluates an existing function with some arguments" do
-    pending
+    skip
   end
 
 end

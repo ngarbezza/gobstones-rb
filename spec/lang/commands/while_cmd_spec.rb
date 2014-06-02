@@ -23,7 +23,7 @@ describe WhileCmd do
 
     while_cmd.evaluate context
 
-    expect(context.head.are_there_balls?(Verde.new)).to be_false
+    expect(context.head.are_there_balls?(Verde.new)).to be false
   end
 
   it "fails by type error if the condition is not boolean" do

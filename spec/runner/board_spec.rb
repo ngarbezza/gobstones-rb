@@ -43,9 +43,9 @@ describe Board do
     2.times { board.put 0, 0, blue }
     10.times { board.put 2, 3, red }
 
-    expect(board.are_there_balls?(0, 0, blue)).to be_true
+    expect(board.are_there_balls?(0, 0, blue)).to be true
     expect(board.number_of_balls(0, 0, blue)).to eq(2)
-    expect(board.are_there_balls?(2, 3, red)).to be_true
+    expect(board.are_there_balls?(2, 3, red)).to be true
     expect(board.number_of_balls(2, 3, red)).to eq(10)
   end
 
@@ -55,7 +55,7 @@ describe Board do
     3.times { board.put 1, 1, green }
     3.times { board.take_out 1, 1, green }
 
-    expect(board.are_there_balls?(1, 1, green)).to be_false
+    expect(board.are_there_balls?(1, 1, green)).to be false
   end
 
   it "should empty the entire board" do
@@ -66,20 +66,20 @@ describe Board do
 
     board.each_cell do |cell|
       colors.each do |color|
-        expect(cell.are_there_balls?(color)).to be_false
+        expect(cell.are_there_balls?(color)).to be false
       end
     end
   end
 
   it "should be empty if there are no balls" do
     board = Board.new 3, 4
-    expect(board.empty?).to be_true
+    expect(board.empty?).to be true
   end
 
   it "should not be empty if there are balls" do
     board = Board.new 3, 4
     board.put 0, 0, black
-    expect(board.empty?).to be_false
+    expect(board.empty?).to be false
   end
 
 end
