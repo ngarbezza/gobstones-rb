@@ -4,7 +4,6 @@ describe ExecutionContext do
 
   describe "variables context" do
 
-    let(:negro) { Negro.new }
     let(:norte) { Norte.new }
 
     it "allows to set/get a variable" do
@@ -58,9 +57,6 @@ describe ExecutionContext do
   end
 
   describe FunctionExecutionContext do
-
-    let(:azul) { Azul.new }
-    let(:verde) { Verde.new }
 
     it "returns the program context in which it is based" do
       function_context = FunctionExecutionContext.based_on context

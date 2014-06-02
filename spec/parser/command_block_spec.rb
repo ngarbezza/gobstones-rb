@@ -13,7 +13,7 @@ describe Gobstones::Parser, "command blocks" do
   end
 
   it "should parse a block with many simple commands" do
-    first = Poner.new Verde.new
+    first = Poner.new verde
     second = Boom.new "error"
     third = Mover.new Oeste.new
     cmd_block = CmdBlock.new [first, second, third]
@@ -26,7 +26,7 @@ describe Gobstones::Parser, "command blocks" do
   end
 
   it "should allow ; between commands" do
-    first = Poner.new Verde.new
+    first = Poner.new verde
     second = Boom.new "error"
     third = Mover.new Oeste.new
     cmd_block = CmdBlock.new [first, second, third]

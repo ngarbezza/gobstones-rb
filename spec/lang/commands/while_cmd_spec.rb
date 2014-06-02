@@ -1,7 +1,7 @@
 describe WhileCmd do
 
   let(:context) { clean_context }
-  let(:while_block) { CmdBlock.new [Poner.new(Verde.new)] }
+  let(:while_block) { CmdBlock.new [Poner.new(verde)] }
 
   def condition(times)
     double('while condition').tap do |condition|
@@ -15,7 +15,7 @@ describe WhileCmd do
 
     while_cmd.evaluate context
 
-    expect(context.head.number_of_balls(Verde.new)).to eq(3)
+    expect(context.head.number_of_balls(verde)).to eq(3)
   end
 
   it "does not evaluate the command block if the condition is false" do
@@ -23,7 +23,7 @@ describe WhileCmd do
 
     while_cmd.evaluate context
 
-    expect(context.head.are_there_balls?(Verde.new)).to be false
+    expect(context.head.are_there_balls?(verde)).to be false
   end
 
   it "fails by type error if the condition is not boolean" do

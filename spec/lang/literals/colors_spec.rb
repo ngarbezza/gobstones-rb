@@ -1,6 +1,6 @@
 describe "colors" do
 
-  let(:all) { [Azul.new, Negro.new, Rojo.new, Verde.new] }
+  let(:all) { [azul, negro, rojo, verde] }
 
   it "should evaluate any color to self" do
     all.each { |color| expect(color.evaluate).to eq(color) }

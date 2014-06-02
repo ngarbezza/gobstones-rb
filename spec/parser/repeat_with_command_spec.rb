@@ -11,8 +11,8 @@ describe Gobstones::Parser, "repeatWith statements" do
 
   it "should parse an statement with any expressions in the range" do
     var_name = VarName.new 'myDir'
-    min_range, max_range = MinDir.new, Siguiente.new(Rojo.new)
-    cmd_block = CmdBlock.new [Poner.new(Verde.new)]
+    min_range, max_range = MinDir.new, Siguiente.new(rojo)
+    cmd_block = CmdBlock.new [Poner.new(verde)]
     rw_cmd = RepeatWithCmd.new var_name, min_range, max_range, cmd_block
 
     expect('repeatWith myDir in minDir() .. siguiente(Rojo) {

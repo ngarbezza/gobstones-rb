@@ -1,24 +1,23 @@
 describe Poner do
 
   let(:context) { clean_context }
-  let(:green) { Verde.new }
 
   it "puts a ball of the given color in the current cell when evaluating" do
-    Poner.new(green).evaluate(context)
+    Poner.new(verde).evaluate(context)
 
-    expect(context.head.number_of_balls(green)).to eq(1)
+    expect(context.head.number_of_balls(verde)).to eq(1)
   end
 
   it "undoes the command" do
-    context.head.put green
+    context.head.put verde
 
-    Poner.new(green).undo context
+    Poner.new(verde).undo context
 
-    expect(context.head.number_of_balls(green)).to eq(0)
+    expect(context.head.number_of_balls(verde)).to eq(0)
   end
 
   it "returns the opposite command" do
-    expect(Poner.new(green).opposite).to eq(Sacar.new(green))
+    expect(Poner.new(verde).opposite).to eq(Sacar.new(verde))
   end
 
   it "fails if the argument is not a color" do

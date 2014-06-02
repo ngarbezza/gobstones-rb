@@ -23,7 +23,7 @@ describe Gobstones::Parser, "procedure definitions" do
 
   it "should parse a procedure with some statements" do
     args = VarTuple.new [VarName.new('arg')]
-    body = CmdBlock.new [Poner.new(Verde.new)]
+    body = CmdBlock.new [Poner.new(verde)]
     proc_def = Procedure.new 'MyProc', args, body
 
     expect('procedure MyProc(arg)

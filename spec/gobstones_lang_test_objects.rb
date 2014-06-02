@@ -36,4 +36,20 @@ module GobstonesLangTestObjects
     False.new
   end
 
+  def verde
+    Verde.new
+  end
+
+  def azul
+    Azul.new
+  end
+
+  def negro
+    Negro.new
+  end
+
+  def rojo
+    Rojo.new
+  end
+
 end

@@ -11,7 +11,7 @@ describe Gobstones::Parser, "while statements" do
   end
 
   it "should parse a statement with a simple boolean and a block with commands" do
-    cmd_block = CmdBlock.new [Poner.new(Verde.new), Skip.new]
+    cmd_block = CmdBlock.new [Poner.new(verde), Skip.new]
     while_cmd = WhileCmd.new false_value, cmd_block
 
     expect('while(False){Poner(Verde); Skip}').

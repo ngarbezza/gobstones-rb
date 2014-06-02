@@ -26,7 +26,7 @@ describe Mover do
   end
 
   it "fails if the argument is not a direction" do
-    expect { Mover.new(Verde.new).evaluate(context) }.
+    expect { Mover.new(verde).evaluate(context) }.
       to raise_error(GobstonesTypeError, /is not a direction/)
   end
 

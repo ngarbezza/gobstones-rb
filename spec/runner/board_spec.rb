@@ -1,10 +1,6 @@
 describe Board do
 
-  let(:black)  { Negro.new }
-  let(:blue)   { Azul.new }
-  let(:green)  { Verde.new }
-  let(:red)    { Rojo.new }
-  let(:colors) { [blue, black, red, green] }
+  let(:colors) { [azul, negro, rojo, verde] }
 
   it "can be created with a number of rows and columns" do
     board = Board.new 8, 5
@@ -40,22 +36,22 @@ describe Board do
   it "should put balls in a given position" do
     board = Board.new 5, 5
 
-    2.times { board.put 0, 0, blue }
-    10.times { board.put 2, 3, red }
+    2.times { board.put 0, 0, azul }
+    10.times { board.put 2, 3, rojo }
 
-    expect(board.are_there_balls?(0, 0, blue)).to be true
-    expect(board.number_of_balls(0, 0, blue)).to eq(2)
-    expect(board.are_there_balls?(2, 3, red)).to be true
-    expect(board.number_of_balls(2, 3, red)).to eq(10)
+    expect(board.are_there_balls?(0, 0, azul)).to be true
+    expect(board.number_of_balls(0, 0, azul)).to eq(2)
+    expect(board.are_there_balls?(2, 3, rojo)).to be true
+    expect(board.number_of_balls(2, 3, rojo)).to eq(10)
   end
 
   it "should put and take out balls in a given position" do
     board = Board.new 2, 2
 
-    3.times { board.put 1, 1, green }
-    3.times { board.take_out 1, 1, green }
+    3.times { board.put 1, 1, verde }
+    3.times { board.take_out 1, 1, verde }
 
-    expect(board.are_there_balls?(1, 1, green)).to be false
+    expect(board.are_there_balls?(1, 1, verde)).to be false
   end
 
   it "should empty the entire board" do
@@ -78,7 +74,7 @@ describe Board do
 
   it "should not be empty if there are balls" do
     board = Board.new 3, 4
-    board.put 0, 0, black
+    board.put 0, 0, negro
     expect(board.empty?).to be false
   end
 

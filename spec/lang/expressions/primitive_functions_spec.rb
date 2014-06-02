@@ -20,12 +20,12 @@ describe "primitive functions" do
   describe "hayBolitas() function" do
 
     it "should evaluate correctly in a clean context" do
-      expect(HayBolitas.new(black).evaluate(context)).to eq(false.to_gbs_bool)
+      expect(HayBolitas.new(black).evaluate(context)).to eq(false_value)
     end
 
     it "should evaluate correctly in a context with some data" do
       context.head.put black
-      expect(HayBolitas.new(black).evaluate(context)).to eq(true.to_gbs_bool)
+      expect(HayBolitas.new(black).evaluate(context)).to eq(true_value)
     end
 
   end
@@ -33,12 +33,12 @@ describe "primitive functions" do
   describe "puedeMover() function" do
 
     it "should evaluate correctly in a clean context" do
-      expect(PuedeMover.new(west).evaluate(context)).to eq(false.to_gbs_bool)
+      expect(PuedeMover.new(west).evaluate(context)).to eq(false_value)
     end
 
     it "should evaluate correctly in a modified context" do
       context.head.move(Este.new)
-      expect(PuedeMover.new(west).evaluate(context)).to eq(true.to_gbs_bool)
+      expect(PuedeMover.new(west).evaluate(context)).to eq(true_value)
     end
 
   end
@@ -50,10 +50,10 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for colors" do
-      expect(Siguiente.new(Azul.new).evaluate(context)).to eq(Negro.new)
-      expect(Siguiente.new(Negro.new).evaluate(context)).to eq(Rojo.new)
-      expect(Siguiente.new(Rojo.new).evaluate(context)).to eq(Verde.new)
-      expect(Siguiente.new(Verde.new).evaluate(context)).to eq(Azul.new)
+      expect(Siguiente.new(azul).evaluate(context)).to eq(negro)
+      expect(Siguiente.new(negro).evaluate(context)).to eq(rojo)
+      expect(Siguiente.new(rojo).evaluate(context)).to eq(verde)
+      expect(Siguiente.new(verde).evaluate(context)).to eq(azul)
     end
 
     it "should evaluate correctly for directions" do
@@ -77,10 +77,10 @@ describe "primitive functions" do
     end
 
     it "should evaluate correctly for colors" do
-      expect(Previo.new(Azul.new).evaluate(context)).to eq(Verde.new)
-      expect(Previo.new(Negro.new).evaluate(context)).to eq(Azul.new)
-      expect(Previo.new(Rojo.new).evaluate(context)).to eq(Negro.new)
-      expect(Previo.new(Verde.new).evaluate(context)).to eq(Rojo.new)
+      expect(Previo.new(azul).evaluate(context)).to eq(verde)
+      expect(Previo.new(negro).evaluate(context)).to eq(azul)
+      expect(Previo.new(rojo).evaluate(context)).to eq(negro)
+      expect(Previo.new(verde).evaluate(context)).to eq(rojo)
     end
 
     it "should evaluate correctly for directions" do
@@ -117,7 +117,7 @@ describe "primitive functions" do
     end
 
     it "should fail when evaluating for colors" do
-      expect { Opuesto.new(Verde.new).evaluate(context) }.
+      expect { Opuesto.new(verde).evaluate(context) }.
         to raise_error(GobstonesTypeError, "colors don't have opposite")
     end
 

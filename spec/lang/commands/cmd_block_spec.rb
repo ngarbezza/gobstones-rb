@@ -4,13 +4,13 @@ describe CmdBlock do
 
   it "evaluates all inner commands" do
     cmd_block = CmdBlock.new [
-      Poner.new(Rojo.new), Poner.new(Verde.new),
-      Poner.new(Negro.new), Poner.new(Azul.new)]
+      Poner.new(rojo), Poner.new(verde),
+      Poner.new(negro), Poner.new(azul)]
     cmd_block.evaluate context
-    expect(context.head.are_there_balls?(Rojo.new)).to be true
-    expect(context.head.are_there_balls?(Azul.new)).to be true
-    expect(context.head.are_there_balls?(Negro.new)).to be true
-    expect(context.head.are_there_balls?(Verde.new)).to be true
+    expect(context.head.are_there_balls?(azul)).to be true
+    expect(context.head.are_there_balls?(negro)).to be true
+    expect(context.head.are_there_balls?(rojo)).to be true
+    expect(context.head.are_there_balls?(verde)).to be true
   end
 
   it "builds an empty command block" do

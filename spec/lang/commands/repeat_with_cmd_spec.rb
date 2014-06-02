@@ -29,7 +29,7 @@ describe RepeatWithCmd do
   end
 
   it "removes the index variable assignment after execution" do
-    repeat_with = RepeatWithCmd.new var_name, Azul.new, Verde.new, CmdBlock.empty
+    repeat_with = RepeatWithCmd.new var_name, azul, verde, CmdBlock.empty
 
     repeat_with.evaluate context
 
@@ -38,23 +38,23 @@ describe RepeatWithCmd do
 
   it "allows to use the index variable inside the command block" do
     cmd_block = CmdBlock.new [Poner.new(var_name)]
-    repeat_with = RepeatWithCmd.new var_name, Azul.new, Verde.new, cmd_block
+    repeat_with = RepeatWithCmd.new var_name, azul, verde, cmd_block
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(Azul.new)).to be true
-    expect(context.head.are_there_balls?(Negro.new)).to be true
-    expect(context.head.are_there_balls?(Rojo.new)).to be true
-    expect(context.head.are_there_balls?(Verde.new)).to be true
+    expect(context.head.are_there_balls?(azul)).to be true
+    expect(context.head.are_there_balls?(negro)).to be true
+    expect(context.head.are_there_balls?(rojo)).to be true
+    expect(context.head.are_there_balls?(verde)).to be true
   end
 
   it "does no iterations if the from is higher than the to" do
-    cmd_block = CmdBlock.new [Poner.new(Verde.new)]
+    cmd_block = CmdBlock.new [Poner.new(verde)]
     repeat_with = RepeatWithCmd.new var_name, 8.to_gbs_num, 4.to_gbs_num, cmd_block
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(Verde.new)).to be false
+    expect(context.head.are_there_balls?(verde)).to be false
   end
 
 end

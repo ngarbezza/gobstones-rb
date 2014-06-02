@@ -27,19 +27,19 @@ describe Gobstones::Parser, "data types" do
   describe "colors" do
 
     it "should parse the 'Azul' color" do
-      expect('Azul').to be_parsed_as(:expression).and_return(Azul.new)
+      expect('Azul').to be_parsed_as(:expression).and_return(azul)
     end
 
     it "should parse the 'Negro' color" do
-      expect('Negro').to be_parsed_as(:expression).and_return(Negro.new)
+      expect('Negro').to be_parsed_as(:expression).and_return(negro)
     end
 
     it "should parse the 'Rojo' color" do
-      expect('Rojo').to be_parsed_as(:expression).and_return(Rojo.new)
+      expect('Rojo').to be_parsed_as(:expression).and_return(rojo)
     end
 
     it "should parse the 'Verde' color" do
-      expect('Verde').to be_parsed_as(:expression).and_return(Verde.new)
+      expect('Verde').to be_parsed_as(:expression).and_return(verde)
     end
 
   end

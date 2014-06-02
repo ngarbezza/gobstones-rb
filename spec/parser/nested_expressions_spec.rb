@@ -6,9 +6,9 @@ describe Gobstones::Parser, "nested expressions" do
     expect('(True )').to be_parsed_as(:expression).
       and_return(EnclosedByParensExpression.new(true_value))
     expect('(Rojo )').to be_parsed_as(:expression).
-      and_return(EnclosedByParensExpression.new(Rojo.new))
+      and_return(EnclosedByParensExpression.new(rojo))
     expect('(Verde)').to be_parsed_as(:expression).
-      and_return(EnclosedByParensExpression.new(Verde.new))
+      and_return(EnclosedByParensExpression.new(verde))
   end
 
   it "should parse primitive functions between ()" do

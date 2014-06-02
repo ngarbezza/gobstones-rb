@@ -15,11 +15,11 @@ describe "type bound functions" do
   describe "colors" do
 
     it "should evaluate minColor() to Azul" do
-      expect(MinColor.new.evaluate).to eq(Azul.new)
+      expect(MinColor.new.evaluate).to eq(azul)
     end
 
     it "should evaluate maxColor() to Verde" do
-      expect(MaxColor.new.evaluate).to eq(Verde.new)
+      expect(MaxColor.new.evaluate).to eq(verde)
     end
 
   end

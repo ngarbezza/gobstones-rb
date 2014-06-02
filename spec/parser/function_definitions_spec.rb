@@ -14,7 +14,7 @@ describe Gobstones::Parser, "function definitions" do
     second_arg = VarName.new 'secondArg'
     third_arg = VarName.new 'thirdArg'
     args = VarTuple.new [first_arg, second_arg, third_arg]
-    return_st = ReturnFromFunction.new [Verde.new, PuedeMover.new(Norte.new)]
+    return_st = ReturnFromFunction.new [verde, PuedeMover.new(Norte.new)]
     func_def = Function.new 'myCoolFunction', args, CmdBlock.empty, return_st
 
     expect('function myCoolFunction (firstArg, secondArg, thirdArg) {
@@ -24,7 +24,7 @@ describe Gobstones::Parser, "function definitions" do
 
   it "should parse a function with some statements" do
     args = VarTuple.new [VarName.new('arg')]
-    body = CmdBlock.new [Poner.new(Verde.new)]
+    body = CmdBlock.new [Poner.new(verde)]
     return_st = ReturnFromFunction.new [true_value]
     func_def = Function.new 'myFunc', args, body, return_st
 

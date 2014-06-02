@@ -19,7 +19,7 @@ describe Gobstones, "type checker" do
       end
 
       it "should not allow a color as argument" do
-        puede_mover_color = PuedeMover.new Verde.new
+        puede_mover_color = PuedeMover.new verde
         result = puede_mover_color.type_check
         expect(result.ok?).to be false
       end

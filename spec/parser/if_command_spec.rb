@@ -13,7 +13,7 @@ describe Gobstones::Parser, "if statements" do
     end
 
     it "should parse a statement with a simple boolean and a block with commands" do
-      cmd_block = CmdBlock.new [Poner.new(Verde.new), Skip.new]
+      cmd_block = CmdBlock.new [Poner.new(verde), Skip.new]
       if_cmd = IfCmd.new False.new, cmd_block
 
       expect('if(False){Poner(Verde); Skip}').

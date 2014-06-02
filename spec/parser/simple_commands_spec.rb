@@ -22,7 +22,7 @@ describe Gobstones::Parser, "simple commands" do
       describe "#{command}() cmd" do
 
         it "should be parsed ok with a primitive as argument" do
-          cmd = Kernel.const_get(command).new Verde.new
+          cmd = Kernel.const_get(command).new verde
           expect("#{command}(Verde)").to be_parsed_as(:command).and_return(cmd)
           expect("#{command} (Verde)").to be_parsed_as(:command).and_return(cmd)
           expect("#{command}( Verde )").to be_parsed_as(:command).and_return(cmd)
