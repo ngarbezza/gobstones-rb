@@ -1,6 +1,7 @@
 describe "primitive functions" do
 
-  let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
+  let(:program) { Program.new [], nil }
+  let(:context) { ProgramExecutionContext.for program }
   let(:black) { Negro.new }
   let(:west) { Oeste.new }
 

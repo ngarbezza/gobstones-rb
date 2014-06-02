@@ -1,6 +1,7 @@
 describe IrAlOrigen do
 
-  let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
+  let(:program) { Program.new [], nil }
+  let(:context) { ProgramExecutionContext.for program }
 
   it "puts the head in 0, 0 when evaluating" do
     context.head.move_north

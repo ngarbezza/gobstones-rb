@@ -1,6 +1,7 @@
 describe VaciarTablero do
 
-  let(:context) { ProgramExecutionContext.for double('GobstonesProgram') }
+  let(:program) { Program.new [], nil }
+  let(:context) { ProgramExecutionContext.for program }
   let(:red) { Rojo.new }
 
   it "empties the board in the context" do

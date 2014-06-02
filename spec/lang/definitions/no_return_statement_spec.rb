@@ -1,6 +1,6 @@
 describe NoReturnStatement do
 
-  let(:program) { double 'Program' }
+  let(:program) { Program.new [], nil }
   let(:context) { ProgramExecutionContext.new program }
   let(:no_return_statement) { NoReturnStatement.new }
 
