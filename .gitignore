@@ -4,3 +4,4 @@
 coverage/
 tags
 .idea/
+examples/*.test.gbs
