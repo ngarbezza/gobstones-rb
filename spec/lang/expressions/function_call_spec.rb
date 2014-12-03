@@ -1,7 +1,7 @@
 describe FunctionCall do
 
   let(:empty_args) { VarTuple.empty }
-  let(:empty_body) { CmdBlock.empty }
+  let(:empty_body) { CommandBlock.empty }
 
   it "evaluates an existing function and returns its result when calling it" do
     return_statement = ReturnFromFunction.new [42.to_gbs_num]

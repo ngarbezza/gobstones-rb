@@ -1,8 +1,8 @@
 describe "if command" do
 
   let(:context) { clean_context }
-  let(:then_block) { CmdBlock.new [Poner.new(verde)] }
-  let(:else_block) { CmdBlock.new [Poner.new(rojo)] }
+  let(:then_block) { CommandBlock.new [Poner.new(verde)] }
+  let(:else_block) { CommandBlock.new [Poner.new(rojo)] }
 
   describe "if-then" do
 

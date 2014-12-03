@@ -138,7 +138,7 @@ module Gobstones
     end
 
     ast_node :CmdBlockNode do
-      CmdBlock.new create_commands(commands)
+      CommandBlock.new create_commands(commands)
     end
 
     ast_node :IfCmdNode do
@@ -177,7 +177,7 @@ module Gobstones
     end
 
     ast_node(:FunctionNode) do
-      cmd_block = CmdBlock.new create_commands(commands)
+      cmd_block = CommandBlock.new create_commands(commands)
       Function.new func_name.text_value, var_tuple.value,
         cmd_block, func_return.value
     end
@@ -191,7 +191,7 @@ module Gobstones
     end
 
     ast_node(:MainDefNode) do
-      cmd_block = CmdBlock.new create_commands(commands)
+      cmd_block = CommandBlock.new create_commands(commands)
       return_st = ret.empty? ? NoReturnStatement.new : ret.value
       Main.new cmd_block, return_st
     end

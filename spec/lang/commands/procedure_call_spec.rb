@@ -1,10 +1,10 @@
 describe "procedure calls" do
 
-  let(:empty_body) { CmdBlock.empty }
+  let(:empty_body) { CommandBlock.empty }
 
   it "evaluates an existing procedure when calling it" do
     poner_cmd = Poner.new verde
-    body = CmdBlock.new [poner_cmd]
+    body = CommandBlock.new [poner_cmd]
     my_procedure = Procedure.new 'MyProcedure', no_arguments, body
     program = Program.new [my_procedure], no_return_statement
     context = program_context_for program
@@ -17,10 +17,10 @@ describe "procedure calls" do
 
   it "allows to call a procedure from another procedure" do
     poner_cmd = Poner.new azul
-    inner_procedure_body = CmdBlock.new [poner_cmd]
+    inner_procedure_body = CommandBlock.new [poner_cmd]
     inner_procedure = Procedure.new 'Inner', no_arguments, inner_procedure_body
     call_to_inner_procedure = ProcedureCall.new 'Inner', []
-    outer_procedure_body = CmdBlock.new [call_to_inner_procedure]
+    outer_procedure_body = CommandBlock.new [call_to_inner_procedure]
     outer_procedure = Procedure.new 'Outer', no_arguments, outer_procedure_body
     program = Program.new [outer_procedure, inner_procedure], no_return_statement
     program_context = program_context_for program

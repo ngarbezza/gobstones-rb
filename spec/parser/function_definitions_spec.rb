@@ -3,7 +3,7 @@ describe Gobstones::Parser, "function definitions" do
   it "should parse a function without args and a single return" do
     func_return = ReturnFromFunction.new [42.to_gbs_num]
 
-    func_def = Function.new 'just42', no_arguments, CmdBlock.empty, func_return
+    func_def = Function.new 'just42', no_arguments, CommandBlock.empty, func_return
 
     expect('function just42() { return (42) }').
       to be_parsed_as(:definition).and_return(func_def)
@@ -15,7 +15,7 @@ describe Gobstones::Parser, "function definitions" do
     third_arg = VarName.new 'thirdArg'
     args = VarTuple.new [first_arg, second_arg, third_arg]
     return_st = ReturnFromFunction.new [verde, PuedeMover.new(norte)]
-    func_def = Function.new 'myCoolFunction', args, CmdBlock.empty, return_st
+    func_def = Function.new 'myCoolFunction', args, CommandBlock.empty, return_st
 
     expect('function myCoolFunction (firstArg, secondArg, thirdArg) {
   return (Verde, puedeMover(Norte))
@@ -24,7 +24,7 @@ describe Gobstones::Parser, "function definitions" do
 
   it "should parse a function with some statements" do
     args = VarTuple.new [VarName.new('arg')]
-    body = CmdBlock.new [Poner.new(verde)]
+    body = CommandBlock.new [Poner.new(verde)]
     return_st = ReturnFromFunction.new [true_value]
     func_def = Function.new 'myFunc', args, body, return_st
 

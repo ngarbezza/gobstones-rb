@@ -4,7 +4,7 @@ module Gobstones
 
   module Lang
 
-    class CmdBlock
+    class CommandBlock
 
       include Gobstones::EqualByClass
 

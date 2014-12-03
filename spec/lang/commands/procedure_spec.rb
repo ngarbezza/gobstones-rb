@@ -1,11 +1,11 @@
 describe Procedure do
 
   let(:context) { clean_context }
-  let(:empty_body) { CmdBlock.empty }
+  let(:empty_body) { CommandBlock.empty }
 
   it "executes its body and leaves state in the program context" do
     poner_cmd = Poner.new rojo
-    body = CmdBlock.new [poner_cmd]
+    body = CommandBlock.new [poner_cmd]
     procedure = Procedure.new 'MyProcedure', no_arguments, body
     procedure.evaluate context
     expect(context.head.are_there_balls?(rojo)).to be true
@@ -16,7 +16,7 @@ describe Procedure do
     context.set var_name, verde
 
     poner_cmd = Poner.new var_name
-    body = CmdBlock.new [poner_cmd]
+    body = CommandBlock.new [poner_cmd]
     procedure = Procedure.new 'MyProcedure', no_arguments, body
     expect { procedure.evaluate context }.to raise_error(UndefinedVariableError)
   end
@@ -27,7 +27,7 @@ describe Procedure do
     args = VarTuple.new [a_color, a_direction]
     mover_cmd = Mover.new a_direction
     poner_cmd = Poner.new a_color
-    body = CmdBlock.new [mover_cmd, poner_cmd]
+    body = CommandBlock.new [mover_cmd, poner_cmd]
     procedure = Procedure.new 'MyProc', args, body
 
     procedure.evaluate context, [negro, norte]

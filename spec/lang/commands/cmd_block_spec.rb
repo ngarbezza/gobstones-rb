@@ -1,9 +1,9 @@
-describe CmdBlock do
+describe CommandBlock do
 
   let(:context) { clean_context }
 
   it "evaluates all inner commands" do
-    cmd_block = CmdBlock.new [
+    cmd_block = CommandBlock.new [
       Poner.new(rojo), Poner.new(verde),
       Poner.new(negro), Poner.new(azul)]
     cmd_block.evaluate context
@@ -14,8 +14,8 @@ describe CmdBlock do
   end
 
   it "builds an empty command block" do
-    expect(CmdBlock.new []).to be_empty
-    expect(CmdBlock.empty).to be_empty
+    expect(CommandBlock.new []).to be_empty
+    expect(CommandBlock.empty).to be_empty
   end
 
 end
