@@ -16,7 +16,19 @@ describe FunctionCall do
   end
 
   it "evaluates an existing function with some arguments" do
-    skip
+    number_a = VarName.new('a')
+    number_b = VarName.new('b')
+    number_c = VarName.new('c')
+    return_statement = ReturnFromFunction.new [Add.new(Add.new(number_a, number_b), number_c)]
+    args = VarTuple.new [number_a, number_b, number_c]
+    my_function = Function.new 'myFunction', args, empty_body, return_statement
+    program = Program.new [my_function], no_return_statement
+    context = program_context_for program
+    call = FunctionCall.new 'myFunction', [1.to_gbs_num, 2.to_gbs_num, 3.to_gbs_num]
+
+    result = call.evaluate context
+
+    expect(result).to eq(6.to_gbs_num)
   end
 
 end
