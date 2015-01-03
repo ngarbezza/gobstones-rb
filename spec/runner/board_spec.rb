@@ -8,13 +8,13 @@ describe Board do
     expect(board.columns).to eq(5)
   end
 
-  it "should have cells in every position" do
+  it "has cells in every position" do
     board = Board.new 3, 3
 
     board.each_cell { |cell| expect(cell).to be_a(Cell) }
   end
 
-  it "should access cells in a x&y dimension" do
+  it "accesses cells in a x&y dimension" do
     board = Board.new 3, 5
 
     3.times do |x|
@@ -24,7 +24,7 @@ describe Board do
     end
   end
 
-  it "should raise errors if it is accessed out of the bounds" do
+  it "raises errors if it is accessed out of the bounds" do
     board = Board.new 9, 6
 
     expect { board.cell_at(9, 4) }.to raise_error(OutOfBoardError)
@@ -33,7 +33,7 @@ describe Board do
     expect { board.cell_at(8, -1) }.to raise_error(OutOfBoardError)
   end
 
-  it "should put balls in a given position" do
+  it "puts balls in a given position" do
     board = Board.new 5, 5
 
     2.times { board.put 0, 0, azul }
@@ -45,7 +45,7 @@ describe Board do
     expect(board.number_of_balls(2, 3, rojo)).to eq(10)
   end
 
-  it "should put and take out balls in a given position" do
+  it "puts and takes out balls in a given position" do
     board = Board.new 2, 2
 
     3.times { board.put 1, 1, verde }
@@ -54,7 +54,7 @@ describe Board do
     expect(board.are_there_balls?(1, 1, verde)).to be false
   end
 
-  it "should empty the entire board" do
+  it "clears the entire board" do
     board = Board.new 3, 4
     board.each_cell { |cell| cell.put colors.sample }
 
@@ -67,12 +67,12 @@ describe Board do
     end
   end
 
-  it "should be empty if there are no balls" do
+  it "is empty if there are no balls" do
     board = Board.new 3, 4
     expect(board.empty?).to be true
   end
 
-  it "should not be empty if there are balls" do
+  it "is not empty if there are balls" do
     board = Board.new 3, 4
     board.put 0, 0, negro
     expect(board.empty?).to be false

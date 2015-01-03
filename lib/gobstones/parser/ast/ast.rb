@@ -53,9 +53,9 @@ module Gobstones
         sub_exps.elements.inject(left.value) do |memo, node|
           case node.op.text_value
           when '+'
-            memo = Add.new memo, node.right.value
+            Add.new memo, node.right.value
           when '-'
-            memo = Sub.new memo, node.right.value
+            Sub.new memo, node.right.value
           end
         end
       end
@@ -67,7 +67,7 @@ module Gobstones
       else
         # it is a nested exp
         sub_exps.elements.inject(left.value) do |memo, node|
-          memo = Mul.new memo, node.right.value
+          Mul.new memo, node.right.value
         end
       end
     end
@@ -87,7 +87,7 @@ module Gobstones
       else
         # it is a nested exp
         sub_exps.elements.inject(left.value) do |memo, node|
-          memo = Pow.new memo, node.right.value
+          Pow.new memo, node.right.value
         end
       end
     end

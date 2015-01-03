@@ -2,14 +2,14 @@ describe "comparison expressions" do
 
   describe Equal do
 
-    it "should evaluate same booleans as equal" do
+    it "evaluates same booleans as equal" do
       expect(Equal.new(false_value, false_value).evaluate).to eq(true_value)
       expect(Equal.new(true_value, true_value).evaluate).to eq(true_value)
       expect(Equal.new(false_value, true_value).evaluate).to eq(false_value)
       expect(Equal.new(true_value, false_value).evaluate).to eq(false_value)
     end
 
-    it "should evaluate same colors as equal" do
+    it "evaluates same colors as equal" do
       color_classes = [Azul, Negro, Rojo, Verde]
       color_classes.each do |color_class|
         expect(Equal.new(color_class.new, color_class.new).
@@ -21,7 +21,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate same directions as equal" do
+    it "evaluates same directions as equal" do
       dir_classes = [Norte, Sur, Este, Oeste]
       dir_classes.each do |dir_class|
         expect(Equal.new(dir_class.new, dir_class.new).
@@ -33,7 +33,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate same numbers as equal" do
+    it "evaluates same numbers as equal" do
       expect(Equal.new(42.to_gbs_num, 42.to_gbs_num).evaluate).to eq(true_value)
       expect(Equal.new(42.to_gbs_num, 15.to_gbs_num).evaluate).to eq(false_value)
     end
@@ -42,14 +42,14 @@ describe "comparison expressions" do
 
   describe NotEqual do
 
-    it "should evaluate booleans as not equal" do
+    it "evaluates booleans as not equal" do
       expect(NotEqual.new(false_value, false_value).evaluate).to eq(false_value)
       expect(NotEqual.new(true_value, true_value).evaluate).to eq(false_value)
       expect(NotEqual.new(false_value, true_value).evaluate).to eq(true_value)
       expect(NotEqual.new(true_value, false_value).evaluate).to eq(true_value)
     end
 
-    it "should evaluate same colors as equal" do
+    it "evaluates same colors as equal" do
       color_classes = [Azul, Negro, Rojo, Verde]
       color_classes.each do |color_class|
         expect(NotEqual.new(color_class.new, color_class.new).
@@ -61,7 +61,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate same directions as equal" do
+    it "evaluates same directions as equal" do
       dir_classes = [Norte, Sur, Este, Oeste]
       dir_classes.each do |dir_class|
         expect(NotEqual.new(dir_class.new, dir_class.new).
@@ -73,7 +73,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate same numbers as equal" do
+    it "evaluates same numbers as equal" do
       expect(NotEqual.new(42.to_gbs_num, 42.to_gbs_num).evaluate).to eq(false_value)
       expect(NotEqual.new(42.to_gbs_num, 15.to_gbs_num).evaluate).to eq(true_value)
     end
@@ -82,20 +82,20 @@ describe "comparison expressions" do
 
   describe LessThan do
 
-    it "should evaluate for booleans" do
+    it "evaluates for booleans" do
       expect(LessThan.new(false_value, false_value).evaluate).to eq(false_value)
       expect(LessThan.new(false_value, true_value).evaluate).to eq(true_value)
       expect(LessThan.new(true_value, false_value).evaluate).to eq(false_value)
       expect(LessThan.new(true_value, true_value).evaluate).to eq(false_value)
     end
 
-    it "should evaluate for numbers" do
+    it "evaluates for numbers" do
       expect(LessThan.new(15.to_gbs_num, 42.to_gbs_num).evaluate).to eq(true_value)
       expect(LessThan.new(42.to_gbs_num, 15.to_gbs_num).evaluate).to eq(false_value)
       expect(LessThan.new(42.to_gbs_num, 42.to_gbs_num).evaluate).to eq(false_value)
     end
 
-    it "should evaluate for colors" do
+    it "evaluates for colors" do
       color_classes = Color.order
       color_classes.each_with_index do |color_class, index|
         # should not be less than itself
@@ -114,7 +114,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate for directions" do
+    it "evaluates for directions" do
       dir_classes = Direction.order
       dir_classes.each_with_index do |dir_class, index|
         expect(LessThan.new(dir_class.new, dir_class.new).
@@ -134,20 +134,20 @@ describe "comparison expressions" do
 
   describe LessEqual do
 
-    it "should evaluate for booleans" do
+    it "evaluates for booleans" do
       expect(LessEqual.new(false_value, false_value).evaluate).to eq(true_value)
       expect(LessEqual.new(false_value, true_value).evaluate).to eq(true_value)
       expect(LessEqual.new(true_value, false_value).evaluate).to eq(false_value)
       expect(LessEqual.new(true_value, true_value).evaluate).to eq(true_value)
     end
 
-    it "should evaluate for numbers" do
+    it "evaluates for numbers" do
       expect(LessEqual.new(15.to_gbs_num, 42.to_gbs_num).evaluate).to eq(true_value)
       expect(LessEqual.new(42.to_gbs_num, 15.to_gbs_num).evaluate).to eq(false_value)
       expect(LessEqual.new(42.to_gbs_num, 42.to_gbs_num).evaluate).to eq(true_value)
     end
 
-    it "should evaluate for colors" do
+    it "evaluates for colors" do
       color_classes = Color.order
       color_classes.each_with_index do |color_class, index|
         expect(LessEqual.new(color_class.new, color_class.new).
@@ -163,7 +163,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate for directions" do
+    it "evaluates for directions" do
       dir_classes = Direction.order
       dir_classes.each_with_index do |dir_class, index|
         expect(LessEqual.new(dir_class.new, dir_class.new).
@@ -183,20 +183,20 @@ describe "comparison expressions" do
 
   describe GreaterThan do
 
-    it "should evaluate for booleans" do
+    it "evaluates for booleans" do
       expect(GreaterThan.new(false_value, false_value).evaluate).to eq(false_value)
       expect(GreaterThan.new(false_value, true_value).evaluate).to eq(false_value)
       expect(GreaterThan.new(true_value, false_value).evaluate).to eq(true_value)
       expect(GreaterThan.new(true_value, true_value).evaluate).to eq(false_value)
     end
 
-    it "should evaluate for numbers" do
+    it "evaluates for numbers" do
       expect(GreaterThan.new(15.to_gbs_num, 42.to_gbs_num).evaluate).to eq(false_value)
       expect(GreaterThan.new(42.to_gbs_num, 15.to_gbs_num).evaluate).to eq(true_value)
       expect(GreaterThan.new(42.to_gbs_num, 42.to_gbs_num).evaluate).to eq(false_value)
     end
 
-    it "should evaluate for colors" do
+    it "evaluates for colors" do
       color_classes = Color.order
       color_classes.each_with_index do |color_class, index|
         expect(GreaterThan.new(color_class.new, color_class.new).
@@ -212,7 +212,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate for directions" do
+    it "evaluates for directions" do
       dir_classes = Direction.order
       dir_classes.each_with_index do |dir_class, index|
         expect(GreaterThan.new(dir_class.new, dir_class.new).
@@ -232,20 +232,20 @@ describe "comparison expressions" do
 
   describe GreaterEqual do
 
-    it "should evaluate for booleans" do
+    it "evaluates for booleans" do
       expect(GreaterEqual.new(false_value, false_value).evaluate).to eq(true_value)
       expect(GreaterEqual.new(false_value, true_value).evaluate).to eq(false_value)
       expect(GreaterEqual.new(true_value, false_value).evaluate).to eq(true_value)
       expect(GreaterEqual.new(true_value, true_value).evaluate).to eq(true_value)
     end
 
-    it "should evaluate for numbers" do
+    it "evaluates for numbers" do
       expect(GreaterEqual.new(15.to_gbs_num, 42.to_gbs_num).evaluate).to eq(false_value)
       expect(GreaterEqual.new(42.to_gbs_num, 15.to_gbs_num).evaluate).to eq(true_value)
       expect(GreaterEqual.new(42.to_gbs_num, 42.to_gbs_num).evaluate).to eq(true_value)
     end
 
-    it "should evaluate for colors" do
+    it "evaluates for colors" do
       color_classes = Color.order
       color_classes.each_with_index do |color_class, index|
         expect(GreaterEqual.new(color_class.new, color_class.new).
@@ -261,7 +261,7 @@ describe "comparison expressions" do
       end
     end
 
-    it "should evaluate for directions" do
+    it "evaluates for directions" do
       dir_classes = Direction.order
       dir_classes.each_with_index do |dir_class, index|
         expect(GreaterEqual.new(dir_class.new, dir_class.new).

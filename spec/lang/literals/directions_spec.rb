@@ -2,17 +2,17 @@ describe "directions" do
 
   let(:all) { [norte, sur, este, oeste] }
 
-  it "should evaluate any direction to self" do
+  it "evaluates any direction to itself" do
     all.each { |dir| expect(dir.evaluate).to eq(dir) }
   end
 
-  it "should return the string representation" do
+  it "returns the string representation" do
     expect(all.map(&:to_s)).to eq(['Norte', 'Sur', 'Este', 'Oeste'])
   end
 
   describe Norte do
 
-    it "should return Sur as opposite direction" do
+    it "returns Sur as the opposite direction" do
       expect(norte.opposite).to eq(sur)
     end
 
@@ -20,7 +20,7 @@ describe "directions" do
 
   describe Este do
 
-    it "should return Oeste as opposite direction" do
+    it "returns Oeste as the opposite direction" do
       expect(este.opposite).to eq(oeste)
     end
 
@@ -28,7 +28,7 @@ describe "directions" do
 
   describe Sur do
 
-    it "should return Norte as opposite direction" do
+    it "returns Norte as the opposite direction" do
       expect(sur.opposite).to eq(norte)
     end
 
@@ -36,7 +36,7 @@ describe "directions" do
 
   describe Oeste do
 
-    it "should return Este as opposite direction" do
+    it "returns Este as the opposite direction" do
       expect(oeste.opposite).to eq(este)
     end
 

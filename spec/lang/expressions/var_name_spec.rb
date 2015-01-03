@@ -3,12 +3,12 @@ describe VarName do
   let(:context) { clean_context }
   let(:variable_name) { VarName.new 'var' }
 
-  it "should return the associated value if it was defined in the context" do
+  it "returns the associated value if it was defined in the context" do
     context.set variable_name, 42.to_gbs_num
     expect(variable_name.evaluate(context)).to eq(42.to_gbs_num)
   end
 
-  it "should raise an error if there is no definition in context" do
+  it "raises an error if there is no definition in context" do
     expect { variable_name.evaluate context }
       .to raise_error(UndefinedVariableError)
   end

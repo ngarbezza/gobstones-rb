@@ -18,7 +18,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
   match do |actual|
     fail 'wrong expectation' if @expect_parser_results.nil?
-    fail 'grammar elem not supported' if !@valid_nodes.include?(grammar_elem)
+    fail 'grammar elem not supported' unless @valid_nodes.include?(grammar_elem)
 
     begin
       parse send("#{grammar_elem}_code_to_program", actual)
@@ -49,7 +49,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def definition_node_to_program(node)
-    Program.new [node], Main.new(CommandBlock.new([]), NoReturnStatement.new)
+    Program.new [node], Main.new(CommandBlock.empty, NoReturnStatement.new)
   end
 
   def expression_code_to_program(code)
@@ -74,7 +74,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def var_tuple_node_to_program(node)
-    Program.new [], Main.new(CommandBlock.new([]), ReturnFromMain.new(node))
+    Program.new [], Main.new(CommandBlock.empty, ReturnFromMain.new(node))
   end
 
   def parse(code)

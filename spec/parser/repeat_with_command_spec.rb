@@ -1,6 +1,6 @@
 describe Gobstones::Parser, "repeatWith statements" do
 
-  it "should parse an empty statement" do
+  it "parses an empty statement" do
     var_name = VarName.new 'i'
     min_range, max_range = 1.to_gbs_num, 10.to_gbs_num
     cmd_block = CommandBlock.empty
@@ -9,7 +9,7 @@ describe Gobstones::Parser, "repeatWith statements" do
     expect('repeatWith i in 1..10 {}').to be_parsed_as(:command).and_return(rw_cmd)
   end
 
-  it "should parse an statement with any expressions in the range" do
+  it "parses an statement with any expressions in the range" do
     var_name = VarName.new 'myDir'
     min_range, max_range = MinDir.new, Siguiente.new(rojo)
     cmd_block = CommandBlock.new [Poner.new(verde)]

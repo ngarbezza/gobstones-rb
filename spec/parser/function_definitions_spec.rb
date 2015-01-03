@@ -1,6 +1,6 @@
 describe Gobstones::Parser, "function definitions" do
 
-  it "should parse a function without args and a single return" do
+  it "parses a function without args and a single return" do
     func_return = ReturnFromFunction.new [42.to_gbs_num]
 
     func_def = Function.new 'just42', no_arguments, CommandBlock.empty, func_return
@@ -9,7 +9,7 @@ describe Gobstones::Parser, "function definitions" do
       to be_parsed_as(:definition).and_return(func_def)
   end
 
-  it "should parse a function with some args" do
+  it "parses a function with some args" do
     first_arg = VarName.new 'firstArg'
     second_arg = VarName.new 'secondArg'
     third_arg = VarName.new 'thirdArg'
@@ -22,7 +22,7 @@ describe Gobstones::Parser, "function definitions" do
 }').to be_parsed_as(:definition).and_return(func_def)
   end
 
-  it "should parse a function with some statements" do
+  it "parses a function with some statements" do
     args = VarTuple.new [VarName.new('arg')]
     body = CommandBlock.new [Poner.new(verde)]
     return_st = ReturnFromFunction.new [true_value]
@@ -35,12 +35,12 @@ describe Gobstones::Parser, "function definitions" do
 }').to be_parsed_as(:definition).and_return(func_def)
   end
 
-  it "should not parse a function without a valid identifier" do
+  it "does not parse a function without a valid identifier" do
     expect('function MyWrongFunc() { return(True) }').
       to be_parsed_as(:definition).and_fail
   end
 
-  it "should not parse a function without a return statement" do
+  it "does not parse a function without a return statement" do
     expect('function myFuncWithoutReturn() { }').
       to be_parsed_as(:definition).and_fail
   end

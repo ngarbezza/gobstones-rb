@@ -2,11 +2,11 @@ describe "type bound functions" do
 
   describe "boolean" do
 
-    it "should evaluate minBool() to False" do
+    it "evaluates minBool() to False" do
       expect(MinBool.new.evaluate).to eq(false_value)
     end
 
-    it "should evaluate maxBool() to True" do
+    it "evaluates maxBool() to True" do
       expect(MaxBool.new.evaluate).to eq(true_value)
     end
 
@@ -14,11 +14,11 @@ describe "type bound functions" do
 
   describe "colors" do
 
-    it "should evaluate minColor() to Azul" do
+    it "evaluates minColor() to Azul" do
       expect(MinColor.new.evaluate).to eq(azul)
     end
 
-    it "should evaluate maxColor() to Verde" do
+    it "evaluates maxColor() to Verde" do
       expect(MaxColor.new.evaluate).to eq(verde)
     end
 
@@ -26,11 +26,11 @@ describe "type bound functions" do
 
   describe "directions" do
 
-    it "should evaluate minDir() to Norte" do
+    it "evaluates minDir() to Norte" do
       expect(MinDir.new.evaluate).to eq(norte)
     end
 
-    it "should evaluate maxDir() to Oeste" do
+    it "evaluates maxDir() to Oeste" do
       expect(MaxDir.new.evaluate).to eq(oeste)
     end
 

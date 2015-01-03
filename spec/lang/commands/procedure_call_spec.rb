@@ -32,10 +32,9 @@ describe "procedure calls" do
   end
 
   it "fails to execute an undefined procedure" do
-    context = clean_context
     proc_call = ProcedureCall.new 'UndefinedProcedure', []
 
-    expect { proc_call.evaluate context }
+    expect { proc_call.evaluate clean_context }
       .to raise_error(DefinitionNotFound, DefinitionNotFound.message_for('UndefinedProcedure'))
   end
 
