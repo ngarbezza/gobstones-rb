@@ -19,8 +19,10 @@ module Gobstones
       end
 
       def evaluate(context)
-        # TODO return a Tuple of expressions if there is more than one
-        expressions.first.evaluate context
+        # TODO think more the case of gexp tuple, should it be a data type instead of a plain list?
+        expressions.size == 1 ?
+            expressions.first.evaluate(context) :
+            expressions.map { |expression| expression.evaluate context }
       end
 
     end

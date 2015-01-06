@@ -3,7 +3,7 @@ describe Gobstones::Parser, "if statements" do
   describe "if" do
 
     it "parses a statement with a simple boolean and an empty block" do
-      if_cmd = IfCmd.new true_value, CommandBlock.empty
+      if_cmd = IfCmd.new true_value, empty_body
 
       expect('if (True) {}').to be_parsed_as(:command).and_return(if_cmd)
       expect('if (True) {
@@ -24,7 +24,7 @@ describe Gobstones::Parser, "if statements" do
       and_expr = And.new VarName.new('a'), false_value
       inner_and = EnclosedByParensExpression.new and_expr
       exp = Or.new PuedeMover.new(norte), inner_and
-      if_cmd = IfCmd.new exp, CommandBlock.empty
+      if_cmd = IfCmd.new exp, empty_body
 
       expect('if (puedeMover(Norte) || (a && False)) {}').
         to be_parsed_as(:command).and_return(if_cmd)
@@ -36,7 +36,7 @@ describe Gobstones::Parser, "if statements" do
 
     it "parses a statement with an else block" do
       else_block = CommandBlock.new [Mover.new(norte)]
-      if_else_cmd = IfElseCmd.new false_value, CommandBlock.empty, else_block
+      if_else_cmd = IfElseCmd.new false_value, empty_body, else_block
 
       expect('if (False) { } else { Mover(Norte) }').
         to be_parsed_as(:command).and_return(if_else_cmd)

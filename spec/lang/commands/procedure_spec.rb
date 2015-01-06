@@ -1,7 +1,6 @@
 describe Procedure do
 
   let(:context) { clean_context }
-  let(:empty_body) { CommandBlock.empty }
 
   it "executes its body and leaves state in the program context" do
     poner_cmd = Poner.new rojo

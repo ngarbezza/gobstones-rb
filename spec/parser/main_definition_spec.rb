@@ -1,7 +1,7 @@
 describe Gobstones::Parser, "main definition" do
 
   it "parses a valid Main definition without return nor commands" do
-    main = Main.new CommandBlock.empty, no_return_statement
+    main = Main.new empty_body, no_return_statement
 
     expect('procedure Main() {}').to be_parsed_as(:definition).and_fail
     expect('procedure Main() {}').to be_parsed_as(:main).and_return(main)
@@ -9,7 +9,7 @@ describe Gobstones::Parser, "main definition" do
 
   it "parses a valid main procedure with a return of var names" do
     return_tuple = VarTuple.new [VarName.new('x'), VarName.new('y')]
-    main = Main.new CommandBlock.empty, ReturnFromMain.new(return_tuple)
+    main = Main.new empty_body, ReturnFromMain.new(return_tuple)
 
     expect('procedure Main() { return (x, y); }').
       to be_parsed_as(:main).and_return(main)

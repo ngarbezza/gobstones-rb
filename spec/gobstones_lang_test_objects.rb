@@ -26,6 +26,10 @@ module GobstonesLangTestObjects
     NoReturnStatement.new
   end
 
+  def empty_body
+    CommandBlock.empty
+  end
+
   # Literals
 
   def true_value

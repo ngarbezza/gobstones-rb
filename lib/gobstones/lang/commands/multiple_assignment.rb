@@ -21,7 +21,10 @@ module Gobstones
       end
 
       def evaluate(context)
-        raise 'not implemented yet'
+        function_call_result = expression.evaluate(context)
+        var_tuple.variables.each_with_index do |variable, index|
+          context.set variable, function_call_result[index]
+        end
       end
 
     end

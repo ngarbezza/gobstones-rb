@@ -1,7 +1,5 @@
 describe "procedure calls" do
 
-  let(:empty_body) { CommandBlock.empty }
-
   it "evaluates an existing procedure when calling it" do
     poner_cmd = Poner.new verde
     body = CommandBlock.new [poner_cmd]

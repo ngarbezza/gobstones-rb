@@ -1,7 +1,7 @@
 describe Gobstones::Parser, "while statements" do
 
   it "parses a statement with a simple boolean and an empty block" do
-    while_cmd = WhileCmd.new true_value, CommandBlock.empty
+    while_cmd = WhileCmd.new true_value, empty_body
 
     expect('while (True) {}').to be_parsed_as(:command).and_return(while_cmd)
     expect('while (True) {
@@ -21,7 +21,7 @@ describe Gobstones::Parser, "while statements" do
   it "parses a statement with a complex boolean expression" do
     and_expr = And.new VarName.new('a'), false_value
     exp = Or.new PuedeMover.new(norte), EnclosedByParensExpression.new(and_expr)
-    while_cmd = WhileCmd.new exp, CommandBlock.empty
+    while_cmd = WhileCmd.new exp, empty_body
 
     expect('while (puedeMover(Norte) || (a && False)) {}').
       to be_parsed_as(:command).and_return(while_cmd)

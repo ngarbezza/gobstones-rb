@@ -13,14 +13,14 @@ describe RepeatWithCmd do
   end
 
   it "raises an error if the range values have not the same type" do
-    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, este, CommandBlock.empty
+    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, este, empty_body
 
     expect { repeat_with.evaluate context }
       .to raise_error(GobstonesTypeError, /types don't match in range values/)
   end
 
   it "raises an error if the index variable is previously defined" do
-    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, 5.to_gbs_num, CommandBlock.empty
+    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, 5.to_gbs_num, empty_body
 
     context.set var_name, 42.to_gbs_num
 
@@ -29,7 +29,7 @@ describe RepeatWithCmd do
   end
 
   it "removes the index variable assignment after execution" do
-    repeat_with = RepeatWithCmd.new var_name, azul, verde, CommandBlock.empty
+    repeat_with = RepeatWithCmd.new var_name, azul, verde, empty_body
 
     repeat_with.evaluate context
 

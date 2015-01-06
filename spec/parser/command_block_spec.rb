@@ -36,7 +36,7 @@ describe Gobstones::Parser, "command blocks" do
 
   it "parses a block with simple and complex commands" do
     first = ProcedureCall.new 'Proc', []
-    second = IfCmd.new true_value, CommandBlock.empty
+    second = IfCmd.new true_value, empty_body
     cmd_block = CommandBlock.new [first, second]
 
     expect('{
