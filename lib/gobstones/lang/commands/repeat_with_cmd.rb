@@ -1,4 +1,4 @@
-require 'gobstones/lang/commands/assignments'
+require 'gobstones/lang/commands/single_assignment'
 require 'gobstones/lang/commands/command_block'
 require 'gobstones/lang/commands/while_cmd'
 require 'gobstones/lang/expressions/comparison_expressions'
