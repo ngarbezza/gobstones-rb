@@ -32,7 +32,23 @@ describe Gobstones::Parser, "assignments" do
 
   describe "multiple" do
 
-    # TODO implement
+    context "failures" do
+
+      it 'fails if the expression on the left side is not a var tuple' do
+        expect('myVar = funcCall()').to be_parsed_as(:command).and_fail
+      end
+
+    end
+
+    it 'parses a valid assignment with a function call on the right side' do
+      a_color = VarName.new 'aColor'
+      a_direction = VarName.new 'aDirection'
+      var_tuple = VarTuple.new [a_color, a_direction]
+      func_call = FunctionCall.new 'myFunction', []
+      assignment = MultipleAssignment.new var_tuple, func_call
+      expect('(aColor, aDirection) := myFunction()').
+          to be_parsed_as(:command).and_return(assignment)
+    end
 
   end
 

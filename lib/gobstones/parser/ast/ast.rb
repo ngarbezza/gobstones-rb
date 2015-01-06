@@ -137,6 +137,10 @@ module Gobstones
       SingleAssignment.new var_name.value, gexp.value
     end
 
+    ast_node :MultipleAssignmentNode do
+      MultipleAssignment.new var_tuple.value, gexp.value
+    end
+
     ast_node :CmdBlockNode do
       CommandBlock.new create_commands(commands)
     end
