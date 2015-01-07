@@ -1,7 +1,7 @@
 describe RepeatWithCmd do
 
   let(:context) { clean_context }
-  let(:var_name) { VarName.new 'var' }
+  let(:var_name) { 'var'.to_var_name }
 
   it "iterates over numbers when evaluating" do
     command_block = CommandBlock.new [Poner.new(rojo)]

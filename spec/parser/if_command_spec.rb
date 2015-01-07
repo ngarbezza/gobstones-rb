@@ -21,7 +21,7 @@ describe Gobstones::Parser, "if statements" do
     end
 
     it "parses a statement with a complex boolean expression" do
-      and_expr = And.new VarName.new('a'), false_value
+      and_expr = And.new 'a'.to_var_name, false_value
       inner_and = EnclosedByParensExpression.new and_expr
       exp = Or.new PuedeMover.new(norte), inner_and
       if_cmd = IfCmd.new exp, empty_body

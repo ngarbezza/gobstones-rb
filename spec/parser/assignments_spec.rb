@@ -3,7 +3,7 @@ describe Gobstones::Parser, "assignments" do
   describe "single" do
 
     it "parses a valid assignment with a simple expression" do
-      assignment = SingleAssignment.new VarName.new('myDir'), norte
+      assignment = SingleAssignment.new 'myDir'.to_var_name, norte
 
       expect('myDir:=Norte').
         to be_parsed_as(:command).and_return(assignment)
@@ -12,9 +12,9 @@ describe Gobstones::Parser, "assignments" do
     end
 
     it "parses a valid assignment with a complex expression" do
-      a, b = VarName.new('a'), VarName.new('b')
+      a, b = 'a'.to_var_name, 'b'.to_var_name
       exp = Or.new false_value, EnclosedByParensExpression.new(And.new(a, b))
-      assignment = SingleAssignment.new VarName.new('myVar'), exp
+      assignment = SingleAssignment.new 'myVar'.to_var_name, exp
 
       expect('myVar := False || (a && b)').
         to be_parsed_as(:command).and_return(assignment)
@@ -41,9 +41,7 @@ describe Gobstones::Parser, "assignments" do
     end
 
     it 'parses a valid assignment with a function call on the right side' do
-      a_color = VarName.new 'aColor'
-      a_direction = VarName.new 'aDirection'
-      var_tuple = VarTuple.new [a_color, a_direction]
+      var_tuple = VarTuple.new ['aColor'.to_var_name, 'aDirection'.to_var_name]
       func_call = FunctionCall.new 'myFunction', []
       assignment = MultipleAssignment.new var_tuple, func_call
       expect('(aColor, aDirection) := myFunction()').

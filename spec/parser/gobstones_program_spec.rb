@@ -2,7 +2,7 @@ describe Gobstones::Parser, "program definitions" do
 
   it "parses a simple program with a single main" do
     main_def = Main.new empty_body, no_return_statement
-    program = Program.new [], main_def
+    program = Program.new no_definitions, main_def
 
     expect('procedure Main(){}').to be_parsed_as(:program).and_return(program)
   end
@@ -24,7 +24,7 @@ GBS
   end
 
   it "parses a program with Main, procedures and functions" do
-    main_def = Main.new CommandBlock.new([]), NoReturnStatement.new
+    main_def = Main.new empty_body, NoReturnStatement.new
     proc_1 = Procedure.new 'Procedure1', no_arguments, empty_body
     func_1 = Function.new 'function1', no_arguments, empty_body, ReturnFromFunction.new([42.to_gbs_num])
     proc_2 = Procedure.new 'Procedure2', no_arguments, empty_body

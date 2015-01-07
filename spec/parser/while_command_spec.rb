@@ -19,7 +19,7 @@ describe Gobstones::Parser, "while statements" do
   end
 
   it "parses a statement with a complex boolean expression" do
-    and_expr = And.new VarName.new('a'), false_value
+    and_expr = And.new 'a'.to_var_name, false_value
     exp = Or.new PuedeMover.new(norte), EnclosedByParensExpression.new(and_expr)
     while_cmd = WhileCmd.new exp, empty_body
 

@@ -1,9 +1,9 @@
 describe Gobstones::Parser, "boolean expressions" do
 
-  let(:a) { VarName.new 'a' }
-  let(:b) { VarName.new 'b' }
-  let(:c) { VarName.new 'c' }
-  let(:d) { VarName.new 'd' }
+  let(:a) { 'a'.to_var_name }
+  let(:b) { 'b'.to_var_name }
+  let(:c) { 'c'.to_var_name }
+  let(:d) { 'd'.to_var_name }
 
   describe "relational operators" do
 

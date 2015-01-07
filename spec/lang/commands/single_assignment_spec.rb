@@ -1,7 +1,7 @@
 describe SingleAssignment do
 
   let(:context) { clean_context }
-  let(:a) { VarName.new 'a' }
+  let(:a) { 'a'.to_var_name }
 
   it "evaluates the associated expression to the var name" do
     assign = SingleAssignment.new a, Add.new(3.to_gbs_num, 4.to_gbs_num)

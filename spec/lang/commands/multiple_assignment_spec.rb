@@ -4,9 +4,9 @@ describe MultipleAssignment do
   let(:my_function_def) { Function.new 'myFunction', no_arguments, empty_body, my_function_return }
   let(:program) { Program.new [my_function_def], no_return_statement }
   let(:context) { program_context_for program }
-  let(:a) { VarName.new 'a' }
-  let(:b) { VarName.new 'b' }
-  let(:c) { VarName.new 'c' }
+  let(:a) { 'a'.to_var_name }
+  let(:b) { 'b'.to_var_name }
+  let(:c) { 'c'.to_var_name }
 
   context "success" do
 

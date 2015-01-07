@@ -24,8 +24,8 @@ describe Gobstones::Parser, "procedure calls" do
   end
 
   it "parses a complex procedure call" do
-    or_expr = Or.new VarName.new('a'), VarName.new('b')
-    paren_expr = EnclosedByParensExpression.new Div.new(10.to_gbs_num, VarName.new('c'))
+    or_expr = Or.new 'a'.to_var_name, 'b'.to_var_name
+    paren_expr = EnclosedByParensExpression.new Div.new(10.to_gbs_num, 'c'.to_var_name)
     num_expr = Mul.new 5.to_gbs_num, paren_expr
     func_call = FunctionCall.new 'func', [verde, Opuesto.new(norte)]
     proc_call = ProcedureCall.new 'Proc1', [or_expr, num_expr, func_call]

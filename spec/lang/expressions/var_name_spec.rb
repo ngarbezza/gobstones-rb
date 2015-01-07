@@ -1,7 +1,7 @@
 describe VarName do
 
   let(:context) { clean_context }
-  let(:variable_name) { VarName.new 'var' }
+  let(:variable_name) { 'var'.to_var_name }
 
   it "returns the associated value if it was defined in the context" do
     context.set variable_name, 42.to_gbs_num

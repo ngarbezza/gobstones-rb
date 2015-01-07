@@ -24,15 +24,11 @@ describe Gobstones::Parser, "nested expressions" do
   end
 
   it "parses a nested expressions with many ()" do
-    b = VarName.new 'b'
-    c = VarName.new 'c'
-    or_expr = Or.new b, c
-    a = VarName.new 'a'
+    or_expr = Or.new 'b'.to_var_name, 'c'.to_var_name
     inner_paren = EnclosedByParensExpression.new or_expr
-    and_expr = And.new a, inner_paren
+    and_expr = And.new 'a'.to_var_name, inner_paren
     outer_paren = EnclosedByParensExpression.new and_expr
-    d = VarName.new 'd'
-    result = And.new outer_paren, d
+    result = And.new outer_paren, 'd'.to_var_name
     expect('(a && (b || c)) && d').to be_parsed_as(:expression).and_return(result)
   end
 

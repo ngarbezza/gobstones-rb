@@ -1,5 +1,7 @@
 describe Gobstones::Parser, "main definition" do
 
+  let(:return_tuple) { VarTuple.new ['x'.to_var_name, 'y'.to_var_name] }
+
   it "parses a valid Main definition without return nor commands" do
     main = Main.new empty_body, no_return_statement
 
@@ -8,7 +10,6 @@ describe Gobstones::Parser, "main definition" do
   end
 
   it "parses a valid main procedure with a return of var names" do
-    return_tuple = VarTuple.new [VarName.new('x'), VarName.new('y')]
     main = Main.new empty_body, ReturnFromMain.new(return_tuple)
 
     expect('procedure Main() { return (x, y); }').
@@ -16,7 +17,6 @@ describe Gobstones::Parser, "main definition" do
   end
 
   it "parses a valid main procedure with commands and return" do
-    return_tuple = VarTuple.new [VarName.new('x'), VarName.new('y')]
     cmd_block = CommandBlock.new [Mover.new(oeste), Skip.new]
     main = Main.new cmd_block, ReturnFromMain.new(return_tuple)
 

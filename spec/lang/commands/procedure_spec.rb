@@ -11,7 +11,7 @@ describe Procedure do
   end
 
   it "fails getting a variable which is in the outer context" do
-    var_name = VarName.new 'var'
+    var_name = 'var'.to_var_name
     context.set var_name, verde
 
     poner_cmd = Poner.new var_name
@@ -21,8 +21,8 @@ describe Procedure do
   end
 
   it "sets arguments in the new context so they can be used" do
-    a_color = VarName.new 'a_color'
-    a_direction = VarName.new 'a_direction'
+    a_color = 'a_color'.to_var_name
+    a_direction = 'a_direction'.to_var_name
     args = VarTuple.new [a_color, a_direction]
     mover_cmd = Mover.new a_direction
     poner_cmd = Poner.new a_color
@@ -36,7 +36,7 @@ describe Procedure do
   end
 
   it "does not set arguments as var names in outer context" do
-    a_direction = VarName.new 'a_direction'
+    a_direction = 'a_direction'.to_var_name
     args = VarTuple.new [a_direction]
     procedure = Procedure.new 'MyProc', args, empty_body
 
@@ -53,8 +53,7 @@ describe Procedure do
   end
 
   it "fails if it is executed with less arguments than expected" do
-    arg1, arg2 = VarName.new('arg1'), VarName.new('arg2')
-    args = VarTuple.new [arg1, arg2]
+    args = VarTuple.new ['arg1'.to_var_name, 'arg2'.to_var_name]
     procedure = Procedure.new 'MyProcedure2', args, empty_body
     error_message = "Wrong number of arguments in procedure 'MyProcedure2': expected 2, got 1"
     expect { procedure.evaluate context, [verde] }

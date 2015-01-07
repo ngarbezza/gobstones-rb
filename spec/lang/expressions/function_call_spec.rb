@@ -13,7 +13,7 @@ describe FunctionCall do
   end
 
   it "evaluates an existing function with some arguments" do
-    number_a, number_b, number_c = VarName.new('a'), VarName.new('b'), VarName.new('c')
+    number_a, number_b, number_c = 'a'.to_var_name, 'b'.to_var_name, 'c'.to_var_name
     return_statement = ReturnFromFunction.new [Add.new(Add.new(number_a, number_b), number_c)]
     args = VarTuple.new [number_a, number_b, number_c]
     my_function = Function.new 'myFunction', args, empty_body, return_statement
