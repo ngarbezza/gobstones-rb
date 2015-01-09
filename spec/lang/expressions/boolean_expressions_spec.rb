@@ -37,6 +37,15 @@ describe "boolean expressions" do
       expect(Not.new(Not.new(true_value)).evaluate(context)).to eq(true_value)
     end
 
+    it "fails if the argument is not a boolean" do
+      expect { Not.new(42.to_gbs_num).evaluate(context) }.
+          to raise_error(GobstonesTypeError, /is not a boolean/)
+      expect { Not.new(azul).evaluate(context) }.
+          to raise_error(GobstonesTypeError, /is not a boolean/)
+      expect { Not.new(oeste).evaluate(context) }.
+          to raise_error(GobstonesTypeError, /is not a boolean/)
+    end
+
   end
 
   describe "nested" do
