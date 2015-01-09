@@ -5,8 +5,6 @@ PARSER = Gobstones::Parser::TreetopParser.new
 
 RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
-  @valid_nodes = [:program, :definition, :main, :expression, :command, :var_tuple ]
-
   chain :and_fail do
     @expect_parser_results = false
   end
@@ -17,8 +15,9 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   match do |actual|
+    valid_nodes = [:program, :definition, :main, :expression, :command, :var_tuple]
     fail 'wrong expectation' if @expect_parser_results.nil?
-    fail 'grammar elem not supported' unless @valid_nodes.include?(grammar_elem)
+    fail 'grammar elem not supported' unless valid_nodes.include?(grammar_elem)
 
     begin
       parse send("#{grammar_elem}_code_to_program", actual)
@@ -41,7 +40,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def main_node_to_program(node)
-    Program.new [], node
+    Program.new no_definitions, node
   end
 
   def definition_code_to_program(code)
@@ -49,7 +48,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def definition_node_to_program(node)
-    Program.new [node], Main.new(CommandBlock.empty, NoReturnStatement.new)
+    Program.new [node], Main.new(empty_body, no_return_statement)
   end
 
   def expression_code_to_program(code)
@@ -58,7 +57,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
   def expression_node_to_program(node)
     assign = SingleAssignment.new 'x'.to_var_name, node
-    main_node_to_program Main.new(CommandBlock.new([assign]), NoReturnStatement.new)
+    main_node_to_program Main.new(CommandBlock.new([assign]), no_return_statement)
   end
 
   def command_code_to_program(code)
@@ -66,7 +65,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def command_node_to_program(node)
-    main_node_to_program Main.new(CommandBlock.new([node]), NoReturnStatement.new)
+    main_node_to_program Main.new(CommandBlock.new([node]), no_return_statement)
   end
 
   def var_tuple_code_to_program(code)
@@ -74,7 +73,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def var_tuple_node_to_program(node)
-    Program.new [], Main.new(CommandBlock.empty, ReturnFromMain.new(node))
+    Program.new no_definitions, Main.new(empty_body, ReturnFromMain.new(node))
   end
 
   def parse(code)
