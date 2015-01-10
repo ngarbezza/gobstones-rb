@@ -1,4 +1,24 @@
-v 0.0.1
-=======
+v 0.0.2 (2015.01.10)
+====================
+
+New features:
+
+* Support evaluation of function calls
+* Support expression between parentheses
+* Add multiple assignment to the language
+* Add some runtime type checks
+
+Bug fixes:
+
+* repeatWith command issue (f0e5fa00a178ffad825c6cfdafbfbd333e331f9b)
+
+Infrastructure:
+
+* Support Ruby 2.2.0 and 1.9.3
+* Upgrade dependencies to latest stable versions
+* Lots of refactorings and new specs (now 316)
+
+v 0.0.1 (2013.10.26)
+====================
 
 First version.
