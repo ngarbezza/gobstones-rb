@@ -1,7 +1,4 @@
 .rvmrc
-*.swp
-.rake_t_cache
 coverage/
-tags
 .idea/
 examples/*.test.gbs
