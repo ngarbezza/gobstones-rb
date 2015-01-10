@@ -35,7 +35,7 @@ module Gobstones
       end
 
       def parse_program
-        @parser.parse(@code)
+        @parser.parse @code
       end
 
       def handle_parse_error(parse_error)

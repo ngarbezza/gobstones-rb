@@ -64,7 +64,7 @@ module Gobstones
 
       def set_arguments(calling_arguments, procedure_context)
         arguments.length.times do |index|
-          procedure_context.set arguments.variables[index], calling_arguments[index]
+          procedure_context.set arguments.variable_at(index), calling_arguments[index]
         end
       end
     end

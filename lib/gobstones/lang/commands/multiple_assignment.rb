@@ -21,9 +21,10 @@ module Gobstones
       end
 
       def evaluate(context)
+        # TODO implement as many simple assignments?
         function_call_result = expression.evaluate(context)
-        var_tuple.variables.each_with_index do |variable, index|
-          context.set variable, function_call_result[index]
+        function_call_result.length.times do |index|
+          context.set var_tuple.variable_at(index), function_call_result[index]
         end
       end
 

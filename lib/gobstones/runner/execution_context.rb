@@ -92,6 +92,8 @@ module Gobstones
 
     class FunctionExecutionContext < ExecutionContext
 
+      attr_reader :head
+
       def self.based_on(outer_context)
         new outer_context
       end
@@ -100,10 +102,6 @@ module Gobstones
         super()
         @outer_context = outer_context
         @head = outer_context.head.clone
-      end
-
-      def head
-        @head
       end
 
       def program_context

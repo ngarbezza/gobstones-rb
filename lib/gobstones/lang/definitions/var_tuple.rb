@@ -27,6 +27,10 @@ module Gobstones
         variables.length
       end
 
+      def variable_at(index)
+        variables[index]
+      end
+
     end
 
   end
