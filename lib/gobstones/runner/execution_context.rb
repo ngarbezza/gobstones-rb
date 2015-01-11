@@ -1,4 +1,5 @@
 require 'gobstones/runner/head'
+require 'gobstones/runner/errors/undefined_variable_error'
 
 module Gobstones
 
@@ -15,7 +16,7 @@ module Gobstones
       end
 
       def get(variable_name)
-        @values[variable_name] || undefined_variable_error
+        @values[variable_name] || undefined_variable_error(variable_name)
       end
 
       def clear(variable_name)
@@ -32,8 +33,8 @@ module Gobstones
 
       protected
 
-      def undefined_variable_error
-        raise UndefinedVariableError
+      def undefined_variable_error(variable_name)
+        raise UndefinedVariableError.for(variable_name)
       end
 
     end
@@ -117,7 +118,7 @@ module Gobstones
       end
 
       def get(variable_name)
-        undefined_variable_error
+        undefined_variable_error(variable_name)
       end
 
       def clear(variable_name)

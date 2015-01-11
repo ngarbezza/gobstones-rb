@@ -1,4 +1,5 @@
 require 'gobstones/modules/equal_by_class'
+require 'gobstones/runner/errors/wrong_arguments_error'
 
 module Gobstones
 

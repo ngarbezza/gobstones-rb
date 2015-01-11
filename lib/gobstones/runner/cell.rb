@@ -1,3 +1,5 @@
+require 'gobstones/runner/errors/empty_cell_error'
+
 module Gobstones
 
   module Runner

@@ -30,6 +30,10 @@ module Gobstones
         name == a_name
       end
 
+      def to_s
+        "'#{name}'"
+      end
+
     end
 
   end

@@ -1,4 +1,5 @@
 require 'gobstones/runner/board'
+require 'gobstones/runner/errors/out_of_board_error'
 
 module Gobstones
 

@@ -4,6 +4,8 @@ module Gobstones
 
     class DefinitionNotFound < StandardError
 
+      # TODO indicate if it is coming from a procedure or function
+
       def self.new(definition_name)
         super(message_for(definition_name))
       end
