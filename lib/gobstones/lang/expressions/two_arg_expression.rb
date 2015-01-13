@@ -31,6 +31,10 @@ module Gobstones
         self.right_expr == other.right_expr
       end
 
+      def is_function_call?
+        false
+      end
+
     end
 
   end

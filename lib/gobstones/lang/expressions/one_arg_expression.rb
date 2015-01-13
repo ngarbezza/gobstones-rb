@@ -26,6 +26,10 @@ module Gobstones
         yield argument.evaluate(context)
       end
 
+      def is_function_call?
+        false
+      end
+
     end
 
   end

@@ -60,6 +60,10 @@ module Gobstones
         not_boolean_type_error
       end
 
+      def is_function_call?
+        false
+      end
+
       private
 
       def not_boolean_type_error

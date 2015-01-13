@@ -8,6 +8,10 @@ module Gobstones
 
       include DefinitionCall
 
+      def is_function_call?
+        true
+      end
+
     end
 
   end

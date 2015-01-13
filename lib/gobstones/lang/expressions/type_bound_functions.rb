@@ -11,6 +11,10 @@ module Gobstones
 
       include Gobstones::EqualByClass
 
+      def is_function_call?
+        false
+      end
+
     end
 
     class MinBool < TypeBoundFunc
