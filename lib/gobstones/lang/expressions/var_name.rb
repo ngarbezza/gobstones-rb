@@ -1,12 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/lang/expressions/expression'
 
 module Gobstones
 
   module Lang
 
-    class VarName
-
-      include Gobstones::EqualByClass
+    class VarName < Expression
 
       attr_reader :name
 
@@ -32,10 +30,6 @@ module Gobstones
 
       def to_s
         "'#{name}'"
-      end
-
-      def is_function_call?
-        false
       end
 
     end

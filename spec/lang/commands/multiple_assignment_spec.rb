@@ -49,7 +49,7 @@ describe MultipleAssignment do
       assign = MultipleAssignment.new var_tuple, Add.new(12.to_gbs_num, 23.to_gbs_num)
       error_message = 'expected a function call in multiple assignment'
       expect { assign.evaluate context }
-          .to raise_error(Gobstones::Runner::WrongArgumentsError, error_message)
+          .to raise_error(Gobstones::Runner::GobstonesTypeError, error_message)
     end
 
   end

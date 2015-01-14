@@ -1,12 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/lang/expressions/expression'
 
 module Gobstones
 
   module Lang
 
-    class OneArgExpression
-
-      include Gobstones::EqualByClass
+    class OneArgExpression < Expression
 
       attr_reader :argument
 
@@ -24,10 +22,6 @@ module Gobstones
 
       def with_evaluated_argument_in(context, &block)
         yield argument.evaluate(context)
-      end
-
-      def is_function_call?
-        false
       end
 
     end

@@ -1,12 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/lang/expressions/expression'
 
 module Gobstones
 
   module Lang
 
-    class TwoArgExpression
-
-      include Gobstones::EqualByClass
+    class TwoArgExpression < Expression
 
       attr_reader :left_expr, :right_expr
 
@@ -29,10 +27,6 @@ module Gobstones
         super(other) &&
         self.left_expr == other.left_expr &&
         self.right_expr == other.right_expr
-      end
-
-      def is_function_call?
-        false
       end
 
     end

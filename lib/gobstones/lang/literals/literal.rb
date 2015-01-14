@@ -1,18 +1,25 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/lang/expressions/expression'
 require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
 
   module Lang
 
-    class Literal
+    class Literal < Expression
 
       include Comparable
-      include Gobstones::EqualByClass
 
       def evaluate(context=nil)
         self
       end
+
+      # TODO EqualByClass module seems to fail used with Comparable
+
+      def ==(other)
+        self.class == other.class
+      end
+
+      alias_method :eql?, :==
 
       def <=>(other)
         self == other ? 0 : (self < other ? -1 : 1)
@@ -58,10 +65,6 @@ module Gobstones
 
       def not
         not_boolean_type_error
-      end
-
-      def is_function_call?
-        false
       end
 
       private

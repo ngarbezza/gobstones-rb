@@ -1,10 +1,11 @@
+require 'gobstones/lang/expressions/expression'
 require 'gobstones/lang/definitions/definition_call'
 
 module Gobstones
 
   module Lang
 
-    class FunctionCall
+    class FunctionCall < Expression
 
       include DefinitionCall
 

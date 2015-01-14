@@ -1,19 +1,13 @@
+require 'gobstones/lang/expressions/expression'
 require 'gobstones/lang/literals/booleans'
 require 'gobstones/lang/literals/colors'
 require 'gobstones/lang/literals/directions'
-require 'gobstones/modules/equal_by_class'
 
 module Gobstones
 
   module Lang
 
-    class TypeBoundFunc
-
-      include Gobstones::EqualByClass
-
-      def is_function_call?
-        false
-      end
+    class TypeBoundFunc < Expression
 
     end
 
