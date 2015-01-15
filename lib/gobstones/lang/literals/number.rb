@@ -42,6 +42,10 @@ module Gobstones
         self.class.new(value + 1)
       end
 
+      def to_s
+        "number #{value}"
+      end
+
     end
 
   end

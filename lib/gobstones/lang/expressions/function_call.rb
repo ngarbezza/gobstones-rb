@@ -13,6 +13,10 @@ module Gobstones
         true
       end
 
+      def to_s
+        "function call to #{name}"
+      end
+
     end
 
   end

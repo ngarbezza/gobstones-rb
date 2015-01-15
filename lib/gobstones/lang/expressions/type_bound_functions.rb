@@ -17,12 +17,20 @@ module Gobstones
         False.new
       end
 
+      def to_s
+        'minBool() expression'
+      end
+
     end
 
     class MaxBool < TypeBoundFunc
 
       def evaluate(context=nil)
         True.new
+      end
+
+      def to_s
+        'maxBool() expression'
       end
 
     end
@@ -33,12 +41,20 @@ module Gobstones
         Azul.new
       end
 
+      def to_s
+        'minColor() expression'
+      end
+
     end
 
     class MaxColor < TypeBoundFunc
 
       def evaluate(context=nil)
         Verde.new
+      end
+
+      def to_s
+        'maxColor() expression'
       end
 
     end
@@ -49,12 +65,20 @@ module Gobstones
         Norte.new
       end
 
+      def to_s
+        'minDir() expression'
+      end
+
     end
 
     class MaxDir < TypeBoundFunc
 
       def evaluate(context=nil)
         Oeste.new
+      end
+
+      def to_s
+        'maxDir() expression'
       end
 
     end

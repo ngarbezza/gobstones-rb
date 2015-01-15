@@ -10,6 +10,10 @@ module Gobstones
         with_evaluated_argument_in(context) { |result| result }
       end
 
+      def to_s
+        'Expression enclosed in parentheses'
+      end
+
     end
 
   end

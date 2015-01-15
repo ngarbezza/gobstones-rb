@@ -70,6 +70,10 @@ module Gobstones
         true
       end
 
+      def to_s
+        'True'
+      end
+
     end
 
     class False < Boolean
@@ -100,6 +104,10 @@ module Gobstones
 
       def is_true?
         false
+      end
+
+      def to_s
+        'False'
       end
 
     end

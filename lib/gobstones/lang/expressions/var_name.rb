@@ -29,7 +29,7 @@ module Gobstones
       end
 
       def to_s
-        "'#{name}'"
+        "variable named '#{name}'"
       end
 
     end

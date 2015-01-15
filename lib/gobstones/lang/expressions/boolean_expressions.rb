@@ -11,6 +11,10 @@ module Gobstones
         with_evaluated_argument_in(context) { |result| result.not }
       end
 
+      def to_s
+        'Not expression'
+      end
+
     end
 
     class And < TwoArgExpression

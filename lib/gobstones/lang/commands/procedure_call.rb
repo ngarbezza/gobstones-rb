@@ -8,6 +8,10 @@ module Gobstones
 
       include DefinitionCall
 
+      def to_s
+        "procedure call to #{name}"
+      end
+
     end
 
   end

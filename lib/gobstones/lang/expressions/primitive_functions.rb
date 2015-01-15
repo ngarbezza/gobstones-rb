@@ -15,6 +15,10 @@ module Gobstones
         end
       end
 
+      def to_s
+        'nroBolitas() expression'
+      end
+
     end
 
     class HayBolitas < OneArgExpression
@@ -25,6 +29,10 @@ module Gobstones
         end
       end
 
+      def to_s
+        'hayBolitas() expression'
+      end
+
     end
 
     class PuedeMover < OneArgExpression
@@ -33,6 +41,10 @@ module Gobstones
         with_evaluated_argument_in(context) do |result|
           context.head.can_move?(result).to_gbs_bool
         end
+      end
+
+      def to_s
+        'puedeMover() expression'
       end
 
       def argument_type
@@ -51,6 +63,10 @@ module Gobstones
         with_evaluated_argument_in(context) { |result| result.next }
       end
 
+      def to_s
+        'siguiente() expression'
+      end
+
     end
 
     class Previo < OneArgExpression
@@ -59,12 +75,20 @@ module Gobstones
         with_evaluated_argument_in(context) { |result| result.previous }
       end
 
+      def to_s
+        'previo() expression'
+      end
+
     end
 
     class Opuesto < OneArgExpression
 
       def evaluate(context)
         with_evaluated_argument_in(context) { |result| result.opposite }
+      end
+
+      def to_s
+        'opuesto() expression'
       end
 
     end

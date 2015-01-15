@@ -15,6 +15,10 @@ module Gobstones
             left_expr.evaluate(context)
               .send(selector, right_expr.evaluate(context))
           end
+
+          define_method :to_s do
+            "#{selector} expression"
+          end
         end
       end
 
