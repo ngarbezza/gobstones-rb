@@ -19,6 +19,12 @@ module Gobstones
         self.var_tuple == other.var_tuple
       end
 
+      def evaluate(context)
+        var_tuple.variables.map { |variable|
+          [variable, context.get(variable)]
+        }.to_h
+      end
+
     end
 
   end

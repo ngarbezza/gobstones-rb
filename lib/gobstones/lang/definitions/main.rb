@@ -14,9 +14,8 @@ module Gobstones
       end
 
       def evaluate(context)
-        # evaluate body
         body.evaluate context
-        # evaluate return
+        return_statement.evaluate context
       end
 
     end
