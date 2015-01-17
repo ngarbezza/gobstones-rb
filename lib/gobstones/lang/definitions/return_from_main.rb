@@ -20,9 +20,15 @@ module Gobstones
       end
 
       def evaluate(context)
-        var_tuple.variables.map { |variable|
+        Hash[evaluated_variables(context)]
+      end
+
+      private
+
+      def evaluated_variables(context)
+        var_tuple.variables.map do |variable|
           [variable, context.get(variable)]
-        }.to_h
+        end
       end
 
     end
