@@ -15,7 +15,8 @@ module Gobstones
 
       def evaluate(context)
         body.evaluate context
-        return_statement.evaluate context
+        result = return_statement.evaluate context
+        result || []
       end
 
     end

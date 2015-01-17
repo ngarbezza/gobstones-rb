@@ -14,10 +14,25 @@ describe Main do
     expect(context.has_variable_named? 'y').to be(true)
   end
 
-  it "returns its return value, if there is one" do
-    result = main.evaluate context
-    expect(result).to eq({'x'.to_var_name => 42.to_gbs_num,
-                          'y'.to_var_name => verde})
+  context "with return statement" do
+
+    it "returns its return value, if there is one" do
+      result = main.evaluate context
+      expect(result).to eq({'x'.to_var_name => 42.to_gbs_num,
+                            'y'.to_var_name => verde})
+    end
+
+  end
+
+  context "without return statement" do
+
+    let(:return_from_main) { no_return_statement }
+
+    it "returns an empty result when no return statement is present" do
+      result = main.evaluate context
+      expect(result.empty?).to be(true)
+    end
+
   end
 
 end
