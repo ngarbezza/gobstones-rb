@@ -46,8 +46,8 @@ module Gobstones
 
       private
 
-      def print_program_result(context)
-        Printer.new(context).print
+      def print_program_result(result)
+        Printer.new(result).print
       end
 
       def parse_program

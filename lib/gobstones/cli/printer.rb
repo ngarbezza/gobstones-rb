@@ -8,23 +8,42 @@ module Gobstones
 
       TEMPLATE = File.read(File.dirname(__FILE__) + '/board_template')
 
-      def initialize(context)
-        @context = context
+      def initialize(program_result)
+        @program_result = program_result
         @board = TEMPLATE
       end
 
       def print
         highlight_current_cell
         put_ball_values
+        print_return_values
+        print_board
+      end
+
+      def print_return_values
+        @program_result.return_values.each do |variable, value|
+          puts "#{variable.name} => #{value}"
+        end
+      end
+
+      def print_board
         puts @board
       end
 
       private
 
+      def head
+        @program_result.head
+      end
+
+      def board
+        head.board
+      end
+
       def highlight_current_cell
         char = 'X'
-        x = @context.head.x_pos
-        y = @context.head.y_pos
+        x = head.x_pos
+        y = head.y_pos
         highlight_row x, y, char
         highlight_row x, y - 1, char
         highlight_column x, y, char
@@ -34,10 +53,10 @@ module Gobstones
       def put_ball_values
         total_rows.times do |x|
           total_columns.times do |y|
-            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Negro.new), 'N', x, y, 2, 1
-            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Azul.new) , 'A', x, y, 6, 1
-            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Verde.new), 'V', x, y, 2, 3
-            put_ball_value @context.board.number_of_balls(x, y, Gobstones::Lang::Rojo.new) , 'R', x, y, 6, 3
+            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Negro.new), 'N', x, y, 2, 1
+            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Azul.new) , 'A', x, y, 6, 1
+            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Verde.new), 'V', x, y, 2, 3
+            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Rojo.new) , 'R', x, y, 6, 3
           end
         end
       end

@@ -1,5 +1,6 @@
-require 'gobstones/runner/execution_context'
 require 'gobstones/modules/equal_by_class'
+require 'gobstones/runner/execution_context'
+require 'gobstones/runner/program_result'
 
 module Gobstones
 
@@ -23,9 +24,9 @@ module Gobstones
       end
 
       def evaluate
-        create_context.tap do |context|
-          main_definition.evaluate context
-        end
+        context = create_context
+        return_values = main_definition.evaluate context
+        Gobstones::Runner::ProgramResult.new context.head, return_values
       end
 
       private
