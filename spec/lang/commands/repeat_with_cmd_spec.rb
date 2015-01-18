@@ -48,6 +48,15 @@ describe RepeatWithCmd do
     expect(context.head.are_there_balls?(verde)).to be true
   end
 
+  it "does exactly one iteration if range values are the same" do
+    cmd_block = CommandBlock.new [Poner.new(verde)]
+    repeat_with = RepeatWithCmd.new var_name, 1.to_gbs_num, 1.to_gbs_num, cmd_block
+
+    repeat_with.evaluate context
+
+    expect(context.head.are_there_balls?(verde)).to be(true)
+  end
+
   it "does no iterations if the from is higher than the to" do
     cmd_block = CommandBlock.new [Poner.new(verde)]
     repeat_with = RepeatWithCmd.new var_name, 8.to_gbs_num, 4.to_gbs_num, cmd_block
