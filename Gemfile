@@ -10,3 +10,8 @@ group :test do
 end
 
 gem 'coveralls', '~> 0.7', :require => false
+
+if ENV['RM_INFO']
+  gem 'debase'
+  gem 'ruby-debug-ide'
+end
