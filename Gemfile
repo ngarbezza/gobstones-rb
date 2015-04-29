@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'treetop', '~> 1.4'
 gem 'rake', '~> 10.4'
+gem 'error_handling_protocol', '~> 0.0.1'
 
 group :test do
   gem 'autotest-standalone', '~> 4.5'

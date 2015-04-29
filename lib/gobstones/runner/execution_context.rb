@@ -1,5 +1,6 @@
 require 'gobstones/runner/head'
 require 'gobstones/runner/errors/undefined_variable_error'
+require 'error_handling_protocol'
 
 module Gobstones
 
@@ -28,7 +29,7 @@ module Gobstones
       end
 
       def program_context
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       protected

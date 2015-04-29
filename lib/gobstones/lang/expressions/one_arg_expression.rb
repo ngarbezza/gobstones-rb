@@ -17,7 +17,7 @@ module Gobstones
       end
 
       def evaluate(context)
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def with_evaluated_argument_in(context, &block)

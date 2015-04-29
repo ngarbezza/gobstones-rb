@@ -1,4 +1,5 @@
 require 'gobstones/modules/equal_by_class'
+require 'error_handling_protocol'
 
 module Gobstones
 
@@ -9,7 +10,7 @@ module Gobstones
       include Gobstones::EqualByClass
 
       def evaluate(context)
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def is_function_call?

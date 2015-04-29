@@ -23,19 +23,19 @@ module Gobstones
       end
 
       def not
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def if_true(block, context)
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def if_false(block, context)
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def is_true?
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
     end

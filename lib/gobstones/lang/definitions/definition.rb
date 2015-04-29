@@ -1,5 +1,6 @@
 require 'gobstones/modules/equal_by_class'
 require 'gobstones/runner/errors/wrong_arguments_error'
+require 'error_handling_protocol'
 
 module Gobstones
 
@@ -40,11 +41,11 @@ module Gobstones
       end
 
       def create_context_based_on(outer_context)
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def definition_type
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       private

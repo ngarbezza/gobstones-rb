@@ -1,5 +1,6 @@
 require 'gobstones/lang/expressions/expression'
 require 'gobstones/runner/errors/gobstones_type_error'
+require 'error_handling_protocol'
 
 module Gobstones
 
@@ -26,7 +27,7 @@ module Gobstones
       end
 
       def <(other)
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       OPERATORS_MAPPING = {
@@ -48,7 +49,7 @@ module Gobstones
       end
 
       def return_type
-        raise 'subclass responsibility'
+        subclass_responsibility
       end
 
       def if_true(block, context)
