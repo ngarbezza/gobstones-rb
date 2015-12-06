@@ -1,9 +1,7 @@
 require 'gobstones/lang/expressions/expression'
 
 module Gobstones
-
   module Lang
-
     class VarName < Expression
 
       attr_reader :name
@@ -21,7 +19,7 @@ module Gobstones
       end
 
       def evaluate(context)
-        context.get self
+        context.get(self)
       end
 
       def named?(a_name)
@@ -33,7 +31,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

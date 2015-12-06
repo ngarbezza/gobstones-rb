@@ -1,9 +1,7 @@
 require 'gobstones/lang/all'
 
 module Gobstones
-
-  # TODO divide into smaller modules
-  module Parser
+  module Parser # TODO divide into smaller modules
 
     include Gobstones::Lang
 
@@ -16,15 +14,15 @@ module Gobstones
 
     def self.ast_node(name, &value_block)
       # TODO check if it is better to have classes
-      mod = Module.new do
-        define_method :value do
+      ast_module = Module.new do
+        define_method(:value) do
           instance_eval(&value_block)
         end
       end
-      const_set name, mod
+      const_set name, ast_module
     end
 
-    ast_node(:IntegerLiteral) { Number.new text_value.to_i }
+    ast_node(:IntegerLiteral) { Number.new(text_value.to_i) }
     ast_node(:BooleanLiteral) { Kernel.const_get(text_value).new }
     ast_node(:ColorLiteral) { Kernel.const_get(text_value).new }
     ast_node(:DirectionLiteral) { Kernel.const_get(text_value).new }
@@ -36,14 +34,14 @@ module Gobstones
     ast_node(:MinDirFuncNode) { MinDir.new }
     ast_node(:MaxDirFuncNode) { MaxDir.new }
 
-    ast_node(:VarNameNode) { VarName.new text_value }
+    ast_node(:VarNameNode) { VarName.new(text_value) }
 
-    ast_node(:NroBolitasFuncNode) { NroBolitas.new gexp.value }
-    ast_node(:HayBolitasFuncNode) { HayBolitas.new gexp.value }
-    ast_node(:PuedeMoverFuncNode) { PuedeMover.new gexp.value }
-    ast_node(:SiguienteFuncNode) { Siguiente.new gexp.value }
-    ast_node(:PrevioFuncNode) { Previo.new gexp.value }
-    ast_node(:OpuestoFuncNode) { Opuesto.new gexp.value }
+    ast_node(:NroBolitasFuncNode) { NroBolitas.new(gexp.value) }
+    ast_node(:HayBolitasFuncNode) { HayBolitas.new(gexp.value) }
+    ast_node(:PuedeMoverFuncNode) { PuedeMover.new(gexp.value) }
+    ast_node(:SiguienteFuncNode) { Siguiente.new(gexp.value) }
+    ast_node(:PrevioFuncNode) { Previo.new(gexp.value) }
+    ast_node(:OpuestoFuncNode) { Opuesto.new(gexp.value) }
 
     ast_node :NopExprNode do
       if sub_exps.empty?
@@ -53,9 +51,9 @@ module Gobstones
         sub_exps.elements.inject(left.value) do |memo, node|
           case node.op.text_value
           when '+'
-            Add.new memo, node.right.value
+            Add.new(memo, node.right.value)
           when '-'
-            Sub.new memo, node.right.value
+            Sub.new(memo, node.right.value)
           end
         end
       end
@@ -67,7 +65,7 @@ module Gobstones
       else
         # it is a nested exp
         sub_exps.elements.inject(left.value) do |memo, node|
-          Mul.new memo, node.right.value
+          Mul.new(memo, node.right.value)
         end
       end
     end
@@ -75,9 +73,9 @@ module Gobstones
     ast_node :DivModExprNode do
       case op.text_value
       when 'div'
-        Div.new left.value, right.value
+        Div.new(left.value, right.value)
       when 'mod'
-        Mod.new left.value, right.value
+        Mod.new(left.value, right.value)
       end
     end
 
@@ -87,7 +85,7 @@ module Gobstones
       else
         # it is a nested exp
         sub_exps.elements.inject(left.value) do |memo, node|
-          Pow.new memo, node.right.value
+          Pow.new(memo, node.right.value)
         end
       end
     end
@@ -98,17 +96,15 @@ module Gobstones
         '<'  => LessThan,  '>'  => GreaterThan,
         '<=' => LessEqual, '>=' => GreaterEqual
       }
-      classes[rop.text_value].new left.value, right.value
+      classes[rop.text_value].new(left.value, right.value)
     end
 
-    ast_node(:NotExprNode) { Not.new exp.value }
-    ast_node(:AndExprNode) { And.new left.value, right.value }
-    ast_node(:OrExprNode) { Or.new left.value, right.value }
+    ast_node(:NotExprNode) { Not.new(exp.value) }
+    ast_node(:AndExprNode) { And.new(left.value, right.value) }
+    ast_node(:OrExprNode) { Or.new(left.value, right.value) }
 
-    ast_node(:ParenthesesExprNode) { EnclosedByParensExpression.new gexp.value }
-    ast_node(:FuncCallNode) do
-      FunctionCall.new func_name.text_value, gexp_tuple.value
-    end
+    ast_node(:ParenthesesExprNode) { EnclosedByParensExpression.new(gexp.value) }
+    ast_node(:FuncCallNode) { FunctionCall.new(func_name.text_value, gexp_tuple.value) }
     ast_node(:TupleExprNode) { exps.empty? ? [] : exps.value }
 
     ast_node :GexpsNode do
@@ -120,44 +116,34 @@ module Gobstones
     end
 
     ast_node(:SkipCmdNode) { Skip.new }
-    ast_node(:BoomCmdNode) { Boom.new string.text_value[1..-2] }
+    ast_node(:BoomCmdNode) { Boom.new(string.text_value[1..-2]) }
 
-    ast_node(:PonerCmdNode) { Poner.new gexp.value }
-    ast_node(:SacarCmdNode) { Sacar.new gexp.value }
-    ast_node(:MoverCmdNode) { Mover.new gexp.value }
+    ast_node(:PonerCmdNode) { Poner.new(gexp.value) }
+    ast_node(:SacarCmdNode) { Sacar.new(gexp.value) }
+    ast_node(:MoverCmdNode) { Mover.new(gexp.value) }
 
     ast_node(:IrAlOrigenCmdNode) { IrAlOrigen.new }
     ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
 
-    ast_node :ProcCallNode do
-      ProcedureCall.new proc_name.text_value, gexp_tuple.value
-    end
+    ast_node(:ProcCallNode) { ProcedureCall.new(proc_name.text_value, gexp_tuple.value) }
 
-    ast_node :SingleAssignmentNode do
-      SingleAssignment.new var_name.value, gexp.value
-    end
+    ast_node(:SingleAssignmentNode) { SingleAssignment.new(var_name.value, gexp.value) }
+    ast_node(:MultipleAssignmentNode) { MultipleAssignment.new(var_tuple.value, gexp.value) }
 
-    ast_node :MultipleAssignmentNode do
-      MultipleAssignment.new var_tuple.value, gexp.value
-    end
-
-    ast_node :CmdBlockNode do
-      CommandBlock.new create_commands(commands)
-    end
+    ast_node(:CmdBlockNode) { CommandBlock.new(create_commands(commands)) }
 
     ast_node :IfCmdNode do
       if else_clause.empty?
-        IfCmd.new gexp.value, then_block.value
+        IfCmd.new(gexp.value, then_block.value)
       else
-        IfElseCmd.new gexp.value, then_block.value, else_clause.else_block.value
+        IfElseCmd.new(gexp.value, then_block.value, else_clause.else_block.value)
       end
     end
 
-    ast_node(:WhileCmdNode) { WhileCmd.new gexp.value, cmd_block.value }
+    ast_node(:WhileCmdNode) { WhileCmd.new(gexp.value, cmd_block.value) }
 
     ast_node :RepeatWithCmdNode do
-      RepeatWithCmd.new var_name.value, range_min.value,
-        range_max.value, cmd_block.value
+      RepeatWithCmd.new(var_name.value, range_min.value, range_max.value, cmd_block.value)
     end
 
     # TODO abstract duplication, very similar to GexpsNode
@@ -173,36 +159,30 @@ module Gobstones
 
     ast_node(:VarTupleNode) do
       variables = vns.empty? ? [] : vns.value
-      VarTuple.new variables
+      VarTuple.new(variables)
     end
 
     ast_node(:ProcedureNode) do
-      Procedure.new proc_name.text_value, var_tuple.value, cmd_block.value
+      Procedure.new(proc_name.text_value, var_tuple.value, cmd_block.value)
     end
 
     ast_node(:FunctionNode) do
-      cmd_block = CommandBlock.new create_commands(commands)
-      Function.new func_name.text_value, var_tuple.value,
-        cmd_block, func_return.value
+      cmd_block = CommandBlock.new(create_commands(commands))
+      Function.new(func_name.text_value, var_tuple.value, cmd_block, func_return.value)
     end
 
-    ast_node(:FuncReturnNode) do
-      ReturnFromFunction.new gexp_tuple_1.value
-    end
-
-    ast_node(:MainReturnNode) do
-      ReturnFromMain.new var_tuple.value
-    end
+    ast_node(:FuncReturnNode) { ReturnFromFunction.new(gexp_tuple_1.value) }
+    ast_node(:MainReturnNode) { ReturnFromMain.new(var_tuple.value) }
 
     ast_node(:MainDefNode) do
-      cmd_block = CommandBlock.new create_commands(commands)
-      return_st = ret.empty? ? NoReturnStatement.new : ret.value
-      Main.new cmd_block, return_st
+      command_block = CommandBlock.new(create_commands(commands))
+      return_statement = ret.empty? ? NoReturnStatement.new : ret.value
+      Main.new(command_block, return_statement)
     end
 
     ast_node(:ProgramNode) do
       defs = definitions.elements.map { |node| node.definition.value }
-      Program.new defs, main_def.value
+      Program.new(defs, main_def.value)
     end
 
     def create_commands(commands)
@@ -210,5 +190,4 @@ module Gobstones
     end
 
   end
-
 end

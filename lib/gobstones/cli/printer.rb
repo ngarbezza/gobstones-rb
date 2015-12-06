@@ -1,9 +1,7 @@
 require 'gobstones/lang/literals/colors'
 
 module Gobstones
-
   module CLI
-
     class Printer
 
       TEMPLATE = File.read(File.dirname(__FILE__) + '/board_template')
@@ -63,7 +61,7 @@ module Gobstones
 
       def put_ball_value(number, char, x, y, x_offset, y_offset)
         unless number.zero?
-          corner = cell_top_left_corner x, y
+          corner = cell_top_left_corner(x, y)
           pos = corner + (y_offset * line_length) + x_offset
           if number < 10
             @board[pos] = ' '
@@ -77,14 +75,14 @@ module Gobstones
       end
 
       def highlight_row(x, y, char)
-        corner = cell_top_left_corner x, y
+        corner = cell_top_left_corner(x, y)
         (cell_width - 1).times do |index|
           @board[corner + index + 1] = char
         end
       end
 
       def highlight_column(x, y, char)
-        corner = cell_top_left_corner x, y
+        corner = cell_top_left_corner(x, y)
         (cell_height - 1).times do |index|
           @board[corner + ((index + 1) * line_length)] = char
         end
@@ -119,7 +117,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

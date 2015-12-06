@@ -3,9 +3,7 @@ require 'gobstones/lang/commands/poner_cmd'
 require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
-
   module Lang
-
     class Sacar < OneArgExpression
 
       def evaluate(context)
@@ -23,11 +21,9 @@ module Gobstones
       end
 
       def opposite
-        Poner.new argument
+        Poner.new(argument)
       end
 
     end
-
   end
-
 end

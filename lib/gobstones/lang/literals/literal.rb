@@ -3,9 +3,7 @@ require 'gobstones/runner/errors/gobstones_type_error'
 require 'error_handling_protocol'
 
 module Gobstones
-
   module Lang
-
     class Literal < Expression
 
       include Comparable
@@ -35,7 +33,8 @@ module Gobstones
           :not_equal => '!='.to_sym,
           :less_than => :<,
           :less_equal => :<=,
-          :greater_than => :>, :greater_equal => :>=
+          :greater_than => :>,
+          :greater_equal => :>=,
       }
 
       OPERATORS_MAPPING.each do |gbs_op, ruby_op|
@@ -75,7 +74,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

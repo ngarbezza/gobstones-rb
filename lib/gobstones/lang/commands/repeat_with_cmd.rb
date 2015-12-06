@@ -8,9 +8,7 @@ require 'gobstones/runner/errors/gobstones_type_error'
 require 'gobstones/modules/equal_by_class'
 
 module Gobstones
-
   module Lang
-
     class RepeatWithCmd
 
       include Gobstones::EqualByClass
@@ -61,17 +59,15 @@ module Gobstones
         #        is equivalent to
         # if (min <= max) { var := min; while (var < max) { block; var := siguiente(var) }; block }
         #
-        assign_cmd = SingleAssignment.new var_name, range_min
-        while_cond = LessThan.new var_name, range_max
-        increment = SingleAssignment.new var_name, Siguiente.new(var_name)
-        while_block = CommandBlock.new [cmd_block, increment]
-        while_cmd = WhileCmd.new while_cond, while_block
-        if_cond = LessEqual.new range_min, range_max
-        IfCmd.new if_cond, CommandBlock.new([assign_cmd, while_cmd, cmd_block])
+        assign_cmd = SingleAssignment.new(var_name, range_min)
+        while_cond = LessThan.new(var_name, range_max)
+        increment = SingleAssignment.new(var_name, Siguiente.new(var_name))
+        while_block = CommandBlock.new([cmd_block, increment])
+        while_cmd = WhileCmd.new(while_cond, while_block)
+        if_cond = LessEqual.new(range_min, range_max)
+        IfCmd.new(if_cond, CommandBlock.new([assign_cmd, while_cmd, cmd_block]))
       end
 
     end
-
   end
-
 end

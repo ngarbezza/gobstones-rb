@@ -2,9 +2,7 @@ require 'gobstones/lang/commands/conditional_cmd'
 require 'gobstones/runner/errors/gobstones_runtime_error'
 
 module Gobstones
-
   module Lang
-
     class WhileCmd < ConditionalCmd
 
       STACK_LIMIT = 10000
@@ -19,7 +17,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

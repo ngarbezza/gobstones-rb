@@ -3,9 +3,7 @@ require 'gobstones/runner/execution_context'
 require 'gobstones/runner/program_result'
 
 module Gobstones
-
   module Lang
-
     class Program
 
       include Gobstones::EqualByClass
@@ -25,18 +23,16 @@ module Gobstones
 
       def evaluate
         context = create_context
-        return_values = main_definition.evaluate context
-        Gobstones::Runner::ProgramResult.new context.head, return_values
+        return_values = main_definition.evaluate(context)
+        Gobstones::Runner::ProgramResult.new(context.head, return_values)
       end
 
       private
 
       def create_context
-        Gobstones::Runner::ProgramExecutionContext.for self
+        Gobstones::Runner::ProgramExecutionContext.for(self)
       end
 
     end
-
   end
-
 end

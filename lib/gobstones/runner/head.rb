@@ -2,9 +2,7 @@ require 'gobstones/runner/board'
 require 'gobstones/runner/errors/out_of_board_error'
 
 module Gobstones
-
   module Runner
-
     class Head
 
       MAX_ROWS = 9
@@ -17,11 +15,11 @@ module Gobstones
       end
 
       def self.with_position_and_board(x_pos, y_pos, board)
-        new.with_position_and_board x_pos, y_pos, board
+        new.with_position_and_board(x_pos, y_pos, board)
       end
 
       def initialize
-        with_position_and_board 0, 0, Board.new(MAX_ROWS, MAX_COLS)
+        with_position_and_board(0, 0, Board.new(MAX_ROWS, MAX_COLS))
       end
 
       def at_random
@@ -38,7 +36,7 @@ module Gobstones
 
       def can_move?(dir)
         check dir
-        dir.can_move? self
+        dir.can_move?(self)
       end
 
       def can_move_north?
@@ -91,26 +89,23 @@ module Gobstones
       end
 
       def number_of_balls(color)
-        @board.number_of_balls x_pos, y_pos, color
+        @board.number_of_balls(x_pos, y_pos, color)
       end
 
       def are_there_balls?(color)
-        @board.are_there_balls? x_pos, y_pos, color
+        @board.are_there_balls?(x_pos, y_pos, color)
       end
 
       def clone
-        self.class.with_position_and_board x_pos, y_pos, board.clone
+        self.class.with_position_and_board(x_pos, y_pos, board.clone)
       end
 
       private
 
       def check(dir)
-        raise GobstonesTypeError, "#{dir} is not a direction" \
-          unless [Norte, Sur, Este, Oeste].include? dir.class
+        raise GobstonesTypeError, "#{dir} is not a direction" unless [Norte, Sur, Este, Oeste].include?(dir.class)
       end
 
     end
-
   end
-
 end

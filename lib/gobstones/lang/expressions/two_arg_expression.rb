@@ -1,9 +1,7 @@
 require 'gobstones/lang/expressions/expression'
 
 module Gobstones
-
   module Lang
-
     class TwoArgExpression < Expression
 
       attr_reader :left_expr, :right_expr
@@ -12,8 +10,7 @@ module Gobstones
         instance_eval do
           define_method :evaluate do |*args|
             context = args.first
-            left_expr.evaluate(context)
-              .send(selector, right_expr.evaluate(context))
+            left_expr.evaluate(context).send(selector, right_expr.evaluate(context))
           end
 
           define_method :to_s do
@@ -34,7 +31,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

@@ -1,9 +1,7 @@
 require 'gobstones/modules/equal_by_class'
 
 module Gobstones
-
   module Lang
-
     class SingleAssignment
 
       include Gobstones::EqualByClass
@@ -25,7 +23,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

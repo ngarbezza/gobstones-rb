@@ -1,9 +1,7 @@
 require 'gobstones/lang/literals/literal'
 
 module Gobstones
-
   module Lang
-
     class Boolean < Literal
 
       def return_type
@@ -111,7 +109,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

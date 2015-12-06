@@ -5,9 +5,7 @@ require 'gobstones/cli/printer'
 include Gobstones::Parser
 
 module Gobstones
-
   module CLI
-
     class Runner
 
       def self.run(file_name)
@@ -94,7 +92,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

@@ -1,5 +1,4 @@
 module Gobstones
-
   class TypeCheckResult
 
     def initialize(expected, actual)
@@ -12,5 +11,4 @@ module Gobstones
     end
 
   end
-
 end

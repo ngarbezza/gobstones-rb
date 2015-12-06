@@ -4,9 +4,7 @@ require 'gobstones/lang/definitions/no_return_statement'
 require 'gobstones/lang/definitions/return_from_main'
 
 module Gobstones
-
   module Lang
-
     class Main < Definition
 
       def initialize(body, return_statement)
@@ -15,12 +13,9 @@ module Gobstones
 
       def evaluate(context)
         body.evaluate context
-        result = return_statement.evaluate context
-        result || []
+        return_statement.evaluate(context) || []
       end
 
     end
-
   end
-
 end

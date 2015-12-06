@@ -1,9 +1,7 @@
 require 'gobstones/lang/expressions/two_arg_expression'
 
 module Gobstones
-
   module Lang
-
     class Equal < TwoArgExpression
 
       evaluates_with :equal
@@ -39,7 +37,5 @@ module Gobstones
       evaluates_with :greater_than
 
     end
-
   end
-
 end

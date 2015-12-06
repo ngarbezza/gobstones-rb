@@ -1,9 +1,7 @@
 require 'gobstones/lang/literals/literal'
 
 module Gobstones
-
   module Lang
-
     class Direction < Literal
 
       def self.order
@@ -131,7 +129,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

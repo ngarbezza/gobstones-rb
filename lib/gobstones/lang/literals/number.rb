@@ -1,9 +1,7 @@
 require 'gobstones/lang/literals/literal'
 
 module Gobstones
-
   module Lang
-
     class Number < Literal
 
       attr_reader :value
@@ -26,7 +24,7 @@ module Gobstones
 
       [:+, :-, :*, :/, :%, :**].each do |selector|
         define_method selector do |other|
-          self.class.new value.send(selector, other.value)
+          self.class.new(value.send(selector, other.value))
         end
       end
 
@@ -47,7 +45,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

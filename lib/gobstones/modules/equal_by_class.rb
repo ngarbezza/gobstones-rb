@@ -1,5 +1,4 @@
 module Gobstones
-
   module EqualByClass
 
     def ==(other)
@@ -9,5 +8,4 @@ module Gobstones
     alias_method :eql?, :==
 
   end
-
 end

@@ -2,9 +2,7 @@ require 'gobstones/lang/expressions/one_arg_expression'
 require 'gobstones/lang/expressions/two_arg_expression'
 
 module Gobstones
-
   module Lang
-
     class Not < OneArgExpression
 
       def evaluate(context)
@@ -28,7 +26,5 @@ module Gobstones
       evaluates_with :or
 
     end
-
   end
-
 end

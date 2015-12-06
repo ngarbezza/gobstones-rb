@@ -2,9 +2,7 @@ require 'gobstones/lang/expressions/two_arg_expression'
 require 'gobstones/runner/errors/gobstones_runtime_error'
 
 module Gobstones
-
   module Lang
-
     class Add < TwoArgExpression
 
       evaluates_with :+
@@ -46,7 +44,5 @@ module Gobstones
       evaluates_with :**
 
     end
-
   end
-
 end

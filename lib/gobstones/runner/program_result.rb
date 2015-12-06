@@ -1,7 +1,5 @@
 module Gobstones
-
   module Runner
-
     class ProgramResult
 
       attr_reader :head, :return_values
@@ -12,7 +10,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

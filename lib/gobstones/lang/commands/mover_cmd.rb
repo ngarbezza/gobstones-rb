@@ -1,9 +1,7 @@
 require 'gobstones/lang/expressions/one_arg_expression'
 
 module Gobstones
-
   module Lang
-
     class Mover < OneArgExpression
 
       def evaluate(context)
@@ -17,11 +15,9 @@ module Gobstones
       end
 
       def opposite
-        Mover.new argument.opposite
+        Mover.new(argument.opposite)
       end
 
     end
-
   end
-
 end

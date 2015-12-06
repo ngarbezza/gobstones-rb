@@ -1,9 +1,7 @@
 require 'gobstones/modules/equal_by_class'
 
 module Gobstones
-
   module Lang
-
     class ConditionalCmd
 
       include Gobstones::EqualByClass
@@ -21,11 +19,9 @@ module Gobstones
       end
 
       def evaluate_condition(context)
-        condition.evaluate context
+        condition.evaluate(context)
       end
 
     end
-
   end
-
 end

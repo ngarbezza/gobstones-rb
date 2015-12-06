@@ -1,9 +1,7 @@
 require 'gobstones/lang/expressions/expression'
 
 module Gobstones
-
   module Lang
-
     class OneArgExpression < Expression
 
       attr_reader :argument
@@ -21,11 +19,9 @@ module Gobstones
       end
 
       def with_evaluated_argument_in(context, &block)
-        yield argument.evaluate(context)
+        block.call(argument.evaluate(context))
       end
 
     end
-
   end
-
 end

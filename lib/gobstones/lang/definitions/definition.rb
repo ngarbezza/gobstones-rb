@@ -3,9 +3,7 @@ require 'gobstones/runner/errors/wrong_arguments_error'
 require 'error_handling_protocol'
 
 module Gobstones
-
   module Lang
-
     class Definition
 
       include Gobstones::EqualByClass
@@ -36,7 +34,7 @@ module Gobstones
         in_definition_context_based_on(context) do |definition_context|
           set_arguments calling_arguments, definition_context
           body.evaluate definition_context
-          return return_statement.evaluate definition_context
+          return return_statement.evaluate(definition_context)
         end
       end
 
@@ -61,7 +59,7 @@ module Gobstones
       end
 
       def in_definition_context_based_on(outer_context, &block)
-        yield create_context_based_on(outer_context)
+        block.call(create_context_based_on(outer_context))
       end
 
       def set_arguments(calling_arguments, procedure_context)
@@ -70,7 +68,5 @@ module Gobstones
         end
       end
     end
-
   end
-
 end

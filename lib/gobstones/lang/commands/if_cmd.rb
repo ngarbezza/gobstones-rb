@@ -1,9 +1,7 @@
 require 'gobstones/lang/commands/conditional_cmd'
 
 module Gobstones
-
   module Lang
-
     class IfCmd < ConditionalCmd
 
       def evaluate(context)
@@ -26,13 +24,11 @@ module Gobstones
       end
 
       def evaluate(context)
-        cond = evaluate_condition context
+        cond = evaluate_condition(context)
         cond.if_true then_block, context
         cond.if_false else_block, context
       end
 
     end
-
   end
-
 end

@@ -1,9 +1,7 @@
 require 'gobstones/lang/expressions/one_arg_expression'
 
 module Gobstones
-
   module Lang
-
     class EnclosedByParensExpression < OneArgExpression
 
       def evaluate(context)
@@ -15,7 +13,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

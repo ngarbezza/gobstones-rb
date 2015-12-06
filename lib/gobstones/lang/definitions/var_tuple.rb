@@ -1,9 +1,7 @@
 require 'gobstones/modules/equal_by_class'
 
 module Gobstones
-
   module Lang
-
     class VarTuple
 
       include Gobstones::EqualByClass
@@ -11,7 +9,7 @@ module Gobstones
       attr_reader :variables
 
       def self.empty
-        self.new []
+        self.new([])
       end
 
       def initialize(variables)
@@ -32,7 +30,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

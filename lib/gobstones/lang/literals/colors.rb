@@ -2,9 +2,7 @@ require 'gobstones/lang/literals/literal'
 require 'gobstones/runner/errors/gobstones_type_error'
 
 module Gobstones
-
   module Lang
-
     class Color < Literal
 
       def self.order
@@ -88,7 +86,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

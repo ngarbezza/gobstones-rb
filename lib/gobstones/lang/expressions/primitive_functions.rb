@@ -4,9 +4,7 @@ require 'gobstones/extensions/fixnum'
 require 'gobstones/type_check_result'
 
 module Gobstones
-
   module Lang
-
     class NroBolitas < OneArgExpression
 
       def evaluate(context)
@@ -52,7 +50,7 @@ module Gobstones
       end
 
       def type_check
-        Gobstones::TypeCheckResult.new argument_type, argument.return_type
+        Gobstones::TypeCheckResult.new(argument_type, argument.return_type)
       end
 
     end
@@ -92,7 +90,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

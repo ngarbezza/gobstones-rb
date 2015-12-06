@@ -4,9 +4,7 @@ require 'gobstones/lang/literals/colors'
 require 'gobstones/lang/literals/directions'
 
 module Gobstones
-
   module Lang
-
     class TypeBoundFunc < Expression
 
     end
@@ -82,7 +80,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

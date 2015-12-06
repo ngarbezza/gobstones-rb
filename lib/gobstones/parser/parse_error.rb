@@ -1,7 +1,5 @@
 module Gobstones
-
   module Parser
-
     class ParseError < StandardError
 
       attr_reader :parser, :code
@@ -11,7 +9,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

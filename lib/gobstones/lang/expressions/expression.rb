@@ -2,9 +2,7 @@ require 'gobstones/modules/equal_by_class'
 require 'error_handling_protocol'
 
 module Gobstones
-
   module Lang
-
     class Expression
 
       include Gobstones::EqualByClass
@@ -18,7 +16,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

@@ -3,9 +3,7 @@ require 'gobstones/lang/definitions/no_return_statement'
 require 'gobstones/runner/execution_context'
 
 module Gobstones
-
   module Lang
-
     class Procedure < Definition
 
       # TODO rename args to a better name, args_tuple?
@@ -19,11 +17,9 @@ module Gobstones
       end
 
       def create_context_based_on(outer_context)
-        Gobstones::Runner::ProcedureExecutionContext.based_on outer_context
+        Gobstones::Runner::ProcedureExecutionContext.based_on(outer_context)
       end
 
     end
-
   end
-
 end

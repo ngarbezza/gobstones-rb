@@ -1,9 +1,7 @@
 require 'gobstones/runner/errors/empty_cell_error'
 
 module Gobstones
-
   module Runner
-
     class Cell
 
       def initialize
@@ -28,7 +26,7 @@ module Gobstones
 
       def number_of_balls(color)
         check color
-        lookup color
+        lookup(color)
       end
 
       def empty!
@@ -42,9 +40,7 @@ module Gobstones
       def clone
         self.class.new.tap do |copy|
           [Azul.new, Negro.new, Rojo.new, Verde.new].each do |color|
-            number_of_balls(color).times do
-              copy.put color
-            end
+            number_of_balls(color).times { copy.put(color) }
           end
         end
       end
@@ -52,8 +48,7 @@ module Gobstones
       private
 
       def check(color)
-        raise "'#{color}' is not a color" \
-        unless [Azul, Negro, Rojo, Verde].include? color.class
+        raise "'#{color}' is not a color" unless [Azul, Negro, Rojo, Verde].include?(color.class)
       end
 
       def lookup(color)
@@ -66,7 +61,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

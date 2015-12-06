@@ -1,9 +1,7 @@
 require 'gobstones/runner/cell'
 
 module Gobstones
-
   module Runner
-
     class Board
 
       attr_reader :rows, :columns
@@ -19,14 +17,13 @@ module Gobstones
       end
 
       def cell_at(x, y)
-        raise OutOfBoardError unless \
-          x.between?(0, rows - 1) && y.between?(0, columns - 1)
+        raise OutOfBoardError unless x.between?(0, rows - 1) && y.between?(0, columns - 1)
 
         @matrix[x][y]
       end
 
-      def each_cell
-        @matrix.each { |row| row.each { |cell| yield cell } }
+      def each_cell(&block)
+        @matrix.each { |row| row.each { |cell| block.call(cell) } }
       end
 
       def put(x, y, color)
@@ -56,11 +53,9 @@ module Gobstones
 
       def clone
         new_matrix = @matrix.map { |row| row.map { |cell| cell.clone } }
-        self.class.new @rows, @columns, new_matrix
+        self.class.new(@rows, @columns, new_matrix)
       end
 
     end
-
   end
-
 end

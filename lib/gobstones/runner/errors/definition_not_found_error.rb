@@ -1,7 +1,5 @@
 module Gobstones
-
   module Runner
-
     class DefinitionNotFound < StandardError
 
       # TODO indicate if it is coming from a procedure or function
@@ -15,7 +13,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

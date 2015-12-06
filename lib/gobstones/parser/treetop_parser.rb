@@ -3,9 +3,7 @@ require 'gobstones/parser/ast/ast'
 require 'gobstones/parser/parse_error'
 
 module Gobstones
-
   module Parser
-
     class TreetopParser
 
       def initialize
@@ -15,7 +13,7 @@ module Gobstones
 
       def parse(code)
         code_without_comments = remove_comments_from(code)
-        result = @parser.parse code_without_comments
+        result = @parser.parse(code_without_comments)
         raise ParseError.new(self, code_without_comments) if result.nil?
         result.value
       end
@@ -43,11 +41,11 @@ module Gobstones
       private
 
       def grammar_file
-        File.join base_path, 'grammar/gobstones'
+        File.join(base_path, 'grammar/gobstones')
       end
 
       def base_path
-        File.expand_path File.dirname(__FILE__)
+        File.expand_path(File.dirname(__FILE__))
       end
 
       def single_line_c_style_comments_regex
@@ -67,7 +65,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

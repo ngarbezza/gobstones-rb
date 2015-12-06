@@ -1,9 +1,7 @@
 require 'gobstones/modules/equal_by_class'
 
 module Gobstones
-
   module Lang
-
     class CommandBlock
 
       include Gobstones::EqualByClass
@@ -11,7 +9,7 @@ module Gobstones
       attr_reader :commands
 
       def self.empty
-        self.new []
+        self.new([])
       end
 
       def initialize(commands)
@@ -31,7 +29,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end

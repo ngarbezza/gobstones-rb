@@ -2,9 +2,7 @@ require 'gobstones/runner/errors/boom_error'
 require 'gobstones/modules/equal_by_class'
 
 module Gobstones
-
   module Lang
-
     class Boom
 
       include Gobstones::EqualByClass
@@ -16,8 +14,7 @@ module Gobstones
       end
 
       def ==(other)
-        super(other) &&
-        self.message == other.message
+        super(other) && self.message == other.message
       end
 
       def evaluate(context)
@@ -25,7 +22,5 @@ module Gobstones
       end
 
     end
-
   end
-
 end
