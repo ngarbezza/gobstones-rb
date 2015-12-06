@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = %q{Ruby implementation of the Gobstones programming language}
   spec.description = %q{Ruby implementation of the Gobstones programming language}
 
-  spec.required_ruby_version = '>= 1.9.3'
+  spec.required_ruby_version = '>= 2.2.3'
   spec.required_rubygems_version = '>= 1.3.6'
 
   spec.add_development_dependency 'rspec', '~> 3'
