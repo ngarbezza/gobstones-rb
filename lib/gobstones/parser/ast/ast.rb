@@ -135,16 +135,16 @@ module Gobstones
 
     ast_node :IfCmdNode do
       if else_clause.empty?
-        IfCmd.new(gexp.value, then_block.value)
+        If.new(gexp.value, then_block.value)
       else
-        IfElseCmd.new(gexp.value, then_block.value, else_clause.else_block.value)
+        IfElse.new(gexp.value, then_block.value, else_clause.else_block.value)
       end
     end
 
-    ast_node(:WhileCmdNode) { WhileCmd.new(gexp.value, cmd_block.value) }
+    ast_node(:WhileCmdNode) { While.new(gexp.value, cmd_block.value) }
 
     ast_node :RepeatWithCmdNode do
-      RepeatWithCmd.new(var_name.value, range_min.value, range_max.value, cmd_block.value)
+      RepeatWith.new(var_name.value, range_min.value, range_max.value, cmd_block.value)
     end
 
     # TODO abstract duplication, very similar to GexpsNode
