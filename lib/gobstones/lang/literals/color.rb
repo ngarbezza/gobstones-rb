@@ -5,6 +5,10 @@ module Gobstones
   module Lang
     class Color < Literal
 
+      def self.all
+        [Azul, Negro, Rojo, Verde]
+      end
+
       def self.order
         [Azul, Negro, Rojo, Verde]
       end

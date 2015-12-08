@@ -42,10 +42,10 @@ describe Cell do
   end
 
   it 'fails passing something that is not a color' do
-    expect { cell.put('not a color') }.to raise_error
-    expect { cell.take_out(42) }.to raise_error
-    expect { cell.are_there_balls?(Norte) }.to raise_error
-    expect { cell.number_of_balls(nil) }.to raise_error
+    expect { cell.put('not a color') }.to raise_error(/is not a color/)
+    expect { cell.take_out(42) }.to raise_error(/is not a color/)
+    expect { cell.are_there_balls?(Norte) }.to raise_error(/is not a color/)
+    expect { cell.number_of_balls(nil) }.to raise_error(/is not a color/)
   end
 
   it 'clears its contents' do

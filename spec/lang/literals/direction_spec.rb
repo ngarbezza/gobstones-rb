@@ -1,6 +1,19 @@
 describe Direction do
 
-  let(:all) { [norte, sur, este, oeste] }
+  let(:all) { Direction.all.map(&:new) }
+
+  it 'includes Norte, Este, Sur and Oeste' do
+    expect(all.include?(norte)).to be(true)
+    expect(all.include?(este)).to be(true)
+    expect(all.include?(sur)).to be(true)
+    expect(all.include?(oeste)).to be(true)
+  end
+
+  it 'includes all direction classes in the order specification' do
+    Direction.all.each do |direction_class|
+      expect(Direction.order.include?(direction_class)).to be(true)
+    end
+  end
 
   it 'evaluates any direction to itself' do
     all.each { |dir| expect(dir.evaluate).to eq(dir) }

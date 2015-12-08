@@ -1,4 +1,4 @@
-require 'gobstones/lang/literals/booleans'
+require 'gobstones/lang/literals/boolean'
 
 class TrueClass
 

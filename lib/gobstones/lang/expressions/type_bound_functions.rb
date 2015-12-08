@@ -1,7 +1,7 @@
 require 'gobstones/lang/expressions/expression'
-require 'gobstones/lang/literals/booleans'
-require 'gobstones/lang/literals/colors'
-require 'gobstones/lang/literals/directions'
+require 'gobstones/lang/literals/boolean'
+require 'gobstones/lang/literals/color'
+require 'gobstones/lang/literals/direction'
 require 'gobstones/runner/execution_context'
 
 module Gobstones

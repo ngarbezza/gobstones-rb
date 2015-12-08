@@ -4,6 +4,10 @@ module Gobstones
   module Lang
     class Direction < Literal
 
+      def self.all
+        [Norte, Sur, Este, Oeste]
+      end
+
       def self.order
         [Norte, Este, Sur, Oeste]
       end

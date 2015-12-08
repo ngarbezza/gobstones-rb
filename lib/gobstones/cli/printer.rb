@@ -1,4 +1,4 @@
-require 'gobstones/lang/literals/colors'
+require 'gobstones/lang/literals/color'
 
 module Gobstones
   module CLI
