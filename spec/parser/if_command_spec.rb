@@ -34,7 +34,7 @@ describe Gobstones::Parser, 'if statements' do
 
     it 'parses a statement with an else block' do
       else_block = CommandBlock.new([Mover.new(norte)])
-      if_else_cmd = IfElse.new(false_value, empty_body, else_block)
+      if_else_cmd = IfThenElse.new(false_value, empty_body, else_block)
 
       expect('if (False) { } else { Mover(Norte) }').to be_parsed_as(:command).and_return(if_else_cmd)
     end

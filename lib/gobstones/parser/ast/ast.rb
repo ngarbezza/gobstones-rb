@@ -137,7 +137,7 @@ module Gobstones
       if else_clause.empty?
         If.new(gexp.value, then_block.value)
       else
-        IfElse.new(gexp.value, then_block.value, else_clause.else_block.value)
+        IfThenElse.new(gexp.value, then_block.value, else_clause.else_block.value)
       end
     end
 

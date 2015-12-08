@@ -1,6 +1,7 @@
 require 'gobstones/lang/commands/boom'
 require 'gobstones/lang/commands/command_block'
 require 'gobstones/lang/commands/if'
+require 'gobstones/lang/commands/if_then_else'
 require 'gobstones/lang/commands/ir_al_origen'
 require 'gobstones/lang/commands/mover'
 require 'gobstones/lang/commands/multiple_assignment'
