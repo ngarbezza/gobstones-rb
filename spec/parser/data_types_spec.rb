@@ -1,30 +1,30 @@
-describe Gobstones::Parser, "data types" do
+describe Gobstones::Parser, 'data types' do
 
-  describe "numbers" do
+  describe 'numbers' do
 
-    it "parses a positive number" do
+    it 'parses a positive number' do
       expect('42').to be_parsed_as(:expression).and_return(42.to_gbs_num)
     end
 
-    it "parses a negative number" do
+    it 'parses a negative number' do
       expect('-42').to be_parsed_as(:expression).and_return(-42.to_gbs_num)
     end
 
   end
 
-  describe "booleans" do
+  describe 'booleans' do
 
-    it "parses a true boolean" do
+    it 'parses a true boolean' do
       expect('True').to be_parsed_as(:expression).and_return(true_value)
     end
 
-    it "parses a false boolean" do
+    it 'parses a false boolean' do
       expect('False').to be_parsed_as(:expression).and_return(false_value)
     end
 
   end
 
-  describe "colors" do
+  describe 'colors' do
 
     it "parses the 'Azul' color" do
       expect('Azul').to be_parsed_as(:expression).and_return(azul)
@@ -44,7 +44,7 @@ describe Gobstones::Parser, "data types" do
 
   end
 
-  describe "directions" do
+  describe 'directions' do
 
     it "parses the 'Norte' direction" do
       expect('Norte').to be_parsed_as(:expression).and_return(norte)
@@ -63,5 +63,4 @@ describe Gobstones::Parser, "data types" do
     end
 
   end
-
 end

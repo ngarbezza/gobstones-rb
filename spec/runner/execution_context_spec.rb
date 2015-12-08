@@ -2,15 +2,15 @@ describe ExecutionContext do
 
   let(:context) { clean_context }
 
-  describe "variables context" do
+  describe 'variables context' do
 
-    it "allows to set/get a variable" do
+    it 'allows to set/get a variable' do
       context.set 'myColor', negro
 
       expect(context.get('myColor')).to eq(negro)
     end
 
-    it "allows to set/get more than one variable" do
+    it 'allows to set/get more than one variable' do
       context.set 'dir', norte
       context.set 'bool', true_value
 
@@ -18,7 +18,7 @@ describe ExecutionContext do
       expect(context.get('bool')).to eq(true_value)
     end
 
-    it "raises an error when trying to get an undefined variable" do
+    it 'raises an error when trying to get an undefined variable' do
       expect { context.get('undefined') }.to raise_error(UndefinedVariableError)
     end
 
@@ -26,15 +26,15 @@ describe ExecutionContext do
 
   describe ProgramExecutionContext do
 
-    it "is the program context itself" do
+    it 'is the program context itself' do
       expect(context.program_context).to eq(context)
     end
 
-    it "has a head" do
+    it 'has a head' do
       expect(context.head).to be_a Head
     end
 
-    it "has a board" do
+    it 'has a board' do
       expect(context.board).to be_a Board
     end
 
@@ -42,13 +42,13 @@ describe ExecutionContext do
 
   describe ProcedureExecutionContext do
 
-    let(:procedure_context) { ProcedureExecutionContext.based_on context }
+    let(:procedure_context) { ProcedureExecutionContext.based_on(context) }
 
-    it "returns the program context in which it is based" do
+    it 'returns the program context in which it is based' do
       expect(procedure_context.program_context).to eq(context)
     end
 
-    it "shares the head with the outer context" do
+    it 'shares the head with the outer context' do
       expect(procedure_context.head).to eq(context.head)
     end
 
@@ -56,23 +56,22 @@ describe ExecutionContext do
 
   describe FunctionExecutionContext do
 
-    it "returns the program context in which it is based" do
-      function_context = FunctionExecutionContext.based_on context
+    it 'returns the program context in which it is based' do
+      function_context = FunctionExecutionContext.based_on(context)
       expect(function_context.program_context).to eq(context)
     end
 
     it "has a new head, a copy of the outer context's head" do
       context.head.put azul
-      function_context = FunctionExecutionContext.based_on context
+      function_context = FunctionExecutionContext.based_on(context)
       function_context.head.put verde
 
       expect(function_context.head).not_to eq(context.head)
-      expect(context.head.are_there_balls?(azul)).to be true
-      expect(function_context.head.are_there_balls?(azul)).to be true
-      expect(context.head.are_there_balls?(verde)).to be false
-      expect(function_context.head.are_there_balls?(verde)).to be true
+      expect(context.head.are_there_balls?(azul)).to be(true)
+      expect(function_context.head.are_there_balls?(azul)).to be(true)
+      expect(context.head.are_there_balls?(verde)).to be(false)
+      expect(function_context.head.are_there_balls?(verde)).to be(true)
     end
 
   end
-
 end

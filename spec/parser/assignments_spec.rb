@@ -1,38 +1,35 @@
-describe Gobstones::Parser, "assignments" do
+describe Gobstones::Parser, 'assignments' do
 
-  describe "single" do
+  describe 'single' do
 
-    it "parses a valid assignment with a simple expression" do
-      assignment = SingleAssignment.new 'myDir'.to_var_name, norte
+    it 'parses a valid assignment with a simple expression' do
+      assignment = SingleAssignment.new('myDir'.to_var_name, norte)
 
-      expect('myDir:=Norte').
-        to be_parsed_as(:command).and_return(assignment)
-      expect('myDir  :=   Norte').
-        to be_parsed_as(:command).and_return(assignment)
+      expect('myDir:=Norte').to be_parsed_as(:command).and_return(assignment)
+      expect('myDir  :=   Norte').to be_parsed_as(:command).and_return(assignment)
     end
 
-    it "parses a valid assignment with a complex expression" do
+    it 'parses a valid assignment with a complex expression' do
       a, b = 'a'.to_var_name, 'b'.to_var_name
-      exp = Or.new false_value, EnclosedByParensExpression.new(And.new(a, b))
-      assignment = SingleAssignment.new 'myVar'.to_var_name, exp
+      exp = Or.new(false_value, EnclosedByParensExpression.new(And.new(a, b)))
+      assignment = SingleAssignment.new('myVar'.to_var_name, exp)
 
-      expect('myVar := False || (a && b)').
-        to be_parsed_as(:command).and_return(assignment)
+      expect('myVar := False || (a && b)').to be_parsed_as(:command).and_return(assignment)
     end
 
-    it "does not parse with an invalid var name" do
+    it 'does not parse with an invalid var name' do
       expect('MyWrongVar := a').to be_parsed_as(:command).and_fail
     end
 
-    it "does not parse with a command on the right side" do
+    it 'does not parse with a command on the right side' do
       expect('myVar := Skip').to be_parsed_as(:command).and_fail
     end
 
   end
 
-  describe "multiple" do
+  describe 'multiple' do
 
-    context "failures" do
+    context 'failures' do
 
       it 'fails if the expression on the left side is not a var tuple' do
         expect('myVar = funcCall()').to be_parsed_as(:command).and_fail
@@ -41,13 +38,11 @@ describe Gobstones::Parser, "assignments" do
     end
 
     it 'parses a valid assignment with a function call on the right side' do
-      var_tuple = VarTuple.new ['aColor'.to_var_name, 'aDirection'.to_var_name]
-      func_call = FunctionCall.new 'myFunction', []
-      assignment = MultipleAssignment.new var_tuple, func_call
-      expect('(aColor, aDirection) := myFunction()').
-          to be_parsed_as(:command).and_return(assignment)
+      var_tuple = VarTuple.new(['aColor'.to_var_name, 'aDirection'.to_var_name])
+      func_call = FunctionCall.new('myFunction', [])
+      assignment = MultipleAssignment.new(var_tuple, func_call)
+      expect('(aColor, aDirection) := myFunction()').to be_parsed_as(:command).and_return(assignment)
     end
 
   end
-
 end

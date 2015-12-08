@@ -1,17 +1,17 @@
-describe Gobstones::Parser, "program definitions" do
+describe Gobstones::Parser, 'program definitions' do
 
-  it "parses a simple program with a single main" do
-    main_def = Main.new empty_body, no_return_statement
-    program = Program.new no_definitions, main_def
+  it 'parses a simple program with a single main' do
+    main_def = Main.new(empty_body, no_return_statement)
+    program = Program.new(no_definitions, main_def)
 
     expect('procedure Main(){}').to be_parsed_as(:program).and_return(program)
   end
 
-  it "parses a program with Main and procedures" do
-    main_def = Main.new empty_body, no_return_statement
-    proc_1 = Procedure.new 'Procedure1', no_arguments, empty_body
-    proc_2 = Procedure.new 'Procedure2', no_arguments, empty_body
-    program = Program.new [proc_1, proc_2], main_def
+  it 'parses a program with Main and procedures' do
+    main_def = Main.new(empty_body, no_return_statement)
+    proc_1 = Procedure.new('Procedure1', no_arguments, empty_body)
+    proc_2 = Procedure.new('Procedure2', no_arguments, empty_body)
+    program = Program.new([proc_1, proc_2], main_def)
 
     gbs_code = <<GBS
 procedure Procedure1(){ }
@@ -23,12 +23,12 @@ GBS
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
 
-  it "parses a program with Main, procedures and functions" do
-    main_def = Main.new empty_body, NoReturnStatement.new
-    proc_1 = Procedure.new 'Procedure1', no_arguments, empty_body
-    func_1 = Function.new 'function1', no_arguments, empty_body, ReturnFromFunction.new([42.to_gbs_num])
-    proc_2 = Procedure.new 'Procedure2', no_arguments, empty_body
-    program = Program.new [proc_1, func_1, proc_2], main_def
+  it 'parses a program with Main, procedures and functions' do
+    main_def = Main.new(empty_body, no_return_statement)
+    proc_1 = Procedure.new('Procedure1', no_arguments, empty_body)
+    func_1 = Function.new('function1', no_arguments, empty_body, ReturnFromFunction.new([42.to_gbs_num]))
+    proc_2 = Procedure.new('Procedure2', no_arguments, empty_body)
+    program = Program.new([proc_1, func_1, proc_2], main_def)
     gbs_code = <<GBS
 procedure Procedure1(){ }
 
@@ -41,12 +41,12 @@ GBS
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
 
-  it "does not parse a program without a Main definition" do
+  it 'does not parse a program without a Main definition' do
     expect('procedure Procedure1(){}
     procedure Procedure2() {}').to be_parsed_as(:program).and_fail
   end
 
-  it "does not parse a program if Main is not the last definition" do
+  it 'does not parse a program if Main is not the last definition' do
     expect('procedure Procedure1() {}
     procedure Main() {}
     procedure Procedure2() {}').to be_parsed_as(:program).and_fail

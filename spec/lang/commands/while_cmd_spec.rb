@@ -1,7 +1,7 @@
 describe WhileCmd do
 
   let(:context) { clean_context }
-  let(:while_block) { CommandBlock.new [Poner.new(verde)] }
+  let(:while_block) { CommandBlock.new([Poner.new(verde)]) }
 
   def condition(times)
     double('while condition').tap do |condition|
