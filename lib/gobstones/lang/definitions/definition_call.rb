@@ -15,9 +15,7 @@ module Gobstones
       end
 
       def ==(other)
-        super(other) &&
-        self.name == other.name &&
-        self.arguments == other.arguments
+        super(other) && self.name == other.name && self.arguments == other.arguments
       end
 
       def evaluate(context)
