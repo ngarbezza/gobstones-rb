@@ -10,6 +10,7 @@ describe Gobstones::Parser, 'procedure calls' do
 
   it 'parses a procedure call with one arg' do
     expected = ProcedureCall.new('Proc1', [verde])
+
     expect('Proc1(Verde)').to be_parsed_as(:command).and_return(expected)
   end
 
@@ -28,6 +29,7 @@ describe Gobstones::Parser, 'procedure calls' do
     num_expr = Mul.new(5.to_gbs_num, paren_expr)
     func_call = FunctionCall.new('func', [verde, Opuesto.new(norte)])
     proc_call = ProcedureCall.new('Proc1', [or_expr, num_expr, func_call])
+
     expect('Proc1(a || b, 5*(10 div c), func(Verde, opuesto(Norte)))').
       to be_parsed_as(:command).and_return(proc_call)
   end

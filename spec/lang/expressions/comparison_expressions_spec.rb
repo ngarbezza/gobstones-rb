@@ -10,7 +10,7 @@ describe 'comparison expressions' do
     end
 
     it 'evaluates same colors as equal' do
-      color_classes = [Azul, Negro, Rojo, Verde]
+      color_classes = Color.all
       color_classes.each do |color_class|
         expect(Equal.new(color_class.new, color_class.new).evaluate).to eq(true_value)
         (color_classes - [color_class]).each do |different_color_class|
@@ -20,7 +20,7 @@ describe 'comparison expressions' do
     end
 
     it 'evaluates same directions as equal' do
-      dir_classes = [Norte, Sur, Este, Oeste]
+      dir_classes = Direction.all
       dir_classes.each do |dir_class|
         expect(Equal.new(dir_class.new, dir_class.new).evaluate).to eq(true_value)
         (dir_classes - [dir_class]).each do |different_dir_class|
@@ -46,7 +46,7 @@ describe 'comparison expressions' do
     end
 
     it 'evaluates same colors as equal' do
-      color_classes = [Azul, Negro, Rojo, Verde]
+      color_classes = Color.all
       color_classes.each do |color_class|
         expect(NotEqual.new(color_class.new, color_class.new).evaluate).to eq(false_value)
         (color_classes - [color_class]).each do |different_color_class|
@@ -56,7 +56,7 @@ describe 'comparison expressions' do
     end
 
     it 'evaluates same directions as equal' do
-      dir_classes = [Norte, Sur, Este, Oeste]
+      dir_classes = Direction.all
       dir_classes.each do |dir_class|
         expect(NotEqual.new(dir_class.new, dir_class.new).evaluate).to eq(false_value)
         (dir_classes - [dir_class]).each do |different_dir_class|

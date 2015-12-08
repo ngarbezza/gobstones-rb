@@ -58,6 +58,7 @@ describe 'boolean expressions' do
 
     it "evaluates and's, or's, and not's" do
       expression = Not.new(Or.new(false_value, And.new(true_value, true_value)))
+
       expect(expression.evaluate(context)).to eq(false_value)
     end
 

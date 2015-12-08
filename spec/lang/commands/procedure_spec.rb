@@ -7,6 +7,7 @@ describe Procedure do
     body = CommandBlock.new([poner_cmd])
     procedure = Procedure.new('MyProcedure', no_arguments, body)
     procedure.evaluate context
+
     expect(context.head.are_there_balls?(rojo)).to be(true)
   end
 
@@ -17,6 +18,7 @@ describe Procedure do
     poner_cmd = Poner.new(var_name)
     body = CommandBlock.new([poner_cmd])
     procedure = Procedure.new('MyProcedure', no_arguments, body)
+
     expect { procedure.evaluate context }.to raise_error(UndefinedVariableError)
   end
 
@@ -47,6 +49,7 @@ describe Procedure do
 
   it 'fails if it is executed with more arguments than expected' do
     procedure = Procedure.new('MyProcedure', no_arguments, empty_body)
+
     error_message = "Wrong number of arguments in procedure 'MyProcedure': expected 0, got 1"
     expect { procedure.evaluate context, [norte] }.to raise_error(WrongArgumentsError, error_message)
   end
@@ -54,6 +57,7 @@ describe Procedure do
   it 'fails if it is executed with less arguments than expected' do
     args = VarTuple.new(['arg1'.to_var_name, 'arg2'.to_var_name])
     procedure = Procedure.new('MyProcedure2', args, empty_body)
+
     error_message = "Wrong number of arguments in procedure 'MyProcedure2': expected 2, got 1"
     expect { procedure.evaluate context, [verde] }.to raise_error(WrongArgumentsError, error_message)
   end

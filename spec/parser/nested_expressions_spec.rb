@@ -9,12 +9,14 @@ describe Gobstones::Parser, 'nested expressions' do
 
   it 'parses primitive functions between ()' do
     puede_mover = EnclosedByParensExpression.new(PuedeMover.new(norte))
+
     expect('(puedeMover(Norte))').to be_parsed_as(:expression).and_return(puede_mover)
   end
 
   it 'parses nested arithmetic expressions between ()' do
     paren_expr = EnclosedByParensExpression.new(Add.new(3.to_gbs_num, 5.to_gbs_num))
     expected = Mul.new(paren_expr, 6.to_gbs_num)
+
     expect('(3 + 5) * 6').to be_parsed_as(:expression).and_return(expected)
   end
 
@@ -24,6 +26,7 @@ describe Gobstones::Parser, 'nested expressions' do
     and_expr = And.new('a'.to_var_name, inner_paren)
     outer_paren = EnclosedByParensExpression.new(and_expr)
     result = And.new(outer_paren, 'd'.to_var_name)
+
     expect('(a && (b || c)) && d').to be_parsed_as(:expression).and_return(result)
   end
 

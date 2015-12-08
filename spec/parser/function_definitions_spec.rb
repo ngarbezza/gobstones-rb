@@ -2,7 +2,6 @@ describe Gobstones::Parser, 'function definitions' do
 
   it 'parses a function without args and a single return' do
     func_return = ReturnFromFunction.new([42.to_gbs_num])
-
     func_def = Function.new('just42', no_arguments, empty_body, func_return)
 
     expect('function just42() { return (42) }').

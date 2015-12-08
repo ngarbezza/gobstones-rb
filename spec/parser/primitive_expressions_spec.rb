@@ -17,6 +17,7 @@ describe Gobstones::Parser, 'primitive expressions' do
 
     it 'does not parse reserved words as var names' do
       literals = %w{True False Rojo Negro Azul Verde Norte Oeste Este Sur}
+
       (RESERVED_IDS - literals).each do |id|
         expect(id).to be_parsed_as(:expression).and_fail
       end
@@ -56,18 +57,21 @@ describe Gobstones::Parser, 'primitive expressions' do
 
     it 'parses the siguiente() function ' do
       func = Siguiente.new('x'.to_var_name)
+
       expect('siguiente(x)').to be_parsed_as(:expression).and_return(func)
       expect('siguiente(x    )').to be_parsed_as(:expression).and_return(func)
     end
 
     it 'parses the previo() function' do
       func = Previo.new('y'.to_var_name)
+
       expect('previo(y)').to be_parsed_as(:expression).and_return(func)
       expect('previo(   y )').to be_parsed_as(:expression).and_return(func)
     end
 
     it 'parses the opuesto() function' do
       func = Opuesto.new('z'.to_var_name)
+
       expect('opuesto(z)').to be_parsed_as(:expression).and_return(func)
       expect('opuesto(   z )').to be_parsed_as(:expression).and_return(func)
     end
@@ -78,18 +82,21 @@ describe Gobstones::Parser, 'primitive expressions' do
 
     it 'parses the nroBolitas(exp) function' do
       func = NroBolitas.new('color'.to_var_name)
+
       expect('nroBolitas(color)').to be_parsed_as(:expression).and_return(func)
       expect('nroBolitas( color  )').to be_parsed_as(:expression).and_return(func)
     end
 
     it 'parses the hayBolitas(exp) function' do
       func = HayBolitas.new('color'.to_var_name)
+
       expect('hayBolitas(color)').to be_parsed_as(:expression).and_return(func)
       expect('hayBolitas(  color )').to be_parsed_as(:expression).and_return(func)
     end
 
     it 'parses the puedeMover(exp) function' do
       func = PuedeMover.new('dir'.to_var_name)
+
       expect('puedeMover(dir)').to be_parsed_as(:expression).and_return(func)
       expect('puedeMover(  dir  )').to be_parsed_as(:expression).and_return(func)
     end

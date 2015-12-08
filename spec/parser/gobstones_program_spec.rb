@@ -20,6 +20,7 @@ procedure Procedure2 () {}
 
 procedure Main() {}
 GBS
+
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
 
@@ -38,6 +39,7 @@ procedure Procedure2 () {}
 
 procedure Main() {}
 GBS
+
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
 

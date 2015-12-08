@@ -10,6 +10,7 @@ describe 'primitive functions' do
 
     it 'evaluates correctly in a context with some data' do
       5.times { context.head.put negro }
+
       expect(NroBolitas.new(negro).evaluate(context)).to eq(5.to_gbs_num)
     end
 
@@ -23,6 +24,7 @@ describe 'primitive functions' do
 
     it 'evaluates correctly in a context with some data' do
       context.head.put negro
+
       expect(HayBolitas.new(negro).evaluate(context)).to eq(true_value)
     end
 
@@ -36,6 +38,7 @@ describe 'primitive functions' do
 
     it 'evaluates correctly in a modified context' do
       context.head.move(este)
+
       expect(PuedeMover.new(oeste).evaluate(context)).to eq(true_value)
     end
 

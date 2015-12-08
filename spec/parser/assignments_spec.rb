@@ -41,6 +41,7 @@ describe Gobstones::Parser, 'assignments' do
       var_tuple = VarTuple.new(['aColor'.to_var_name, 'aDirection'.to_var_name])
       func_call = FunctionCall.new('myFunction', [])
       assignment = MultipleAssignment.new(var_tuple, func_call)
+
       expect('(aColor, aDirection) := myFunction()').to be_parsed_as(:command).and_return(assignment)
     end
 

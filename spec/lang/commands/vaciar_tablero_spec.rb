@@ -4,9 +4,7 @@ describe VaciarTablero do
 
   it 'empties the board in the context' do
     context.head.put rojo
-    vaciar_tablero = VaciarTablero.new
-
-    vaciar_tablero.evaluate context
+    VaciarTablero.new.evaluate context
 
     expect(context.board.empty?).to be(true)
   end

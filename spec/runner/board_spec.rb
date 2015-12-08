@@ -4,6 +4,7 @@ describe Board do
 
   it 'can be created with a number of rows and columns' do
     board = Board.new(8, 5)
+
     expect(board.rows).to eq(8)
     expect(board.columns).to eq(5)
   end
@@ -69,12 +70,14 @@ describe Board do
 
   it 'is empty if there are no balls' do
     board = Board.new(3, 4)
+
     expect(board.empty?).to be(true)
   end
 
   it 'is not empty if there are balls' do
     board = Board.new(3, 4)
     board.put 0, 0, negro
+
     expect(board.empty?).to be(false)
   end
 

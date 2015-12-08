@@ -5,6 +5,7 @@ describe VarName do
 
   it 'returns the associated value if it was defined in the context' do
     context.set variable_name, 42.to_gbs_num
+
     expect(variable_name.evaluate(context)).to eq(42.to_gbs_num)
   end
 

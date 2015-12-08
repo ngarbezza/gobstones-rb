@@ -3,7 +3,7 @@ describe While do
   let(:context) { clean_context }
   let(:while_block) { CommandBlock.new([Poner.new(verde)]) }
 
-  def condition(times)
+  def stub_condition(times)
     double('while condition').tap do |condition|
       expected_values = [true_value] * times + [false_value]
       allow(condition).to receive(:evaluate).and_return(*expected_values)
@@ -11,7 +11,7 @@ describe While do
   end
 
   it 'evaluates the command block until the condition is not satisfied' do
-    while_cmd = While.new(condition(3), while_block)
+    while_cmd = While.new(stub_condition(3), while_block)
 
     while_cmd.evaluate context
 
@@ -19,7 +19,7 @@ describe While do
   end
 
   it 'does not evaluate the command block if the condition is false' do
-    while_cmd = While.new(condition(0), while_block)
+    while_cmd = While.new(stub_condition(0), while_block)
 
     while_cmd.evaluate context
 

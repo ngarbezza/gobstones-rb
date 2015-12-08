@@ -32,6 +32,7 @@ describe Head do
 
       it 'moves south' do
         head.move norte
+
         expect(head.can_move?(sur)).to be(true)
         expect { head.move(sur) }.to_not raise_error
         expect(head.x_pos).to eq(0)
@@ -47,6 +48,7 @@ describe Head do
 
       it 'moves west' do
         head.move este
+
         expect(head.can_move?(oeste)).to be(true)
         expect { head.move(oeste) }.to_not raise_error
         expect(head.x_pos).to eq(0)
@@ -57,6 +59,7 @@ describe Head do
         head.move este
         head.move norte
         head.go_to_origin
+
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(0)
       end
@@ -65,7 +68,7 @@ describe Head do
 
     context 'non valid' do
 
-      it "fails moving north" do
+      it 'fails moving north' do
         (Head::MAX_COLS-1).times { head.move norte }
 
         expect(head.can_move?(norte)).to be(false)
@@ -104,13 +107,18 @@ describe Head do
 
     it 'puts balls across the board' do
       3.times { head.put negro }
+
       expect(head.are_there_balls?(negro)).to be(true)
       expect(head.number_of_balls(negro)).to eq(3)
+
       head.move norte
       2.times { head.put negro }
+
       expect(head.number_of_balls(negro)).to eq(2)
+
       head.move este
       5.times { head.put negro }
+
       expect(head.number_of_balls(negro)).to eq(5)
     end
 

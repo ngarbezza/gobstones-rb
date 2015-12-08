@@ -62,6 +62,7 @@ describe Cell do
 
   it 'is not empty it it has some balls' do
     colors.each { |color| cell.put color }
+
     expect(cell.empty?).to be(false)
   end
 

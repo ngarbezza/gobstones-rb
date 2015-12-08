@@ -7,6 +7,7 @@ describe Gobstones::Parser do
     it 'removes a one-line comment with // characters for a single line' do
       code_with_comments = 'Poner(Verde) // put a green ball on the board'
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq('Poner(Verde) ')
     end
 
@@ -17,6 +18,7 @@ Poner(Azul)   // and a blue one
 // and this is just an entire comment line
 CODE
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq <<CODE
 Poner(Verde)  
 Poner(Azul)   
@@ -27,6 +29,7 @@ CODE
     it 'removes a one-line comment with -- for a single line' do
       code_with_comments = 'Poner(Verde) -- put a green ball on the board'
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq('Poner(Verde) ')
     end
 
@@ -37,6 +40,7 @@ Poner(Azul)   -- and a blue one
 -- and this is just an entire comment line
 CODE
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq <<CODE
 Poner(Verde)  
 Poner(Azul)   
@@ -52,6 +56,7 @@ Poner(Azul)   -- and a blue one
 if (puedeMover(Norte)) { Mover(Norte) } -- another -- comment
 CODE
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq <<CODE
 Poner(Verde)  
 Poner(Azul)   
@@ -63,6 +68,7 @@ CODE
     it 'removes a multiline comment with {- -}' do
       code_with_comments = 'Poner(Verde)  {- this is a comment -}'
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq('Poner(Verde)  ')
     end
 
@@ -75,6 +81,7 @@ if (puedeMover(Norte)) { Mover(Norte) -}
 Poner(Rojo)
 CODE
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq <<CODE
 Poner(Verde)  
 Poner(Azul)   
@@ -85,6 +92,7 @@ CODE
     it 'removes a multiline comment with /* */' do
       code_with_comments = 'Poner(Verde)  /* this is a comment */'
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq('Poner(Verde)  ')
     end
 
@@ -97,6 +105,7 @@ if (puedeMover(Norte)) { Mover(Norte) */
 Poner(Rojo)
 CODE
       code_without_comments = @parser.remove_comments_from(code_with_comments)
+
       expect(code_without_comments).to eq <<CODE
 Poner(Verde)  
 Poner(Azul)   

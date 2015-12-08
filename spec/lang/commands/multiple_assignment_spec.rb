@@ -16,6 +16,7 @@ describe MultipleAssignment do
       var_tuple = VarTuple.new([a, b, c])
       assign = MultipleAssignment.new(var_tuple, call_to_my_function)
       assign.evaluate context
+
       expect(context.has_variable_named?('a')).to be(true)
       expect(context.get(a)).to eq(42.to_gbs_num)
       expect(context.has_variable_named?('b')).to be(true)
@@ -31,6 +32,7 @@ describe MultipleAssignment do
     it 'fails if there are more variables to be assigned on the left' do
       var_tuple = VarTuple.new([a, b, c, d])
       assign = MultipleAssignment.new(var_tuple, call_to_my_function)
+
       error_message = 'Wrong number of arguments in multiple assignment: expected 4, got 3'
       expect { assign.evaluate context }.to raise_error(Gobstones::Runner::WrongArgumentsError, error_message)
     end
@@ -38,6 +40,7 @@ describe MultipleAssignment do
     it 'fails if there are more things to assign on the right' do
       var_tuple = VarTuple.new([a, b])
       assign = MultipleAssignment.new(var_tuple, call_to_my_function)
+
       error_message = 'Wrong number of arguments in multiple assignment: expected 2, got 3'
       expect { assign.evaluate context }.to raise_error(Gobstones::Runner::WrongArgumentsError, error_message)
     end
@@ -45,6 +48,7 @@ describe MultipleAssignment do
     it 'fails if the expression on the right is not a function call' do
       var_tuple = VarTuple.new([a, b])
       assign = MultipleAssignment.new(var_tuple, Add.new(12.to_gbs_num, 23.to_gbs_num))
+
       error_message = 'expected a function call in multiple assignment'
       expect { assign.evaluate context }.to raise_error(Gobstones::Runner::GobstonesTypeError, error_message)
     end

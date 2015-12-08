@@ -31,11 +31,11 @@ describe ExecutionContext do
     end
 
     it 'has a head' do
-      expect(context.head).to be_a Head
+      expect(context.head).to be_a(Head)
     end
 
     it 'has a board' do
-      expect(context.board).to be_a Board
+      expect(context.board).to be_a(Board)
     end
 
   end
@@ -58,6 +58,7 @@ describe ExecutionContext do
 
     it 'returns the program context in which it is based' do
       function_context = FunctionExecutionContext.based_on(context)
+
       expect(function_context.program_context).to eq(context)
     end
 

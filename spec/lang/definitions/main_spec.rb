@@ -10,6 +10,7 @@ describe Main do
 
   it 'evaluates the body' do
     main.evaluate context
+
     expect(context.has_variable_named? 'x').to be(true)
     expect(context.has_variable_named? 'y').to be(true)
   end
@@ -18,6 +19,7 @@ describe Main do
 
     it 'returns its return value, if there is one' do
       result = main.evaluate(context)
+
       expect(result).to eq({'x'.to_var_name => 42.to_gbs_num,
                             'y'.to_var_name => verde})
     end
@@ -30,6 +32,7 @@ describe Main do
 
     it 'returns an empty result when no return statement is present' do
       result = main.evaluate(context)
+
       expect(result.empty?).to be(true)
     end
 
