@@ -1,5 +1,6 @@
 require 'gobstones/lang/expressions/expression'
 require 'gobstones/runner/errors/gobstones_type_error'
+require 'gobstones/runner/execution_context'
 require 'error_handling_protocol'
 
 module Gobstones
@@ -8,7 +9,7 @@ module Gobstones
 
       include Comparable
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         self
       end
 

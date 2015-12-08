@@ -2,6 +2,7 @@ require 'gobstones/lang/expressions/expression'
 require 'gobstones/lang/literals/booleans'
 require 'gobstones/lang/literals/colors'
 require 'gobstones/lang/literals/directions'
+require 'gobstones/runner/execution_context'
 
 module Gobstones
   module Lang
@@ -11,7 +12,7 @@ module Gobstones
 
     class MinBool < TypeBoundFunc
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         False.new
       end
 
@@ -23,7 +24,7 @@ module Gobstones
 
     class MaxBool < TypeBoundFunc
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         True.new
       end
 
@@ -35,7 +36,7 @@ module Gobstones
 
     class MinColor < TypeBoundFunc
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         Azul.new
       end
 
@@ -47,7 +48,7 @@ module Gobstones
 
     class MaxColor < TypeBoundFunc
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         Verde.new
       end
 
@@ -59,7 +60,7 @@ module Gobstones
 
     class MinDir < TypeBoundFunc
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         Norte.new
       end
 
@@ -71,7 +72,7 @@ module Gobstones
 
     class MaxDir < TypeBoundFunc
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         Oeste.new
       end
 

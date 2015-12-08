@@ -1,5 +1,6 @@
 require 'gobstones/lang/expressions/two_arg_expression'
 require 'gobstones/runner/errors/gobstones_runtime_error'
+require 'gobstones/runner/execution_context'
 
 module Gobstones
   module Lang
@@ -23,7 +24,7 @@ module Gobstones
 
     class Div < TwoArgExpression
 
-      def evaluate(context=nil)
+      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
         begin
           left_expr.evaluate(context) / right_expr.evaluate(context)
         rescue ZeroDivisionError
