@@ -1,8 +1,8 @@
-require 'gobstones/lang/commands/conditional_cmd'
+require 'gobstones/lang/commands/conditional'
 
 module Gobstones
   module Lang
-    class IfCmd < ConditionalCmd
+    class IfCmd < Conditional
 
       def evaluate(context)
         evaluate_condition(context).if_true(then_block, context)
