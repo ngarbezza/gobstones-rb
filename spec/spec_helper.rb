@@ -11,6 +11,7 @@ require 'gobstones/runner/all'
 require 'gobstones/parser/treetop_parser'
 
 include Gobstones::Lang
+include Gobstones::Lang::Commands
 include Gobstones::Runner
 include Gobstones::Parser
 

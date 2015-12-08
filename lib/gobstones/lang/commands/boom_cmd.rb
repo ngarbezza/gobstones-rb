@@ -3,24 +3,26 @@ require 'gobstones/modules/equal_by_class'
 
 module Gobstones
   module Lang
-    class Boom
+    module Commands
+      class Boom
 
-      include Gobstones::EqualByClass
+        include Gobstones::EqualByClass
 
-      attr_reader :message
+        attr_reader :message
 
-      def initialize(message)
-        @message = message
+        def initialize(message)
+          @message = message
+        end
+
+        def ==(other)
+          super(other) && self.message == other.message
+        end
+
+        def evaluate(context)
+          raise Gobstones::Runner::BoomError, message
+        end
+
       end
-
-      def ==(other)
-        super(other) && self.message == other.message
-      end
-
-      def evaluate(context)
-        raise Gobstones::Runner::BoomError, message
-      end
-
     end
   end
 end
