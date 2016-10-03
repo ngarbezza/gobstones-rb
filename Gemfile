@@ -7,12 +7,7 @@ gem 'error_handling_protocol', '~> 0.0.1'
 group :test do
   gem 'autotest-standalone', '~> 4.5'
   gem 'rspec', '~> 3.2'
-  gem 'simplecov', '~> 0.10', :require => false
+  gem 'simplecov', '~> 0.10', require: false
 end
 
-gem 'coveralls', '~> 0.8', :require => false
-
-if ENV['RM_INFO']
-  gem 'debase'
-  gem 'ruby-debug-ide'
-end
+gem 'coveralls', '~> 0.8', require: false
