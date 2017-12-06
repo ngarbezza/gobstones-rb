@@ -4,7 +4,7 @@ module Gobstones
   module Lang
     module Commands
       class Conditional
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         attr_reader :condition, :then_block
 
@@ -14,7 +14,7 @@ module Gobstones
         end
 
         def ==(other)
-          super(other) &&
+          super &&
             condition == other.condition &&
             then_block == other.then_block
         end

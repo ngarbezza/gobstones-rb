@@ -3,7 +3,7 @@ require 'gobstones/modules/equal_by_class'
 module Gobstones
   module Lang
     class NoReturnStatement
-      include Gobstones::EqualByClass
+      include EqualByClass
 
       def evaluate(context)
         # nothing to do

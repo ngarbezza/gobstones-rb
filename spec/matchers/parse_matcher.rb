@@ -21,7 +21,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
     begin
       parse send("#{grammar_elem}_code_to_program", actual)
       @value == send("#{grammar_elem}_node_to_program", @expected)
-    rescue Gobstones::Parser::ParseError => e
+    rescue Gobstones::Parser::ParseError
       !@expect_parser_results
     end
   end

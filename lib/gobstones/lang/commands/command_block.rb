@@ -4,7 +4,7 @@ module Gobstones
   module Lang
     module Commands
       class CommandBlock
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         attr_reader :commands
 

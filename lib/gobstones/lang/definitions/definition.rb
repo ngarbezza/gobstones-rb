@@ -5,7 +5,7 @@ require 'error_handling_protocol'
 module Gobstones
   module Lang
     class Definition
-      include Gobstones::EqualByClass
+      include EqualByClass
 
       attr_reader :name, :arguments, :body, :return_statement
 
@@ -48,7 +48,7 @@ module Gobstones
       private
 
       def check_number_of_arguments(calling_arguments)
-        raise Gobstones::Runner::WrongArgumentsError, wrong_number_of_arguments_message(calling_arguments) if
+        raise Runner::WrongArgumentsError, wrong_number_of_arguments_message(calling_arguments) if
             arguments.length != calling_arguments.length
       end
 

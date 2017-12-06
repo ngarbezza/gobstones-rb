@@ -44,7 +44,7 @@ module Gobstones
       end
 
       def can_move_south?
-        @y_pos > 0
+        @y_pos.positive?
       end
 
       def can_move_east?
@@ -52,7 +52,7 @@ module Gobstones
       end
 
       def can_move_west?
-        @x_pos > 0
+        @x_pos.positive?
       end
 
       def move(dir)

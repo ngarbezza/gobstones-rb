@@ -36,9 +36,8 @@ module Gobstones
         handle_wrong_arguments_error wrong_arguments_error
       rescue Gobstones::Runner::GobstonesRuntimeError => runtime_error
         handle_runtime_error runtime_error
-      rescue Exception => e
-        # TODO handle more gobstones exceptions
-        raise e
+      rescue StandardError => error
+        raise error
       end
 
       private

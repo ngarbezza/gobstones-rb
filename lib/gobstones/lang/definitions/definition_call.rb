@@ -4,7 +4,7 @@ require 'gobstones/runner/errors/definition_not_found_error'
 module Gobstones
   module Lang
     module DefinitionCall
-      include Gobstones::EqualByClass
+      include EqualByClass
 
       attr_reader :name, :arguments
 
@@ -14,14 +14,14 @@ module Gobstones
       end
 
       def ==(other)
-        super(other) && name == other.name && arguments == other.arguments
+        super && name == other.name && arguments == other.arguments
       end
 
       def evaluate(context)
         evaluated_arguments = arguments.map { |argument| argument.evaluate(context) }
         context.program_context.definition_named(name, ->(definition) {
           definition.evaluate context, evaluated_arguments
-        }, -> { raise Gobstones::Runner::DefinitionNotFound, name })
+        }, -> { raise Runner::DefinitionNotFound, name })
       end
     end
   end

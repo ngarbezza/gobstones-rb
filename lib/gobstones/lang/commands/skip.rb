@@ -4,7 +4,7 @@ module Gobstones
   module Lang
     module Commands
       class Skip
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         def evaluate(context)
           # do nothing, that's my job :-)

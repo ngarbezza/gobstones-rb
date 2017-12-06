@@ -1,9 +1,9 @@
 require 'gobstones/lang/all'
 
 module Gobstones
-  module Parser # TODO divide into smaller modules
-    include Gobstones::Lang
-    include Gobstones::Lang::Commands
+  # TODO divide into smaller modules
+  module Parser
+    include Lang
 
     RESERVED_IDS = %w[
       if else not True False case of while Skip repeatWith in procedure function

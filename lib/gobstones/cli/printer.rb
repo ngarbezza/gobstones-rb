@@ -50,27 +50,27 @@ module Gobstones
       def put_ball_values
         total_rows.times do |x|
           total_columns.times do |y|
-            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Negro.new), 'N', x, y, 2, 1
-            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Azul.new), 'A', x, y, 6, 1
-            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Verde.new), 'V', x, y, 2, 3
-            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Rojo.new), 'R', x, y, 6, 3
+            put_ball_value board.number_of_balls(x, y, Lang::Negro.new), 'N', x, y, 2, 1
+            put_ball_value board.number_of_balls(x, y, Lang::Azul.new), 'A', x, y, 6, 1
+            put_ball_value board.number_of_balls(x, y, Lang::Verde.new), 'V', x, y, 2, 3
+            put_ball_value board.number_of_balls(x, y, Lang::Rojo.new), 'R', x, y, 6, 3
           end
         end
       end
 
       def put_ball_value(number, char, x, y, x_offset, y_offset)
-        unless number.zero?
-          corner = cell_top_left_corner(x, y)
-          pos = corner + (y_offset * line_length) + x_offset
-          if number < 10
-            @board[pos] = ' '
-            @board[pos + 1] = number.to_s
-          else
-            @board[pos] = number.to_s[0]
-            @board[pos + 1] = number.to_s[1]
-          end
-          @board[pos + 2] = char
+        return if number.zero?
+
+        corner = cell_top_left_corner(x, y)
+        pos = corner + (y_offset * line_length) + x_offset
+        if number < 10
+          @board[pos] = ' '
+          @board[pos + 1] = number.to_s
+        else
+          @board[pos] = number.to_s[0]
+          @board[pos + 1] = number.to_s[1]
         end
+        @board[pos + 2] = char
       end
 
       def highlight_row(x, y, char)

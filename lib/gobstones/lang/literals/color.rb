@@ -17,7 +17,7 @@ module Gobstones
       end
 
       def opposite
-        raise Gobstones::Runner::GobstonesTypeError, "colors don't have opposite"
+        raise Runner::GobstonesTypeError, "colors don't have opposite"
       end
 
       def return_type

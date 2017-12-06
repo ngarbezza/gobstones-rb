@@ -10,7 +10,7 @@ module Gobstones
       end
 
       def create_context_based_on(outer_context)
-        Gobstones::Runner::FunctionExecutionContext.based_on(outer_context)
+        Runner::FunctionExecutionContext.based_on(outer_context)
       end
     end
   end

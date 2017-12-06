@@ -5,7 +5,7 @@ module Gobstones
   module Lang
     module Commands
       class Boom
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         attr_reader :message
 
@@ -18,7 +18,7 @@ module Gobstones
         end
 
         def evaluate(_context)
-          raise Gobstones::Runner::BoomError, message
+          raise Runner::BoomError, message
         end
       end
     end

@@ -20,7 +20,7 @@ module Gobstones
 
       def are_there_balls?(color)
         check color
-        number_of_balls(color) > 0
+        number_of_balls(color).positive?
       end
 
       def number_of_balls(color)

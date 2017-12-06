@@ -10,7 +10,10 @@ module Gobstones
         @columns = c
         if matrix.empty?
           @matrix = []
-          r.times { @matrix << []; c.times { @matrix.last << Cell.new } }
+          r.times do
+            @matrix << []
+            c.times { @matrix.last << Cell.new }
+          end
         else
           @matrix = matrix
         end

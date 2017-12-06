@@ -1,7 +1,6 @@
 module Gobstones
   module Runner
-    class GobstonesTypeError < StandardError
-      # TODO instantiate with the statement in which this exception occurs
-    end
+    # TODO instantiate with the statement in which this exception occurs
+    GobstonesTypeError = Class.new(StandardError)
   end
 end

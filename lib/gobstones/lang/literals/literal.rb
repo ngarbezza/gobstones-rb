@@ -8,7 +8,7 @@ module Gobstones
     class Literal < Expression
       include Comparable
 
-      def evaluate(_context = Gobstones::Runner::NullExecutionContext.new)
+      def evaluate(_context = Runner::NullExecutionContext.new)
         self
       end
 
@@ -70,7 +70,7 @@ module Gobstones
       private
 
       def not_boolean_type_error
-        raise Gobstones::Runner::GobstonesTypeError, "#{self} is not a boolean"
+        raise Runner::GobstonesTypeError, "#{self} is not a boolean"
       end
     end
   end

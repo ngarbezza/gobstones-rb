@@ -4,7 +4,7 @@ require 'error_handling_protocol'
 module Gobstones
   module Lang
     class Expression
-      include Gobstones::EqualByClass
+      include EqualByClass
 
       def evaluate(_context)
         subclass_responsibility

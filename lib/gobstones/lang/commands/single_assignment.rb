@@ -4,7 +4,7 @@ module Gobstones
   module Lang
     module Commands
       class SingleAssignment
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         attr_reader :var_name, :expression
 

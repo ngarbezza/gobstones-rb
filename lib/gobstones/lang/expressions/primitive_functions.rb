@@ -1,6 +1,6 @@
 require 'gobstones/lang/expressions/one_arg_expression'
 require 'gobstones/extensions/boolean'
-require 'gobstones/extensions/fixnum'
+require 'gobstones/extensions/integer'
 require 'gobstones/type_check_result'
 
 module Gobstones
@@ -45,7 +45,7 @@ module Gobstones
       end
 
       def type_check
-        Gobstones::TypeCheckResult.new(argument_type, argument.return_type)
+        TypeCheckResult.new(argument_type, argument.return_type)
       end
     end
 

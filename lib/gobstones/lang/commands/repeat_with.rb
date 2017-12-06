@@ -11,7 +11,7 @@ module Gobstones
   module Lang
     module Commands
       class RepeatWith
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         attr_reader :var_name, :range_min, :range_max, :cmd_block
 
@@ -44,12 +44,12 @@ module Gobstones
         end
 
         def validate_range_values(context)
-          raise Gobstones::Runner::GobstonesTypeError, "types don't match in range values" \
+          raise Runner::GobstonesTypeError, "types don't match in range values" \
           unless range_min.evaluate(context).same_type_as(range_max.evaluate(context))
         end
 
         def validate_index_variable_not_defined(context)
-          raise Gobstones::Runner::GobstonesRuntimeError, "index variable can't be used because it's already defined" \
+          raise Runner::GobstonesRuntimeError, "index variable can't be used because it's already defined" \
           if context.has_variable_named?(var_name.name)
         end
 

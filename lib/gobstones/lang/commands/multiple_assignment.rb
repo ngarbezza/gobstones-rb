@@ -4,7 +4,7 @@ module Gobstones
   module Lang
     module Commands
       class MultipleAssignment
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         attr_reader :var_tuple, :expression
 
@@ -30,12 +30,12 @@ module Gobstones
         private
 
         def validate_expression_is_function_call
-          raise Gobstones::Runner::GobstonesTypeError, 'expected a function call in multiple assignment' unless
+          raise Runner::GobstonesTypeError, 'expected a function call in multiple assignment' unless
               expression.is_function_call?
         end
 
         def check_number_of_arguments(calling_arguments)
-          raise Gobstones::Runner::WrongArgumentsError, wrong_number_of_arguments_message(calling_arguments) if
+          raise Runner::WrongArgumentsError, wrong_number_of_arguments_message(calling_arguments) if
               var_tuple.length != calling_arguments.length
         end
 

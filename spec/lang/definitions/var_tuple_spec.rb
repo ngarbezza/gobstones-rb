@@ -1,5 +1,5 @@
 describe VarTuple do
-  let (:var_tuple) { VarTuple.new(['a'.to_var_name, 'b'.to_var_name, 'c'.to_var_name]) }
+  let(:var_tuple) { VarTuple.new(['a'.to_var_name, 'b'.to_var_name, 'c'.to_var_name]) }
 
   it 'returns its length' do
     expect(var_tuple.length).to eq(3)

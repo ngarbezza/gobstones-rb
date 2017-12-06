@@ -3,7 +3,7 @@ require 'gobstones/modules/equal_by_class'
 module Gobstones
   module Lang
     class ReturnFromMain
-      include Gobstones::EqualByClass
+      include EqualByClass
 
       attr_reader :var_tuple
 

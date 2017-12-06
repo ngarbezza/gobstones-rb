@@ -17,10 +17,10 @@ module Gobstones
     end
 
     class Div < TwoArgExpression
-      def evaluate(context = Gobstones::Runner::NullExecutionContext.new)
+      def evaluate(context = Runner::NullExecutionContext.new)
         left_expr.evaluate(context) / right_expr.evaluate(context)
       rescue ZeroDivisionError
-        raise Gobstones::Runner::GobstonesRuntimeError, 'zero division'
+        raise Runner::GobstonesRuntimeError, 'zero division'
       end
     end
 

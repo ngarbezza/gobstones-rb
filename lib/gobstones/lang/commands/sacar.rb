@@ -11,7 +11,7 @@ module Gobstones
             context.head.take_out result
           end
         rescue RuntimeError => e
-          raise Gobstones::Runner::GobstonesTypeError, e.message
+          raise Runner::GobstonesTypeError, e.message
         end
 
         def undo(context)

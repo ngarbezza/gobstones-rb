@@ -4,7 +4,7 @@ module Gobstones
   module Lang
     module Commands
       class VaciarTablero
-        include Gobstones::EqualByClass
+        include EqualByClass
 
         def evaluate(context)
           context.board.empty!
