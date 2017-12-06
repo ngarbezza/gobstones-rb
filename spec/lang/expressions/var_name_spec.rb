@@ -1,5 +1,4 @@
 describe VarName do
-
   let(:context) { clean_context }
   let(:variable_name) { 'var'.to_var_name }
 
@@ -14,14 +13,12 @@ describe VarName do
   end
 
   describe '#named?' do
-
     it "is named 'var'" do
-      expect(variable_name.named? 'var').to be(true)
+      expect(variable_name.named?('var')).to be(true)
     end
 
     it "is not named 'blah'" do
-      expect(variable_name.named? 'blah').to be(false)
+      expect(variable_name.named?('blah')).to be(false)
     end
-
   end
 end

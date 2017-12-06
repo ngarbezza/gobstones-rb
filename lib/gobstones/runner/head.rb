@@ -4,7 +4,6 @@ require 'gobstones/runner/errors/out_of_board_error'
 module Gobstones
   module Runner
     class Head
-
       MAX_ROWS = 9
       MAX_COLS = 9
 
@@ -23,7 +22,8 @@ module Gobstones
       end
 
       def at_random
-        @x_pos, @y_pos = rand(MAX_ROWS), rand(MAX_COLS)
+        @x_pos = rand(MAX_ROWS)
+        @y_pos = rand(MAX_COLS)
         self
       end
 
@@ -40,7 +40,7 @@ module Gobstones
       end
 
       def can_move_north?
-        @y_pos < MAX_COLS-1
+        @y_pos < MAX_COLS - 1
       end
 
       def can_move_south?
@@ -48,7 +48,7 @@ module Gobstones
       end
 
       def can_move_east?
-        @x_pos < MAX_ROWS-1
+        @x_pos < MAX_ROWS - 1
       end
 
       def can_move_west?
@@ -77,7 +77,8 @@ module Gobstones
       end
 
       def go_to_origin
-        @x_pos, @y_pos = 0, 0
+        @x_pos = 0
+        @y_pos = 0
       end
 
       def put(color)
@@ -105,7 +106,6 @@ module Gobstones
       def check(dir)
         raise GobstonesTypeError, "#{dir} is not a direction" unless [Norte, Sur, Este, Oeste].include?(dir.class)
       end
-
     end
   end
 end

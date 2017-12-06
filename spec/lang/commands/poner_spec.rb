@@ -1,5 +1,4 @@
 describe Poner do
-
   let(:context) { clean_context }
 
   it 'puts a ball of the given color in the current cell when evaluating' do
@@ -23,5 +22,4 @@ describe Poner do
   it 'fails if the argument is not a color' do
     expect { Poner.new(norte).evaluate(context) }.to raise_error(GobstonesTypeError, /is not a color/)
   end
-
 end

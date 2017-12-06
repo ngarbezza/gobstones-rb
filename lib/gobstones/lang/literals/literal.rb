@@ -6,10 +6,9 @@ require 'error_handling_protocol'
 module Gobstones
   module Lang
     class Literal < Expression
-
       include Comparable
 
-      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
+      def evaluate(_context = Gobstones::Runner::NullExecutionContext.new)
         self
       end
 
@@ -25,18 +24,18 @@ module Gobstones
         self == other ? 0 : (self < other ? -1 : 1)
       end
 
-      def <(other)
+      def <(_other)
         subclass_responsibility
       end
 
       OPERATORS_MAPPING = {
-          :equal => :==,
-          :not_equal => '!='.to_sym,
-          :less_than => :<,
-          :less_equal => :<=,
-          :greater_than => :>,
-          :greater_equal => :>=,
-      }
+        equal: :==,
+          not_equal: '!='.to_sym,
+          less_than: :<,
+          less_equal: :<=,
+          greater_than: :>,
+          greater_equal: :>=,
+      }.freeze
 
       OPERATORS_MAPPING.each do |gbs_op, ruby_op|
         define_method gbs_op do |other|
@@ -45,18 +44,18 @@ module Gobstones
       end
 
       def same_type_as(other)
-        self.return_type == other.return_type
+        return_type == other.return_type
       end
 
       def return_type
         subclass_responsibility
       end
 
-      def if_true(block, context)
+      def if_true(_block, _context)
         not_boolean_type_error
       end
 
-      def if_false(block, context)
+      def if_false(_block, _context)
         not_boolean_type_error
       end
 
@@ -73,7 +72,6 @@ module Gobstones
       def not_boolean_type_error
         raise Gobstones::Runner::GobstonesTypeError, "#{self} is not a boolean"
       end
-
     end
   end
 end

@@ -1,5 +1,4 @@
 describe ProcedureCall do
-
   it 'evaluates an existing procedure when calling it' do
     poner_cmd = Poner.new(verde)
     body = CommandBlock.new([poner_cmd])
@@ -32,8 +31,7 @@ describe ProcedureCall do
   it 'fails to execute an undefined procedure' do
     proc_call = ProcedureCall.new('UndefinedProcedure', [])
 
-    expect { proc_call.evaluate clean_context }
-      .to raise_error(DefinitionNotFound, DefinitionNotFound.message_for('UndefinedProcedure'))
+    expect { proc_call.evaluate clean_context }.
+      to raise_error(DefinitionNotFound, DefinitionNotFound.message_for('UndefinedProcedure'))
   end
-
 end

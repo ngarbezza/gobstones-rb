@@ -1,5 +1,4 @@
 describe RepeatWith do
-
   let(:context) { clean_context }
   let(:var_name) { 'var'.to_var_name }
 
@@ -15,8 +14,8 @@ describe RepeatWith do
   it 'raises an error if the range values have not the same type' do
     repeat_with = RepeatWith.new(var_name, 1.to_gbs_num, este, empty_body)
 
-    expect { repeat_with.evaluate context }
-      .to raise_error(GobstonesTypeError, /types don't match in range values/)
+    expect { repeat_with.evaluate context }.
+      to raise_error(GobstonesTypeError, /types don't match in range values/)
   end
 
   it 'raises an error if the index variable is previously defined' do
@@ -24,8 +23,8 @@ describe RepeatWith do
 
     context.set var_name, 42.to_gbs_num
 
-    expect { repeat_with.evaluate context }
-      .to raise_error(GobstonesRuntimeError, /index variable can't be used because it's already defined/)
+    expect { repeat_with.evaluate context }.
+      to raise_error(GobstonesRuntimeError, /index variable can't be used because it's already defined/)
   end
 
   it 'removes the index variable assignment after execution' do
@@ -65,5 +64,4 @@ describe RepeatWith do
 
     expect(context.head.are_there_balls?(verde)).to be(false)
   end
-
 end

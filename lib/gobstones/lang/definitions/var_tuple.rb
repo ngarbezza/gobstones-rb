@@ -3,13 +3,12 @@ require 'gobstones/modules/equal_by_class'
 module Gobstones
   module Lang
     class VarTuple
-
       include Gobstones::EqualByClass
 
       attr_reader :variables
 
       def self.empty
-        self.new([])
+        new([])
       end
 
       def initialize(variables)
@@ -18,7 +17,7 @@ module Gobstones
 
       def ==(other)
         super(other) &&
-        self.variables == other.variables
+          variables == other.variables
       end
 
       def length
@@ -28,7 +27,6 @@ module Gobstones
       def variable_at(index)
         variables[index]
       end
-
     end
   end
 end

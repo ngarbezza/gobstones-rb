@@ -1,9 +1,7 @@
 describe Gobstones::Parser do
-
   before(:all) { @parser = TreetopParser.new }
 
   describe 'removing comments of a gobstones piece of code' do
-
     it 'removes a one-line comment with // characters for a single line' do
       code_with_comments = 'Poner(Verde) // put a green ball on the board'
       code_without_comments = @parser.remove_comments_from(code_with_comments)
@@ -112,6 +110,5 @@ Poner(Azul)
 Poner(Rojo)
 CODE
     end
-
   end
 end

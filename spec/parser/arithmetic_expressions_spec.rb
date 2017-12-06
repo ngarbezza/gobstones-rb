@@ -1,12 +1,10 @@
 describe Gobstones::Parser, 'arithmetic expressions' do
-
   let(:a) { 'a'.to_var_name }
   let(:b) { 'b'.to_var_name }
   let(:c) { 'c'.to_var_name }
   let(:d) { 'd'.to_var_name }
 
   describe 'addition and subtraction' do
-
     it 'parses a + expression' do
       sum = Add.new(a, b)
 
@@ -34,11 +32,9 @@ describe Gobstones::Parser, 'arithmetic expressions' do
 
       expect('a + b - c').to be_parsed_as(:expression).and_return(total)
     end
-
   end
 
   describe 'multiplication, division, modulus and power' do
-
     it 'parses a * expression' do
       mul = Mul.new(a, b)
 
@@ -81,11 +77,9 @@ describe Gobstones::Parser, 'arithmetic expressions' do
 
       expect('a ^ b ^ c ^ d').to be_parsed_as(:expression).and_return(pow_abcd)
     end
-
   end
 
   describe 'complex arithmetic expressions (without parentheses)' do
-
     it 'parses using precedence of + and - over *' do
       mul = Mul.new(b, c)
       sub = Sub.new(a, mul)
@@ -121,6 +115,5 @@ describe Gobstones::Parser, 'arithmetic expressions' do
 
       expect('a mod b ^ c + a * d div b - c').to be_parsed_as(:expression).and_return(sub)
     end
-
   end
 end

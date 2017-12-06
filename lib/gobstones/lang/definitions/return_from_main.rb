@@ -3,7 +3,6 @@ require 'gobstones/modules/equal_by_class'
 module Gobstones
   module Lang
     class ReturnFromMain
-
       include Gobstones::EqualByClass
 
       attr_reader :var_tuple
@@ -14,7 +13,7 @@ module Gobstones
 
       def ==(other)
         super(other) &&
-        self.var_tuple == other.var_tuple
+          var_tuple == other.var_tuple
       end
 
       def evaluate(context)
@@ -28,7 +27,6 @@ module Gobstones
           [variable, context.get(variable)]
         end
       end
-
     end
   end
 end

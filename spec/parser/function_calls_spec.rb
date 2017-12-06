@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'function calls' do
-
   it 'parses a function call without args' do
     expected = FunctionCall.new('f1')
 
@@ -36,5 +35,4 @@ describe Gobstones::Parser, 'function calls' do
     expect('func1(a || b, 5*(10 div c), func2(Verde, opuesto(Norte)))').
       to be_parsed_as(:expression).and_return(func1_call)
   end
-
 end

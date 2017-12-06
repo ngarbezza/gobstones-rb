@@ -3,7 +3,6 @@ require 'gobstones/lang/literals/color'
 module Gobstones
   module CLI
     class Printer
-
       TEMPLATE = File.read(File.dirname(__FILE__) + '/board_template')
 
       def initialize(program_result)
@@ -52,9 +51,9 @@ module Gobstones
         total_rows.times do |x|
           total_columns.times do |y|
             put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Negro.new), 'N', x, y, 2, 1
-            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Azul.new) , 'A', x, y, 6, 1
+            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Azul.new), 'A', x, y, 6, 1
             put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Verde.new), 'V', x, y, 2, 3
-            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Rojo.new) , 'R', x, y, 6, 3
+            put_ball_value board.number_of_balls(x, y, Gobstones::Lang::Rojo.new), 'R', x, y, 6, 3
           end
         end
       end
@@ -65,12 +64,12 @@ module Gobstones
           pos = corner + (y_offset * line_length) + x_offset
           if number < 10
             @board[pos] = ' '
-            @board[pos+1] = number.to_s
+            @board[pos + 1] = number.to_s
           else
             @board[pos] = number.to_s[0]
-            @board[pos+1] = number.to_s[1]
+            @board[pos + 1] = number.to_s[1]
           end
-          @board[pos+2] = char
+          @board[pos + 2] = char
         end
       end
 
@@ -115,7 +114,6 @@ module Gobstones
       def total_rows
         9
       end
-
     end
   end
 end

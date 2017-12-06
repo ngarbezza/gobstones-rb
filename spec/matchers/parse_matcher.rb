@@ -4,7 +4,6 @@ require 'gobstones/lang/program'
 PARSER = Gobstones::Parser::TreetopParser.new
 
 RSpec::Matchers.define :be_parsed_as do |grammar_elem|
-
   chain :and_fail do
     @expect_parser_results = false
   end
@@ -15,7 +14,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   match do |actual|
-    valid_nodes = [:program, :definition, :main, :expression, :command, :var_tuple]
+    valid_nodes = %i[program definition main expression command var_tuple]
     fail 'wrong expectation' if @expect_parser_results.nil?
     fail 'grammar elem not supported' unless valid_nodes.include?(grammar_elem)
 
@@ -79,5 +78,4 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   def parse(code)
     @value = PARSER.parse(code)
   end
-
 end

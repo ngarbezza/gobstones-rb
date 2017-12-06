@@ -1,5 +1,4 @@
 describe Procedure do
-
   let(:context) { clean_context }
 
   it 'executes its body and leaves state in the program context' do
@@ -61,5 +60,4 @@ describe Procedure do
     error_message = "Wrong number of arguments in procedure 'MyProcedure2': expected 2, got 1"
     expect { procedure.evaluate context, [verde] }.to raise_error(WrongArgumentsError, error_message)
   end
-
 end

@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'main definition' do
-
   let(:return_tuple) { VarTuple.new(['x'.to_var_name, 'y'.to_var_name]) }
 
   it 'parses a valid Main definition without return nor commands' do
@@ -37,5 +36,4 @@ describe Gobstones::Parser, 'main definition' do
   it 'does not parse a main procedure with args' do
     expect('procedure Main(arg1, arg2) {}').to be_parsed_as(:main).and_fail
   end
-
 end

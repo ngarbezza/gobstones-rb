@@ -1,5 +1,4 @@
 describe Mover do
-
   let(:context) { clean_context }
 
   it 'moves the head to the specified direction when evaluating' do
@@ -30,5 +29,4 @@ describe Mover do
   it 'fails when the resulting position is out of board' do
     expect { Mover.new(sur).evaluate(context) }.to raise_error(OutOfBoardError)
   end
-
 end

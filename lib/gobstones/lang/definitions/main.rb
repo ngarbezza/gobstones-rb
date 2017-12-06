@@ -6,7 +6,6 @@ require 'gobstones/lang/definitions/return_from_main'
 module Gobstones
   module Lang
     class Main < Definition
-
       def initialize(body, return_statement)
         super('Main', VarTuple.empty, body, return_statement)
       end
@@ -15,7 +14,6 @@ module Gobstones
         body.evaluate context
         return_statement.evaluate(context) || []
       end
-
     end
   end
 end

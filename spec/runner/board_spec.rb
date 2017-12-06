@@ -1,5 +1,4 @@
 describe Board do
-
   let(:colors) { [azul, negro, rojo, verde] }
 
   it 'can be created with a number of rows and columns' do
@@ -80,5 +79,4 @@ describe Board do
 
     expect(board.empty?).to be(false)
   end
-
 end

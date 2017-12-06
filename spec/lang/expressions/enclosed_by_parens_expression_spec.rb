@@ -1,5 +1,4 @@
 describe EnclosedByParensExpression do
-
   let(:context) { clean_context }
 
   it 'evaluates the inner expression' do
@@ -7,5 +6,4 @@ describe EnclosedByParensExpression do
 
     expect(expression.evaluate(context)).to eq(rojo)
   end
-
 end

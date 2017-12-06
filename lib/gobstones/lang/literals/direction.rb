@@ -3,7 +3,6 @@ require 'gobstones/lang/literals/literal'
 module Gobstones
   module Lang
     class Direction < Literal
-
       def self.all
         [Norte, Sur, Este, Oeste]
       end
@@ -19,11 +18,9 @@ module Gobstones
       def return_type
         :Direction
       end
-
     end
 
     class Norte < Direction
-
       def can_move?(head)
         head.can_move_north?
       end
@@ -47,11 +44,9 @@ module Gobstones
       def to_s
         'Norte'
       end
-
     end
 
     class Este < Direction
-
       def can_move?(head)
         head.can_move_east?
       end
@@ -75,11 +70,9 @@ module Gobstones
       def to_s
         'Este'
       end
-
     end
 
     class Sur < Direction
-
       def can_move?(head)
         head.can_move_south?
       end
@@ -103,11 +96,9 @@ module Gobstones
       def to_s
         'Sur'
       end
-
     end
 
     class Oeste < Direction
-
       def can_move?(head)
         head.can_move_west?
       end
@@ -131,7 +122,6 @@ module Gobstones
       def to_s
         'Oeste'
       end
-
     end
   end
 end

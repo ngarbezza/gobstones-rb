@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'program definitions' do
-
   it 'parses a simple program with a single main' do
     main_def = Main.new(empty_body, no_return_statement)
     program = Program.new(no_definitions, main_def)
@@ -13,12 +12,12 @@ describe Gobstones::Parser, 'program definitions' do
     proc_2 = Procedure.new('Procedure2', no_arguments, empty_body)
     program = Program.new([proc_1, proc_2], main_def)
 
-    gbs_code = <<GBS
-procedure Procedure1(){ }
+    gbs_code = <<~GBS
+      procedure Procedure1(){ }
 
-procedure Procedure2 () {}
+      procedure Procedure2 () {}
 
-procedure Main() {}
+      procedure Main() {}
 GBS
 
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
@@ -30,14 +29,14 @@ GBS
     func_1 = Function.new('function1', no_arguments, empty_body, ReturnFromFunction.new([42.to_gbs_num]))
     proc_2 = Procedure.new('Procedure2', no_arguments, empty_body)
     program = Program.new([proc_1, func_1, proc_2], main_def)
-    gbs_code = <<GBS
-procedure Procedure1(){ }
+    gbs_code = <<~GBS
+      procedure Procedure1(){ }
 
-function function1() { return (42) }
+      function function1() { return (42) }
 
-procedure Procedure2 () {}
+      procedure Procedure2 () {}
 
-procedure Main() {}
+      procedure Main() {}
 GBS
 
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
@@ -53,5 +52,4 @@ GBS
     procedure Main() {}
     procedure Procedure2() {}').to be_parsed_as(:program).and_fail
   end
-
 end

@@ -1,5 +1,4 @@
 describe Cell do
-
   let(:colors) { [azul, negro, rojo, verde] }
   let(:cell)   { Cell.new }
 
@@ -65,5 +64,4 @@ describe Cell do
 
     expect(cell.empty?).to be(false)
   end
-
 end

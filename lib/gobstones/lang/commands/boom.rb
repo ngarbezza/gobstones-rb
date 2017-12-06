@@ -5,7 +5,6 @@ module Gobstones
   module Lang
     module Commands
       class Boom
-
         include Gobstones::EqualByClass
 
         attr_reader :message
@@ -15,13 +14,12 @@ module Gobstones
         end
 
         def ==(other)
-          super(other) && self.message == other.message
+          super(other) && message == other.message
         end
 
-        def evaluate(context)
+        def evaluate(_context)
           raise Gobstones::Runner::BoomError, message
         end
-
       end
     end
   end

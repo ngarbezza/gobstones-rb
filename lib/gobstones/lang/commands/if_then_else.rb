@@ -4,7 +4,6 @@ module Gobstones
   module Lang
     module Commands
       class IfThenElse < If
-
         attr_reader :else_block
 
         def initialize(condition, then_block, else_block)
@@ -13,7 +12,7 @@ module Gobstones
         end
 
         def ==(other)
-          super(other) && self.else_block == other.else_block
+          super(other) && else_block == other.else_block
         end
 
         def evaluate(context)
@@ -21,7 +20,6 @@ module Gobstones
           cond.if_true then_block, context
           cond.if_false else_block, context
         end
-
       end
     end
   end

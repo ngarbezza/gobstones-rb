@@ -3,7 +3,6 @@ require 'gobstones/lang/expressions/expression'
 module Gobstones
   module Lang
     class OneArgExpression < Expression
-
       attr_reader :argument
 
       def initialize(argument)
@@ -14,14 +13,13 @@ module Gobstones
         super(other) && argument == other.argument
       end
 
-      def evaluate(context)
+      def evaluate(_context)
         subclass_responsibility
       end
 
-      def with_evaluated_argument_in(context, &block)
-        block.call(argument.evaluate(context))
+      def with_evaluated_argument_in(context)
+        yield(argument.evaluate(context))
       end
-
     end
   end
 end

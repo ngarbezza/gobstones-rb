@@ -5,45 +5,31 @@ require 'gobstones/runner/execution_context'
 module Gobstones
   module Lang
     class Add < TwoArgExpression
-
       evaluates_with :+
-
     end
 
     class Sub < TwoArgExpression
-
       evaluates_with :-
-
     end
 
     class Mul < TwoArgExpression
-
       evaluates_with :*
-
     end
 
     class Div < TwoArgExpression
-
-      def evaluate(context=Gobstones::Runner::NullExecutionContext.new)
-        begin
-          left_expr.evaluate(context) / right_expr.evaluate(context)
-        rescue ZeroDivisionError
-          raise Gobstones::Runner::GobstonesRuntimeError, 'zero division'
-        end
+      def evaluate(context = Gobstones::Runner::NullExecutionContext.new)
+        left_expr.evaluate(context) / right_expr.evaluate(context)
+      rescue ZeroDivisionError
+        raise Gobstones::Runner::GobstonesRuntimeError, 'zero division'
       end
-
     end
 
     class Mod < TwoArgExpression
-
       evaluates_with :%
-
     end
 
     class Pow < TwoArgExpression
-
       evaluates_with :**
-
     end
   end
 end

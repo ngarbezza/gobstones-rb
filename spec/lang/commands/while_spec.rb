@@ -1,5 +1,4 @@
 describe While do
-
   let(:context) { clean_context }
   let(:while_block) { CommandBlock.new([Poner.new(verde)]) }
 
@@ -37,5 +36,4 @@ describe While do
 
     expect { while_cmd.evaluate context }.to raise_error(GobstonesRuntimeError, /stack overflow/)
   end
-
 end

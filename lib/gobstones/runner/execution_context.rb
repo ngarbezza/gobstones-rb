@@ -5,7 +5,6 @@ require 'error_handling_protocol'
 module Gobstones
   module Runner
     class ExecutionContext
-
       def initialize
         @values = {}
       end
@@ -35,15 +34,13 @@ module Gobstones
       def undefined_variable_error(variable_name)
         raise UndefinedVariableError.for(variable_name)
       end
-
     end
 
     class ProgramExecutionContext < ExecutionContext
-
       attr_reader :head
 
       def self.for(program)
-        self.new(program)
+        new(program)
       end
 
       def initialize(program)
@@ -65,11 +62,9 @@ module Gobstones
       def board
         head.board
       end
-
     end
 
     class ProcedureExecutionContext < ExecutionContext
-
       def self.based_on(outer_context)
         new(outer_context)
       end
@@ -86,11 +81,9 @@ module Gobstones
       def program_context
         @outer_context.program_context
       end
-
     end
 
     class FunctionExecutionContext < ExecutionContext
-
       attr_reader :head
 
       def self.based_on(outer_context)
@@ -106,31 +99,24 @@ module Gobstones
       def program_context
         @outer_context.program_context
       end
-
     end
 
     class NullExecutionContext < ExecutionContext
-
-      def set(variable_name, value)
-
-      end
+      def set(variable_name, value); end
 
       def get(variable_name)
         undefined_variable_error(variable_name)
       end
 
-      def clear(variable_name)
+      def clear(variable_name); end
 
-      end
-
-      def has_variable_named?(variable_name)
+      def has_variable_named?(_variable_name)
         false
       end
 
       def program_context
         raise 'a null execution does not know its program context'
       end
-
     end
   end
 end

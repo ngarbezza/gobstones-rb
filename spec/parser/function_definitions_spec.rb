@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'function definitions' do
-
   it 'parses a function without args and a single return' do
     func_return = ReturnFromFunction.new([42.to_gbs_num])
     func_def = Function.new('just42', no_arguments, empty_body, func_return)
@@ -38,5 +37,4 @@ describe Gobstones::Parser, 'function definitions' do
   it 'does not parse a function without a return statement' do
     expect('function myFuncWithoutReturn() { }').to be_parsed_as(:definition).and_fail
   end
-
 end

@@ -1,32 +1,26 @@
 # TODO test/implement short-circuit?
 describe 'boolean expressions' do
-
   let(:context) { clean_context }
 
   describe And do
-
     it 'evaluates a simple and expression' do
       expect(And.new(false_value, false_value).evaluate(context)).to eq(false_value)
       expect(And.new(false_value, true_value).evaluate(context)).to eq(false_value)
       expect(And.new(true_value, false_value).evaluate(context)).to eq(false_value)
       expect(And.new(true_value, true_value).evaluate(context)).to eq(true_value)
     end
-
   end
 
   describe Or do
-
     it 'evaluates a simple or expression' do
       expect(Or.new(false_value, false_value).evaluate(context)).to eq(false_value)
       expect(Or.new(false_value, true_value).evaluate(context)).to eq(true_value)
       expect(Or.new(true_value, false_value).evaluate(context)).to eq(true_value)
       expect(Or.new(true_value, true_value).evaluate(context)).to eq(true_value)
     end
-
   end
 
   describe Not do
-
     it 'evaluates a simple not expression' do
       expect(Not.new(false_value).evaluate(context)).to eq(true_value)
       expect(Not.new(true_value).evaluate(context)).to eq(false_value)
@@ -45,11 +39,9 @@ describe 'boolean expressions' do
       expect { Not.new(oeste).evaluate(context) }.
           to raise_error(GobstonesTypeError, /is not a boolean/)
     end
-
   end
 
   describe 'nested' do
-
     it "evaluates and's and or's" do
       expression = And.new(Or.new(false_value, true_value), true_value)
 
@@ -61,6 +53,5 @@ describe 'boolean expressions' do
 
       expect(expression.evaluate(context)).to eq(false_value)
     end
-
   end
 end

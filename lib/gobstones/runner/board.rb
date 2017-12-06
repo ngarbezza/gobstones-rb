@@ -3,11 +3,11 @@ require 'gobstones/runner/cell'
 module Gobstones
   module Runner
     class Board
-
       attr_reader :rows, :columns
 
-      def initialize(r, c, matrix=[])
-        @rows, @columns = r, c
+      def initialize(r, c, matrix = [])
+        @rows = r
+        @columns = c
         if matrix.empty?
           @matrix = []
           r.times { @matrix << []; c.times { @matrix.last << Cell.new } }
@@ -22,8 +22,8 @@ module Gobstones
         @matrix[x][y]
       end
 
-      def each_cell(&block)
-        @matrix.each { |row| row.each { |cell| block.call(cell) } }
+      def each_cell
+        @matrix.each { |row| row.each { |cell| yield(cell) } }
       end
 
       def put(x, y, color)
@@ -43,7 +43,7 @@ module Gobstones
       end
 
       def empty!
-        each_cell { |cell| cell.empty! }
+        each_cell(&:empty!)
       end
 
       def empty?
@@ -52,10 +52,9 @@ module Gobstones
       end
 
       def clone
-        new_matrix = @matrix.map { |row| row.map { |cell| cell.clone } }
+        new_matrix = @matrix.map { |row| row.map(&:clone) }
         self.class.new(@rows, @columns, new_matrix)
       end
-
     end
   end
 end

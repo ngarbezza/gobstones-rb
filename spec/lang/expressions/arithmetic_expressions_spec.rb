@@ -1,7 +1,5 @@
 describe 'arithmetic expressions' do
-
   describe Add do
-
     it 'evaluates with two numbers' do
       add = Add.new(42.to_gbs_num, 23.to_gbs_num)
 
@@ -17,11 +15,9 @@ describe 'arithmetic expressions' do
 
       expect(add_66_42.evaluate).to eq(108.to_gbs_num)
     end
-
   end
 
   describe Sub do
-
     it 'evaluates with two numbers' do
       sub = Sub.new(42.to_gbs_num, 15.to_gbs_num)
 
@@ -40,11 +36,9 @@ describe 'arithmetic expressions' do
 
       expect(sub.evaluate).to eq(19.to_gbs_num)
     end
-
   end
 
   describe Mul do
-
     it 'evaluates a simple mul' do
       mul = Mul.new(4.to_gbs_num, 8.to_gbs_num)
 
@@ -56,11 +50,9 @@ describe 'arithmetic expressions' do
 
       expect(Mul.new(mul, 5.to_gbs_num).evaluate).to eq(-40.to_gbs_num)
     end
-
   end
 
   describe Div do
-
     it 'evaluates a simple div' do
       div = Div.new(12.to_gbs_num, 3.to_gbs_num)
 
@@ -74,15 +66,13 @@ describe 'arithmetic expressions' do
     end
 
     it 'raises an error when dividing by zero' do
-      expect {
+      expect do
         Div.new(42.to_gbs_num, 0.to_gbs_num).evaluate
-      }.to raise_error(GobstonesRuntimeError, 'zero division')
+      end.to raise_error(GobstonesRuntimeError, 'zero division')
     end
-
   end
 
   describe Mod do
-
     it 'evaluates a mod with result 0' do
       mod = Mod.new(4.to_gbs_num, 4.to_gbs_num)
 
@@ -94,11 +84,9 @@ describe 'arithmetic expressions' do
 
       expect(mod.evaluate).to eq(1.to_gbs_num)
     end
-
   end
 
   describe Pow do
-
     it 'returns 1 as a result if the power is 0' do
       pow_1 = Pow.new(1.to_gbs_num, 0.to_gbs_num)
       pow_42 = Pow.new(42.to_gbs_num, 0.to_gbs_num)
@@ -112,6 +100,5 @@ describe 'arithmetic expressions' do
 
       expect(pow.evaluate).to eq(16.to_gbs_num)
     end
-
   end
 end

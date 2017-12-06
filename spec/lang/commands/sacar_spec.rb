@@ -1,5 +1,4 @@
 describe Sacar do
-
   let(:context) { clean_context }
 
   it 'takes off balls from the board when evaluating' do
@@ -30,5 +29,4 @@ describe Sacar do
     expect { Sacar.new(true_value).evaluate(context) }.
       to raise_error(GobstonesTypeError, /is not a color/)
   end
-
 end

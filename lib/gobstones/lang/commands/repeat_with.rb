@@ -11,7 +11,6 @@ module Gobstones
   module Lang
     module Commands
       class RepeatWith
-
         include Gobstones::EqualByClass
 
         attr_reader :var_name, :range_min, :range_max, :cmd_block
@@ -25,10 +24,10 @@ module Gobstones
 
         def ==(other)
           super(other) &&
-              self.var_name == other.var_name &&
-              self.range_min == other.range_min &&
-              self.range_max == other.range_max &&
-              self.cmd_block == other.cmd_block
+            var_name == other.var_name &&
+            range_min == other.range_min &&
+            range_max == other.range_max &&
+            cmd_block == other.cmd_block
         end
 
         def evaluate(context)
@@ -68,7 +67,6 @@ module Gobstones
           if_cond = LessEqual.new(range_min, range_max)
           If.new(if_cond, CommandBlock.new([assign_cmd, while_cmd, cmd_block]))
         end
-
       end
     end
   end

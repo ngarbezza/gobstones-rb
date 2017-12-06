@@ -1,5 +1,4 @@
 describe If do
-
   let(:context) { clean_context }
   let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
 
@@ -22,5 +21,4 @@ describe If do
       expect { if_cmd.evaluate context }.to raise_error(GobstonesTypeError, /is not a boolean/)
     end
   end
-
 end

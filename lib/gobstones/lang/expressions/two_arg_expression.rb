@@ -3,7 +3,6 @@ require 'gobstones/lang/expressions/expression'
 module Gobstones
   module Lang
     class TwoArgExpression < Expression
-
       attr_reader :left_expr, :right_expr
 
       def self.evaluates_with(selector)
@@ -26,10 +25,9 @@ module Gobstones
 
       def ==(other)
         super(other) &&
-        self.left_expr == other.left_expr &&
-        self.right_expr == other.right_expr
+          left_expr == other.left_expr &&
+          right_expr == other.right_expr
       end
-
     end
   end
 end

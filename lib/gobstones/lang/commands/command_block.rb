@@ -4,13 +4,12 @@ module Gobstones
   module Lang
     module Commands
       class CommandBlock
-
         include Gobstones::EqualByClass
 
         attr_reader :commands
 
         def self.empty
-          self.new([])
+          new([])
         end
 
         def initialize(commands)
@@ -18,7 +17,7 @@ module Gobstones
         end
 
         def ==(other)
-          super(other) && self.commands == other.commands
+          super(other) && commands == other.commands
         end
 
         def empty?
@@ -28,7 +27,6 @@ module Gobstones
         def evaluate(context)
           commands.each { |command| command.evaluate context }
         end
-
       end
     end
   end

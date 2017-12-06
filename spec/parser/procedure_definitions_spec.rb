@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'procedure definitions' do
-
   it 'parses an empty procedure def without args' do
     proc_def = Procedure.new('MyProc', no_arguments, empty_body)
 
@@ -28,5 +27,4 @@ describe Gobstones::Parser, 'procedure definitions' do
   it 'does not parse a procedure without a valid identifier' do
     expect('procedure myWrongProc() {}').to be_parsed_as(:definition).and_fail
   end
-
 end

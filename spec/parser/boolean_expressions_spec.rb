@@ -1,12 +1,10 @@
 describe Gobstones::Parser, 'boolean expressions' do
-
   let(:a) { 'a'.to_var_name }
   let(:b) { 'b'.to_var_name }
   let(:c) { 'c'.to_var_name }
   let(:d) { 'd'.to_var_name }
 
   describe 'relational operators' do
-
     it 'parses an expression with ==' do
       eq = Equal.new(a, b)
 
@@ -48,11 +46,9 @@ describe Gobstones::Parser, 'boolean expressions' do
       expect('a>b').to be_parsed_as(:expression).and_return(gt)
       expect('a  > b').to be_parsed_as(:expression).and_return(gt)
     end
-
   end
 
   describe 'not, and, or' do
-
     it 'parses a not expression' do
       exp = Equal.new(a, b)
       not_exp = Not.new(exp)
@@ -75,7 +71,6 @@ describe Gobstones::Parser, 'boolean expressions' do
     end
 
     describe 'nested' do
-
       it 'parses a nested || expression, associating right' do
         inner_or = Or.new(b, c)
         outer_or = Or.new(a, inner_or)
@@ -103,7 +98,6 @@ describe Gobstones::Parser, 'boolean expressions' do
 
         expect('a && b || c').to be_parsed_as(:expression).and_return(abc_or)
       end
-
     end
   end
 end

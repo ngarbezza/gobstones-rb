@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'var tuples' do
-
   it 'parses an empty var tuple' do
     var_tuple = VarTuple.empty
 
@@ -20,5 +19,4 @@ describe Gobstones::Parser, 'var tuples' do
     expect('(firstVar, secondVar, thirdVar)').to be_parsed_as(:var_tuple).and_return(var_tuple)
     expect('( firstVar , secondVar,thirdVar )').to be_parsed_as(:var_tuple).and_return(var_tuple)
   end
-
 end

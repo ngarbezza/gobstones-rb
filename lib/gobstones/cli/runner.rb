@@ -7,7 +7,6 @@ include Gobstones::Parser
 module Gobstones
   module CLI
     class Runner
-
       def self.run(file_name)
         new(File.read(file_name)).run
       end
@@ -54,7 +53,7 @@ module Gobstones
 
       def handle_parse_error(parse_error)
         parse_error.parser.failure_reason =~ /^(Expected .+) after/m
-        puts "#{$1.gsub("\n", '$NEWLINE')}:"
+        puts "#{Regexp.last_match(1).gsub("\n", '$NEWLINE')}:"
         puts parse_error.code.lines.to_a[parse_error.parser.failure_line - 1]
         puts "#{'~' * (parse_error.parser.failure_column - 1)}^"
       end
@@ -71,11 +70,11 @@ module Gobstones
         puts undefined_variable_error.message
       end
 
-      def handle_empty_cell_error(empty_cell_error)
+      def handle_empty_cell_error(_empty_cell_error)
         puts 'There are no balls to take out!'
       end
 
-      def handle_out_of_board_error(out_of_board_error)
+      def handle_out_of_board_error(_out_of_board_error)
         puts 'You fell from the board!'
       end
 
@@ -90,7 +89,6 @@ module Gobstones
       def handle_runtime_error(runtime_error)
         puts runtime_error.message
       end
-
     end
   end
 end

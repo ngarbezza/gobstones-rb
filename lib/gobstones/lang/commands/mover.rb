@@ -4,7 +4,6 @@ module Gobstones
   module Lang
     module Commands
       class Mover < OneArgExpression
-
         def evaluate(context)
           with_evaluated_argument_in(context) do |result|
             context.head.move result
@@ -18,7 +17,6 @@ module Gobstones
         def opposite
           Mover.new(argument.opposite)
         end
-
       end
     end
   end

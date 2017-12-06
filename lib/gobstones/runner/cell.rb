@@ -3,7 +3,6 @@ require 'gobstones/runner/errors/empty_cell_error'
 module Gobstones
   module Runner
     class Cell
-
       def initialize
         @values = { Azul => 0, Negro => 0, Rojo => 0, Verde => 0 }
       end
@@ -34,7 +33,7 @@ module Gobstones
       end
 
       def empty?
-        @values.values.all? { |value| value.zero? }
+        @values.values.all?(&:zero?)
       end
 
       def clone
@@ -59,7 +58,6 @@ module Gobstones
           @values[value]
         end
       end
-
     end
   end
 end

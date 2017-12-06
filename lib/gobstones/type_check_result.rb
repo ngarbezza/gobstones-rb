@@ -1,6 +1,5 @@
 module Gobstones
   class TypeCheckResult
-
     def initialize(expected, actual)
       @expected = expected
       @actual = actual
@@ -9,6 +8,5 @@ module Gobstones
     def ok?
       @expected == @actual
     end
-
   end
 end

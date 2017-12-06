@@ -5,7 +5,6 @@ require 'gobstones/runner/program_result'
 module Gobstones
   module Lang
     class Program
-
       include Gobstones::EqualByClass
 
       attr_reader :definitions, :main_definition
@@ -17,8 +16,8 @@ module Gobstones
 
       def ==(other)
         super(other) &&
-        self.definitions == other.definitions &&
-        self.main_definition == other.main_definition
+          definitions == other.definitions &&
+          main_definition == other.main_definition
       end
 
       def evaluate
@@ -32,7 +31,6 @@ module Gobstones
       def create_context
         Gobstones::Runner::ProgramExecutionContext.for(self)
       end
-
     end
   end
 end

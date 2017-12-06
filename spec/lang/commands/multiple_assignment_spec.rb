@@ -1,5 +1,4 @@
 describe MultipleAssignment do
-
   let(:my_function_return) { ReturnFromFunction.new([42.to_gbs_num, verde, MinDir.new]) }
   let(:my_function_def) { Function.new('myFunction', no_arguments, empty_body, my_function_return) }
   let(:call_to_my_function) { FunctionCall.new('myFunction', []) }
@@ -11,7 +10,6 @@ describe MultipleAssignment do
   let(:d) { 'd'.to_var_name }
 
   context 'success' do
-
     it 'evaluates and set all the variables with the return values of a function call' do
       var_tuple = VarTuple.new([a, b, c])
       assign = MultipleAssignment.new(var_tuple, call_to_my_function)
@@ -24,11 +22,9 @@ describe MultipleAssignment do
       expect(context.has_variable_named?('c')).to be(true)
       expect(context.get(c)).to eq(norte)
     end
-
   end
 
   context 'failure' do
-
     it 'fails if there are more variables to be assigned on the left' do
       var_tuple = VarTuple.new([a, b, c, d])
       assign = MultipleAssignment.new(var_tuple, call_to_my_function)
@@ -52,6 +48,5 @@ describe MultipleAssignment do
       error_message = 'expected a function call in multiple assignment'
       expect { assign.evaluate context }.to raise_error(Gobstones::Runner::GobstonesTypeError, error_message)
     end
-
   end
 end

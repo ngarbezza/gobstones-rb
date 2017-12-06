@@ -1,7 +1,5 @@
 describe Gobstones::Parser, 'primitive expressions' do
-
   describe 'variable identifiers' do
-
     it 'parses valid var names' do
       expect('v').to be_parsed_as(:expression).and_return('v'.to_var_name)
       expect('var1').to be_parsed_as(:expression).and_return('var1'.to_var_name)
@@ -16,17 +14,15 @@ describe Gobstones::Parser, 'primitive expressions' do
     end
 
     it 'does not parse reserved words as var names' do
-      literals = %w{True False Rojo Negro Azul Verde Norte Oeste Este Sur}
+      literals = %w[True False Rojo Negro Azul Verde Norte Oeste Este Sur]
 
       (RESERVED_IDS - literals).each do |id|
         expect(id).to be_parsed_as(:expression).and_fail
       end
     end
-
   end
 
   describe 'type bounds functions' do
-
     it 'parses the minBool() function' do
       expect('minBool()').to be_parsed_as(:expression).and_return(MinBool.new)
     end
@@ -50,11 +46,9 @@ describe Gobstones::Parser, 'primitive expressions' do
     it 'parses the maxDir() function' do
       expect('maxDir()').to be_parsed_as(:expression).and_return(MaxDir.new)
     end
-
   end
 
   describe 'other type functions' do
-
     it 'parses the siguiente() function ' do
       func = Siguiente.new('x'.to_var_name)
 
@@ -75,11 +69,9 @@ describe Gobstones::Parser, 'primitive expressions' do
       expect('opuesto(z)').to be_parsed_as(:expression).and_return(func)
       expect('opuesto(   z )').to be_parsed_as(:expression).and_return(func)
     end
-
   end
 
   describe 'board primitive functions' do
-
     it 'parses the nroBolitas(exp) function' do
       func = NroBolitas.new('color'.to_var_name)
 
@@ -100,6 +92,5 @@ describe Gobstones::Parser, 'primitive expressions' do
       expect('puedeMover(dir)').to be_parsed_as(:expression).and_return(func)
       expect('puedeMover(  dir  )').to be_parsed_as(:expression).and_return(func)
     end
-
   end
 end

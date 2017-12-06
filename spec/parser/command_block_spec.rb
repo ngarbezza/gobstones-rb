@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'command blocks' do
-
   it 'parses an empty block' do
     expect('{}').to be_parsed_as(:command).and_return(CommandBlock.empty)
     expect('{     }').to be_parsed_as(:command).and_return(CommandBlock.empty)
@@ -44,5 +43,4 @@ describe Gobstones::Parser, 'command blocks' do
       if (True) {}
      }').to be_parsed_as(:command).and_return(cmd_block)
   end
-
 end

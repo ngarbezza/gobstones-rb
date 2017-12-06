@@ -2,16 +2,15 @@ require 'gobstones/lang/all'
 
 module Gobstones
   module Parser # TODO divide into smaller modules
-
     include Gobstones::Lang
     include Gobstones::Lang::Commands
 
-    RESERVED_IDS = %w(
+    RESERVED_IDS = %w[
       if else not True False case of while Skip repeatWith in procedure function
       return Mover Sacar Poner BOOM IrAlOrigen VaciarTablero div mod hayBolitas
       nroBolitas puedeMover Norte Sur Este Oeste minBool maxBool minDir maxDir
       minColor maxColor siguiente previo opuesto Verde Rojo Azul Negro Main
-    )
+    ].freeze
 
     def self.ast_node(name, &value_block)
       # TODO check if it is better to have classes
@@ -189,6 +188,5 @@ module Gobstones
     def create_commands(commands)
       commands.elements.map { |node| node.command.value }
     end
-
   end
 end

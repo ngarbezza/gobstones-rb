@@ -1,5 +1,4 @@
 describe SingleAssignment do
-
   let(:context) { clean_context }
   let(:a) { 'a'.to_var_name }
 
@@ -10,5 +9,4 @@ describe SingleAssignment do
     expect(context.has_variable_named?('a')).to be(true)
     expect(context.get(a)).to eq(7.to_gbs_num)
   end
-
 end

@@ -1,9 +1,7 @@
 describe 'primitive functions' do
-
   let(:context) { clean_context }
 
   describe 'nroBolitas() function' do
-
     it 'evaluates correctly in a clean context' do
       expect(NroBolitas.new(negro).evaluate(context)).to eq(0.to_gbs_num)
     end
@@ -13,11 +11,9 @@ describe 'primitive functions' do
 
       expect(NroBolitas.new(negro).evaluate(context)).to eq(5.to_gbs_num)
     end
-
   end
 
   describe 'hayBolitas() function' do
-
     it 'evaluates correctly in a clean context' do
       expect(HayBolitas.new(negro).evaluate(context)).to eq(false_value)
     end
@@ -27,11 +23,9 @@ describe 'primitive functions' do
 
       expect(HayBolitas.new(negro).evaluate(context)).to eq(true_value)
     end
-
   end
 
   describe 'puedeMover() function' do
-
     it 'evaluates correctly in a clean context' do
       expect(PuedeMover.new(oeste).evaluate(context)).to eq(false_value)
     end
@@ -41,11 +35,9 @@ describe 'primitive functions' do
 
       expect(PuedeMover.new(oeste).evaluate(context)).to eq(true_value)
     end
-
   end
 
   describe 'siguiente() function' do
-
     it 'evaluates correctly for numbers' do
       expect(Siguiente.new(15.to_gbs_num).evaluate(context)).to eq(16.to_gbs_num)
     end
@@ -68,11 +60,9 @@ describe 'primitive functions' do
       expect(Siguiente.new(true_value).evaluate(context)).to eq(false_value)
       expect(Siguiente.new(false_value).evaluate(context)).to eq(true_value)
     end
-
   end
 
   describe 'previo() function' do
-
     it 'evaluates correctly for numbers' do
       expect(Previo.new(43.to_gbs_num).evaluate(context)).to eq(42.to_gbs_num)
     end
@@ -95,11 +85,9 @@ describe 'primitive functions' do
       expect(Previo.new(true_value).evaluate(context)).to eq(false_value)
       expect(Previo.new(false_value).evaluate(context)).to eq(true_value)
     end
-
   end
 
   describe 'opuesto() function' do
-
     it 'evaluates correctly for numbers' do
       expect(Opuesto.new(23.to_gbs_num).evaluate(context)).to eq(-23.to_gbs_num)
       expect(Opuesto.new(-42.to_gbs_num).evaluate(context)).to eq(42.to_gbs_num)
@@ -121,6 +109,5 @@ describe 'primitive functions' do
       expect { Opuesto.new(verde).evaluate(context) }.
         to raise_error(GobstonesTypeError, "colors don't have opposite")
     end
-
   end
 end

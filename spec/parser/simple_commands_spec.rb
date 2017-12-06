@@ -1,7 +1,5 @@
 describe Gobstones::Parser, 'simple commands' do
-
   describe 'primitives' do
-
     it 'parses a Skip cmd' do
       expect('Skip').to be_parsed_as(:command).and_return(Skip.new)
     end
@@ -14,10 +12,8 @@ describe Gobstones::Parser, 'simple commands' do
       expect('BOOM( "the message" )').to be_parsed_as(:command).and_return(boom_cmd)
     end
 
-    %w(Poner Sacar Mover).each do |command|
-
+    %w[Poner Sacar Mover].each do |command|
       describe "#{command}() cmd" do
-
         it 'is parsed ok with a primitive as argument' do
           cmd = Kernel.const_get(command).new(verde)
 
@@ -38,7 +34,6 @@ describe Gobstones::Parser, 'simple commands' do
 
           expect("#{command}(opuesto(funcCall(Norte, 42)))").to be_parsed_as(:command).and_return(cmd)
         end
-
       end
     end
 
@@ -49,6 +44,5 @@ describe Gobstones::Parser, 'simple commands' do
     it 'parses a VaciarTablero cmd' do
       expect('VaciarTablero()').to be_parsed_as(:command).and_return(VaciarTablero.new)
     end
-
   end
 end

@@ -4,7 +4,6 @@ require 'gobstones/runner/errors/gobstones_type_error'
 module Gobstones
   module Lang
     class Color < Literal
-
       def self.all
         [Azul, Negro, Rojo, Verde]
       end
@@ -24,11 +23,9 @@ module Gobstones
       def return_type
         :Color
       end
-
     end
 
     class Azul < Color
-
       def previous
         Verde.new
       end
@@ -40,11 +37,9 @@ module Gobstones
       def to_s
         'Azul'
       end
-
     end
 
     class Negro < Color
-
       def previous
         Azul.new
       end
@@ -56,11 +51,9 @@ module Gobstones
       def to_s
         'Negro'
       end
-
     end
 
     class Rojo < Color
-
       def previous
         Negro.new
       end
@@ -72,11 +65,9 @@ module Gobstones
       def to_s
         'Rojo'
       end
-
     end
 
     class Verde < Color
-
       def previous
         Rojo.new
       end
@@ -88,7 +79,6 @@ module Gobstones
       def to_s
         'Verde'
       end
-
     end
   end
 end

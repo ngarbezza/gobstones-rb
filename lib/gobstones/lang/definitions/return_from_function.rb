@@ -3,7 +3,6 @@ require 'gobstones/modules/equal_by_class'
 module Gobstones
   module Lang
     class ReturnFromFunction
-
       include Gobstones::EqualByClass
 
       attr_reader :expressions
@@ -13,7 +12,7 @@ module Gobstones
       end
 
       def ==(other)
-        super(other) && self.expressions == other.expressions
+        super(other) && expressions == other.expressions
       end
 
       def evaluate(context)
@@ -22,7 +21,6 @@ module Gobstones
             expressions.first.evaluate(context) :
             expressions.map { |expression| expression.evaluate(context) }
       end
-
     end
   end
 end

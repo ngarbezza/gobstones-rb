@@ -1,5 +1,4 @@
 module GobstonesLangTestObjects
-
   # Programs, contexts and definitions
 
   def clean_context
@@ -71,5 +70,4 @@ module GobstonesLangTestObjects
   def oeste
     Oeste.new
   end
-
 end

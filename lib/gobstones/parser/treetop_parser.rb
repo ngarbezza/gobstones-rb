@@ -5,7 +5,6 @@ require 'gobstones/parser/parse_error'
 module Gobstones
   module Parser
     class TreetopParser
-
       def initialize
         Treetop.load grammar_file
         @parser = GobstonesParser.new
@@ -31,11 +30,11 @@ module Gobstones
       end
 
       def remove_comments_from(code)
-        code
-          .gsub(single_line_c_style_comments_regex, '')
-          .gsub(single_line_haskell_style_comments_regex, '')
-          .gsub(multi_line_c_style_comments_regex, '')
-          .gsub(multi_line_haskell_style_comments_regex, '')
+        code.
+          gsub(single_line_c_style_comments_regex, '').
+          gsub(single_line_haskell_style_comments_regex, '').
+          gsub(multi_line_c_style_comments_regex, '').
+          gsub(multi_line_haskell_style_comments_regex, '')
       end
 
       private
@@ -45,7 +44,7 @@ module Gobstones
       end
 
       def base_path
-        File.expand_path(File.dirname(__FILE__))
+        __dir__
       end
 
       def single_line_c_style_comments_regex
@@ -63,7 +62,6 @@ module Gobstones
       def multi_line_haskell_style_comments_regex
         /{-.*?\-}/m
       end
-
     end
   end
 end

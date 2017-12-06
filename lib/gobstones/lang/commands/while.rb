@@ -5,8 +5,7 @@ module Gobstones
   module Lang
     module Commands
       class While < Conditional
-
-        STACK_LIMIT = 10000
+        STACK_LIMIT = 10_000
 
         def evaluate(context)
           stack_acc = 0
@@ -16,7 +15,6 @@ module Gobstones
             stack_acc += 1
           end
         end
-
       end
     end
   end

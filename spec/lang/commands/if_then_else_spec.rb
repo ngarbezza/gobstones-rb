@@ -1,5 +1,4 @@
 describe IfThenElse do
-
   let(:context) { clean_context }
   let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
   let(:else_block) { CommandBlock.new([Poner.new(rojo)]) }
@@ -17,5 +16,4 @@ describe IfThenElse do
     expect(context.head.are_there_balls?(verde)).to be(false)
     expect(context.head.are_there_balls?(rojo)).to be(true)
   end
-
 end

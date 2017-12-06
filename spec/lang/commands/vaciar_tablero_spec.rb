@@ -1,5 +1,4 @@
 describe VaciarTablero do
-
   let(:context) { clean_context }
 
   it 'empties the board in the context' do
@@ -8,5 +7,4 @@ describe VaciarTablero do
 
     expect(context.board.empty?).to be(true)
   end
-
 end

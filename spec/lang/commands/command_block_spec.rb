@@ -1,5 +1,4 @@
 describe CommandBlock do
-
   let(:context) { clean_context }
 
   it 'evaluates all inner commands' do
@@ -16,5 +15,4 @@ describe CommandBlock do
     expect(CommandBlock.new([])).to be_empty
     expect(CommandBlock.empty).to be_empty
   end
-
 end

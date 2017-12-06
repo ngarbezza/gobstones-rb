@@ -3,7 +3,6 @@ require 'gobstones/lang/literals/literal'
 module Gobstones
   module Lang
     class Boolean < Literal
-
       def return_type
         :Boolean
       end
@@ -24,23 +23,21 @@ module Gobstones
         subclass_responsibility
       end
 
-      def if_true(block, context)
+      def if_true(_block, _context)
         subclass_responsibility
       end
 
-      def if_false(block, context)
+      def if_false(_block, _context)
         subclass_responsibility
       end
 
       def is_true?
         subclass_responsibility
       end
-
     end
 
     class True < Boolean
-
-      def <(other)
+      def <(_other)
         false
       end
 
@@ -48,7 +45,7 @@ module Gobstones
         other
       end
 
-      def or(other)
+      def or(_other)
         self
       end
 
@@ -71,16 +68,14 @@ module Gobstones
       def to_s
         'True'
       end
-
     end
 
     class False < Boolean
-
       def <(other)
         self != other
       end
 
-      def and(other)
+      def and(_other)
         self
       end
 
@@ -107,7 +102,6 @@ module Gobstones
       def to_s
         'False'
       end
-
     end
   end
 end

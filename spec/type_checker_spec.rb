@@ -1,9 +1,6 @@
 describe Gobstones, 'type checker' do
-
   describe 'board expressions' do
-
     describe 'puedeMover()' do
-
       it 'allows a direction as argument' do
         [norte, sur, este, oeste].each do |dir|
           result = PuedeMover.new(dir).type_check
@@ -29,7 +26,6 @@ describe Gobstones, 'type checker' do
 
         expect(result.ok?).to be(false)
       end
-
     end
   end
 end

@@ -1,5 +1,4 @@
 describe Gobstones::Parser, 'while statements' do
-
   it 'parses a statement with a simple boolean and an empty block' do
     while_cmd = While.new(true_value, empty_body)
 
@@ -25,5 +24,4 @@ describe Gobstones::Parser, 'while statements' do
     expect('while (puedeMover(Norte) || (a && False)) {}').
       to be_parsed_as(:command).and_return(while_cmd)
   end
-
 end

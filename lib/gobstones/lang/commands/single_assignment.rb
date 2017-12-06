@@ -4,23 +4,22 @@ module Gobstones
   module Lang
     module Commands
       class SingleAssignment
-
         include Gobstones::EqualByClass
 
         attr_reader :var_name, :expression
 
         def initialize(var_name, expression)
-          @var_name, @expression = var_name, expression
+          @var_name = var_name
+          @expression = expression
         end
 
         def ==(other)
-          super(other) && self.var_name == other.var_name && self.expression == other.expression
+          super(other) && var_name == other.var_name && expression == other.expression
         end
 
         def evaluate(context)
           context.set var_name, expression.evaluate(context)
         end
-
       end
     end
   end

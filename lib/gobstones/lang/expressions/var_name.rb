@@ -3,7 +3,6 @@ require 'gobstones/lang/expressions/expression'
 module Gobstones
   module Lang
     class VarName < Expression
-
       attr_reader :name
 
       def initialize(name)
@@ -11,7 +10,7 @@ module Gobstones
       end
 
       def ==(var)
-        super(var) && self.name == var.name
+        super(var) && name == var.name
       end
 
       def hash
@@ -29,7 +28,6 @@ module Gobstones
       def to_s
         "variable named '#{name}'"
       end
-
     end
   end
 end

@@ -5,7 +5,6 @@ require 'error_handling_protocol'
 module Gobstones
   module Lang
     class Definition
-
       include Gobstones::EqualByClass
 
       attr_reader :name, :arguments, :body, :return_statement
@@ -19,17 +18,17 @@ module Gobstones
 
       def ==(other)
         super(other) &&
-        self.name == other.name &&
-        self.arguments == other.arguments &&
-        self.body == other.body &&
-        self.return_statement == other.return_statement
+          name == other.name &&
+          arguments == other.arguments &&
+          body == other.body &&
+          return_statement == other.return_statement
       end
 
       def named?(a_name)
         name == a_name
       end
 
-      def evaluate(context, calling_arguments=[])
+      def evaluate(context, calling_arguments = [])
         check_number_of_arguments calling_arguments
         in_definition_context_based_on(context) do |definition_context|
           set_arguments calling_arguments, definition_context
@@ -38,7 +37,7 @@ module Gobstones
         end
       end
 
-      def create_context_based_on(outer_context)
+      def create_context_based_on(_outer_context)
         subclass_responsibility
       end
 
@@ -54,12 +53,12 @@ module Gobstones
       end
 
       def wrong_number_of_arguments_message(calling_arguments)
-        "Wrong number of arguments in #{definition_type} '#{name}':" +
-            " expected #{arguments.length}, got #{calling_arguments.length}"
+        "Wrong number of arguments in #{definition_type} '#{name}':" \
+          " expected #{arguments.length}, got #{calling_arguments.length}"
       end
 
-      def in_definition_context_based_on(outer_context, &block)
-        block.call(create_context_based_on(outer_context))
+      def in_definition_context_based_on(outer_context)
+        yield(create_context_based_on(outer_context))
       end
 
       def set_arguments(calling_arguments, procedure_context)

@@ -1,9 +1,7 @@
 describe ExecutionContext do
-
   let(:context) { clean_context }
 
   describe 'variables context' do
-
     it 'allows to set/get a variable' do
       context.set 'myColor', negro
 
@@ -21,11 +19,9 @@ describe ExecutionContext do
     it 'raises an error when trying to get an undefined variable' do
       expect { context.get('undefined') }.to raise_error(UndefinedVariableError)
     end
-
   end
 
   describe ProgramExecutionContext do
-
     it 'is the program context itself' do
       expect(context.program_context).to eq(context)
     end
@@ -37,11 +33,9 @@ describe ExecutionContext do
     it 'has a board' do
       expect(context.board).to be_a(Board)
     end
-
   end
 
   describe ProcedureExecutionContext do
-
     let(:procedure_context) { ProcedureExecutionContext.based_on(context) }
 
     it 'returns the program context in which it is based' do
@@ -51,11 +45,9 @@ describe ExecutionContext do
     it 'shares the head with the outer context' do
       expect(procedure_context.head).to eq(context.head)
     end
-
   end
 
   describe FunctionExecutionContext do
-
     it 'returns the program context in which it is based' do
       function_context = FunctionExecutionContext.based_on(context)
 
@@ -73,6 +65,5 @@ describe ExecutionContext do
       expect(context.head.are_there_balls?(verde)).to be(false)
       expect(function_context.head.are_there_balls?(verde)).to be(true)
     end
-
   end
 end

@@ -4,17 +4,17 @@ module Gobstones
   module Lang
     module Commands
       class MultipleAssignment
-
         include Gobstones::EqualByClass
 
         attr_reader :var_tuple, :expression
 
         def initialize(var_tuple, expression)
-          @var_tuple, @expression = var_tuple, expression
+          @var_tuple = var_tuple
+          @expression = expression
         end
 
         def ==(other)
-          super(other) && self.var_tuple == other.var_tuple && self.expression == other.expression
+          super(other) && var_tuple == other.var_tuple && expression == other.expression
         end
 
         def evaluate(context)
@@ -42,7 +42,6 @@ module Gobstones
         def wrong_number_of_arguments_message(calling_arguments)
           "Wrong number of arguments in multiple assignment: expected #{var_tuple.length}, got #{calling_arguments.length}"
         end
-
       end
     end
   end

@@ -6,7 +6,6 @@ module Gobstones
   module Lang
     module Commands
       class Poner < OneArgExpression
-
         def evaluate(context)
           with_evaluated_argument_in(context) do |result|
             context.head.put result
@@ -26,7 +25,6 @@ module Gobstones
         def opposite
           Sacar.new(argument)
         end
-
       end
     end
   end

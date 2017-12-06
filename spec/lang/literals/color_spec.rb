@@ -1,5 +1,4 @@
 describe Color do
-
   let(:all) { Color.all.map(&:new) }
 
   it 'includes Azul, Negro, Rojo and Verde' do
@@ -20,7 +19,6 @@ describe Color do
   end
 
   it 'returns the string representation' do
-    expect(all.map(&:to_s)).to eq(%w(Azul Negro Rojo Verde))
+    expect(all.map(&:to_s)).to eq(%w[Azul Negro Rojo Verde])
   end
-
 end

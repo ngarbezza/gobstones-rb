@@ -1,12 +1,10 @@
 describe FunctionCall do
-
   let(:my_function) { Function.new('myFunction', args, empty_body, return_statement) }
   let(:program) { Program.new([my_function], no_return_statement) }
   let(:context) { program_context_for(program) }
   let(:call) { FunctionCall.new('myFunction', calling_arguments) }
 
   context 'without arguments' do
-
     let(:args) { no_arguments }
     let(:return_statement) { ReturnFromFunction.new([42.to_gbs_num]) }
     let(:calling_arguments) { [] }
@@ -16,11 +14,9 @@ describe FunctionCall do
 
       expect(result).to eq(42.to_gbs_num)
     end
-
   end
 
   context 'with arguments' do
-
     let(:number_a) { 'a'.to_var_name }
     let(:number_b) { 'b'.to_var_name }
     let(:number_c) { 'c'.to_var_name }
@@ -33,6 +29,5 @@ describe FunctionCall do
 
       expect(result).to eq(6.to_gbs_num)
     end
-
   end
 end
