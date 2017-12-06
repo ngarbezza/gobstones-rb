@@ -1,0 +1,112 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'db/**/*'
+
+# revisit this once Ruby 3 is out
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Max: 2
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Max: 120
+  AllowURI: true
+
+Lint/AssignmentInCondition:
+  AllowSafeAssignment: true
+
+Style/AndOr:
+  EnforcedStyle: 'conditionals'
+
+Style/CollectionMethods:
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    detect: 'detect'
+    find_all: 'select'
+
+Style/WordArray:
+  MinSize: 3
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: 'comma'
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: 'comma'
+
+Style/HashSyntax:
+  EnforcedStyle: 'ruby19'
+
+Performance/Casecmp:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/Alias:
+  Enabled: false
+
+Style/UnneededInterpolation:
+  Enabled: false
+
+Lint/UnneededDisable:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+Style/ZeroLengthPredicate:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/CommentAnnotation:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/AlignHash:
+  Enabled: false
+  EnforcedColonStyle: 'key'
+  EnforcedHashRocketStyle: 'key'
+
+Layout/DotPosition:
+  EnforcedStyle: 'trailing'
+
+Layout/AlignParameters:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Rails/Output:
+  Exclude:
+    - 'bin/*'
