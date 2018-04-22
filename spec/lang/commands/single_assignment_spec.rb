@@ -3,7 +3,7 @@ RSpec.describe SingleAssignment do
   let(:a) { 'a'.to_var_name }
 
   it 'evaluates the associated expression to the var name' do
-    assign = SingleAssignment.new(a, Add.new(3.to_gbs_num, 4.to_gbs_num))
+    assign = described_class.new(a, Add.new(3.to_gbs_num, 4.to_gbs_num))
     assign.evaluate context
 
     expect(context.has_variable_named?('a')).to be(true)

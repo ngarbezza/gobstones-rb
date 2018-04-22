@@ -10,7 +10,7 @@ RSpec.describe While do
   end
 
   it 'evaluates the command block until the condition is not satisfied' do
-    while_cmd = While.new(stub_condition(3), while_block)
+    while_cmd = described_class.new(stub_condition(3), while_block)
 
     while_cmd.evaluate context
 
@@ -18,7 +18,7 @@ RSpec.describe While do
   end
 
   it 'does not evaluate the command block if the condition is false' do
-    while_cmd = While.new(stub_condition(0), while_block)
+    while_cmd = described_class.new(stub_condition(0), while_block)
 
     while_cmd.evaluate context
 
@@ -26,13 +26,13 @@ RSpec.describe While do
   end
 
   it 'fails with type error if the condition is not boolean' do
-    while_cmd = While.new(sur, while_block)
+    while_cmd = described_class.new(sur, while_block)
 
     expect { while_cmd.evaluate context }.to raise_error(GobstonesTypeError, /is not a boolean/)
   end
 
   it 'fails with stack overflow if the condition is always true' do
-    while_cmd = While.new(true_value, while_block)
+    while_cmd = described_class.new(true_value, while_block)
 
     expect { while_cmd.evaluate context }.to raise_error(GobstonesRuntimeError, /stack overflow/)
   end

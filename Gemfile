@@ -13,4 +13,5 @@ end
 
 group :development do
   gem 'rubocop', '~> 0.50', require: false
+  gem 'rubocop-rspec', '~> 1.25', require: false
 end

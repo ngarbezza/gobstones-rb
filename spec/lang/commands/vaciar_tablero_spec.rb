@@ -3,7 +3,7 @@ RSpec.describe VaciarTablero do
 
   it 'empties the board in the context' do
     context.head.put rojo
-    VaciarTablero.new.evaluate context
+    described_class.new.evaluate context
 
     expect(context.board.empty?).to be(true)
   end

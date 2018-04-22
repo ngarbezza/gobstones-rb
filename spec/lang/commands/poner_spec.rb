@@ -2,7 +2,7 @@ RSpec.describe Poner do
   let(:context) { clean_context }
 
   it 'puts a ball of the given color in the current cell when evaluating' do
-    Poner.new(verde).evaluate(context)
+    described_class.new(verde).evaluate(context)
 
     expect(context.head.number_of_balls(verde)).to eq(1)
   end
@@ -10,16 +10,16 @@ RSpec.describe Poner do
   it 'undoes the command' do
     context.head.put verde
 
-    Poner.new(verde).undo context
+    described_class.new(verde).undo context
 
     expect(context.head.number_of_balls(verde)).to eq(0)
   end
 
   it 'returns the opposite command' do
-    expect(Poner.new(verde).opposite).to eq(Sacar.new(verde))
+    expect(described_class.new(verde).opposite).to eq(Sacar.new(verde))
   end
 
   it 'fails if the argument is not a color' do
-    expect { Poner.new(norte).evaluate(context) }.to raise_error(GobstonesTypeError, /is not a color/)
+    expect { described_class.new(norte).evaluate(context) }.to raise_error(GobstonesTypeError, /is not a color/)
   end
 end

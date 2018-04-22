@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 2.5.1
   Exclude:
@@ -64,9 +66,6 @@ Style/Alias:
   Enabled: false
 
 Style/UnneededInterpolation:
-  Enabled: false
-
-Lint/UnneededDisable:
   Enabled: false
 
 Style/Next:
