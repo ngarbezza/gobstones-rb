@@ -9,7 +9,7 @@ RSpec.describe ProcedureCall do
     proc_call = described_class.new('MyProcedure', [])
     proc_call.evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(true)
+    expect_balls(verde)
   end
 
   it 'allows to call a procedure from another procedure' do

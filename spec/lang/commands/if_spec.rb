@@ -5,13 +5,13 @@ RSpec.describe If do
   it "evaluates the 'then' command block if the condition is true" do
     described_class.new(true_value, then_block).evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(true)
+    expect_balls(verde)
   end
 
   it "does not evaluate the 'then' command block if the condition is false" do
     described_class.new(false_value, then_block).evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(false)
+    expect_no_balls(verde)
   end
 
   it 'raises a type error if the condition is not boolean' do

@@ -5,10 +5,7 @@ RSpec.describe CommandBlock do
     command_block = described_class.new([Poner.new(rojo), Poner.new(verde), Poner.new(negro), Poner.new(azul)])
     command_block.evaluate context
 
-    expect(context.head.are_there_balls?(azul)).to be(true)
-    expect(context.head.are_there_balls?(negro)).to be(true)
-    expect(context.head.are_there_balls?(rojo)).to be(true)
-    expect(context.head.are_there_balls?(verde)).to be(true)
+    expect_balls(azul, negro, rojo, verde)
   end
 
   it 'builds an empty command block' do

@@ -60,9 +60,9 @@ RSpec.describe ExecutionContext do
       function_context.head.put verde
 
       expect(function_context.head).not_to eq(context.head)
-      expect(context.head.are_there_balls?(azul)).to be(true)
+      expect_balls(azul)
       expect(function_context.head.are_there_balls?(azul)).to be(true)
-      expect(context.head.are_there_balls?(verde)).to be(false)
+      expect_no_balls(verde)
       expect(function_context.head.are_there_balls?(verde)).to be(true)
     end
   end

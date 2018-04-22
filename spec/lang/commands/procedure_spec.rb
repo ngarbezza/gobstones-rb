@@ -7,7 +7,7 @@ RSpec.describe Procedure do
     procedure = described_class.new('MyProcedure', no_arguments, body)
     procedure.evaluate context
 
-    expect(context.head.are_there_balls?(rojo)).to be(true)
+    expect_balls(rojo)
   end
 
   it 'fails getting a variable which is in the outer context' do
@@ -32,7 +32,7 @@ RSpec.describe Procedure do
 
     procedure.evaluate context, [negro, norte]
 
-    expect(context.head.are_there_balls?(negro)).to be(true)
+    expect_balls(negro)
     expect(context.head.y_pos).to eq(1)
   end
 

@@ -6,14 +6,14 @@ RSpec.describe IfThenElse do
   it "evaluates the 'then' block and it does not evaluate the 'else' block" do
     described_class.new(true_value, then_block, else_block).evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(true)
-    expect(context.head.are_there_balls?(rojo)).to be(false)
+    expect_balls(verde)
+    expect_no_balls(rojo)
   end
 
   it "does not evaluate the 'then' block and it evaluates the 'else' block" do
     described_class.new(false_value, then_block, else_block).evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(false)
-    expect(context.head.are_there_balls?(rojo)).to be(true)
+    expect_no_balls(verde)
+    expect_balls(rojo)
   end
 end

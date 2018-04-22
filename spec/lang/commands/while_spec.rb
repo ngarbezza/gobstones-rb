@@ -22,7 +22,7 @@ RSpec.describe While do
 
     while_cmd.evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(false)
+    expect_no_balls(verde)
   end
 
   it 'fails with type error if the condition is not boolean' do

@@ -41,10 +41,7 @@ RSpec.describe RepeatWith do
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(azul)).to be(true)
-    expect(context.head.are_there_balls?(negro)).to be(true)
-    expect(context.head.are_there_balls?(rojo)).to be(true)
-    expect(context.head.are_there_balls?(verde)).to be(true)
+    expect_balls(azul, negro, rojo, verde)
   end
 
   it 'does exactly one iteration if range values are the same' do
@@ -53,7 +50,7 @@ RSpec.describe RepeatWith do
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(true)
+    expect_balls(verde)
   end
 
   it 'does no iterations if the from is higher than the to' do
@@ -62,6 +59,6 @@ RSpec.describe RepeatWith do
 
     repeat_with.evaluate context
 
-    expect(context.head.are_there_balls?(verde)).to be(false)
+    expect_no_balls(verde)
   end
 end

@@ -15,7 +15,9 @@ include Gobstones::Lang::Commands
 include Gobstones::Runner
 include Gobstones::Parser
 
-require 'gobstones_lang_test_objects'
+require 'support/gobstones_lang_test_objects'
 include GobstonesLangTestObjects
+require 'support/board_assertions'
+include BoardAssertions
 
 RSpec.configure(&:disable_monkey_patching!)
