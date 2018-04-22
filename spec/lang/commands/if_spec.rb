@@ -1,24 +1,32 @@
 RSpec.describe If do
+  subject(:evaluate_if_command) { described_class.new(condition, then_block).evaluate(context) }
+
   let(:context) { clean_context }
   let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
 
-  it "evaluates the 'then' command block if the condition is true" do
-    described_class.new(true_value, then_block).evaluate context
+  context 'when condition is true' do
+    let(:condition) { true_value }
 
-    expect_balls(verde)
+    it "evaluates the 'then' block" do
+      evaluate_if_command and expect_balls(verde)
+    end
   end
 
-  it "does not evaluate the 'then' command block if the condition is false" do
-    described_class.new(false_value, then_block).evaluate context
+  context 'when condition is false' do
+    let(:condition) { false_value }
 
-    expect_no_balls(verde)
+    it "does not evaluate the 'then' block" do
+      evaluate_if_command and expect_no_balls(verde)
+    end
   end
 
-  it 'raises a type error if the condition is not boolean' do
-    [42.to_gbs_num, norte, verde].each do |value|
-      if_cmd = described_class.new(value, then_block)
+  [42.to_gbs_num, norte, verde].each do |value|
+    context "when condition has a wrong type (#{value.class})" do
+      let(:condition) { value }
 
-      expect { if_cmd.evaluate context }.to raise_error(GobstonesTypeError, /is not a boolean/)
+      it 'raises a type error' do
+        expect { evaluate_if_command }.to raise_error(GobstonesTypeError, /is not a boolean/)
+      end
     end
   end
 end
