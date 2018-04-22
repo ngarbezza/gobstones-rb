@@ -1,4 +1,4 @@
-describe ExecutionContext do
+RSpec.describe ExecutionContext do
   let(:context) { clean_context }
 
   describe 'variables context' do

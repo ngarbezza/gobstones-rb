@@ -17,3 +17,5 @@ include Gobstones::Parser
 
 require 'gobstones_lang_test_objects'
 include GobstonesLangTestObjects
+
+RSpec.configure(&:disable_monkey_patching!)

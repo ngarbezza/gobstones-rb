@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'if statements' do
+RSpec.describe Gobstones::Parser, 'if statements' do
   describe 'if' do
     it 'parses a statement with a simple boolean and an empty block' do
       if_cmd = If.new(true_value, empty_body)

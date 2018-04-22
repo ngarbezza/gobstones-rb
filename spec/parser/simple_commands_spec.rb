@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'simple commands' do
+RSpec.describe Gobstones::Parser, 'simple commands' do
   describe 'primitives' do
     it 'parses a Skip cmd' do
       expect('Skip').to be_parsed_as(:command).and_return(Skip.new)

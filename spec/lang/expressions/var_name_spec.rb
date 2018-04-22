@@ -1,4 +1,4 @@
-describe VarName do
+RSpec.describe VarName do
   let(:context) { clean_context }
   let(:variable_name) { 'var'.to_var_name }
 

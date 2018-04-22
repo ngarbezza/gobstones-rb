@@ -1,4 +1,4 @@
-describe Procedure do
+RSpec.describe Procedure do
   let(:context) { clean_context }
 
   it 'executes its body and leaves state in the program context' do

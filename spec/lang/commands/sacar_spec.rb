@@ -1,4 +1,4 @@
-describe Sacar do
+RSpec.describe Sacar do
   let(:context) { clean_context }
 
   it 'takes off balls from the board when evaluating' do

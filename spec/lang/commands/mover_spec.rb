@@ -1,4 +1,4 @@
-describe Mover do
+RSpec.describe Mover do
   let(:context) { clean_context }
 
   it 'moves the head to the specified direction when evaluating' do

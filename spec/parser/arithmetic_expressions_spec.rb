@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'arithmetic expressions' do
+RSpec.describe Gobstones::Parser, 'arithmetic expressions' do
   let(:a) { 'a'.to_var_name }
   let(:b) { 'b'.to_var_name }
   let(:c) { 'c'.to_var_name }

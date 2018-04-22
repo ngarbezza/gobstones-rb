@@ -1,4 +1,4 @@
-describe EnclosedByParensExpression do
+RSpec.describe EnclosedByParensExpression do
   let(:context) { clean_context }
 
   it 'evaluates the inner expression' do

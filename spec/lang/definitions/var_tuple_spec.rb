@@ -1,4 +1,4 @@
-describe VarTuple do
+RSpec.describe VarTuple do
   let(:var_tuple) { VarTuple.new(['a'.to_var_name, 'b'.to_var_name, 'c'.to_var_name]) }
 
   it 'returns its length' do

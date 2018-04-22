@@ -1,4 +1,4 @@
-describe CommandBlock do
+RSpec.describe CommandBlock do
   let(:context) { clean_context }
 
   it 'evaluates all inner commands' do

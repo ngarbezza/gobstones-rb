@@ -1,4 +1,4 @@
-describe Number do
+RSpec.describe Number do
   it 'evaluates to itself' do
     num = 42.to_gbs_num
 

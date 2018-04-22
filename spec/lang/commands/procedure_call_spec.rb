@@ -1,4 +1,4 @@
-describe ProcedureCall do
+RSpec.describe ProcedureCall do
   it 'evaluates an existing procedure when calling it' do
     poner_cmd = Poner.new(verde)
     body = CommandBlock.new([poner_cmd])

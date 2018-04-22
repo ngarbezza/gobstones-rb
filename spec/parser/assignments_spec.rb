@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'assignments' do
+RSpec.describe Gobstones::Parser, 'assignments' do
   describe 'single' do
     it 'parses a valid assignment with a simple expression' do
       assignment = SingleAssignment.new('myDir'.to_var_name, norte)

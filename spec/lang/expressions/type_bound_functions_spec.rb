@@ -1,4 +1,4 @@
-describe 'type bound functions' do
+RSpec.describe 'type bound functions' do
   describe 'for booleans' do
     it 'evaluates minBool() to False' do
       expect(MinBool.new.evaluate).to eq(false_value)

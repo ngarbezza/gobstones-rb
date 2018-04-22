@@ -1,4 +1,4 @@
-describe 'arithmetic expressions' do
+RSpec.describe 'arithmetic expressions' do
   describe Add do
     it 'evaluates with two numbers' do
       add = Add.new(42.to_gbs_num, 23.to_gbs_num)

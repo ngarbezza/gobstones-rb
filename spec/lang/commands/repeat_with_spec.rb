@@ -1,4 +1,4 @@
-describe RepeatWith do
+RSpec.describe RepeatWith do
   let(:context) { clean_context }
   let(:var_name) { 'var'.to_var_name }
 

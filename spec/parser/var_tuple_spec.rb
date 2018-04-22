@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'var tuples' do
+RSpec.describe Gobstones::Parser, 'var tuples' do
   it 'parses an empty var tuple' do
     var_tuple = VarTuple.empty
 

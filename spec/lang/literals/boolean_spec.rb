@@ -1,4 +1,4 @@
-describe Boolean do
+RSpec.describe Boolean do
   it 'evaluates true to itself' do
     expect(true_value.evaluate).to eq(true_value)
   end

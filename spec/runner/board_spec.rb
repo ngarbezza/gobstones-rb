@@ -1,4 +1,4 @@
-describe Board do
+RSpec.describe Board do
   let(:colors) { [azul, negro, rojo, verde] }
 
   it 'can be created with a number of rows and columns' do

@@ -1,4 +1,4 @@
-describe VaciarTablero do
+RSpec.describe VaciarTablero do
   let(:context) { clean_context }
 
   it 'empties the board in the context' do

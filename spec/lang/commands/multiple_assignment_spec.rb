@@ -1,4 +1,4 @@
-describe MultipleAssignment do
+RSpec.describe MultipleAssignment do
   let(:my_function_return) { ReturnFromFunction.new([42.to_gbs_num, verde, MinDir.new]) }
   let(:my_function_def) { Function.new('myFunction', no_arguments, empty_body, my_function_return) }
   let(:call_to_my_function) { FunctionCall.new('myFunction', []) }

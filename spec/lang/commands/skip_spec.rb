@@ -1,4 +1,4 @@
-describe Skip do
+RSpec.describe Skip do
   let(:context) { clean_context }
 
   it 'evaluates and does nothing' do

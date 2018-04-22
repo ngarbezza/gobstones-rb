@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'function calls' do
+RSpec.describe Gobstones::Parser, 'function calls' do
   it 'parses a function call without args' do
     expected = FunctionCall.new('f1')
 

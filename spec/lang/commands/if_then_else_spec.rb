@@ -1,4 +1,4 @@
-describe IfThenElse do
+RSpec.describe IfThenElse do
   let(:context) { clean_context }
   let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
   let(:else_block) { CommandBlock.new([Poner.new(rojo)]) }

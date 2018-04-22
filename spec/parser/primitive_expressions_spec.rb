@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'primitive expressions' do
+RSpec.describe Gobstones::Parser, 'primitive expressions' do
   describe 'variable identifiers' do
     it 'parses valid var names' do
       expect('v').to be_parsed_as(:expression).and_return('v'.to_var_name)

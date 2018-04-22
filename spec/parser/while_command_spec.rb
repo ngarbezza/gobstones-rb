@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'while statements' do
+RSpec.describe Gobstones::Parser, 'while statements' do
   it 'parses a statement with a simple boolean and an empty block' do
     while_cmd = While.new(true_value, empty_body)
 

@@ -1,4 +1,4 @@
-describe Gobstones, 'type checker' do
+RSpec.describe Gobstones, 'type checker' do
   describe 'board expressions' do
     describe 'puedeMover()' do
       it 'allows a direction as argument' do

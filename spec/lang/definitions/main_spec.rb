@@ -1,4 +1,4 @@
-describe Main do
+RSpec.describe Main do
   let(:context) { clean_context }
   let(:return_tuple) { VarTuple.new(['x'.to_var_name, 'y'.to_var_name]) }
   let(:return_from_main) { ReturnFromMain.new(return_tuple) }

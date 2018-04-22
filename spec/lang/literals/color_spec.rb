@@ -1,4 +1,4 @@
-describe Color do
+RSpec.describe Color do
   let(:all) { Color.all.map(&:new) }
 
   it 'includes Azul, Negro, Rojo and Verde' do

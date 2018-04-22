@@ -1,4 +1,4 @@
-describe Direction do
+RSpec.describe Direction do
   let(:all) { Direction.all.map(&:new) }
 
   it 'includes Norte, Este, Sur and Oeste' do

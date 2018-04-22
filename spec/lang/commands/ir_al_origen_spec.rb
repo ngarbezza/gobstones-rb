@@ -1,4 +1,4 @@
-describe IrAlOrigen do
+RSpec.describe IrAlOrigen do
   let(:context) { clean_context }
 
   it 'puts the head in 0, 0 when evaluating' do

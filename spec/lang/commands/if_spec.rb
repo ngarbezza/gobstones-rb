@@ -1,4 +1,4 @@
-describe If do
+RSpec.describe If do
   let(:context) { clean_context }
   let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
 

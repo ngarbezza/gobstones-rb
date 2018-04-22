@@ -1,4 +1,4 @@
-describe NoReturnStatement do
+RSpec.describe NoReturnStatement do
   let(:context) { clean_context }
   let(:no_return_statement) { NoReturnStatement.new }
 

@@ -1,4 +1,4 @@
-describe Head do
+RSpec.describe Head do
   let(:head)  { Head.new }
 
   it 'has a position, default 0;0' do

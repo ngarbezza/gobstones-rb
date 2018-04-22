@@ -1,4 +1,4 @@
-describe Poner do
+RSpec.describe Poner do
   let(:context) { clean_context }
 
   it 'puts a ball of the given color in the current cell when evaluating' do

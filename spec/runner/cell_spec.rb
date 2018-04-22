@@ -1,4 +1,4 @@
-describe Cell do
+RSpec.describe Cell do
   let(:colors) { [azul, negro, rojo, verde] }
   let(:cell)   { Cell.new }
 

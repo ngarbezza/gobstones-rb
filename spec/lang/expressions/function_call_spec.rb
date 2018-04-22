@@ -1,4 +1,4 @@
-describe FunctionCall do
+RSpec.describe FunctionCall do
   let(:my_function) { Function.new('myFunction', args, empty_body, return_statement) }
   let(:program) { Program.new([my_function], no_return_statement) }
   let(:context) { program_context_for(program) }

@@ -1,4 +1,4 @@
-describe Gobstones::Parser, 'data types' do
+RSpec.describe Gobstones::Parser, 'data types' do
   describe 'numbers' do
     it 'parses a positive number' do
       expect('42').to be_parsed_as(:expression).and_return(42.to_gbs_num)

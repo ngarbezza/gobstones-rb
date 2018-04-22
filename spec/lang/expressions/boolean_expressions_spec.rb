@@ -1,5 +1,5 @@
 # TODO test/implement short-circuit?
-describe 'boolean expressions' do
+RSpec.describe 'boolean expressions' do
   let(:context) { clean_context }
 
   describe And do
