@@ -7,12 +7,12 @@ Gem::Specification.new do |spec|
   spec.licenses = ['GPLv3']
   spec.authors = ['Nahuel Garbezza']
   spec.email = ['n.garbezza@gmail.com']
-  spec.homepage = 'http://nahuelgarbezza.com.ar/gobstones-rb/'
+  spec.homepage = 'https://github.com/ngarbezza/gobstones-rb'
   spec.summary = 'Ruby implementation of the Gobstones programming language'
   spec.description = 'Ruby implementation of the Gobstones programming language'
 
-  spec.required_ruby_version = '>= 2.2.3'
-  spec.required_rubygems_version = '>= 1.3.6'
+  spec.required_ruby_version = '>= 2.5.1'
+  spec.required_rubygems_version = '>= 2.7.6'
 
   spec.add_development_dependency 'rspec', '~> 3'
 
