@@ -6,7 +6,6 @@ RSpec.describe IrAlOrigen do
     context.head.move_east
     described_class.new.evaluate context
 
-    expect(context.head.x_pos).to eq(0)
-    expect(context.head.y_pos).to eq(0)
+    expect_positioned_at(0, 0)
   end
 end

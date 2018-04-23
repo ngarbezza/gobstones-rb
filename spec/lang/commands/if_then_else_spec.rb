@@ -1,7 +1,7 @@
 RSpec.describe IfThenElse do
   let(:context) { clean_context }
-  let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
-  let(:else_block) { CommandBlock.new([Poner.new(rojo)]) }
+  let(:then_block) { CommandBlock.with_just(Poner.new(verde)) }
+  let(:else_block) { CommandBlock.with_just(Poner.new(rojo)) }
 
   it "evaluates the 'then' block and it does not evaluate the 'else' block" do
     described_class.new(true_value, then_block, else_block).evaluate context

@@ -1,7 +1,7 @@
 RSpec.describe ProcedureCall do
   it 'evaluates an existing procedure when calling it' do
     poner_cmd = Poner.new(verde)
-    body = CommandBlock.new([poner_cmd])
+    body = CommandBlock.with_just(poner_cmd)
     my_procedure = Procedure.new('MyProcedure', no_arguments, body)
     program = Program.new([my_procedure], no_return_statement)
     context = program_context_for(program)
@@ -9,15 +9,15 @@ RSpec.describe ProcedureCall do
     proc_call = described_class.new('MyProcedure', [])
     proc_call.evaluate context
 
-    expect_balls(verde)
+    expect(context.head.are_there_balls?(verde)).to be(true)
   end
 
   it 'allows to call a procedure from another procedure' do
     poner_cmd = Poner.new(azul)
-    inner_procedure_body = CommandBlock.new([poner_cmd])
+    inner_procedure_body = CommandBlock.with_just(poner_cmd)
     inner_procedure = Procedure.new('Inner', no_arguments, inner_procedure_body)
     call_to_inner_procedure = described_class.new('Inner', [])
-    outer_procedure_body = CommandBlock.new([call_to_inner_procedure])
+    outer_procedure_body = CommandBlock.with_just(call_to_inner_procedure)
     outer_procedure = Procedure.new('Outer', no_arguments, outer_procedure_body)
     program = Program.new([outer_procedure, inner_procedure], no_return_statement)
     program_context = program_context_for(program)

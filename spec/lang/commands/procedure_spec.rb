@@ -3,7 +3,7 @@ RSpec.describe Procedure do
 
   it 'executes its body and leaves state in the program context' do
     poner_cmd = Poner.new(rojo)
-    body = CommandBlock.new([poner_cmd])
+    body = CommandBlock.with_just(poner_cmd)
     procedure = described_class.new('MyProcedure', no_arguments, body)
     procedure.evaluate context
 
@@ -15,7 +15,7 @@ RSpec.describe Procedure do
     context.set var_name, verde
 
     poner_cmd = Poner.new(var_name)
-    body = CommandBlock.new([poner_cmd])
+    body = CommandBlock.with_just(poner_cmd)
     procedure = described_class.new('MyProcedure', no_arguments, body)
 
     expect { procedure.evaluate context }.to raise_error(UndefinedVariableError)

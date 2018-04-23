@@ -1,6 +1,6 @@
 RSpec.describe While do
   let(:context) { clean_context }
-  let(:while_block) { CommandBlock.new([Poner.new(verde)]) }
+  let(:while_block) { CommandBlock.with_just(Poner.new(verde)) }
 
   def stub_condition(times)
     double('while condition').tap do |condition|

@@ -5,7 +5,7 @@ RSpec.describe Gobstones::Parser, 'command blocks' do
   end
 
   it 'parses a block with one simple cmd' do
-    cmd_block = CommandBlock.new([Skip.new])
+    cmd_block = CommandBlock.with_just(Skip.new)
     expect('{ Skip }').to be_parsed_as(:command).and_return(cmd_block)
   end
 

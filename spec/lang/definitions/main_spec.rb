@@ -5,7 +5,7 @@ RSpec.describe Main do
   let(:assign_x) { SingleAssignment.new('x'.to_var_name, 42.to_gbs_num) }
   let(:assign_y) { SingleAssignment.new('y'.to_var_name, verde) }
   let(:command_block) { CommandBlock.new([assign_x, assign_y]) }
-  let(:main) { Main.new(command_block, return_from_main) }
+  let(:main) { described_class.new(command_block, return_from_main) }
 
   it 'evaluates the body' do
     main.evaluate context
@@ -29,7 +29,7 @@ RSpec.describe Main do
     it 'returns an empty result when no return statement is present' do
       result = main.evaluate(context)
 
-      expect(result.empty?).to be(true)
+      expect(result).to be_empty
     end
   end
 end

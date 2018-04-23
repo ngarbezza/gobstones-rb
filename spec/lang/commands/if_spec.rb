@@ -2,7 +2,7 @@ RSpec.describe If do
   subject(:evaluate_if_command) { described_class.new(condition, then_block).evaluate(context) }
 
   let(:context) { clean_context }
-  let(:then_block) { CommandBlock.new([Poner.new(verde)]) }
+  let(:then_block) { CommandBlock.with_just(Poner.new(verde)) }
 
   context 'when condition is true' do
     let(:condition) { true_value }

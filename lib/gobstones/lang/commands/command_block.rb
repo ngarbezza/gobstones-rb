@@ -12,6 +12,10 @@ module Gobstones
           new([])
         end
 
+        def self.with_just(a_command)
+          new([a_command])
+        end
+
         def initialize(commands)
           @commands = commands
         end

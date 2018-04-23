@@ -15,7 +15,7 @@ RSpec.describe Gobstones::Parser, 'procedure definitions' do
 
   it 'parses a procedure with some statements' do
     args = VarTuple.new(['arg'.to_var_name])
-    body = CommandBlock.new([Poner.new(verde)])
+    body = CommandBlock.with_just(Poner.new(verde))
     proc_def = Procedure.new('MyProc', args, body)
 
     expect('procedure MyProc(arg)

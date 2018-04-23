@@ -3,7 +3,7 @@ RSpec.describe RepeatWith do
   let(:var_name) { 'var'.to_var_name }
 
   it 'iterates over numbers when evaluating' do
-    command_block = CommandBlock.new([Poner.new(rojo)])
+    command_block = CommandBlock.with_just(Poner.new(rojo))
     repeat_with = described_class.new(var_name, 1.to_gbs_num, 10.to_gbs_num, command_block)
 
     repeat_with.evaluate context
@@ -36,7 +36,7 @@ RSpec.describe RepeatWith do
   end
 
   it 'allows to use the index variable inside the command block' do
-    cmd_block = CommandBlock.new([Poner.new(var_name)])
+    cmd_block = CommandBlock.with_just(Poner.new(var_name))
     repeat_with = described_class.new(var_name, azul, verde, cmd_block)
 
     repeat_with.evaluate context
@@ -45,7 +45,7 @@ RSpec.describe RepeatWith do
   end
 
   it 'does exactly one iteration if range values are the same' do
-    cmd_block = CommandBlock.new([Poner.new(verde)])
+    cmd_block = CommandBlock.with_just(Poner.new(verde))
     repeat_with = described_class.new(var_name, 1.to_gbs_num, 1.to_gbs_num, cmd_block)
 
     repeat_with.evaluate context
@@ -54,7 +54,7 @@ RSpec.describe RepeatWith do
   end
 
   it 'does no iterations if the from is higher than the to' do
-    cmd_block = CommandBlock.new([Poner.new(verde)])
+    cmd_block = CommandBlock.with_just(Poner.new(verde))
     repeat_with = described_class.new(var_name, 8.to_gbs_num, 4.to_gbs_num, cmd_block)
 
     repeat_with.evaluate context

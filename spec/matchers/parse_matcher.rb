@@ -56,7 +56,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
 
   def expression_node_to_program(node)
     assign = SingleAssignment.new('x'.to_var_name, node)
-    main_node_to_program(Main.new(CommandBlock.new([assign]), no_return_statement))
+    main_node_to_program(Main.new(CommandBlock.with_just(assign), no_return_statement))
   end
 
   def command_code_to_program(code)
@@ -64,7 +64,7 @@ RSpec::Matchers.define :be_parsed_as do |grammar_elem|
   end
 
   def command_node_to_program(node)
-    main_node_to_program(Main.new(CommandBlock.new([node]), no_return_statement))
+    main_node_to_program(Main.new(CommandBlock.with_just(node), no_return_statement))
   end
 
   def var_tuple_code_to_program(code)

@@ -4,8 +4,7 @@ RSpec.describe Mover do
   it 'moves the head to the specified direction when evaluating' do
     described_class.new(norte).evaluate(context)
 
-    expect(context.head.x_pos).to eq(0)
-    expect(context.head.y_pos).to eq(1)
+    expect_positioned_at(0, 1)
   end
 
   it 'undoes the given movement' do
@@ -14,8 +13,7 @@ RSpec.describe Mover do
     cmd.evaluate context
     cmd.undo context
 
-    expect(context.head.x_pos).to eq(0)
-    expect(context.head.y_pos).to eq(0)
+    expect_positioned_at(0, 0)
   end
 
   it 'returns the opposite command' do

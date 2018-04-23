@@ -10,7 +10,7 @@ RSpec.describe Gobstones::Parser, 'repeatWith statements' do
   it 'parses an statement with any expressions in the range' do
     min_range = MinDir.new
     max_range = Siguiente.new(rojo)
-    cmd_block = CommandBlock.new([Poner.new(verde)])
+    cmd_block = CommandBlock.with_just(Poner.new(verde))
     rw_cmd = RepeatWith.new('myDir'.to_var_name, min_range, max_range, cmd_block)
 
     expect('repeatWith myDir in minDir() .. siguiente(Rojo) {
