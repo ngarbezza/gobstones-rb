@@ -67,7 +67,7 @@ DEPENDENCIES
   rspec (~> 3.7)
   rubocop (~> 0.50)
   rubocop-rspec (~> 1.25)
-  simplecov (~> 0.9)
+  simplecov (~> 0.14)
   treetop (~> 1.6)
 
 BUNDLED WITH

@@ -8,7 +8,7 @@ gem 'treetop', '~> 1.6'
 group :test do
   gem 'autotest-standalone', '~> 4.5'
   gem 'rspec', '~> 3.7'
-  gem 'simplecov', '~> 0.9', require: false
+  gem 'simplecov', '~> 0.14', require: false
 end
 
 group :development do
