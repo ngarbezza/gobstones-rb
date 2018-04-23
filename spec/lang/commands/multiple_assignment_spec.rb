@@ -9,7 +9,7 @@ RSpec.describe MultipleAssignment do
   let(:c) { 'c'.to_var_name }
   let(:d) { 'd'.to_var_name }
 
-  context 'success' do
+  context 'when assignment can be made' do
     it 'evaluates and set all the variables with the return values of a function call' do
       var_tuple = VarTuple.new([a, b, c])
       assign = described_class.new(var_tuple, call_to_my_function)
@@ -24,7 +24,7 @@ RSpec.describe MultipleAssignment do
     end
   end
 
-  context 'failure' do
+  context 'when assignment cannot be made' do
     it 'fails if there are more variables to be assigned on the left' do
       var_tuple = VarTuple.new([a, b, c, d])
       assign = described_class.new(var_tuple, call_to_my_function)

@@ -2,7 +2,7 @@ RSpec.describe FunctionCall do
   let(:my_function) { Function.new('myFunction', args, empty_body, return_statement) }
   let(:program) { Program.new([my_function], no_return_statement) }
   let(:context) { program_context_for(program) }
-  let(:call) { FunctionCall.new('myFunction', calling_arguments) }
+  let(:call) { described_class.new('myFunction', calling_arguments) }
 
   context 'without arguments' do
     let(:args) { no_arguments }

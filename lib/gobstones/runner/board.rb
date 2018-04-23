@@ -5,14 +5,14 @@ module Gobstones
     class Board
       attr_reader :rows, :columns
 
-      def initialize(r, c, matrix = [])
-        @rows = r
-        @columns = c
+      def initialize(rows_num, cols_num, matrix = [])
+        @rows = rows_num
+        @columns = cols_num
         if matrix.empty?
           @matrix = []
-          r.times do
+          rows_num.times do
             @matrix << []
-            c.times { @matrix.last << Cell.new }
+            cols_num.times { @matrix.last << Cell.new }
           end
         else
           @matrix = matrix
@@ -56,7 +56,7 @@ module Gobstones
 
       def clone
         new_matrix = @matrix.map { |row| row.map(&:clone) }
-        self.class.new(@rows, @columns, new_matrix)
+        self.class.new(rows, columns, new_matrix)
       end
     end
   end

@@ -26,7 +26,7 @@ RSpec.describe Gobstones::Parser, 'assignments' do
   end
 
   describe 'multiple' do
-    context 'failures' do
+    context 'when input causes a failure' do
       it 'fails if the expression on the left side is not a var tuple' do
         expect('myVar = funcCall()').to be_parsed_as(:command).and_fail
       end

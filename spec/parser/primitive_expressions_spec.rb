@@ -16,9 +16,7 @@ RSpec.describe Gobstones::Parser, 'primitive expressions' do
     it 'does not parse reserved words as var names' do
       literals = %w[True False Rojo Negro Azul Verde Norte Oeste Este Sur]
 
-      (RESERVED_IDS - literals).each do |id|
-        expect(id).to be_parsed_as(:expression).and_fail
-      end
+      expect(RESERVED_IDS - literals).to all(be_parsed_as(:expression).and_fail)
     end
   end
 

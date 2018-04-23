@@ -58,7 +58,7 @@ module Gobstones
         self
       end
 
-      def if_false(block, context)
+      def if_false(_block, _context)
         # nothing to do, I'm true :)
         self
       end
@@ -89,7 +89,7 @@ module Gobstones
         True.new
       end
 
-      def if_true(block, context)
+      def if_true(_block, _context)
         # nothing to do, I'm false :)
         self
       end

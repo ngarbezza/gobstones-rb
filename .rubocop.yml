@@ -112,3 +112,12 @@ Layout/MultilineMethodCallIndentation:
 Rails/Output:
   Exclude:
     - 'bin/*'
+
+RSpec/ExpectActual:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+RSpec/ExampleLength:
+  Max: 10

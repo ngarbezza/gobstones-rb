@@ -25,14 +25,6 @@ RSpec.describe ExecutionContext do
     it 'is the program context itself' do
       expect(context.program_context).to eq(context)
     end
-
-    it 'has a head' do
-      expect(context.head).to be_a(Head)
-    end
-
-    it 'has a board' do
-      expect(context.board).to be_a(Board)
-    end
   end
 
   describe ProcedureExecutionContext do
@@ -55,15 +47,15 @@ RSpec.describe ExecutionContext do
     end
 
     it "has a new head, a copy of the outer context's head" do
-      context.head.put azul
+      context.head.put(azul)
       function_context = FunctionExecutionContext.based_on(context)
-      function_context.head.put verde
+      function_context.head.put(verde)
 
       expect(function_context.head).not_to eq(context.head)
       expect_balls(azul)
-      expect(function_context.head.are_there_balls?(azul)).to be(true)
       expect_no_balls(verde)
-      expect(function_context.head.are_there_balls?(verde)).to be(true)
+      expect_balls(azul, on: function_context.head)
+      expect_balls(verde, on: function_context.head)
     end
   end
 end

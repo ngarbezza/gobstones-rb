@@ -4,27 +4,27 @@ module Gobstones
   module Runner
     class Cell
       def initialize
-        @values = { Azul => 0, Negro => 0, Rojo => 0, Verde => 0 }
+        @values = Hash[Color.all.map { |color| [color, 0] }]
       end
 
       def put(color)
-        check color
+        check(color)
         lookup(color) { |value| value + 1 }
       end
 
       def take_out(color)
-        check color
+        check(color)
         raise EmptyCellError unless are_there_balls?(color)
         lookup(color) { |value| value - 1 }
       end
 
       def are_there_balls?(color)
-        check color
+        check(color)
         number_of_balls(color).positive?
       end
 
       def number_of_balls(color)
-        check color
+        check(color)
         lookup(color)
       end
 
@@ -38,7 +38,7 @@ module Gobstones
 
       def clone
         self.class.new.tap do |copy|
-          [Azul.new, Negro.new, Rojo.new, Verde.new].each do |color|
+          Color.all.map(&:new).each do |color|
             number_of_balls(color).times { copy.put(color) }
           end
         end
@@ -47,7 +47,7 @@ module Gobstones
       private
 
       def check(color)
-        raise "'#{color}' is not a color" unless [Azul, Negro, Rojo, Verde].include?(color.class)
+        raise "'#{color}' is not a color" unless Color.all.include?(color.class)
       end
 
       def lookup(color)
