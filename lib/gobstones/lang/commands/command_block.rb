@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class CommandBlock
-        include EqualByClass
+        include EqualityDefinition
 
         attr_reader :commands
 
@@ -20,8 +20,8 @@ module Gobstones
           @commands = commands
         end
 
-        def ==(other)
-          super(other) && commands == other.commands
+        def equality_attributes
+          %i[commands]
         end
 
         def empty?
@@ -29,7 +29,7 @@ module Gobstones
         end
 
         def evaluate(context)
-          commands.each { |command| command.evaluate context }
+          commands.each { |command| command.evaluate(context) }
         end
       end
     end

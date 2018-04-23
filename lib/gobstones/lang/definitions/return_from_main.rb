@@ -1,9 +1,9 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     class ReturnFromMain
-      include EqualByClass
+      include EqualityDefinition
 
       attr_reader :var_tuple
 
@@ -11,9 +11,8 @@ module Gobstones
         @var_tuple = var_tuple
       end
 
-      def ==(other)
-        super(other) &&
-          var_tuple == other.var_tuple
+      def equality_attributes
+        %i[var_tuple]
       end
 
       def evaluate(context)

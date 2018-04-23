@@ -11,14 +11,14 @@ module Gobstones
           @else_block = else_block
         end
 
-        def ==(other)
-          super(other) && else_block == other.else_block
+        def equality_attributes
+          super + [:else_block]
         end
 
         def evaluate(context)
-          cond = evaluate_condition(context)
-          cond.if_true then_block, context
-          cond.if_false else_block, context
+          evaluate_condition(context).
+            if_true(then_block, context).
+            if_false(else_block, context)
         end
       end
     end

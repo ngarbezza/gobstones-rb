@@ -1,5 +1,5 @@
 RSpec.describe Direction do
-  let(:all) { Direction.all.map(&:new) }
+  let(:all) { described_class.all.map(&:new) }
 
   it 'includes Norte, Este, Sur and Oeste' do
     expect(all.include?(norte)).to be(true)
@@ -9,9 +9,7 @@ RSpec.describe Direction do
   end
 
   it 'includes all direction classes in the order specification' do
-    Direction.all.each do |direction_class|
-      expect(Direction.order.include?(direction_class)).to be(true)
-    end
+    expect(described_class.all).to match_array(described_class.order)
   end
 
   it 'evaluates any direction to itself' do

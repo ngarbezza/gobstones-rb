@@ -9,12 +9,12 @@ module Gobstones
         @name = name
       end
 
-      def ==(var)
-        super(var) && name == var.name
+      def equality_attributes
+        %i[name]
       end
 
       def hash
-        @name.hash
+        name.hash
       end
 
       def evaluate(context)

@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 require 'error_handling_protocol'
 
 module Gobstones
   module Lang
     class Expression
-      include EqualByClass
+      include EqualityDefinition
 
       def evaluate(_context)
         subclass_responsibility

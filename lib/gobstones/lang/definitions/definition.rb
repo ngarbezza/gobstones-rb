@@ -1,11 +1,11 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 require 'gobstones/runner/errors/wrong_arguments_error'
 require 'error_handling_protocol'
 
 module Gobstones
   module Lang
     class Definition
-      include EqualByClass
+      include EqualityDefinition
 
       attr_reader :name, :arguments, :body, :return_statement
 
@@ -16,12 +16,8 @@ module Gobstones
         @return_statement = return_statement
       end
 
-      def ==(other)
-        super(other) &&
-          name == other.name &&
-          arguments == other.arguments &&
-          body == other.body &&
-          return_statement == other.return_statement
+      def equality_attributes
+        %i[name arguments body return_statement]
       end
 
       def named?(a_name)

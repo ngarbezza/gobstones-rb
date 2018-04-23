@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 require 'gobstones/runner/errors/definition_not_found_error'
 
 module Gobstones
   module Lang
     module DefinitionCall
-      include EqualByClass
+      include EqualityDefinition
 
       attr_reader :name, :arguments
 
@@ -13,8 +13,8 @@ module Gobstones
         @arguments = arguments
       end
 
-      def ==(other)
-        super && name == other.name && arguments == other.arguments
+      def equality_attributes
+        %i[name arguments]
       end
 
       def evaluate(context)

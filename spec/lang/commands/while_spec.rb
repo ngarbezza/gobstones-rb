@@ -3,7 +3,7 @@ RSpec.describe While do
   let(:while_block) { CommandBlock.with_just(Poner.new(verde)) }
 
   def stub_condition(times)
-    double('while condition').tap do |condition|
+    instance_double(Boolean).tap do |condition|
       expected_values = [true_value] * times + [false_value]
       allow(condition).to receive(:evaluate).and_return(*expected_values)
     end

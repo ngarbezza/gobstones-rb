@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class Conditional
-        include EqualByClass
+        include EqualityDefinition
 
         attr_reader :condition, :then_block
 
@@ -13,10 +13,8 @@ module Gobstones
           @then_block = then_block
         end
 
-        def ==(other)
-          super &&
-            condition == other.condition &&
-            then_block == other.then_block
+        def equality_attributes
+          %i[condition then_block]
         end
 
         def evaluate_condition(context)

@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class MultipleAssignment
-        include EqualByClass
+        include EqualityDefinition
 
         attr_reader :var_tuple, :expression
 
@@ -13,17 +13,17 @@ module Gobstones
           @expression = expression
         end
 
-        def ==(other)
-          super(other) && var_tuple == other.var_tuple && expression == other.expression
+        def equality_attributes
+          %i[var_tuple expression]
         end
 
         def evaluate(context)
           # TODO implement as many simple assignments?
           validate_expression_is_function_call
           function_call_result = expression.evaluate(context)
-          check_number_of_arguments function_call_result
+          check_number_of_arguments(function_call_result)
           function_call_result.length.times do |index|
-            context.set var_tuple.variable_at(index), function_call_result[index]
+            context.set(var_tuple.variable_at(index), function_call_result[index])
           end
         end
 

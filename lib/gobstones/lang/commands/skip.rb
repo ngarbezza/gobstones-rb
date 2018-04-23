@@ -1,12 +1,12 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class Skip
-        include EqualByClass
+        include EqualityDefinition
 
-        def evaluate(context)
+        def evaluate(_context)
           # do nothing, that's my job :-)
         end
       end

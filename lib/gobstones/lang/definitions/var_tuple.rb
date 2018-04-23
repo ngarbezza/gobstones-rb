@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 require 'gobstones/extensions/string'
 
 module Gobstones
   module Lang
     class VarTuple
-      include EqualByClass
+      include EqualityDefinition
 
       attr_reader :variables
 
@@ -20,8 +20,8 @@ module Gobstones
         @variables = variables
       end
 
-      def ==(other)
-        super && variables == other.variables
+      def equality_attributes
+        %i[variables]
       end
 
       def length

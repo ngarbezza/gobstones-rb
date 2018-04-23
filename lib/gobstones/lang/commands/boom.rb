@@ -1,11 +1,11 @@
 require 'gobstones/runner/errors/boom_error'
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class Boom
-        include EqualByClass
+        include EqualityDefinition
 
         attr_reader :message
 
@@ -13,8 +13,8 @@ module Gobstones
           @message = message
         end
 
-        def ==(other)
-          super(other) && message == other.message
+        def equality_attributes
+          %i[message]
         end
 
         def evaluate(_context)

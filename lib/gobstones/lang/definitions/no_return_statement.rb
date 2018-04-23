@@ -1,9 +1,9 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     class NoReturnStatement
-      include EqualByClass
+      include EqualityDefinition
 
       def evaluate(context)
         # nothing to do

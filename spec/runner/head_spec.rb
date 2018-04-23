@@ -1,5 +1,5 @@
 RSpec.describe Head do
-  let(:head)  { Head.new }
+  subject(:head) { described_class.new }
 
   it 'has a position, default 0;0' do
     expect(head.x_pos).to eq(0)
@@ -7,22 +7,22 @@ RSpec.describe Head do
   end
 
   it 'answers the max size' do
-    expect(Head::MAX_ROWS).to eq(9)
-    expect(Head::MAX_COLS).to eq(9)
+    expect(described_class::MAX_ROWS).to eq(9)
+    expect(described_class::MAX_COLS).to eq(9)
   end
 
   it 'allows to be created at a random position' do
-    head = Head.at_random
+    head = described_class.at_random
 
-    100.times { expect(head.x_pos.between?(0, Head::MAX_ROWS - 1)).to be(true) }
-    100.times { expect(head.y_pos.between?(0, Head::MAX_COLS - 1)).to be(true) }
+    expect(head.x_pos.between?(0, described_class::MAX_ROWS - 1)).to be(true)
+    expect(head.y_pos.between?(0, described_class::MAX_COLS - 1)).to be(true)
   end
 
   describe 'movements' do
     context 'valid' do
       it 'moves north' do
         expect(head.can_move?(norte)).to be(true)
-        expect { head.move(norte) }.to_not raise_error
+        expect { head.move(norte) }.not_to raise_error
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(1)
       end
@@ -31,14 +31,14 @@ RSpec.describe Head do
         head.move norte
 
         expect(head.can_move?(sur)).to be(true)
-        expect { head.move(sur) }.to_not raise_error
+        expect { head.move(sur) }.not_to raise_error
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(0)
       end
 
       it 'moves east' do
         expect(head.can_move?(este)).to be(true)
-        expect { head.move(este) }.to_not raise_error
+        expect { head.move(este) }.not_to raise_error
         expect(head.x_pos).to eq(1)
         expect(head.y_pos).to eq(0)
       end
@@ -47,7 +47,7 @@ RSpec.describe Head do
         head.move este
 
         expect(head.can_move?(oeste)).to be(true)
-        expect { head.move(oeste) }.to_not raise_error
+        expect { head.move(oeste) }.not_to raise_error
         expect(head.x_pos).to eq(0)
         expect(head.y_pos).to eq(0)
       end
@@ -76,7 +76,7 @@ RSpec.describe Head do
       end
 
       it 'fails moving east' do
-        (Head::MAX_ROWS - 1).times { head.move este }
+        (described_class::MAX_ROWS - 1).times { head.move este }
 
         expect(head.can_move?(este)).to be(false)
         expect { head.move este }.to raise_error(OutOfBoardError)

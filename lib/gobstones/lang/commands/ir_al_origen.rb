@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class IrAlOrigen
-        include EqualByClass
+        include EqualityDefinition
 
         def evaluate(context)
           context.head.go_to_origin

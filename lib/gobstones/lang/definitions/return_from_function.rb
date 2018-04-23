@@ -1,9 +1,9 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     class ReturnFromFunction
-      include EqualByClass
+      include EqualityDefinition
 
       attr_reader :expressions
 
@@ -11,8 +11,8 @@ module Gobstones
         @expressions = expressions
       end
 
-      def ==(other)
-        super(other) && expressions == other.expressions
+      def equality_attributes
+        %i[expressions]
       end
 
       def evaluate(context)

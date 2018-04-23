@@ -1,10 +1,10 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 
 module Gobstones
   module Lang
     module Commands
       class SingleAssignment
-        include EqualByClass
+        include EqualityDefinition
 
         attr_reader :var_name, :expression
 
@@ -13,12 +13,12 @@ module Gobstones
           @expression = expression
         end
 
-        def ==(other)
-          super(other) && var_name == other.var_name && expression == other.expression
+        def equality_attributes
+          %i[var_name expression]
         end
 
         def evaluate(context)
-          context.set var_name, expression.evaluate(context)
+          context.set(var_name, expression.evaluate(context))
         end
       end
     end

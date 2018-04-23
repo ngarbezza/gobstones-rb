@@ -7,13 +7,11 @@ module Gobstones
       class While < Conditional
         STACK_LIMIT = 10_000
 
-        def evaluate(context)
-          stack_acc = 0
-          while evaluate_condition(context).true?
-            raise Runner::GobstonesRuntimeError, 'stack overflow' if stack_acc == STACK_LIMIT
-            then_block.evaluate context
-            stack_acc += 1
-          end
+        def evaluate(context, stack_size = 0)
+          raise Runner::GobstonesRuntimeError, 'stack overflow' if stack_size == STACK_LIMIT
+          return unless evaluate_condition(context).true?
+          then_block.evaluate(context)
+          evaluate(context, stack_size + 1)
         end
       end
     end

@@ -23,10 +23,8 @@ module Gobstones
         @right_expr = right
       end
 
-      def ==(other)
-        super(other) &&
-          left_expr == other.left_expr &&
-          right_expr == other.right_expr
+      def equality_attributes
+        %i[left_expr right_expr]
       end
     end
   end

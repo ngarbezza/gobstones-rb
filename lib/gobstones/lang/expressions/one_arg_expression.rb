@@ -9,8 +9,8 @@ module Gobstones
         @argument = argument
       end
 
-      def ==(other)
-        super(other) && argument == other.argument
+      def equality_attributes
+        %i[argument]
       end
 
       def evaluate(_context)

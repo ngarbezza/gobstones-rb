@@ -55,10 +55,12 @@ module Gobstones
 
       def if_true(block, context)
         block.evaluate context
+        self
       end
 
       def if_false(block, context)
         # nothing to do, I'm true :)
+        self
       end
 
       def true?
@@ -89,10 +91,12 @@ module Gobstones
 
       def if_true(block, context)
         # nothing to do, I'm false :)
+        self
       end
 
       def if_false(block, context)
         block.evaluate context
+        self
       end
 
       def true?

@@ -13,7 +13,7 @@ module Gobstones
         self
       end
 
-      # TODO EqualByClass module seems to fail used with Comparable
+      # TODO EqualityDefinition module seems to fail used with Comparable
 
       def ==(other)
         self.class == other.class

@@ -1,11 +1,11 @@
-require 'gobstones/modules/equal_by_class'
+require 'gobstones/modules/equality_definition'
 require 'gobstones/runner/execution_context'
 require 'gobstones/runner/program_result'
 
 module Gobstones
   module Lang
     class Program
-      include EqualByClass
+      include EqualityDefinition
 
       attr_reader :definitions, :main_definition
 
@@ -14,10 +14,8 @@ module Gobstones
         @main_definition = main_definition
       end
 
-      def ==(other)
-        super(other) &&
-          definitions == other.definitions &&
-          main_definition == other.main_definition
+      def equality_attributes
+        %i[definitions main_definition]
       end
 
       def evaluate
