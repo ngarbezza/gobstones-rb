@@ -1,8 +1,6 @@
 RSpec.describe Cell do
   subject(:cell) { described_class.new }
 
-  let(:colors) { [azul, negro, rojo, verde] }
-
   it 'answers that there are no balls of a given color' do
     expect_no_balls(*colors, on: cell)
   end

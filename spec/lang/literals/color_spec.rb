@@ -1,17 +1,12 @@
 RSpec.describe Color do
-  let(:all) { Color.all.map(&:new) }
+  let(:all) { described_class.all.map(&:new) }
 
   it 'includes Azul, Negro, Rojo and Verde' do
-    expect(all.include?(azul)).to be(true)
-    expect(all.include?(negro)).to be(true)
-    expect(all.include?(rojo)).to be(true)
-    expect(all.include?(verde)).to be(true)
+    expect(all).to contain_exactly(azul, negro, rojo, verde)
   end
 
   it 'includes all color classes in the order specification' do
-    Color.all.each do |color_class|
-      expect(Color.order.include?(color_class)).to be(true)
-    end
+    expect(described_class.all).to match_array(described_class.order)
   end
 
   it 'evaluates any color to itself' do

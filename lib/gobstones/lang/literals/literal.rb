@@ -1,6 +1,7 @@
 require 'gobstones/lang/expressions/expression'
 require 'gobstones/runner/errors/gobstones_type_error'
 require 'gobstones/runner/execution_context'
+require 'gobstones/extensions/boolean'
 require 'error_handling_protocol'
 
 module Gobstones
@@ -30,16 +31,16 @@ module Gobstones
 
       OPERATORS_MAPPING = {
         equal: :==,
-          not_equal: '!='.to_sym,
-          less_than: :<,
-          less_equal: :<=,
-          greater_than: :>,
-          greater_equal: :>=,
+        not_equal: '!='.to_sym,
+        less_than: :<,
+        less_equal: :<=,
+        greater_than: :>,
+        greater_equal: :>=,
       }.freeze
 
       OPERATORS_MAPPING.each do |gbs_op, ruby_op|
-        define_method gbs_op do |other|
-          send(ruby_op, other) ? True.new : False.new
+        define_method(gbs_op) do |other|
+          send(ruby_op, other).to_gbs_bool
         end
       end
 
@@ -59,7 +60,7 @@ module Gobstones
         not_boolean_type_error
       end
 
-      def is_true?
+      def true?
         not_boolean_type_error
       end
 

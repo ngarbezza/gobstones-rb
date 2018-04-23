@@ -1,6 +1,4 @@
 RSpec.describe Board do
-  let(:colors) { [azul, negro, rojo, verde] }
-
   it 'can be created with a number of rows and columns' do
     board = described_class.new(8, 5)
 
@@ -19,7 +17,7 @@ RSpec.describe Board do
 
     3.times do |x|
       5.times do |y|
-        expect(board.cell_at(x, y)).to be
+        expect(board.cell_at(x, y)).not_to be_nil
       end
     end
   end
@@ -60,23 +58,19 @@ RSpec.describe Board do
 
     board.empty!
 
-    board.each_cell do |cell|
-      colors.each do |color|
-        expect(cell.are_there_balls?(color)).to be(false)
-      end
-    end
+    board.each_cell { |cell| expect_no_balls(*colors, on: cell) }
   end
 
   it 'is empty if there are no balls' do
     board = described_class.new(3, 4)
 
-    expect(board.empty?).to be(true)
+    expect(board).to be_empty
   end
 
   it 'is not empty if there are balls' do
     board = described_class.new(3, 4)
     board.put 0, 0, negro
 
-    expect(board.empty?).to be(false)
+    expect(board).not_to be_empty
   end
 end

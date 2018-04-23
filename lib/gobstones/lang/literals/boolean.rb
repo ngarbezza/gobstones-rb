@@ -31,7 +31,7 @@ module Gobstones
         subclass_responsibility
       end
 
-      def is_true?
+      def true?
         subclass_responsibility
       end
     end
@@ -61,7 +61,7 @@ module Gobstones
         # nothing to do, I'm true :)
       end
 
-      def is_true?
+      def true?
         true
       end
 
@@ -95,7 +95,7 @@ module Gobstones
         block.evaluate context
       end
 
-      def is_true?
+      def true?
         false
       end
 

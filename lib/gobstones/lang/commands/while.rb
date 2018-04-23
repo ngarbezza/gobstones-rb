@@ -9,7 +9,7 @@ module Gobstones
 
         def evaluate(context)
           stack_acc = 0
-          while evaluate_condition(context).is_true?
+          while evaluate_condition(context).true?
             raise Runner::GobstonesRuntimeError, 'stack overflow' if stack_acc == STACK_LIMIT
             then_block.evaluate context
             stack_acc += 1

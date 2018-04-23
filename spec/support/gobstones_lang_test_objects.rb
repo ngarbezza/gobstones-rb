@@ -70,4 +70,8 @@ module GobstonesLangTestObjects
   def oeste
     Oeste.new
   end
+
+  def colors
+    [azul, negro, rojo, verde]
+  end
 end
