@@ -1,13 +1,13 @@
 module BoardAssertions
-  def expect_balls(*colors)
+  def expect_balls(*colors, on: context.head)
     colors.each do |color|
-      expect(context.head.are_there_balls?(color)).to be(true)
+      expect(on.are_there_balls?(color)).to be(true)
     end
   end
 
-  def expect_no_balls(*colors)
+  def expect_no_balls(*colors, on: context.head)
     colors.each do |color|
-      expect(context.head.are_there_balls?(color)).to be(false)
+      expect(on.are_there_balls?(color)).to be(false)
     end
   end
 

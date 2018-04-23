@@ -33,7 +33,7 @@ RSpec.describe Gobstones::Parser, 'assignments' do
     end
 
     it 'parses a valid assignment with a function call on the right side' do
-      var_tuple = VarTuple.new(['aColor'.to_var_name, 'aDirection'.to_var_name])
+      var_tuple = VarTuple.with_names(%w[aColor aDirection])
       func_call = FunctionCall.new('myFunction', [])
       assignment = MultipleAssignment.new(var_tuple, func_call)
 

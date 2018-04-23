@@ -2,20 +2,20 @@ RSpec.describe Board do
   let(:colors) { [azul, negro, rojo, verde] }
 
   it 'can be created with a number of rows and columns' do
-    board = Board.new(8, 5)
+    board = described_class.new(8, 5)
 
     expect(board.rows).to eq(8)
     expect(board.columns).to eq(5)
   end
 
   it 'has cells in every position' do
-    board = Board.new(3, 3)
+    board = described_class.new(3, 3)
 
     board.each_cell { |cell| expect(cell).to be_a(Cell) }
   end
 
   it 'accesses cells in a x&y dimension' do
-    board = Board.new(3, 5)
+    board = described_class.new(3, 5)
 
     3.times do |x|
       5.times do |y|
@@ -25,7 +25,7 @@ RSpec.describe Board do
   end
 
   it 'raises errors if it is accessed out of the bounds' do
-    board = Board.new(9, 6)
+    board = described_class.new(9, 6)
 
     expect { board.cell_at(9, 4) }.to raise_error(OutOfBoardError)
     expect { board.cell_at(3, 6) }.to raise_error(OutOfBoardError)
@@ -34,7 +34,7 @@ RSpec.describe Board do
   end
 
   it 'puts balls in a given position' do
-    board = Board.new(5, 5)
+    board = described_class.new(5, 5)
 
     2.times { board.put 0, 0, azul }
     10.times { board.put 2, 3, rojo }
@@ -46,7 +46,7 @@ RSpec.describe Board do
   end
 
   it 'puts and takes out balls in a given position' do
-    board = Board.new(2, 2)
+    board = described_class.new(2, 2)
 
     3.times { board.put 1, 1, verde }
     3.times { board.take_out 1, 1, verde }
@@ -55,7 +55,7 @@ RSpec.describe Board do
   end
 
   it 'clears the entire board' do
-    board = Board.new(3, 4)
+    board = described_class.new(3, 4)
     board.each_cell { |cell| cell.put colors.sample }
 
     board.empty!
@@ -68,13 +68,13 @@ RSpec.describe Board do
   end
 
   it 'is empty if there are no balls' do
-    board = Board.new(3, 4)
+    board = described_class.new(3, 4)
 
     expect(board.empty?).to be(true)
   end
 
   it 'is not empty if there are balls' do
-    board = Board.new(3, 4)
+    board = described_class.new(3, 4)
     board.put 0, 0, negro
 
     expect(board.empty?).to be(false)

@@ -4,6 +4,6 @@ RSpec.describe NoReturnStatement do
   let(:context) { clean_context }
 
   it 'does nothing when evaluating on a context' do
-    expect { no_return_statement.evaluate(context) }.not_to change(-> { context.head })
+    expect { no_return_statement.evaluate(context) }.not_to change(context, :head)
   end
 end

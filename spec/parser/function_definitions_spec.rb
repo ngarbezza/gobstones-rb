@@ -8,7 +8,7 @@ RSpec.describe Gobstones::Parser, 'function definitions' do
   end
 
   it 'parses a function with some args' do
-    args = VarTuple.new(['firstArg'.to_var_name, 'secondArg'.to_var_name, 'thirdArg'.to_var_name])
+    args = VarTuple.with_names(%w[firstArg secondArg thirdArg])
     return_st = ReturnFromFunction.new([verde, PuedeMover.new(norte)])
     func_def = Function.new('myCoolFunction', args, empty_body, return_st)
 
@@ -18,7 +18,7 @@ RSpec.describe Gobstones::Parser, 'function definitions' do
   end
 
   it 'parses a function with some statements' do
-    args = VarTuple.new(['arg'.to_var_name])
+    args = VarTuple.with_names(%w[arg])
     body = CommandBlock.with_just(Poner.new(verde))
     return_st = ReturnFromFunction.new([true_value])
     func_def = Function.new('myFunc', args, body, return_st)

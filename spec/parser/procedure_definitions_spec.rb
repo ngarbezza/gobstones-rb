@@ -6,7 +6,7 @@ RSpec.describe Gobstones::Parser, 'procedure definitions' do
   end
 
   it 'parses an empty procedure with some args' do
-    args = VarTuple.new(['firstArg'.to_var_name, 'secondArg'.to_var_name, 'thirdArg'.to_var_name])
+    args = VarTuple.with_names(%w[firstArg secondArg thirdArg])
     proc_def = Procedure.new('MyProc', args, empty_body)
 
     expect('procedure MyProc (firstArg, secondArg, thirdArg) {}').
@@ -14,7 +14,7 @@ RSpec.describe Gobstones::Parser, 'procedure definitions' do
   end
 
   it 'parses a procedure with some statements' do
-    args = VarTuple.new(['arg'.to_var_name])
+    args = VarTuple.with_names(%w[arg])
     body = CommandBlock.with_just(Poner.new(verde))
     proc_def = Procedure.new('MyProc', args, body)
 

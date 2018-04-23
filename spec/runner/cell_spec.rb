@@ -1,22 +1,18 @@
 RSpec.describe Cell do
+  subject(:cell) { described_class.new }
+
   let(:colors) { [azul, negro, rojo, verde] }
-  let(:cell)   { Cell.new }
 
   it 'answers that there are no balls of a given color' do
-    expect(cell.are_there_balls?(azul)).to be(false)
-    expect(cell.are_there_balls?(negro)).to be(false)
-    expect(cell.are_there_balls?(rojo)).to be(false)
-    expect(cell.are_there_balls?(verde)).to be(false)
+    expect_no_balls(*colors, on: cell)
   end
 
   it 'answers that there are balls of a given color when adding some' do
     cell.put azul
     cell.put rojo
 
-    expect(cell.are_there_balls?(azul)).to be(true)
-    expect(cell.are_there_balls?(negro)).to be(false)
-    expect(cell.are_there_balls?(rojo)).to be(true)
-    expect(cell.are_there_balls?(verde)).to be(false)
+    expect_balls(azul, rojo, on: cell)
+    expect_no_balls(verde, negro, on: cell)
   end
 
   it 'answers the number of balls of a given color' do
@@ -52,16 +48,16 @@ RSpec.describe Cell do
 
     cell.empty!
 
-    colors.each { |color| expect(cell.are_there_balls?(color)).to be(false) }
+    expect_no_balls(*colors, on: cell)
   end
 
   it "is empty if it doesn't have any balls" do
-    expect(cell.empty?).to be(true)
+    expect(cell).to be_empty
   end
 
   it 'is not empty it it has some balls' do
     colors.each { |color| cell.put color }
 
-    expect(cell.empty?).to be(false)
+    expect(cell).not_to be_empty
   end
 end

@@ -1,5 +1,5 @@
 RSpec.describe Gobstones::Parser, 'main definition' do
-  let(:return_tuple) { VarTuple.new(['x'.to_var_name, 'y'.to_var_name]) }
+  let(:return_tuple) { VarTuple.with_names(%w[x y]) }
 
   it 'parses a valid Main definition without return nor commands' do
     main = Main.new(empty_body, no_return_statement)

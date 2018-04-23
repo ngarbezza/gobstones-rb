@@ -1,22 +1,29 @@
 require 'gobstones/lang/expressions/two_arg_expression'
 require 'gobstones/runner/errors/gobstones_runtime_error'
 require 'gobstones/runner/execution_context'
+require 'gobstones/extensions/integer'
 
 module Gobstones
   module Lang
-    class Add < TwoArgExpression
+    class ArithmeticExpression < TwoArgExpression
+      def self.numbers(first, second)
+        new(first.to_gbs_num, second.to_gbs_num)
+      end
+    end
+
+    class Add < ArithmeticExpression
       evaluates_with :+
     end
 
-    class Sub < TwoArgExpression
+    class Sub < ArithmeticExpression
       evaluates_with :-
     end
 
-    class Mul < TwoArgExpression
+    class Mul < ArithmeticExpression
       evaluates_with :*
     end
 
-    class Div < TwoArgExpression
+    class Div < ArithmeticExpression
       def evaluate(context = Runner::NullExecutionContext.new)
         left_expr.evaluate(context) / right_expr.evaluate(context)
       rescue ZeroDivisionError
@@ -24,11 +31,11 @@ module Gobstones
       end
     end
 
-    class Mod < TwoArgExpression
+    class Mod < ArithmeticExpression
       evaluates_with :%
     end
 
-    class Pow < TwoArgExpression
+    class Pow < ArithmeticExpression
       evaluates_with :**
     end
   end

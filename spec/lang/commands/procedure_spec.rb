@@ -54,7 +54,7 @@ RSpec.describe Procedure do
   end
 
   it 'fails if it is executed with less arguments than expected' do
-    args = VarTuple.new(['arg1'.to_var_name, 'arg2'.to_var_name])
+    args = VarTuple.with_names(%w[arg1 arg2])
     procedure = described_class.new('MyProcedure2', args, empty_body)
 
     error_message = "Wrong number of arguments in procedure 'MyProcedure2': expected 2, got 1"
