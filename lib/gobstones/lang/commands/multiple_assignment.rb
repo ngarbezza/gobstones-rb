@@ -40,7 +40,7 @@ module Gobstones
         end
 
         def wrong_number_of_arguments_message(calling_arguments)
-          "Wrong number of arguments in multiple assignment: expected #{var_tuple.length}, got #{calling_arguments.length}"
+          "Wrong number of arguments in assignment: expected #{var_tuple.length}, got #{calling_arguments.length}"
         end
       end
     end

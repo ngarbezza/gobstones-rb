@@ -9,18 +9,20 @@ RSpec.describe MultipleAssignment do
   let(:c) { 'c'.to_var_name }
   let(:d) { 'd'.to_var_name }
 
+  def expect_assignment(variable, value)
+    expect(context.has_variable_named?(variable.name)).to be(true)
+    expect(context.get(variable)).to eq(value)
+  end
+
   context 'when assignment can be made' do
     it 'evaluates and set all the variables with the return values of a function call' do
       var_tuple = VarTuple.new([a, b, c])
       assign = described_class.new(var_tuple, call_to_my_function)
       assign.evaluate context
 
-      expect(context.has_variable_named?('a')).to be(true)
-      expect(context.get(a)).to eq(42.to_gbs_num)
-      expect(context.has_variable_named?('b')).to be(true)
-      expect(context.get(b)).to eq(verde)
-      expect(context.has_variable_named?('c')).to be(true)
-      expect(context.get(c)).to eq(norte)
+      expect_assignment(a, 42.to_gbs_num)
+      expect_assignment(b, verde)
+      expect_assignment(c, norte)
     end
   end
 
@@ -29,7 +31,7 @@ RSpec.describe MultipleAssignment do
       var_tuple = VarTuple.new([a, b, c, d])
       assign = described_class.new(var_tuple, call_to_my_function)
 
-      error_message = 'Wrong number of arguments in multiple assignment: expected 4, got 3'
+      error_message = 'Wrong number of arguments in assignment: expected 4, got 3'
       expect { assign.evaluate context }.to raise_error(Gobstones::Runner::WrongArgumentsError, error_message)
     end
 
@@ -37,7 +39,7 @@ RSpec.describe MultipleAssignment do
       var_tuple = VarTuple.new([a, b])
       assign = described_class.new(var_tuple, call_to_my_function)
 
-      error_message = 'Wrong number of arguments in multiple assignment: expected 2, got 3'
+      error_message = 'Wrong number of arguments in assignment: expected 2, got 3'
       expect { assign.evaluate context }.to raise_error(Gobstones::Runner::WrongArgumentsError, error_message)
     end
 

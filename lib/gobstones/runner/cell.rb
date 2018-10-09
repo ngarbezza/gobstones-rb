@@ -15,6 +15,7 @@ module Gobstones
       def take_out(color)
         check(color)
         raise EmptyCellError unless are_there_balls?(color)
+
         lookup(color) { |value| value - 1 }
       end
 

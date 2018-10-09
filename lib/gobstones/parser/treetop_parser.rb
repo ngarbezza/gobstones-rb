@@ -14,6 +14,7 @@ module Gobstones
         code_without_comments = remove_comments_from(code)
         result = @parser.parse(code_without_comments)
         raise ParseError.new(self, code_without_comments) if result.nil?
+
         result.value
       end
 

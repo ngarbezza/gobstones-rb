@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 require: rubocop-rspec
 
 AllCops:
@@ -95,6 +97,9 @@ Style/SingleLineBlockParams:
 Style/Documentation:
   Enabled: false
 
+Style/RegexpLiteral:
+  Enabled: false
+
 Layout/AlignHash:
   Enabled: false
   EnforcedColonStyle: 'key'
@@ -109,6 +114,10 @@ Layout/AlignParameters:
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'spec/parser/treetop_parser_spec.rb'
+
 Rails/Output:
   Exclude:
     - 'bin/*'
@@ -117,7 +126,7 @@ RSpec/ExpectActual:
   Enabled: false
 
 RSpec/MultipleExpectations:
-  Max: 2
+  Max: 5
 
 RSpec/ExampleLength:
   Max: 10

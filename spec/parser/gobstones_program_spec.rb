@@ -18,7 +18,7 @@ RSpec.describe Gobstones::Parser, 'program definitions' do
       procedure Procedure2 () {}
 
       procedure Main() {}
-GBS
+    GBS
 
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end
@@ -37,7 +37,7 @@ GBS
       procedure Procedure2 () {}
 
       procedure Main() {}
-GBS
+    GBS
 
     expect(gbs_code).to be_parsed_as(:program).and_return(program)
   end

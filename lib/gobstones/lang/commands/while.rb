@@ -10,6 +10,7 @@ module Gobstones
         def evaluate(context, stack_size = 0)
           raise Runner::GobstonesRuntimeError, 'stack overflow' if stack_size == STACK_LIMIT
           return unless evaluate_condition(context).true?
+
           then_block.evaluate(context)
           evaluate(context, stack_size + 1)
         end

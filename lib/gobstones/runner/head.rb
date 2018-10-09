@@ -57,6 +57,7 @@ module Gobstones
 
       def move(dir)
         raise OutOfBoardError unless can_move?(dir)
+
         dir.move self
       end
 
