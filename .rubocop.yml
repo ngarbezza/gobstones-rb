@@ -22,7 +22,7 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   AllowURI: true
 
@@ -55,9 +55,6 @@ Style/TrailingCommaInArguments:
 Style/HashSyntax:
   EnforcedStyle: 'ruby19'
 
-Performance/Casecmp:
-  Enabled: false
-
 Style/IfUnlessModifier:
   Enabled: false
 
@@ -67,7 +64,7 @@ Style/Lambda:
 Style/Alias:
   Enabled: false
 
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Enabled: false
 
 Style/Next:
@@ -100,7 +97,7 @@ Style/Documentation:
 Style/RegexpLiteral:
   Enabled: false
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: false
   EnforcedColonStyle: 'key'
   EnforcedHashRocketStyle: 'key'
@@ -108,7 +105,7 @@ Layout/AlignHash:
 Layout/DotPosition:
   EnforcedStyle: 'trailing'
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 Layout/MultilineMethodCallIndentation:
@@ -117,10 +114,6 @@ Layout/MultilineMethodCallIndentation:
 Layout/TrailingWhitespace:
   Exclude:
     - 'spec/parser/treetop_parser_spec.rb'
-
-Rails/Output:
-  Exclude:
-    - 'bin/*'
 
 RSpec/ExpectActual:
   Enabled: false

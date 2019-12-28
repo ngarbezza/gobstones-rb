@@ -18,26 +18,26 @@ module Gobstones
 
       def run
         print_program_result parse_program.evaluate
-      rescue Gobstones::Parser::ParseError => parse_error
-        handle_parse_error parse_error
-      rescue Gobstones::Runner::GobstonesTypeError => type_error
-        handle_type_error type_error
-      rescue Gobstones::Runner::BoomError => boom_error
-        handle_boom_error boom_error
-      rescue Gobstones::Runner::UndefinedVariableError => undefined_variable_error
-        handle_undefined_variable_error undefined_variable_error
-      rescue Gobstones::Runner::EmptyCellError => empty_cell_error
-        handle_empty_cell_error empty_cell_error
-      rescue Gobstones::Runner::OutOfBoardError => out_of_board_error
-        handle_out_of_board_error out_of_board_error
-      rescue Gobstones::Runner::DefinitionNotFound => definition_not_found_error
-        handle_definition_not_found_error definition_not_found_error
-      rescue Gobstones::Runner::WrongArgumentsError => wrong_arguments_error
-        handle_wrong_arguments_error wrong_arguments_error
-      rescue Gobstones::Runner::GobstonesRuntimeError => runtime_error
-        handle_runtime_error runtime_error
-      rescue StandardError => error
-        raise error
+      rescue Gobstones::Parser::ParseError => e
+        handle_parse_error e
+      rescue Gobstones::Runner::GobstonesTypeError => e
+        handle_type_error e
+      rescue Gobstones::Runner::BoomError => e
+        handle_boom_error e
+      rescue Gobstones::Runner::UndefinedVariableError => e
+        handle_undefined_variable_error e
+      rescue Gobstones::Runner::EmptyCellError => e
+        handle_empty_cell_error e
+      rescue Gobstones::Runner::OutOfBoardError => e
+        handle_out_of_board_error e
+      rescue Gobstones::Runner::DefinitionNotFound => e
+        handle_definition_not_found_error e
+      rescue Gobstones::Runner::WrongArgumentsError => e
+        handle_wrong_arguments_error e
+      rescue Gobstones::Runner::GobstonesRuntimeError => e
+        handle_runtime_error e
+      rescue StandardError => e
+        raise e
       end
 
       private

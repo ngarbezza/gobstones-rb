@@ -28,7 +28,7 @@ RSpec.describe ExecutionContext do
   end
 
   describe ProcedureExecutionContext do
-    let(:procedure_context) { ProcedureExecutionContext.based_on(context) }
+    let(:procedure_context) { described_class.based_on(context) }
 
     it 'returns the program context in which it is based' do
       expect(procedure_context.program_context).to eq(context)
@@ -41,14 +41,14 @@ RSpec.describe ExecutionContext do
 
   describe FunctionExecutionContext do
     it 'returns the program context in which it is based' do
-      function_context = FunctionExecutionContext.based_on(context)
+      function_context = described_class.based_on(context)
 
       expect(function_context.program_context).to eq(context)
     end
 
     it "has a new head, a copy of the outer context's head" do
       context.head.put(azul)
-      function_context = FunctionExecutionContext.based_on(context)
+      function_context = described_class.based_on(context)
       function_context.head.put(verde)
 
       expect(function_context.head).not_to eq(context.head)
