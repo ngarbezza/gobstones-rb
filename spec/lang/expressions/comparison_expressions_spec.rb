@@ -1,4 +1,4 @@
-RSpec.describe 'comparison expressions' do
+RSpec.describe 'evaluating comparison expressions' do
   describe Equal do
     it 'evaluates same booleans as equal' do
       expect(described_class.new(false_value, false_value).evaluate).to eq(true_value)

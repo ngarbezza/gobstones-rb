@@ -1,10 +1,10 @@
 RSpec.describe Gobstones::Parser do
-  before(:all) { @parser = TreetopParser.new }
+  let_it_be(:parser) { TreetopParser.new }
 
   describe 'removing comments of a gobstones piece of code' do
     it 'removes a one-line comment with // characters for a single line' do
       code_with_comments = 'Poner(Verde) // put a green ball on the board'
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq('Poner(Verde) ')
     end
@@ -15,7 +15,7 @@ RSpec.describe Gobstones::Parser do
         Poner(Azul)   // and a blue one
         // and this is just an entire comment line
       CODE
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq <<~CODE
         Poner(Verde)  
@@ -26,7 +26,7 @@ RSpec.describe Gobstones::Parser do
 
     it 'removes a one-line comment with -- for a single line' do
       code_with_comments = 'Poner(Verde) -- put a green ball on the board'
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq('Poner(Verde) ')
     end
@@ -37,7 +37,7 @@ RSpec.describe Gobstones::Parser do
         Poner(Azul)   -- and a blue one
         -- and this is just an entire comment line
       CODE
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq <<~CODE
         Poner(Verde)  
@@ -53,7 +53,7 @@ RSpec.describe Gobstones::Parser do
         // and this is just an entire comment line
         if (puedeMover(Norte)) { Mover(Norte) } -- another -- comment
       CODE
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq <<~CODE
         Poner(Verde)  
@@ -65,7 +65,7 @@ RSpec.describe Gobstones::Parser do
 
     it 'removes a multiline comment with {- -}' do
       code_with_comments = 'Poner(Verde)  {- this is a comment -}'
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq('Poner(Verde)  ')
     end
@@ -78,7 +78,7 @@ RSpec.describe Gobstones::Parser do
         if (puedeMover(Norte)) { Mover(Norte) -}
         Poner(Rojo)
       CODE
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq <<~CODE
         Poner(Verde)  
@@ -89,7 +89,7 @@ RSpec.describe Gobstones::Parser do
 
     it 'removes a multiline comment with /* */' do
       code_with_comments = 'Poner(Verde)  /* this is a comment */'
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq('Poner(Verde)  ')
     end
@@ -102,7 +102,7 @@ RSpec.describe Gobstones::Parser do
         if (puedeMover(Norte)) { Mover(Norte) */
         Poner(Rojo)
       CODE
-      code_without_comments = @parser.remove_comments_from(code_with_comments)
+      code_without_comments = parser.remove_comments_from(code_with_comments)
 
       expect(code_without_comments).to eq <<~CODE
         Poner(Verde)  

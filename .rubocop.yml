@@ -1,6 +1,8 @@
 inherit_from: .rubocop_todo.yml
 
-require: rubocop-rspec
+require:
+  - rubocop-rspec
+  - test_prof/rubocop
 
 AllCops:
   TargetRubyVersion: 2.5.1
@@ -18,8 +20,6 @@ Metrics/BlockLength:
   CountComments: false
   Max: 25
   Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
     - 'spec/**/*'
 
 Layout/LineLength:
@@ -114,6 +114,14 @@ Layout/MultilineMethodCallIndentation:
 Layout/TrailingWhitespace:
   Exclude:
     - 'spec/parser/treetop_parser_spec.rb'
+
+RSpec/AggregateFailures:
+  Enabled: true
+  Include:
+    - 'spec/**/*.rb'
+
+RSpec/DescribeClass:
+  Enabled: false
 
 RSpec/ExpectActual:
   Enabled: false

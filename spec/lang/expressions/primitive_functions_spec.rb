@@ -1,4 +1,4 @@
-RSpec.describe 'primitive functions' do
+RSpec.describe 'evaluating primitive functions' do
   let(:context) { clean_context }
 
   describe 'nroBolitas() function' do

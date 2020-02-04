@@ -17,9 +17,8 @@ module Gobstones
 
       def evaluate(context)
         # TODO think more the case of gexp tuple, should it be a data type instead of a plain list?
-        expressions.size == 1 ?
-            expressions.first.evaluate(context) :
-            expressions.map { |expression| expression.evaluate(context) }
+        evaluated_expressions = expressions.map { |expression| expression.evaluate(context) }
+        evaluated_expressions.size == 1 ? evaluated_expressions.first : evaluated_expressions
       end
     end
   end

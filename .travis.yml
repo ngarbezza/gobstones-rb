@@ -4,3 +4,6 @@ rvm:
   - 2.7.0
 before_install:
   - gem install bundler # workaround - https://github.com/travis-ci/travis-ci/issues/9383
+script:
+  - rubocop
+  - rake spec

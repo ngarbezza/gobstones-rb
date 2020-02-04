@@ -22,7 +22,10 @@ module Gobstones
       alias_method :eql?, :==
 
       def <=>(other)
-        self == other ? 0 : (self < other ? -1 : 1)
+        return 0 if self == other
+        return -1 if self < other
+
+        1
       end
 
       def <(_other)

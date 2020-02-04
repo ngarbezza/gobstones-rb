@@ -2,6 +2,8 @@ require 'coveralls'
 Coveralls.wear!
 
 require 'simplecov'
+require 'test_prof'
+require 'test_prof/recipes/rspec/let_it_be'
 
 require 'matchers/parse_matcher'
 
@@ -21,3 +23,5 @@ require 'support/board_assertions'
 include BoardAssertions
 
 RSpec.configure(&:disable_monkey_patching!)
+
+TestProf::BeforeAll.adapter = OpenStruct.new(begin_transaction: nil, rollback_transaction: nil)
