@@ -10,7 +10,7 @@ module GobstonesLangTestObjects
   end
 
   def program_context_for(program)
-    ProgramExecutionContext.for(program)
+    ExecutionContext.for_program(program)
   end
 
   def empty_program

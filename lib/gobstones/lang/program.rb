@@ -19,15 +19,20 @@ module Gobstones
       end
 
       def evaluate
-        context = create_context
-        return_values = main_definition.evaluate(context)
-        Runner::ProgramResult.new(context.head, return_values)
+        with_execution_context do |context|
+          return_values = main_definition.evaluate(context)
+          Runner::ProgramResult.new(context.head, return_values)
+        end
       end
 
       private
 
+      def with_execution_context
+        yield create_context
+      end
+
       def create_context
-        Runner::ProgramExecutionContext.for(self)
+        Runner::ExecutionContext.for_program(self)
       end
     end
   end

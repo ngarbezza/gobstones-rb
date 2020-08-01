@@ -5,6 +5,10 @@ require 'error_handling_protocol'
 module Gobstones
   module Runner
     class ExecutionContext
+      def self.for_program(program)
+        ProgramExecutionContext.new(program)
+      end
+
       def initialize
         @values = {}
       end
