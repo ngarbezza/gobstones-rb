@@ -5,9 +5,12 @@ require:
   - test_prof/rubocop
 
 AllCops:
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.7.1
   Exclude:
     - 'db/**/*'
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
 
 # revisit this once Ruby 3 is out
 Style/FrozenStringLiteralComment:
@@ -39,6 +42,11 @@ Style/CollectionMethods:
     inject: 'reduce'
     detect: 'detect'
     find_all: 'select'
+
+Style/MixinUsage:
+  Exclude:
+    - 'lib/gobstones/cli/runner.rb'
+    - 'spec/spec_helper.rb'
 
 Style/WordArray:
   MinSize: 3
@@ -115,13 +123,32 @@ Layout/TrailingWhitespace:
   Exclude:
     - 'spec/parser/treetop_parser_spec.rb'
 
-RSpec/AggregateFailures:
+Naming/MethodParameterName:
   Enabled: true
+  AllowedNames: on, x, y
+
+Metrics/ParameterLists:
+  Max: 6
+
+Metrics/AbcSize:
+  Max: 20
+
+RSpec/AggregateExamples:
+  Enabled: false # Rule is broken in 2.7, and rubocop 0.88
   Include:
     - 'spec/**/*.rb'
 
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/DescribeMethod:
+  Enabled: false
+
 RSpec/DescribeClass:
   Enabled: false
+
+RSpec/ContextWording:
+  Enabled: true
 
 RSpec/ExpectActual:
   Enabled: false
@@ -130,4 +157,73 @@ RSpec/MultipleExpectations:
   Max: 5
 
 RSpec/ExampleLength:
-  Max: 10
+  Max: 13
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
