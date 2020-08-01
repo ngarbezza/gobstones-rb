@@ -100,23 +100,5 @@ module Gobstones
         @outer_context.program_context
       end
     end
-
-    class NullExecutionContext < ExecutionContext
-      def set(variable_name, value); end
-
-      def get(variable_name)
-        undefined_variable_error(variable_name)
-      end
-
-      def clear(variable_name); end
-
-      def has_variable_named?(_variable_name)
-        false
-      end
-
-      def program_context
-        raise 'a null execution does not know its program context'
-      end
-    end
   end
 end

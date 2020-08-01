@@ -9,7 +9,7 @@ module Gobstones
     class Literal < Expression
       include Comparable
 
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         self
       end
 

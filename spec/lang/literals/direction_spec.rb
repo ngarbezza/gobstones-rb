@@ -1,5 +1,6 @@
 RSpec.describe Direction do
   let(:all) { described_class.all.map(&:new) }
+  let(:context) { any_context }
 
   it 'includes Norte, Este, Sur and Oeste' do
     expect(all.include?(norte)).to be(true)
@@ -13,7 +14,7 @@ RSpec.describe Direction do
   end
 
   it 'evaluates any direction to itself' do
-    all.each { |dir| expect(dir.evaluate).to eq(dir) }
+    all.each { |dir| expect(dir.evaluate(context)).to eq(dir) }
   end
 
   it 'returns the string representation' do

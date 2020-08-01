@@ -61,7 +61,7 @@ module Gobstones
       end
 
       def multi_line_haskell_style_comments_regex
-        /{-.*?\-}/m
+        /{-.*?-}/m
       end
     end
   end

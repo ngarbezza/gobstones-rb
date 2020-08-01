@@ -9,7 +9,7 @@ module Gobstones
     TypeBoundFunc = Class.new(Expression)
 
     class MinBool < TypeBoundFunc
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         False.new
       end
 
@@ -19,7 +19,7 @@ module Gobstones
     end
 
     class MaxBool < TypeBoundFunc
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         True.new
       end
 
@@ -29,7 +29,7 @@ module Gobstones
     end
 
     class MinColor < TypeBoundFunc
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         Azul.new
       end
 
@@ -39,7 +39,7 @@ module Gobstones
     end
 
     class MaxColor < TypeBoundFunc
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         Verde.new
       end
 
@@ -49,7 +49,7 @@ module Gobstones
     end
 
     class MinDir < TypeBoundFunc
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         Norte.new
       end
 
@@ -59,7 +59,7 @@ module Gobstones
     end
 
     class MaxDir < TypeBoundFunc
-      def evaluate(_context = Runner::NullExecutionContext.new)
+      def evaluate(_context)
         Oeste.new
       end
 

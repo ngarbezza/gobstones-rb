@@ -19,7 +19,7 @@ RSpec.describe Head do
   end
 
   describe 'movements' do
-    context 'valid' do
+    context 'when is a valid movement' do
       it 'moves north' do
         expect(head.can_move?(norte)).to be(true)
         expect { head.move(norte) }.not_to raise_error
@@ -62,7 +62,7 @@ RSpec.describe Head do
       end
     end
 
-    context 'non valid' do
+    context 'when it is not a valid movement' do
       it 'fails moving north' do
         (Head::MAX_COLS - 1).times { head.move norte }
 

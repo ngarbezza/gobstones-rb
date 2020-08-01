@@ -1,6 +1,6 @@
 # TODO test/implement short-circuit?
 RSpec.describe 'evaluating boolean expressions' do
-  let(:context) { clean_context }
+  let(:context) { any_context }
 
   describe And do
     it 'evaluates a simple and expression' do

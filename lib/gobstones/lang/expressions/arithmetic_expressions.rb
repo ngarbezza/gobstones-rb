@@ -24,7 +24,7 @@ module Gobstones
     end
 
     class Div < ArithmeticExpression
-      def evaluate(context = Runner::NullExecutionContext.new)
+      def evaluate(context)
         left_expr.evaluate(context) / right_expr.evaluate(context)
       rescue ZeroDivisionError
         raise Runner::GobstonesRuntimeError, 'zero division'

@@ -5,6 +5,10 @@ module GobstonesLangTestObjects
     program_context_for(empty_program)
   end
 
+  def any_context
+    clean_context
+  end
+
   def program_context_for(program)
     ProgramExecutionContext.for(program)
   end
