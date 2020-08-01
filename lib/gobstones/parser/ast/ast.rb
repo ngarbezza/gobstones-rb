@@ -115,35 +115,35 @@ module Gobstones
       end
     end
 
-    ast_node(:SkipCmdNode) { Skip.new }
-    ast_node(:BoomCmdNode) { Boom.new(string.text_value[1..-2]) }
+    ast_node(:SkipCmdNode) { Commands::Skip.new }
+    ast_node(:BoomCmdNode) { Commands::Boom.new(string.text_value[1..-2]) }
 
-    ast_node(:PonerCmdNode) { Poner.new(gexp.value) }
-    ast_node(:SacarCmdNode) { Sacar.new(gexp.value) }
-    ast_node(:MoverCmdNode) { Mover.new(gexp.value) }
+    ast_node(:PonerCmdNode) { Commands::Poner.new(gexp.value) }
+    ast_node(:SacarCmdNode) { Commands::Sacar.new(gexp.value) }
+    ast_node(:MoverCmdNode) { Commands::Mover.new(gexp.value) }
 
-    ast_node(:IrAlOrigenCmdNode) { IrAlOrigen.new }
-    ast_node(:VaciarTableroCmdNode) { VaciarTablero.new }
+    ast_node(:IrAlOrigenCmdNode) { Commands::IrAlOrigen.new }
+    ast_node(:VaciarTableroCmdNode) { Commands::VaciarTablero.new }
 
-    ast_node(:ProcCallNode) { ProcedureCall.new(proc_name.text_value, gexp_tuple.value) }
+    ast_node(:ProcCallNode) { Commands::ProcedureCall.new(proc_name.text_value, gexp_tuple.value) }
 
-    ast_node(:SingleAssignmentNode) { SingleAssignment.new(var_name.value, gexp.value) }
-    ast_node(:MultipleAssignmentNode) { MultipleAssignment.new(var_tuple.value, gexp.value) }
+    ast_node(:SingleAssignmentNode) { Commands::SingleAssignment.new(var_name.value, gexp.value) }
+    ast_node(:MultipleAssignmentNode) { Commands::MultipleAssignment.new(var_tuple.value, gexp.value) }
 
-    ast_node(:CmdBlockNode) { CommandBlock.new(create_commands(commands)) }
+    ast_node(:CmdBlockNode) { Commands::CommandBlock.new(create_commands(commands)) }
 
     ast_node :IfCmdNode do
       if else_clause.empty?
-        If.new(gexp.value, then_block.value)
+        Commands::If.new(gexp.value, then_block.value)
       else
-        IfThenElse.new(gexp.value, then_block.value, else_clause.else_block.value)
+        Commands::IfThenElse.new(gexp.value, then_block.value, else_clause.else_block.value)
       end
     end
 
-    ast_node(:WhileCmdNode) { While.new(gexp.value, cmd_block.value) }
+    ast_node(:WhileCmdNode) { Commands::While.new(gexp.value, cmd_block.value) }
 
     ast_node :RepeatWithCmdNode do
-      RepeatWith.new(var_name.value, range_min.value, range_max.value, cmd_block.value)
+      Commands::RepeatWith.new(var_name.value, range_min.value, range_max.value, cmd_block.value)
     end
 
     # TODO abstract duplication, very similar to GexpsNode
@@ -167,7 +167,7 @@ module Gobstones
     end
 
     ast_node(:FunctionNode) do
-      cmd_block = CommandBlock.new(create_commands(commands))
+      cmd_block = Commands::CommandBlock.new(create_commands(commands))
       Function.new(func_name.text_value, var_tuple.value, cmd_block, func_return.value)
     end
 
@@ -175,7 +175,7 @@ module Gobstones
     ast_node(:MainReturnNode) { ReturnFromMain.new(var_tuple.value) }
 
     ast_node(:MainDefNode) do
-      command_block = CommandBlock.new(create_commands(commands))
+      command_block = Commands::CommandBlock.new(create_commands(commands))
       return_statement = ret.empty? ? NoReturnStatement.new : ret.value
       Main.new(command_block, return_statement)
     end
