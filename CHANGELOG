@@ -1,3 +1,15 @@
+v 0.0.4 (2020.08.01)
+====================
+
+Bug fixes:
+
+* relative paths to commands failed while running using `gobstones` script
+
+v 0.0.3 (20xx.xx.xx)
+====================
+
+TODO
+
 v 0.0.2 (2015.01.10)
 ====================
 

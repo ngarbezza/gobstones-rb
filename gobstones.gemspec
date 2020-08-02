@@ -3,7 +3,7 @@ $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name = 'gobstones'
-  spec.version = '0.0.3'
+  spec.version = '0.0.4'
   spec.licenses = ['GPLv3']
   spec.authors = ['Nahuel Garbezza']
   spec.email = ['n.garbezza@gmail.com']
