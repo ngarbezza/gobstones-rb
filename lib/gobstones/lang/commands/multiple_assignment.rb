@@ -31,7 +31,7 @@ module Gobstones
 
         def validate_expression_is_function_call
           raise Runner::GobstonesTypeError, 'expected a function call in multiple assignment' unless
-              expression.is_function_call?
+              expression.function_call?
         end
 
         def check_number_of_arguments(calling_arguments)

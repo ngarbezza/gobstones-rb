@@ -10,7 +10,7 @@ module Gobstones
         subclass_responsibility
       end
 
-      def is_function_call?
+      def function_call?
         false
       end
     end

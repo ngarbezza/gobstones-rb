@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift File.dirname(__FILE__) + '/lib'
+$LOAD_PATH.unshift "#{File.dirname(__FILE__)}/lib"
 
 require 'gobstones/cli/runner'
 
-gbs_file = ARGV[0]
-if gbs_file
-  Gobstones::CLI::Runner.run(gbs_file)
-else
+gobstones_file = ARGV.first
+if gobstones_file.nil?
   puts 'No Gobstones program specified'
+  exit 1
+else
+  Gobstones::CLI::Runner.run(gobstones_file)
 end

@@ -6,6 +6,7 @@ module Gobstones
       attr_reader :value
 
       def initialize(num)
+        super()
         @value = num
       end
 

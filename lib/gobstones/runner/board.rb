@@ -25,8 +25,8 @@ module Gobstones
         @matrix[x][y]
       end
 
-      def each_cell
-        @matrix.each { |row| row.each { |cell| yield(cell) } }
+      def each_cell(&block)
+        @matrix.each { |row| row.each { |cell| block.call(cell) } }
       end
 
       def put(x, y, color)

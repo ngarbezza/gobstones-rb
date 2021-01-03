@@ -6,7 +6,7 @@ module Gobstones
     class FunctionCall < Expression
       include DefinitionCall
 
-      def is_function_call?
+      def function_call?
         true
       end
 

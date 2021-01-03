@@ -6,6 +6,7 @@ module Gobstones
       attr_reader :argument
 
       def initialize(argument)
+        super()
         @argument = argument
       end
 

@@ -3,7 +3,7 @@ require 'gobstones/lang/literals/color'
 module Gobstones
   module CLI
     class Printer
-      TEMPLATE = File.read(File.dirname(__FILE__) + '/board_template')
+      TEMPLATE = File.read("#{File.dirname(__FILE__)}/board_template")
 
       def initialize(program_result)
         @program_result = program_result
@@ -63,6 +63,7 @@ module Gobstones
 
         corner = cell_top_left_corner(x, y)
         pos = corner + (y_offset * line_length) + x_offset
+        # TODO refactor using rjust/ljust
         if number < 10
           @board[pos] = ' '
           @board[pos + 1] = number.to_s

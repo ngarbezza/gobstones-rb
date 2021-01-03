@@ -36,7 +36,7 @@ RSpec.describe 'arithmetic expressions' do
 
   describe Mul do
     it 'evaluates a simple mul' do
-      expect(described_class.numbers(4, 8).evaluate).to eq(32.to_gbs_num)
+      expect(described_class.numbers(4, 8).evaluate(context)).to eq(32.to_gbs_num)
     end
 
     it 'evaluates a nested mul expression' do

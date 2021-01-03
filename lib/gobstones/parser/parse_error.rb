@@ -4,6 +4,7 @@ module Gobstones
       attr_reader :parser, :code
 
       def initialize(parser, code)
+        super()
         @parser = parser
         @code = code
       end

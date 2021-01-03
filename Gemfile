@@ -7,12 +7,13 @@ gem 'treetop', '~> 1.6'
 
 group :test do
   gem 'autotest-standalone', '~> 4.5'
-  gem 'rspec', '~> 3.9'
+  gem 'rspec', '~> 3.10'
   gem 'simplecov', '~> 0.16', require: false
-  gem 'test-prof', '~> 0.10'
+  gem 'test-prof', '~> 0.12'
 end
 
 group :development do
-  gem 'rubocop', '~> 0.78', require: false
-  gem 'rubocop-rspec', '~> 1.37', require: false
+  gem 'rubocop', '~> 1.7', require: false
+  gem 'rubocop-rake', '~> 0.5', require: false
+  gem 'rubocop-rspec', '~> 2.1', require: false
 end

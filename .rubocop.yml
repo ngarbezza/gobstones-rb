@@ -5,16 +5,20 @@ require:
   - test_prof/rubocop
 
 AllCops:
-  TargetRubyVersion: 2.7.1
-  Exclude:
-    - 'db/**/*'
+  TargetRubyVersion: 2.7.2
+  NewCops: enable
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 
-# revisit this once Ruby 3 is out
-Style/FrozenStringLiteralComment:
-  Enabled: false
+Naming/PredicateName:
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/gobstones/runner/execution_context.rb'
+
+Naming/MethodParameterName:
+  Enabled: true
+  AllowedNames: on, x, y
 
 Metrics/BlockNesting:
   Max: 2
@@ -25,12 +29,70 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Max: 6
+
+Metrics/AbcSize:
+  Max: 21
+
 Layout/LineLength:
   Max: 120
   AllowURI: true
 
+Layout/HashAlignment:
+  Enabled: false
+  EnforcedColonStyle: 'key'
+  EnforcedHashRocketStyle: 'key'
+
+Layout/DotPosition:
+  EnforcedStyle: 'trailing'
+
+Layout/ParameterAlignment:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'spec/parser/treetop_parser_spec.rb'
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Lint/AssignmentInCondition:
   AllowSafeAssignment: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+# revisit this once Ruby 3 is out
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Style/AndOr:
   EnforcedStyle: 'conditionals'
@@ -84,15 +146,6 @@ Style/SignalException:
 Style/ZeroLengthPredicate:
   Enabled: false
 
-Metrics/ClassLength:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/ModuleLength:
-  Enabled: false
-
 Style/CommentAnnotation:
   Enabled: false
 
@@ -104,81 +157,6 @@ Style/Documentation:
 
 Style/RegexpLiteral:
   Enabled: false
-
-Layout/HashAlignment:
-  Enabled: false
-  EnforcedColonStyle: 'key'
-  EnforcedHashRocketStyle: 'key'
-
-Layout/DotPosition:
-  EnforcedStyle: 'trailing'
-
-Layout/ParameterAlignment:
-  Enabled: false
-
-Layout/MultilineMethodCallIndentation:
-  Enabled: false
-
-Layout/TrailingWhitespace:
-  Exclude:
-    - 'spec/parser/treetop_parser_spec.rb'
-
-Naming/MethodParameterName:
-  Enabled: true
-  AllowedNames: on, x, y
-
-Metrics/ParameterLists:
-  Max: 6
-
-Metrics/AbcSize:
-  Max: 20
-
-RSpec/AggregateExamples:
-  Enabled: false # Rule is broken in 2.7, and rubocop 0.88
-  Include:
-    - 'spec/**/*.rb'
-
-RSpec/FilePath:
-  Enabled: false
-
-RSpec/DescribeMethod:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Enabled: false
-
-RSpec/ContextWording:
-  Enabled: true
-
-RSpec/ExpectActual:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Max: 5
-
-RSpec/ExampleLength:
-  Max: 13
-
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-
-Lint/DuplicateElsifCondition:
-  Enabled: true
-
-Lint/MixedRegexpCaptureTypes:
-  Enabled: true
-
-Lint/RaiseException:
-  Enabled: true
-
-Lint/StructNewOverride:
-  Enabled: true
 
 Style/AccessorGrouping:
   Enabled: true
@@ -227,3 +205,33 @@ Style/RedundantRegexpEscape:
 
 Style/SlicingWithRange:
   Enabled: true
+
+RSpec/AggregateExamples:
+  Enabled: false # Rule is broken in 2.7, and rubocop 0.88
+  Include:
+    - 'spec/**/*.rb'
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/DescribeMethod:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: true
+
+RSpec/ExpectActual:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 13
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+  AllowSubject: true

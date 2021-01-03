@@ -7,8 +7,7 @@ module Gobstones
 
       def self.evaluates_with(selector)
         instance_eval do
-          define_method :evaluate do |*args|
-            context = args.first
+          define_method :evaluate do |context|
             left_expr.evaluate(context).send(selector, right_expr.evaluate(context))
           end
 
@@ -19,6 +18,7 @@ module Gobstones
       end
 
       def initialize(left, right)
+        super()
         @left_expr = left
         @right_expr = right
       end

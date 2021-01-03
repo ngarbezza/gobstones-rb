@@ -4,6 +4,7 @@ module Gobstones
       # TODO indicate if it is coming from a procedure or function
 
       def initialize(definition_name)
+        super()
         @definition_name = definition_name
       end
 
