@@ -63,7 +63,7 @@ GEM
     thor (1.0.1)
     tins (1.26.0)
       sync
-    treetop (1.6.11)
+    treetop (1.6.12)
       polyglot (~> 0.3)
     unicode-display_width (2.3.0)
 
