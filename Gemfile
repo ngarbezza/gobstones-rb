@@ -15,5 +15,5 @@ end
 group :development do
   gem 'rubocop', '~> 1.41', require: false
   gem 'rubocop-rake', '~> 0.6', require: false
-  gem 'rubocop-rspec', '~> 2.15', require: false
+  gem 'rubocop-rspec', '~> 2.16', require: false
 end
