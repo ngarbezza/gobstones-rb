@@ -14,7 +14,7 @@ GEM
     error_handling_protocol (0.0.1)
     json (2.6.3)
     parallel (1.22.1)
-    parser (3.1.3.0)
+    parser (3.2.0.0)
       ast (~> 2.4.1)
     polyglot (0.3.5)
     rainbow (3.1.1)
@@ -48,7 +48,7 @@ GEM
       parser (>= 3.1.1.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.16.0)
+    rubocop-rspec (2.17.0)
       rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
     simplecov (0.16.1)
@@ -65,7 +65,7 @@ GEM
       sync
     treetop (1.6.12)
       polyglot (~> 0.3)
-    unicode-display_width (2.3.0)
+    unicode-display_width (2.4.2)
 
 PLATFORMS
   ruby
@@ -78,7 +78,7 @@ DEPENDENCIES
   rspec (~> 3.12)
   rubocop (~> 1.42)
   rubocop-rake (~> 0.6)
-  rubocop-rspec (~> 2.16)
+  rubocop-rspec (~> 2.17)
   simplecov (~> 0.16)
   test-prof (~> 1.1)
   treetop (~> 1.6)
