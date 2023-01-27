@@ -24,4 +24,5 @@ include BoardAssertions
 
 RSpec.configure(&:disable_monkey_patching!)
 
-TestProf::BeforeAll.adapter = OpenStruct.new(begin_transaction: nil, rollback_transaction: nil)
+NullAdapter = Struct.new(:begin_transaction, :rollback_transaction)
+TestProf::BeforeAll.adapter = NullAdapter.new(nil, nil)

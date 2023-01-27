@@ -4,7 +4,7 @@ RSpec.describe While do
 
   def stub_condition(times)
     instance_double(Boolean).tap do |condition|
-      expected_values = [true_value] * times + [false_value]
+      expected_values = ([true_value] * times) + [false_value]
       allow(condition).to receive(:evaluate).and_return(*expected_values)
     end
   end
@@ -32,8 +32,9 @@ RSpec.describe While do
   end
 
   it 'fails with stack overflow if the condition is always true' do
+    stub_const('Gobstones::Lang::Commands::While::STACK_LIMIT', 10)
     while_cmd = described_class.new(true_value, while_block)
 
-    expect { while_cmd.evaluate context }.to raise_error(GobstonesRuntimeError, /stack overflow/)
+    expect { while_cmd.evaluate(context) }.to raise_error(GobstonesRuntimeError, /stack overflow/)
   end
 end

@@ -16,7 +16,7 @@ module Gobstones
       end
 
       def evaluate(context)
-        Hash[evaluated_variables(context)]
+        evaluated_variables(context).to_h
       end
 
       private

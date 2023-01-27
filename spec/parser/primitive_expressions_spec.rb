@@ -47,7 +47,7 @@ RSpec.describe Gobstones::Parser, 'primitive expressions' do
   end
 
   describe 'other type functions' do
-    it 'parses the siguiente() function ' do
+    it 'parses the siguiente() function' do
       func = Siguiente.new('x'.to_var_name)
 
       expect('siguiente(x)').to be_parsed_as(:expression).and_return(func)

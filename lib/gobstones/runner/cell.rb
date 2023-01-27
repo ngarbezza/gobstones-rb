@@ -4,7 +4,7 @@ module Gobstones
   module Runner
     class Cell
       def initialize
-        @values = Hash[Color.all.map { |color| [color, 0] }]
+        @values = Color.all.to_h { |color| [color, 0] }
       end
 
       def put(color)

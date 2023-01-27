@@ -11,15 +11,15 @@ Gem::Specification.new do |spec|
   spec.summary = 'Ruby implementation of the Gobstones programming language'
   spec.description = 'Ruby implementation of the Gobstones programming language'
 
-  spec.required_ruby_version = '>= 2.7.2'
+  spec.required_ruby_version = '>= 2.7'
   spec.required_rubygems_version = '>= 2.7.6'
 
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_dependency 'treetop', '~> 1.6'
 
   spec.files = `git ls-files`.split $INPUT_RECORD_SEPARATOR
-  spec.test_files = spec.files.grep %r{^spec/}
 
   spec.executables = %w[gobstones]
   spec.require_paths = %w[lib]
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

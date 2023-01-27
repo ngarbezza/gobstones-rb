@@ -103,8 +103,8 @@ module Gobstones
       def cell_top_left_corner(x, y)
         head_lines = 1
         head_chars = 4
-        y_to_go = (total_columns - 1 - y) * cell_height + head_lines
-        x_to_go = x * cell_width + head_chars
+        y_to_go = ((total_columns - 1 - y) * cell_height) + head_lines
+        x_to_go = (x * cell_width) + head_chars
         (y_to_go * line_length) + x_to_go
       end
 

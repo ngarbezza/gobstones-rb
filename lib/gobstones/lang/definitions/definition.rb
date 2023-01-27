@@ -49,8 +49,8 @@ module Gobstones
       end
 
       def wrong_number_of_arguments_message(calling_arguments)
-        "Wrong number of arguments in #{definition_type} '#{name}':" \
-          " expected #{arguments.length}, got #{calling_arguments.length}"
+        "Wrong number of arguments in #{definition_type} '#{name}': " \
+          "expected #{arguments.length}, got #{calling_arguments.length}"
       end
 
       def in_definition_context_based_on(outer_context)

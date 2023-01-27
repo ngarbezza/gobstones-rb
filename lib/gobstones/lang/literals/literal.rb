@@ -34,7 +34,7 @@ module Gobstones
 
       OPERATORS_MAPPING = {
         equal: :==,
-        not_equal: '!='.to_sym,
+        not_equal: :!=,
         less_than: :<,
         less_equal: :<=,
         greater_than: :>,
