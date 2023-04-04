@@ -62,7 +62,7 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    test-prof (1.2.0)
+    test-prof (1.2.1)
     thor (1.0.1)
     tins (1.26.0)
       sync
