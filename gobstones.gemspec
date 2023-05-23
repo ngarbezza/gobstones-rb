@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.7'
   spec.required_rubygems_version = '>= 2.7.6'
 
-  spec.add_development_dependency 'rspec', '~> 3'
   spec.add_dependency 'treetop', '~> 1.6'
 
   spec.files = `git ls-files`.split $INPUT_RECORD_SEPARATOR
