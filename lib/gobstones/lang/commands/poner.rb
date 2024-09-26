@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/expressions/one_arg_expression'
 require 'gobstones/lang/commands/sacar'
 require 'gobstones/runner/errors/gobstones_type_error'

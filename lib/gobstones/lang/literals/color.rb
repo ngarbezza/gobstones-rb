@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/literals/literal'
 require 'gobstones/runner/errors/gobstones_type_error'
 

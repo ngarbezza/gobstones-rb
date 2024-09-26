@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe IfThenElse do
   let(:context) { clean_context }
   let(:then_block) { CommandBlock.with_just(Poner.new(verde)) }

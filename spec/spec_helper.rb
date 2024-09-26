@@ -1,5 +1,4 @@
-require 'coveralls'
-Coveralls.wear!
+# frozen_string_literal: true
 
 require 'simplecov'
 require 'test_prof'

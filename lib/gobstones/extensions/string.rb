@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/expressions/var_name'
 
 class String

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'primitive expressions' do
   describe 'variable identifiers' do
     it 'parses valid var names' do

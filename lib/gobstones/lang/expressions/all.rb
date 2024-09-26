@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/expressions/arithmetic_expressions'
 require 'gobstones/lang/expressions/boolean_expressions'
 require 'gobstones/lang/expressions/comparison_expressions'

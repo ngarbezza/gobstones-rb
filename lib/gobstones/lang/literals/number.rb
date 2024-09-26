@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/literals/literal'
 
 module Gobstones
@@ -11,7 +13,7 @@ module Gobstones
       end
 
       def ==(other)
-        super(other) && value == other.value
+        super && value == other.value
       end
 
       def <(other)

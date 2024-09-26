@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'parsing arithmetic expressions' do
   let(:a) { 'a'.to_var_name }
   let(:b) { 'b'.to_var_name }

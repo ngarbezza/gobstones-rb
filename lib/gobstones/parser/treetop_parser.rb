@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'treetop'
 require 'gobstones/parser/ast/ast'
 require 'gobstones/parser/parse_error'

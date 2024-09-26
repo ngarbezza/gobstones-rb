@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/runner/errors/boom_error'
 require 'gobstones/runner/errors/definition_not_found_error'
 require 'gobstones/runner/errors/empty_cell_error'

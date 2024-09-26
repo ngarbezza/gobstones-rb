@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/commands/single_assignment'
 require 'gobstones/lang/commands/command_block'
 require 'gobstones/lang/commands/while'

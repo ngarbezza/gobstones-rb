@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'procedure calls' do
   it 'parses a procedure call without args' do
     expect('P1()').to be_parsed_as(:command).and_return(ProcedureCall.new('P1'))

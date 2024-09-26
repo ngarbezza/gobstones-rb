@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/modules/equality_definition'
 require 'gobstones/runner/errors/definition_not_found_error'
 

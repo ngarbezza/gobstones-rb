@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Head do
   subject(:head) { described_class.new }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'function definitions' do
   it 'parses a function without args and a single return' do
     func_return = ReturnFromFunction.new([42.to_gbs_num])

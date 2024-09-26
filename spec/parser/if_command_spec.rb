@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'if statements' do
   describe 'if' do
     it 'parses a statement with a simple boolean and an empty block' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'data types' do
   describe 'numbers' do
     it 'parses a positive number' do

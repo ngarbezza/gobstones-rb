@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gobstones
   module Runner
     # TODO instantiate with the statement in which this exception occurs

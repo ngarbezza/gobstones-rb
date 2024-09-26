@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/runner/errors/empty_cell_error'
 
 module Gobstones

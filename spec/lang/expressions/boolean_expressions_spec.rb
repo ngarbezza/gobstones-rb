@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # TODO test/implement short-circuit?
 RSpec.describe 'evaluating boolean expressions' do
   let(:context) { any_context }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'program definitions' do
   it 'parses a simple program with a single main' do
     main_def = Main.new(empty_body, no_return_statement)

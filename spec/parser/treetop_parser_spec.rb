@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser do
   let_it_be(:parser) { TreetopParser.new }
 

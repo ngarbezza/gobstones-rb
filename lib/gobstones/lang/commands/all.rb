@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/commands/boom'
 require 'gobstones/lang/commands/command_block'
 require 'gobstones/lang/commands/if'

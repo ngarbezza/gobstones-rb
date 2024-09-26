@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/runner/errors/boom_error'
 require 'gobstones/modules/equality_definition'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Board do
   it 'can be created with a number of rows and columns' do
     board = described_class.new(8, 5)

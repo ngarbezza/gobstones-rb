@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ExecutionContext do
   let(:context) { clean_context }
 
@@ -30,11 +32,8 @@ RSpec.describe ExecutionContext do
   describe ProcedureExecutionContext do
     let(:procedure_context) { described_class.based_on(context) }
 
-    it 'returns the program context in which it is based' do
+    it 'returns the program context in which it is based and shares the head with the outer context' do
       expect(procedure_context.program_context).to eq(context)
-    end
-
-    it 'shares the head with the outer context' do
       expect(procedure_context.head).to eq(context.head)
     end
   end

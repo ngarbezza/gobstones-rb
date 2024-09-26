@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Mover do
   let(:context) { clean_context }
 

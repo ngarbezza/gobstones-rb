@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Cell do
   subject(:cell) { described_class.new }
 

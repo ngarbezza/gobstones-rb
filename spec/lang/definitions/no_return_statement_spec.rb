@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe NoReturnStatement do
   subject(:no_return_statement) { described_class.new }
 

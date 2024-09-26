@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe If do
   subject(:evaluate_if_command) { described_class.new(condition, then_block).evaluate(context) }
 

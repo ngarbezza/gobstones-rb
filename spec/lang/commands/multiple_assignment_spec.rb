@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MultipleAssignment do
   let(:my_function_return) { ReturnFromFunction.new([42.to_gbs_num, verde, MinDir.new]) }
   let(:my_function_def) { Function.new('myFunction', no_arguments, empty_body, my_function_return) }

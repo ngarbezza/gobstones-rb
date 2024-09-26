@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/runner/head'
 require 'gobstones/runner/errors/undefined_variable_error'
 require 'error_handling_protocol'

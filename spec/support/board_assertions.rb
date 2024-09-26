@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BoardAssertions
   def expect_balls(*colors, on: context.head)
     colors.each do |color|

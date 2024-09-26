@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/expressions/two_arg_expression'
 require 'gobstones/runner/errors/gobstones_runtime_error'
 require 'gobstones/runner/execution_context'

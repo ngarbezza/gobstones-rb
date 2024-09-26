@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/definitions/definition'
 require 'gobstones/runner/execution_context'
 require 'gobstones/lang/definitions/return_from_function'

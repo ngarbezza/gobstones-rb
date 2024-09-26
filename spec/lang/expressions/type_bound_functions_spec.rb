@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'type bound functions' do
   let(:context) { any_context }
 

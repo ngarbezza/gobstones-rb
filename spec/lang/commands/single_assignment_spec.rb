@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe SingleAssignment do
   let(:context) { clean_context }
   let(:a) { 'a'.to_var_name }

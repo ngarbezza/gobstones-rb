@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe VarTuple do
   let(:var_tuple) { described_class.with_names(%w[a b c]) }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gobstones
   class TypeCheckResult
     def initialize(expected, actual)

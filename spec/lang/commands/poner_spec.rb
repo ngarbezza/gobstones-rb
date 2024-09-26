@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Poner do
   subject(:poner_cmd) { described_class.new(verde) }
 

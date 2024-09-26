@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/program'
 require 'gobstones/lang/commands/all'
 require 'gobstones/lang/definitions/all'

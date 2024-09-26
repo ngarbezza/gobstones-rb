@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/runner/board'
 require 'gobstones/runner/errors/out_of_board_error'
 

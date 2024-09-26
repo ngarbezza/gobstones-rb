@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/definitions/function'
 require 'gobstones/lang/definitions/main'
 require 'gobstones/lang/definitions/procedure'

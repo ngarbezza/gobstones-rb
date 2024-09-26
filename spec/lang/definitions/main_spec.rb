@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Main do
   subject(:if_evaluation) { main.evaluate(context) }
 

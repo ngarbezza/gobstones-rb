@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/expressions/expression'
 require 'gobstones/lang/literals/boolean'
 require 'gobstones/lang/literals/color'

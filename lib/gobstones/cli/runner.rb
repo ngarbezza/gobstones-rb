@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/parser/treetop_parser'
 require 'gobstones/parser/parse_error'
 require 'gobstones/cli/printer'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'procedure definitions' do
   it 'parses an empty procedure def without args' do
     proc_def = Procedure.new('MyProc', no_arguments, empty_body)

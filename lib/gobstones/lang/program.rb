@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/modules/equality_definition'
 require 'gobstones/runner/execution_context'
 require 'gobstones/runner/program_result'

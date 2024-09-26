@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones, 'type checker' do
   describe 'board expressions' do
     describe 'puedeMover()' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe While do
   let(:context) { clean_context }
   let(:while_block) { CommandBlock.with_just(Poner.new(verde)) }

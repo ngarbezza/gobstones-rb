@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Boolean do
   let(:context) { any_context }
 

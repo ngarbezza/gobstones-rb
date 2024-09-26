@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'simple commands' do
   describe 'primitives' do
     it 'parses a Skip cmd' do

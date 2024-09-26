@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'repeatWith statements' do
   it 'parses an empty statement' do
     min_range = 1.to_gbs_num

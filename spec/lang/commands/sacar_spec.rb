@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Sacar do
   let(:context) { clean_context }
 

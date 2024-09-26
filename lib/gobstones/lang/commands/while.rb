@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gobstones/lang/commands/conditional'
 require 'gobstones/runner/errors/gobstones_runtime_error'
 

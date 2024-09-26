@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'main definition' do
   let(:return_tuple) { VarTuple.with_names(%w[x y]) }
 

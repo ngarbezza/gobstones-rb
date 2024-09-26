@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Gobstones::Parser, 'nested expressions' do
   it 'parses literals between ()' do
     expect('(  42 )').to be_parsed_as(:expression).and_return(EnclosedByParensExpression.new(42.to_gbs_num))

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'evaluating primitive functions' do
   let(:context) { clean_context }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Direction do
   let(:all) { described_class.all.map(&:new) }
   let(:context) { any_context }

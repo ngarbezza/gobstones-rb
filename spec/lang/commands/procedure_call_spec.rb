@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ProcedureCall do
   it 'evaluates an existing procedure when calling it' do
     poner_cmd = Poner.new(verde)

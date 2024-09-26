@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe VaciarTablero do
   let(:context) { clean_context }
 
