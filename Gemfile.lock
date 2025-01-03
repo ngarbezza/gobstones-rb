@@ -53,7 +53,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    test-prof (1.4.2)
+    test-prof (1.4.3)
     treetop (1.6.12)
       polyglot (~> 0.3)
     unicode-display_width (3.1.3)
