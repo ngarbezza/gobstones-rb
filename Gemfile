@@ -10,7 +10,7 @@ group :test do
   gem 'autotest-standalone', '~> 4.5'
   gem 'rspec', '~> 3.13'
   gem 'simplecov', '~> 0.22', require: false
-  gem 'test-prof', '~> 1.4'
+  gem 'test-prof', '~> 1.5'
 end
 
 group :development do
